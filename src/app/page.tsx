@@ -21,6 +21,8 @@ import { NewsSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5
 import { StrengthSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-strength/StrengthSection";
 import { StrengthRdSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-strength-rd-block/StrengthRdSection";
 import { StrengthProdSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-strength-prod-block/StrengthProdSection";
+import { CatalogSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-catalog/CatalogSection";
+import { SolutionSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-solution/SolutionSection";
 
 export default function Home() {
   return <>
@@ -48,6 +50,8 @@ export default function Home() {
         <StrengthRdSection />
         <StrengthProdSection />
       </StrengthSection>
+      <CatalogSection />
+      <SolutionSection />
     </main>
     <SiteFooter />
     <SiteDialogs />
