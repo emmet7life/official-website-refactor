@@ -51,7 +51,7 @@
 
 3. **安装依赖**
    ```bash
-   npm install
+   pnpm install
    ```
 4. **启动你的 AI 代理** — 推荐使用 Claude Code：
    ```bash
@@ -160,11 +160,11 @@ GEMINI.md           # Gemini CLI 配置（引用 AGENTS.md）
 ## 常用命令
 
 ```bash
-npm run dev      # 启动开发服务器
-npm run build    # 生产构建
-npm run lint     # ESLint 检查
-npm run typecheck # TypeScript 检查
-npm run check    # 同时运行 lint + typecheck + build
+pnpm run dev      # 启动开发服务器
+pnpm run build    # 生产构建
+pnpm run lint     # ESLint 检查
+pnpm run typecheck # TypeScript 检查
+pnpm run check    # 同时运行 lint + typecheck + build
 ```
 
 ### 使用 Docker

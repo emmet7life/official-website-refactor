@@ -68,7 +68,7 @@ Give your AI coding agent a URL and watch it recreate the website as a clean Nex
 
 3. **Install dependencies**
    ```bash
-   npm install
+   pnpm install
    ```
 4. **Start your AI agent** — Claude Code recommended:
    ```bash
@@ -177,11 +177,11 @@ GEMINI.md           # Gemini CLI config (imports AGENTS.md)
 ## Commands
 
 ```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
+pnpm run dev    # Start dev server
+pnpm run build  # Production build
+pnpm run lint   # ESLint check
+pnpm run typecheck # TypeScript check
+pnpm run check  # Run lint + typecheck + build
 ```
 
 ### If using docker

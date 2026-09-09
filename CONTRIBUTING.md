@@ -20,13 +20,13 @@ Browse the [open issues](https://github.com/JCodesMore/ai-website-cloner-templat
 ```bash
 git clone https://github.com/YOUR-USERNAME/ai-website-cloner-template.git
 cd ai-website-cloner-template
-npm ci
+pnpm install --frozen-lockfile
 ```
 
 Before opening a PR, make sure the project is green:
 
 ```bash
-npm run check   # lint + typecheck + build
+pnpm run check   # lint + typecheck + build
 ```
 
 ## Source-of-truth files & the sync scripts
@@ -44,7 +44,7 @@ After editing a source file, run the matching sync command and commit the regene
 
 1. **Fork** the repo and create a branch off `master` (e.g. `fix/skill-hover-extraction` or `docs/clarify-setup`).
 2. Make your change. If you touched a source-of-truth file, **run the relevant sync script** (see above).
-3. Run `npm run check` and make sure it passes.
+3. Run `pnpm run check` and make sure it passes.
 4. Write a clear commit message that describes the change. Prefixes such as `fix:`, `feat:`, or `docs:` are welcome but not required.
 5. Open a PR against `master`, fill out the PR template, and link a relevant issue when one exists (for example, `Closes #123`).
 6. Keep PRs focused — one logical change per PR is much easier to review and merge.

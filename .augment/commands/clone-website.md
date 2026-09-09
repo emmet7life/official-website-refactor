@@ -55,7 +55,7 @@ Routing defaults:
 
 1. **Browser automation is required.** Check for available browser MCP tools (Chrome MCP, Playwright MCP, Browserbase MCP, Puppeteer MCP, etc.). Use whichever is available — if multiple exist, prefer Chrome MCP. If none are detected, ask the user which browser tool they have and how to connect it. This skill cannot work without browser automation.
 2. Parse `$ARGUMENTS` as one or more URLs. Normalize and validate each URL; if any are invalid, ask the user to correct them before proceeding. For each valid URL, verify it is accessible via your browser MCP tool.
-3. Verify the base project builds: `npm run build`. The Next.js + shadcn/ui + Tailwind v4 scaffold should already be in place. If not, tell the user to set it up first.
+3. Verify the base project builds: `pnpm run build`. The Next.js + shadcn/ui + Tailwind v4 scaffold should already be in place. If not, tell the user to set it up first.
 4. Inventory existing routes (`src/app/**/page.tsx`), site component namespaces, research artifacts, screenshots, and public assets. Distinguish the untouched template scaffold from existing cloned or user-authored work.
 5. Write an output plan listing every target URL, `<app-root>`, `<site-key>`, `<page-key>`, destination route, artifact roots, and whether any shared foundation file must change. Resolve collisions across every planned output, same-path query/fragment behavior, and multi-origin layout decisions with the user before editing.
 6. Create only the planned per-page/per-site directories plus `scripts/` if needed. Use unique asset-download script names such as `scripts/download-assets-<site-key>-<page-key>.mjs`; do not overwrite another page's downloader.
@@ -144,7 +144,7 @@ The spec file is not optional. It is not a nice-to-have. If you dispatch a build
 
 ### 9. Build Must Always Compile
 
-Every builder agent must verify `npx tsc --noEmit` passes before finishing. After merging worktrees, you verify `npm run build` passes. A broken build is never acceptable, even temporarily.
+Every builder agent must verify `pnpm exec tsc --noEmit` passes before finishing. After merging worktrees, you verify `pnpm run build` passes. A broken build is never acceptable, even temporarily.
 
 ## Phase 1: Reconnaissance
 
@@ -213,7 +213,7 @@ This is sequential per origin. Do it yourself (not delegated to an agent) since 
 3. **Create namespaced TypeScript interfaces** for the content structures you've observed; reuse existing same-site types only when their contracts match.
 4. **Extract SVG icons** — deduplicate same-site icons under `src/components/sites/<site-key>/shared/icons.tsx`; keep page-only icons in the page component namespace. Name them by visual function (e.g., `SearchIcon`, `ArrowRightIcon`, `LogoIcon`).
 5. **Download assets into the planned namespace** — use the page's uniquely named download script and write into `public/sites/<site-key>/<page-key>/` or the approved same-site shared directory. Never write a generic filename over another page's asset.
-6. Verify every previously existing route still builds, then run `npm run build`.
+6. Verify every previously existing route still builds, then run `pnpm run build`.
 
 ### Asset Discovery Script Pattern
 
@@ -437,7 +437,7 @@ Based on complexity, dispatch builder agent(s) in worktree(s):
 - Path to the section screenshot in the page's namespaced screenshot root
 - Which shared components to import (the planned site-scoped icon module, `cn()`, shadcn primitives)
 - The namespaced target file path (e.g., `src/components/sites/<site-key>/<page-key>/HeroSection.tsx`)
-- Instruction to verify with `npx tsc --noEmit` before finishing
+- Instruction to verify with `pnpm exec tsc --noEmit` before finishing
 - For responsive behavior: the specific breakpoint values and what changes
 
 **Don't wait.** As soon as you've dispatched the builder(s) for one section, move to extracting the next section. Builders work in parallel in their worktrees while you continue extraction.
@@ -448,7 +448,7 @@ As builder agents complete their work:
 - Merge their worktree branches into main
 - You have full context on what each agent built, so resolve any conflicts intelligently
 - Reject or repair any merge that deletes or rewrites an unrelated existing route or another page's namespace
-- After each merge, verify the build still passes: `npm run build`
+- After each merge, verify the build still passes: `pnpm run build`
 - If a merge introduces type errors, fix them immediately
 
 The extract → spec → dispatch → merge cycle continues until all sections are built.
@@ -462,7 +462,7 @@ After all sections are built and merged, wire the page into the exact destinatio
 - Connect real content to component props
 - Implement page-level behaviors: scroll snap, scroll-driven animations, dark-to-light transitions, intersection observers, smooth scroll (Lenis etc.)
 - Confirm all routes that existed before this run are still present and were not unintentionally changed
-- Verify: `npm run build` passes clean
+- Verify: `pnpm run build` passes clean
 
 ## Phase 5: Visual QA Diff
 
@@ -523,6 +523,6 @@ When done, report:
 - Total components created
 - Total spec files written (should match components)
 - Total assets downloaded (images, videos, SVGs, fonts)
-- Build status (`npm run build` result)
+- Build status (`pnpm run build` result)
 - Visual QA results (any remaining discrepancies)
 - Any known gaps or limitations

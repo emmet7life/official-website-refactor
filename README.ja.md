@@ -51,7 +51,7 @@ AI コーディングエージェントに URL を渡すだけで、ウェブサ
 
 3. **依存関係をインストールする**
    ```bash
-   npm install
+   pnpm install
    ```
 4. **AI エージェントを起動する** — Claude Code を推奨：
    ```bash
@@ -160,11 +160,11 @@ GEMINI.md           # Gemini CLI 設定（AGENTS.md を読み込み）
 ## コマンド
 
 ```bash
-npm run dev    # 開発サーバーを起動
-npm run build  # 本番ビルド
-npm run lint   # ESLint チェック
-npm run typecheck # TypeScript チェック
-npm run check  # lint + typecheck + build を実行
+pnpm run dev    # 開発サーバーを起動
+pnpm run build  # 本番ビルド
+pnpm run lint   # ESLint チェック
+pnpm run typecheck # TypeScript チェック
+pnpm run check  # lint + typecheck + build を実行
 ```
 
 ### Docker を使用する場合

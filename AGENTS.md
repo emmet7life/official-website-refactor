@@ -21,11 +21,11 @@ A reusable template for reverse-engineering any website into a clean, modern Nex
 - **Deployment:** Vercel
 
 ## Commands
-- `npm run dev` — Start dev server
-- `npm run build` — Production build
-- `npm run lint` — ESLint check
-- `npm run typecheck` — TypeScript check
-- `npm run check` — Run lint + typecheck + build
+- `pnpm run dev` — Start dev server
+- `pnpm run build` — Production build
+- `pnpm run lint` — ESLint check
+- `pnpm run typecheck` — TypeScript check
+- `pnpm run check` — Run lint + typecheck + build
 
 ## Code Style
 - TypeScript strict mode, no `any`
