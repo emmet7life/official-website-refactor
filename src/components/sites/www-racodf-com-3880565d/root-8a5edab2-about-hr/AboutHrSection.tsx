@@ -56,7 +56,7 @@ export function AboutHrSection() {
       <div className="mb-12 lg:mb-16">
         <Heading>人才招聘</Heading>
         <p className="mb-8 text-base leading-relaxed text-gray-600">公司面向社会与校园持续开放招聘通道，以 “德才兼备、以德为先，人岗相适、用其所长” 为选拔原则，热忱欢迎志同道合的伙伴加入。</p>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="space-y-8">
           {Array.from(new Set(jobs.map((job) => job.group))).map((group) => <div key={group} className="space-y-3">
             <h4 className="mb-3 text-base font-semibold text-primary">{group}</h4>
             <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">{jobs.filter((job) => job.group === group).map((job) => <JobCard key={job.title} job={job} />)}</div>
