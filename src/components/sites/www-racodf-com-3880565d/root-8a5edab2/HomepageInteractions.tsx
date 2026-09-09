@@ -45,9 +45,9 @@ export function HomepageInteractions() {
       activeDialog?.querySelector<HTMLElement>("input, button")?.focus();
     };
     const navigate = (id: string, isolated = true) => {
-      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : "home";
+      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : "home";
       document.querySelectorAll<HTMLElement>("main > section").forEach((section) => {
-        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : section.id === currentView;
+        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : section.id === currentView;
         section.classList.toggle("view-hidden", !visible);
       });
       document.querySelector("main")?.classList.toggle("overview-view", currentView !== "home");
@@ -56,6 +56,17 @@ export function HomepageInteractions() {
         document.querySelectorAll<HTMLElement>("#about .about-part").forEach((panel) => panel.classList.toggle("hidden", panel.id !== part));
         document.querySelectorAll<HTMLElement>("[data-about-part]").forEach((tab) => {
           const active = tab.getAttribute("data-about-part") === part;
+          tab.classList.toggle("border-primary", active);
+          tab.classList.toggle("text-primary", active);
+          tab.classList.toggle("border-transparent", !active);
+          tab.classList.toggle("text-gray-500", !active);
+        });
+      }
+      if (currentView === "service") {
+        const part = id === "service" ? "service-downloads" : id;
+        document.querySelectorAll<HTMLElement>("#service .service-part").forEach((panel) => panel.classList.toggle("hidden", panel.id !== part));
+        document.querySelectorAll<HTMLElement>("[data-service-part]").forEach((tab) => {
+          const active = tab.getAttribute("data-service-part") === part;
           tab.classList.toggle("border-primary", active);
           tab.classList.toggle("text-primary", active);
           tab.classList.toggle("border-transparent", !active);
