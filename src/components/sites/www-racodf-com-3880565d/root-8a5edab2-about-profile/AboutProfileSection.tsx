@@ -41,11 +41,11 @@ const tabs = [
 function CompanyGroup({ title, companies }: { title: string; companies: Company[] }) {
   return (
     <div>
-      <div className="mb-5 flex items-center gap-3">
+      <div className="mb-3 flex items-center gap-2">
         <span className="h-5 w-1 rounded-full bg-gradient-to-b from-primary to-primary-mid" aria-hidden="true" />
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-base font-semibold text-gray-900 md:text-lg">{title}</h3>
       </div>
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex flex-col items-start gap-2.5">
         {companies.map((company) => {
           const content = (
             <>
@@ -86,20 +86,20 @@ export function AboutProfileSection() {
   return (
     <section id="about" className="bg-white py-16 md:py-24 lg:py-28">
       <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
-        <div className="mb-10 lg:mb-14">
+        <div>
           <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">走进雷科</h2>
         </div>
 
-        <nav className="mb-10 overflow-x-auto border-b border-gray-200 lg:mb-14" aria-label="走进雷科">
-          <div className="flex min-w-max gap-8">
+        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="走进雷科">
+          <div className="flex flex-wrap gap-x-8 gap-y-1">
             {tabs.map((tab) => (
               <a
                 key={tab.label}
                 href={tab.href}
                 className={tab.active
-                  ? '-mb-px border-b-2 border-primary px-0 pb-4 text-primary'
-                  : 'border-b-2 border-transparent px-0 pb-4 text-gray-500 transition-colors hover:text-primary'}
+                  ? '-mb-px border-b-2 border-primary px-1 py-3 text-sm font-medium text-primary md:text-base'
+                  : '-mb-px border-b-2 border-transparent px-1 py-3 text-sm font-medium text-gray-500 transition-colors hover:text-primary md:text-base'}
               >
                 {tab.label}
               </a>
@@ -107,7 +107,7 @@ export function AboutProfileSection() {
           </div>
         </nav>
 
-        <div id="about-profile" className="grid gap-12 lg:grid-cols-10 lg:gap-16">
+        <div id="about-profile" className="grid items-start gap-12 lg:grid-cols-10 lg:gap-16">
           <div className="lg:col-span-7">
             <figure className="overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
               <img
@@ -117,14 +117,14 @@ export function AboutProfileSection() {
                 className="aspect-video w-full object-cover"
               />
             </figure>
-            <div id="about-profile-text" className="mt-8 space-y-5 text-sm leading-7 text-gray-500 md:text-base md:leading-8">
+            <div id="about-profile-text" className="about-profile-copy mt-8 space-y-5 text-sm text-gray-500 md:text-base">
               {profileParagraphs.map((paragraph) => (
                 <p key={paragraph} className="ql-align-justify">{paragraph}</p>
               ))}
             </div>
           </div>
 
-          <div className="space-y-12 lg:col-span-3 lg:space-y-16">
+          <div className="space-y-6 lg:col-span-3">
             <CompanyGroup title="核心企业" companies={coreCompanies} />
             <CompanyGroup title="参股企业" companies={investeeCompanies} />
           </div>

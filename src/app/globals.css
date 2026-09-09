@@ -21,4 +21,6 @@ button, summary { cursor: pointer; }
 a.search-result:hover { background: #f2f3f5; color: #165dff; }
 @media (min-width: 1024px) { .overview-view { padding-top: 72px; } }
 .demo-form-status { margin-top: 16px; font-size: 14px; color: #165dff; }
+.about-profile-copy { line-height: 28px !important; }
+@media (min-width: 768px) { .about-profile-copy { line-height: 24px !important; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

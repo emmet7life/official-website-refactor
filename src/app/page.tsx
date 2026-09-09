@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/sites/www-racodf-com-3880565d/root-
 import { SiteFooter } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/SiteFooter";
 import { SiteDialogs } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/SiteDialogs";
 import { HomepageInteractions } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/HomepageInteractions";
+import { AboutProfileSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-profile/AboutProfileSection";
 
 export default function Home() {
   return <>
@@ -21,6 +22,7 @@ export default function Home() {
       <ProfileSection />
       <AdvantagesSection />
       <ContactSection />
+      <AboutProfileSection />
     </main>
     <SiteFooter />
     <SiteDialogs />

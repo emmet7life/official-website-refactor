@@ -45,9 +45,10 @@ export function HomepageInteractions() {
       activeDialog?.querySelector<HTMLElement>("input, button")?.focus();
     };
     const navigate = (id: string, isolated = true) => {
-      currentView = isolated && ["business", "industry"].includes(id) ? id : "home";
+      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : "home";
       document.querySelectorAll<HTMLElement>("main > section").forEach((section) => {
-        section.classList.toggle("view-hidden", currentView !== "home" && section.id !== currentView);
+        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : section.id === currentView;
+        section.classList.toggle("view-hidden", !visible);
       });
       document.querySelector("main")?.classList.toggle("overview-view", currentView !== "home");
       closeMenu();
