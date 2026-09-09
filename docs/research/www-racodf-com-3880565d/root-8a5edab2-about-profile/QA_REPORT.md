@@ -16,9 +16,9 @@
 
 | 视口 | 原站 `#about` | 本地 `#about` | 图片加载 |
 | --- | ---: | ---: | --- |
-| 1440px | 1191.75px | 1191.75px | 正常 |
+| 1440px | 1197.65625px | 1197.65625px | 正常 |
 | 768px | 1754.4375px | 1754.4375px | 正常 |
-| 390px | 1761.3125px | 1761.3125px | 正常 |
+| 390px | 1713.75px | 1713.75px | 正常 |
 
 `pnpm run check` 已通过：ESLint、TypeScript 和 Next.js 生产构建全部成功。验收截图位于此目录的 `original-1440.png`、`original-768.png`、`original-390.png`；本地对比截图生成在同一目录的 `clone-1440.png`、`clone-768.png`、`clone-390.png`。
 
