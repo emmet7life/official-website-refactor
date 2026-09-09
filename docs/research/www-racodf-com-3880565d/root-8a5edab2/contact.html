@@ -1,0 +1,166 @@
+<section class="bg-contact py-16 md:py-24 lg:py-28" id="contact">
+ <div class="max-w-container mx-auto px-5 md:px-10 lg:px-16">
+  <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+   <!-- 左侧：联系信息 -->
+   <div>
+    <div class="fade-in-up w-12 h-1 rounded-full bg-gradient-to-r from-primary to-primary-mid mb-5 is-visible">
+    </div>
+    <h2 class="fade-in-up text-2xl md:text-4xl font-semibold tracking-tight text-gray-900 is-visible">
+     业务咨询
+    </h2>
+    <p class="fade-in-up delay-1 mt-4 text-base md:text-lg text-gray-600 leading-relaxed max-w-md is-visible">
+     无论是产品咨询、商务合作还是媒体采访，欢迎与我们联系
+    </p>
+    <p class="fade-in-up delay-1 mt-8 text-lg md:text-xl font-semibold text-gray-900 is-visible">
+     北京雷科防务科技股份有限公司
+    </p>
+    <div class="mt-6 space-y-6">
+     <div class="fade-in-up delay-2 flex items-start gap-4 is-visible">
+      <div class="w-11 h-11 flex items-center justify-center bg-primary-light rounded text-primary shrink-0">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+        <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z">
+        </path>
+       </svg>
+      </div>
+      <div>
+       <p class="text-sm text-gray-500">
+        电话
+       </p>
+       <p class="mt-1 text-lg font-medium text-gray-900" id="contact-phone">
+        010-68916700
+       </p>
+      </div>
+     </div>
+     <div class="fade-in-up delay-3 flex items-start gap-4 is-visible">
+      <div class="w-11 h-11 flex items-center justify-center bg-primary-light rounded text-primary shrink-0">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+        <path d="M6 9V3h12v6">
+        </path>
+        <rect height="7" rx="1.5" width="17" x="3.5" y="9">
+        </rect>
+        <path d="M7 16h10v5H7z">
+        </path>
+        <path d="M17.5 12h.01">
+        </path>
+       </svg>
+      </div>
+      <div>
+       <p class="text-sm text-gray-500">
+        传真
+       </p>
+       <p class="mt-1 text-lg font-medium text-gray-900" id="contact-fax">
+        010-68916700-6759
+       </p>
+      </div>
+     </div>
+     <div class="fade-in-up delay-4 flex items-start gap-4 is-visible">
+      <div class="w-11 h-11 flex items-center justify-center bg-primary-light rounded text-primary shrink-0">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+        <path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z">
+        </path>
+        <circle cx="12" cy="10" r="2.5">
+        </circle>
+       </svg>
+      </div>
+      <div>
+       <p class="text-sm text-gray-500">
+        地址
+       </p>
+       <p class="mt-1 text-lg font-medium text-gray-900" id="contact-address">
+        北京市海淀区远大南街6号院鲁迅文创园5号楼
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- 右侧：咨询表单 -->
+   <div class="fade-in-up delay-1 bg-white border border-gray-200 shadow-card rounded-xl p-6 md:p-8 is-visible">
+    <form class="space-y-5" id="contact-form" novalidate="">
+     <div class="grid sm:grid-cols-2 gap-5">
+      <div>
+       <label class="block text-sm font-medium text-gray-700 mb-2" for="name">
+        姓名
+        <span class="text-red-500">
+         *
+        </span>
+       </label>
+       <input class="w-full h-11 px-4 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors" id="name" name="name" placeholder="请输入您的姓名" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium text-gray-700 mb-2" for="company">
+        公司名称
+       </label>
+       <input class="w-full h-11 px-4 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors" id="company" name="company" placeholder="请输入公司名称" type="text"/>
+      </div>
+     </div>
+     <div class="grid sm:grid-cols-2 gap-5">
+      <div>
+       <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">
+        联系电话
+        <span class="text-red-500">
+         *
+        </span>
+       </label>
+       <input class="w-full h-11 px-4 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors" id="phone" name="phone" placeholder="请输入手机号码" required="" type="tel"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium text-gray-700 mb-2" for="email">
+        电子邮箱
+       </label>
+       <input class="w-full h-11 px-4 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors" id="email" name="email" placeholder="请输入邮箱地址" type="email"/>
+      </div>
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2" for="type">
+       咨询类型
+      </label>
+      <select class="w-full h-11 px-4 rounded border border-gray-200 bg-white text-sm text-gray-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors" id="type" name="type">
+       <option>
+        产品咨询
+       </option>
+       <option>
+        商务合作
+       </option>
+       <option>
+        媒体采访
+       </option>
+       <option>
+        招聘咨询
+       </option>
+       <option>
+        投资者咨询
+       </option>
+       <option>
+        其他
+       </option>
+      </select>
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2" for="message">
+       咨询内容
+       <span class="text-red-500">
+        *
+       </span>
+      </label>
+      <textarea class="w-full px-4 py-3 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors resize-none" id="message" name="message" placeholder="请简要描述您的需求" required="" rows="4"></textarea>
+     </div>
+     <label class="flex items-start gap-2 text-xs text-gray-500 leading-relaxed cursor-pointer">
+      <input class="mt-0.5 shrink-0 w-4 h-4 accent-primary" name="consent" type="checkbox"/>
+      <span>
+       我已阅读并同意
+       <button class="open-privacy text-primary hover:underline" type="button">
+        《隐私政策》
+       </button>
+       ，同意雷科防务为业务联系与回复目的收集、使用我所填写的个人信息。
+      </span>
+     </label>
+     <p class="hidden text-sm" id="contact-msg">
+     </p>
+     <button class="w-full h-12 rounded-md bg-primary text-white text-base font-medium hover:bg-primary-dark transition-colors" type="submit">
+      提交咨询
+     </button>
+    </form>
+   </div>
+  </div>
+ </div>
+</section>
