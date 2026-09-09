@@ -10,6 +10,10 @@ import { SiteFooter } from "@/components/sites/www-racodf-com-3880565d/root-8a5e
 import { SiteDialogs } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/SiteDialogs";
 import { HomepageInteractions } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/HomepageInteractions";
 import { AboutProfileSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-profile/AboutProfileSection";
+import { AboutHistorySection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-history/AboutHistorySection";
+import { AboutHonorSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-honor/AboutHonorSection";
+import { AboutCultureSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-culture/AboutCultureSection";
+import { AboutHrSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-hr/AboutHrSection";
 
 export default function Home() {
   return <>
@@ -22,7 +26,12 @@ export default function Home() {
       <ProfileSection />
       <AdvantagesSection />
       <ContactSection />
-      <AboutProfileSection />
+      <AboutProfileSection>
+        <AboutHistorySection />
+        <AboutHonorSection />
+        <AboutCultureSection />
+        <AboutHrSection />
+      </AboutProfileSection>
     </main>
     <SiteFooter />
     <SiteDialogs />

@@ -1,5 +1,6 @@
 /* Original image sizing is preserved for visual fidelity. */
 /* eslint-disable @next/next/no-img-element */
+import type { ReactNode } from 'react';
 
 const profileParagraphs = [
   '北京雷科防务科技股份有限公司（简称"雷科防务"）是深圳证券交易所上市公司（股票代码 002413），注册资本 13 亿余元，员工 1800 余人。雷科防务下属雷科电子、雷科空天、爱科特、奇维科技、恒达微波、尧云科技等公司，专业从事雷达系统、卫星应用、智能控制、安全存储、智能网联等业务。',
@@ -33,7 +34,7 @@ const investeeCompanies: Company[] = [
 const tabs = [
   { label: '集团概况', href: '#about-profile', active: true },
   { label: '发展历程', href: '#about-history', active: false },
-  { label: '资质荣誉', href: '#about-honors', active: false },
+  { label: '资质荣誉', href: '#about-honor', active: false },
   { label: '企业文化', href: '#about-culture', active: false },
   { label: '人力资源', href: '#about-hr', active: false },
 ] as const;
@@ -82,7 +83,7 @@ function CompanyGroup({ title, companies }: { title: string; companies: Company[
   );
 }
 
-export function AboutProfileSection() {
+export function AboutProfileSection({ children }: { children?: ReactNode }) {
   return (
     <section id="about" className="bg-white py-16 md:py-24 lg:py-28">
       <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
@@ -97,6 +98,7 @@ export function AboutProfileSection() {
               <a
                 key={tab.label}
                 href={tab.href}
+                data-about-part={tab.href.slice(1)}
                 className={tab.active
                   ? '-mb-px border-b-2 border-primary px-1 py-3 text-sm font-medium text-primary md:text-base'
                   : '-mb-px border-b-2 border-transparent px-1 py-3 text-sm font-medium text-gray-500 transition-colors hover:text-primary md:text-base'}
@@ -107,7 +109,7 @@ export function AboutProfileSection() {
           </div>
         </nav>
 
-        <div id="about-profile" className="grid items-start gap-12 lg:grid-cols-10 lg:gap-16">
+        <div id="about-profile" className="about-part grid items-start gap-12 lg:grid-cols-10 lg:gap-16">
           <div className="lg:col-span-7">
             <figure className="overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
               <img
@@ -129,6 +131,7 @@ export function AboutProfileSection() {
             <CompanyGroup title="参股企业" companies={investeeCompanies} />
           </div>
         </div>
+        {children}
       </div>
     </section>
   );

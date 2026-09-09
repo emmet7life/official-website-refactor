@@ -51,6 +51,17 @@ export function HomepageInteractions() {
         section.classList.toggle("view-hidden", !visible);
       });
       document.querySelector("main")?.classList.toggle("overview-view", currentView !== "home");
+      if (currentView === "about") {
+        const part = id === "about" ? "about-profile" : id;
+        document.querySelectorAll<HTMLElement>("#about .about-part").forEach((panel) => panel.classList.toggle("hidden", panel.id !== part));
+        document.querySelectorAll<HTMLElement>("[data-about-part]").forEach((tab) => {
+          const active = tab.getAttribute("data-about-part") === part;
+          tab.classList.toggle("border-primary", active);
+          tab.classList.toggle("text-primary", active);
+          tab.classList.toggle("border-transparent", !active);
+          tab.classList.toggle("text-gray-500", !active);
+        });
+      }
       closeMenu();
       onScroll();
       const destination = document.getElementById(id);
