@@ -1,10 +1,31 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 /* Original image sizing is preserved for visual fidelity. */
 /* eslint-disable @next/next/no-img-element */
 export function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [timerVersion, setTimerVersion] = useState(0);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % 3);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [isPaused, timerVersion]);
+
+  function selectSlide(index: number) {
+    setActiveIndex((index + 3) % 3);
+    setTimerVersion((version) => version + 1);
+  }
+
   return (<>
-<section id="hero" className="relative h-screen min-h-[560px] w-full overflow-hidden bg-ink">
+<section onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} id="hero" className="relative h-screen min-h-[560px] w-full overflow-hidden bg-ink">
 <div id="hero-slides">
-<div className="hero-slide" data-index="0">
+<div className={activeIndex === 0 ? "hero-slide is-active" : "hero-slide"} data-index="0" aria-hidden={activeIndex !== 0} inert={activeIndex !== 0}>
 <img src="/sites/www-racodf-com-3880565d/root-8a5edab2/93e050a9-hero-antiuav-radar.jpg" alt="高精度雷达感知，洞察空天" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
 <div className="absolute inset-0 hero-scrim"></div>
 <div className="absolute inset-0 hero-grid"></div>
@@ -22,7 +43,7 @@ export function HeroSection() {
 </div>
 </div>
 </div>
-<div className="hero-slide" data-index="1">
+<div className={activeIndex === 1 ? "hero-slide is-active" : "hero-slide"} data-index="1" aria-hidden={activeIndex !== 1} inert={activeIndex !== 1}>
 <img src="/sites/www-racodf-com-3880565d/root-8a5edab2/ea5e4988-hero-space.jpg" alt="立足遥感主业，拓展商业航天" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
 <div className="absolute inset-0 hero-scrim"></div>
 <div className="absolute inset-0 hero-grid"></div>
@@ -40,7 +61,7 @@ export function HeroSection() {
 </div>
 </div>
 </div>
-<div className="hero-slide" data-index="2">
+<div className={activeIndex === 2 ? "hero-slide is-active" : "hero-slide"} data-index="2" aria-hidden={activeIndex !== 2} inert={activeIndex !== 2}>
 <img src="/sites/www-racodf-com-3880565d/root-8a5edab2/e617faa3-hero-chip.jpg" alt="自主芯片，智能赋能" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
 <div className="absolute inset-0 hero-scrim"></div>
 <div className="absolute inset-0 hero-grid"></div>
@@ -59,14 +80,14 @@ export function HeroSection() {
 </div>
 </div></div>
 
-<button id="hero-prev" className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="上一张" type="button">
+<button onClick={() => selectSlide(activeIndex - 1)} id="hero-prev" className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="上一张" type="button">
 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M15 6l-6 6 6 6"></path></svg>
 </button>
-<button id="hero-next" className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="下一张" type="button">
+<button onClick={() => selectSlide(activeIndex + 1)} id="hero-next" className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="下一张" type="button">
 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 6l6 6-6 6"></path></svg>
 </button>
 
-<div id="hero-dots" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5"><button className="hero-dot" aria-label="切换到第 1 张" type="button"></button><button className="hero-dot" aria-label="切换到第 2 张" type="button"></button><button className="hero-dot" aria-label="切换到第 3 张" type="button"></button></div>
+<div id="hero-dots" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5"><button className={activeIndex === 0 ? "hero-dot is-active" : "hero-dot"} onClick={() => selectSlide(0)} aria-current={activeIndex === 0 ? "true" : undefined} aria-label="切换到第 1 张" type="button"></button><button className={activeIndex === 1 ? "hero-dot is-active" : "hero-dot"} onClick={() => selectSlide(1)} aria-current={activeIndex === 1 ? "true" : undefined} aria-label="切换到第 2 张" type="button"></button><button className={activeIndex === 2 ? "hero-dot is-active" : "hero-dot"} onClick={() => selectSlide(2)} aria-current={activeIndex === 2 ? "true" : undefined} aria-label="切换到第 3 张" type="button"></button></div>
 </section>
   </>);
 }
