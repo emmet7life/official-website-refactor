@@ -1,6 +1,34 @@
+'use client';
+
+import { useState, type FormEvent } from 'react';
+
 /* Original image sizing is preserved for visual fidelity. */
 /* eslint-disable @next/next/no-img-element */
 export function ContactSection() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleInput(event: FormEvent<HTMLFormElement>) {
+    setSubmitted(false);
+    const field = event.target;
+    if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+      field.setCustomValidity('');
+    }
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    for (const name of ['name', 'phone', 'message']) {
+      const field = form.elements.namedItem(name);
+      if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+        field.setCustomValidity(field.value.trim() ? '' : '请填写此字段，不能只包含空格。');
+      }
+    }
+    if (form.reportValidity()) {
+      setSubmitted(true);
+    }
+  }
+
   return (<>
 <section id="contact" className="bg-contact py-16 md:py-24 lg:py-28">
 <div className="max-w-container mx-auto px-5 md:px-10 lg:px-16">
@@ -43,7 +71,7 @@ export function ContactSection() {
 </div>
 
 <div className="fade-in-up delay-1 bg-white border border-gray-200 shadow-card rounded-xl p-6 md:p-8">
-<form id="contact-form" className="space-y-5">
+<form id="contact-form" className="space-y-5" onSubmit={handleSubmit} onInput={handleInput}>
 <div className="grid sm:grid-cols-2 gap-5">
 <div>
 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">{"姓名 "}<span className="text-red-500">{"*"}</span></label>
@@ -80,12 +108,13 @@ export function ContactSection() {
 <textarea id="message" name="message" rows={4} required placeholder="请简要描述您的需求" className="w-full px-4 py-3 rounded border border-gray-200 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors resize-none"></textarea>
 </div>
 <label className="flex items-start gap-2 text-xs text-gray-500 leading-relaxed cursor-pointer">
-<input type="checkbox" name="consent" className="mt-0.5 shrink-0 w-4 h-4 accent-primary" />
+<input type="checkbox" name="consent" required className="mt-0.5 shrink-0 w-4 h-4 accent-primary" />
 <span>{"我已阅读并同意 "}<button type="button" className="open-privacy text-primary hover:underline">{"《隐私政策》"}</button>{"，同意雷科防务为业务联系与回复目的收集、使用我所填写的个人信息。"}</span>
 </label>
 <p id="contact-msg" className="hidden text-sm"></p>
 <button type="submit" className="w-full h-12 rounded-md bg-primary text-white text-base font-medium hover:bg-primary-dark transition-colors">{"\n              提交咨询\n            "}</button>
 </form>
+{submitted && <p role="status" className="demo-form-status">演示提交成功，信息未发送至雷科防务。</p>}
 </div>
 </div>
 </div>
