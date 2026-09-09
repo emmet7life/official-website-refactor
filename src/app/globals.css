@@ -10,5 +10,15 @@
 }
 html { scroll-behavior: smooth; }
 button, summary { cursor: pointer; }
+.view-hidden { display: none !important; }
+.insight-nav-link, .faq-nav-link, .brand-nav-link, footer li:has(.insight-nav-link) { display: none; }
+/* The source uses v3 gradient variables; v4 registers incompatible typed values. */
+.bg-gradient-to-r.from-primary { background-image: linear-gradient(to right, rgb(22, 93, 255), rgb(105, 177, 255)); }
+.bg-gradient-to-r[class~="via-white/15"] { background-image: linear-gradient(to right, transparent, rgba(255, 255, 255, .15), transparent); }
+.bg-gradient-to-r[class~="via-primary/40"] { background-image: linear-gradient(to right, transparent, rgba(22, 93, 255, .4), transparent); }
+.overview-view { padding-top: 64px; }
+.search-result { display: block; padding: 16px 20px; color: #4e5969; font-size: 14px; border-bottom: 1px solid #f2f3f5; }
+a.search-result:hover { background: #f2f3f5; color: #165dff; }
+@media (min-width: 1024px) { .overview-view { padding-top: 72px; } }
 .demo-form-status { margin-top: 16px; font-size: 14px; color: #165dff; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

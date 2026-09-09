@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup, Comment, NavigableString
 from urllib.parse import urljoin, urlparse
 from urllib.request import urlopen, Request
 from concurrent.futures import ThreadPoolExecutor
-import hashlib, json, re, os
+import hashlib, json, re, os, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 KEY = 'www-racodf-com-3880565d/root-8a5edab2'
@@ -38,6 +38,9 @@ def download(url):
 with ThreadPoolExecutor(max_workers=6) as pool:
     manifest = list(pool.map(download, sorted(urls)))
 (RESEARCH / 'ASSETS.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+if '--generate-components' not in sys.argv:
+    print(f'Verified {len(manifest)} local assets; components preserved.')
+    sys.exit(0)
 css = Path(os.environ['TEMP'], 'racodf-styles.css').read_text(encoding='utf-8')
 (COMPONENTS / 'source.css').write_text(css,encoding='utf-8')
 styles = {}
@@ -73,7 +76,10 @@ def render(node):
             value = value.replace(' is-visible','')
             if node.get('id') == 'navbar': value = value.replace(' scrolled','')
             if 'hero-slide' in value or 'hero-dot' in value: value = value.replace(' is-active','')
-        if key == 'selected': continue
+        if key in ['selected', 'novalidate']: continue
+        if key == 'rows':
+            attrs.append('rows={'+str(int(value))+'}')
+            continue
         if key == 'checked': key = 'defaultChecked'
         if key == 'value' and node.name in ['input','textarea']: key = 'defaultValue'
         key = attr_map.get(key,key)
@@ -95,7 +101,7 @@ for id,soup in soups.items():
     # Copy attributes before rendering; render adds a stable style class.
     for node in soup.find_all(style=True):
         raw=node['style']
-        clean=re.sub(r'(?:^|;)\s*display:\s*(?:none|block)\s*;?', ';',raw).strip('; ')
+        clean=raw.strip('; ')
         del node['style']
         if clean:
             cls='extracted-'+hashlib.sha256(clean.encode()).hexdigest()[:10]

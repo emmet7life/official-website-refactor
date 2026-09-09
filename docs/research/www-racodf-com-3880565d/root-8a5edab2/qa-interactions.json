@@ -1,0 +1,62 @@
+[
+  {
+    "name": "carousel next",
+    "passed": true
+  },
+  {
+    "name": "carousel previous",
+    "passed": true
+  },
+  {
+    "name": "search opens",
+    "passed": true
+  },
+  {
+    "name": "search results",
+    "passed": true
+  },
+  {
+    "name": "search result closes modal",
+    "passed": true
+  },
+  {
+    "name": "footer privacy stays local",
+    "passed": true
+  },
+  {
+    "name": "escape closes privacy",
+    "passed": true
+  },
+  {
+    "name": "isolated business overview",
+    "passed": true
+  },
+  {
+    "name": "home restored",
+    "passed": true
+  },
+  {
+    "name": "form rejects empty",
+    "passed": true
+  },
+  {
+    "name": "local form acknowledgement",
+    "passed": true
+  },
+  {
+    "name": "mobile drawer opens",
+    "passed": true
+  },
+  {
+    "name": "mobile mask closes",
+    "passed": true
+  },
+  {
+    "name": "English toggle",
+    "passed": true
+  },
+  {
+    "name": "Chinese toggle",
+    "passed": true
+  }
+]

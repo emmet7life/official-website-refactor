@@ -1,5 +1,3 @@
-/* Original image sizing is preserved for visual fidelity. */
-/* eslint-disable @next/next/no-img-element */
 export function AdvantagesSection() {
   return (<>
 <section id="advantages" className="bg-adv py-16 md:py-24 lg:py-28">

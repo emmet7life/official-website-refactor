@@ -1,5 +1,3 @@
-/* Original image sizing is preserved for visual fidelity. */
-/* eslint-disable @next/next/no-img-element */
 export function SiteDialogs() {
   return (<>
 <div aria-label="站内搜索" aria-modal="true" className="fixed inset-0 z-[80] hidden bg-ink/80 backdrop-blur-sm px-5 pt-24 md:pt-32" id="search-modal" role="dialog">

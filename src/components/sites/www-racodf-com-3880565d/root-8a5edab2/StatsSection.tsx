@@ -1,5 +1,3 @@
-/* Original image sizing is preserved for visual fidelity. */
-/* eslint-disable @next/next/no-img-element */
 export function StatsSection() {
   return (<>
 <section id="stats" className="relative overflow-hidden bg-ink py-14 md:py-20">

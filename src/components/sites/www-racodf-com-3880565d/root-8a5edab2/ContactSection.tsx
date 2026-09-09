@@ -2,8 +2,6 @@
 
 import { useState, type FormEvent } from 'react';
 
-/* Original image sizing is preserved for visual fidelity. */
-/* eslint-disable @next/next/no-img-element */
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
 

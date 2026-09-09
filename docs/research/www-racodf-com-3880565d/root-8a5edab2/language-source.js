@@ -1,0 +1,163 @@
+
+    (function () {
+      const LANG = (localStorage.getItem('lang') === 'en') ? 'en' : 'zh';
+      // 语言切换按钮
+      document.querySelectorAll('.lang-toggle').forEach((b) => b.addEventListener('click', () => {
+        localStorage.setItem('lang', LANG === 'en' ? 'zh' : 'en');
+        location.reload();
+      }));
+      if (LANG !== 'en') return;
+      document.documentElement.lang = 'en';
+
+      // 英文版隐藏「走进雷科 · 人力资源 / Careers」整块（导航入口 + 内容区）
+      document.querySelectorAll('a[href="#about-hr"]').forEach((a) => a.classList.add('hidden'));
+      const hrPart = document.getElementById('about-hr');
+      if (hrPart) hrPart.classList.add('hidden');
+      // 英文版去掉数据条上的中文量词（项/家/个）
+      document.querySelectorAll('.stat-unit').forEach((el) => el.remove());
+
+      // 中文 → 英文 词典（静态界面 + JS 模板标签；数据正文走 .en.json）
+      const DICT = {
+        // —— 导航 ——
+        '首页': 'Home', '业务领域': 'Business', '行业应用': 'Industries', '企业实力': 'Strengths',
+        '新闻资讯': 'News', '服务支持': 'Services', '投资者关系': 'Investors', '走进雷科': 'About',
+        '雷达系统': 'Radar Systems', '卫星应用': 'Satellite Applications', '智能控制': 'Intelligent Control',
+        '智算存储': 'Computing & Storage', '智能网联': 'Connected Vehicles',
+        '雷达整机': 'Complete Radar', '雷达配套': 'Radar Components',
+        // —— 产品详情页面包屑（整串匹配）——
+        '业务领域 / 雷达系统 / 雷达整机': 'Business / Radar Systems / Complete Radar',
+        '业务领域 / 雷达系统 / 雷达配套': 'Business / Radar Systems / Radar Components',
+        '业务领域 / 卫星应用': 'Business / Satellite Applications',
+        '业务领域 / 智能控制': 'Business / Intelligent Control',
+        '业务领域 / 智算存储': 'Business / Computing & Storage',
+        '业务领域 / 智能网联': 'Business / Connected Vehicles',
+        '国防军工': 'National Defense', '智能机场': 'Smart Airport', '智能测试': 'Intelligent Test',
+        '智能矿山': 'Smart Mining', '智能康养': 'Smart Healthcare', '智能算力': 'AI Computing', '智能农业': 'Smart Agriculture',
+        '鸟情探驱管一体化系统': 'Bird Detection & Dispersal System', '移动式FOD探测系统': 'Mobile FOD Detection System',
+        '边坡形变监测系统': 'Slope Deformation Monitoring System', '井工矿L4无人驾驶系统': 'Underground Mine L4 Autonomous Driving',
+        '汽车雷达测试系统': 'Automotive Radar Test System', '通感一体化基站内场测试': 'ISAC Base-station Indoor Test',
+        '研发能力': 'R&D Capability', '生产能力': 'Manufacturing', '公司新闻': 'Company News', '市场活动': 'Events',
+        '资料下载': 'Downloads', '销售网络': 'Sales Network', '公司行情': 'Stock Quote', '投资公告': 'Announcements', '互动交流': 'IR Platform',
+        '产品资料': 'Product Materials', '行业报告': 'Industry Reports',
+        '提供产品资料下载与覆盖全国的销售服务网络，为客户业务全程保驾护航。': 'Providing product documentation downloads and a nationwide sales & service network to support our customers throughout their business.',
+        '集团概况': 'Overview', '发展历程': 'Milestones', '资质荣誉': 'Honors', '企业文化': 'Culture',
+        '人力资源': 'Careers', '联系我们': 'Contact Us', '业务咨询': 'Inquiry',
+        // —— 按钮 / 通用 ——
+        '探索业务领域': 'Explore Business', '了解更多': 'Learn More', '查看详情': 'View Details', '查看方案': 'View Solution',
+        '阅读更多': 'Read More', '立即留言咨询': 'Inquire Now', '获取方案咨询': 'Get a Consultation', '加载更多': 'Load More',
+        '提交': 'Submit', '提交中…': 'Submitting…', '验证并进入': 'Verify & Enter', '验证中…': 'Verifying…',
+        '查看全部资讯': 'View All News', '查看原文 ›': 'View Original ›', '全部': 'All', '了解企业实力': 'Learn More',
+        '返回产品列表': 'Back to Products', '返回雷达系统产品': 'Back to Radar Products', '返回卫星应用产品': 'Back to Satellite Products',
+        '返回智能控制产品': 'Back to Control Products', '返回智算存储产品': 'Back to Storage Products', '返回智能网联产品': 'Back to Connected Products',
+        '切换语言': 'Switch language', '返回': 'Back',
+        // —— 区块标题 / 标签 ——
+        '功能特点': 'Features', '应用场景': 'Applications', '应用案例': 'Case Studies', '系统概述': 'Overview',
+        '相关产品': 'Related Products', '核心成员企业': 'Member Companies', '该分类暂无新闻': 'No news in this category',
+        '核心企业': 'Core Companies', '参股企业': 'Affiliated Companies',
+        '雷达系统产品': 'Radar System Products', '卫星应用产品': 'Satellite Application Products',
+        '智能控制产品': 'Intelligent Control Products', '智算存储产品': 'Computing & Storage Products', '智能网联产品': 'Connected Vehicle Products',
+        '价值观': 'Values', '行为准则': 'Code of Conduct', '薪酬福利': 'Compensation & Benefits',
+        '社会招聘': 'Experienced Hires', '校园招聘': 'Campus Recruitment', '人才招聘': 'Talent Recruitment', '人才培养': 'Talent Development', '研发类': 'R&D Positions', '职能类': 'Functional Positions',
+        '相关专业': 'Relevant Major', '岗位职责': 'Responsibilities', '岗位要求': 'Requirements',
+        '若干': 'Several', '北京': 'Beijing', '若干 · 北京': 'Several · Beijing',
+        // —— 联系 / 表单 ——
+        '北京雷科防务科技股份有限公司': 'Beijing Racodefense Technology Co., Ltd.',
+        '电话': 'Tel', '传真': 'Fax', '地址': 'Address', '咨询热线': 'Hotline',
+        '姓名': 'Name', '联系电话': 'Phone', '公司名称': 'Company', '电子邮箱': 'Email', '咨询类型': 'Type', '咨询内容': 'Message',
+        '请输入您的姓名': 'Your name', '请输入手机号码': 'Your phone number', '请输入公司名称（选填）': 'Company (optional)',
+        '请输入公司名称': 'Your company', '请简要描述您的需求': 'Please describe your requirements', '请简要描述您的需求（选填）': 'Message (optional)',
+        '股票代码': 'Stock Code',
+        '我已阅读并同意': 'I have read and agree to the', '《隐私政策》': 'Privacy Policy',
+        '，同意雷科防务为业务联系与回复目的收集、使用我所填写的个人信息。': ', and consent to Racodefense collecting and using the personal information I provide for business contact and response purposes.',
+        '请简要描述您的需求（选填）': 'Briefly describe your needs (optional)', '请输入邀请码': 'Enter invitation code',
+        '留下您的联系方式': 'Leave your contact', '专属顾问将在1个工作日内与您联系': 'Our team will contact you within 1 business day',
+        '该方案需邀请码访问': 'Invitation code required', '本方案内容受限，请输入邀请码后查看。': 'This solution is restricted. Please enter the invitation code to view.',
+        '请填写姓名和联系电话': 'Please enter your name and phone', '提交成功，我们会尽快与您联系！': 'Submitted. We will contact you soon!',
+        '提交失败，请稍后重试或拨打咨询热线': 'Submission failed, please try again later', '请输入邀请码': 'Enter invitation code',
+        '邀请码错误，请重试': 'Invalid code, please try again', '验证失败，请稍后重试': 'Verification failed, please try again',
+        // —— 页脚 ——
+        '企业信息': 'Company', '服务与投资者': 'Services & Investors', '友情链接': 'Links', '成员企业': 'Member Companies',
+        '电子信息综合服务商': 'An integrated electronic information service provider',
+        // —— 首页数据条 ——
+        '国家科学技术奖二等奖': 'National Science & Technology Awards (2nd Class)', '专利及软件著作权': 'Patents & Software Copyrights',
+        '专业子公司': 'Specialized Subsidiaries', '智能化生产基地': 'Intelligent Production Bases',
+        // —— 核心优势 ——
+        '核心优势': 'Core Strengths',
+        '深耕电子信息领域，以自主可控的核心技术与体系化能力，为军用与民用客户提供稳定可靠的产品与服务': 'Deeply rooted in electronic information, delivering reliable products and services to military and civilian customers with autonomous core technologies and systematic capabilities',
+        '自主研发实力': 'In-house R&D Strength',
+        '核心技术团队累计已获专利及软件著作权636项，掌握新体制雷达、高速实时信号处理等核心技术，荣获国家科学技术进步二等奖、工信部国防技术发明奖特等奖等。': 'Our core technical team has accumulated 636 patents and software copyrights, mastering core technologies such as new-system radar and high-speed real-time signal processing, and has won the National Science & Technology Progress Award (Second Class) and the MIIT National Defense Technology Invention Award (Special Class).',
+        '行业资质齐全': 'Complete Industry Qualifications',
+        '智能制造体系': 'Intelligent Manufacturing',
+        '拥有齐全的国防、民用领域相关资质与认证，下属公司已获评国家级专精特新“小巨人”企业、软件企业认证、高新技术企业认证、软件开发 CMMI3 级认证等。': 'Complete defense- and civilian-sector qualifications and certifications; our subsidiaries are recognized as national “Little Giant” specialized enterprises and hold software-enterprise, high-tech-enterprise and CMMI Level 3 software-development certifications.',
+        '在西安、成都、天津等地建有 6.8 万平米智能化生产基地，引进先进生产设备，拥有多条全自动化生产线，构建起产品质量控制与批量交付能力。': 'Intelligent production bases totaling 68,000 m² in Xi’an, Chengdu, Tianjin and beyond, equipped with advanced production equipment and multiple fully automated production lines, building strong product quality control and high-volume delivery capabilities.',
+        '服务网络完善': 'Comprehensive Service Network',
+        '公司已构建覆盖全国的销售与服务网络，以北京为总部，在西安、成都、天津等地设有分支机构，形成 7×24 小时服务网络，并面向海外市场提供销售与技术支持。': 'We have built a nationwide sales and service network — headquartered in Beijing with branches in Xi’an, Chengdu, Tianjin and beyond — forming a 7×24 service network, and provide sales and technical support for overseas markets.',
+        // —— 业务/行业 副标题与按钮 ——
+        '五大核心业务板块，覆盖军用与民用应用场景，构建从感知、传输到计算、控制的完整技术链条': 'Five core business areas spanning military and civilian scenarios, building a complete technology chain from sensing and transmission to computing and control',
+        '查看全部业务领域': 'View All Business Areas',
+        '将核心技术转化为面向八大行业的成熟解决方案，已在多个标杆项目中落地验证': 'Turning core technologies into mature solutions for eight industries, validated across numerous benchmark projects',
+        '查看全部行业应用': 'View All Industries', '民用': 'Civil',
+        // —— 成员企业 ——
+        '理工雷科': 'Ligong Leike', '雷科空天': 'Leike Aerospace', '爱科特': 'ACTi',
+        '奇维科技': 'Qiwei Technology', '恒达微波': 'Hengda Microwave', '尧云科技': 'Yaoyun Technology',
+        // —— 企业文化 ——
+        '使命 MISSION': 'Mission', '愿景 VISION': 'Vision',
+        // —— 联系 / 表单 ——
+        '无论是产品咨询、商务合作还是媒体采访，欢迎与我们联系': 'Whether for product inquiries, business cooperation or media interviews, feel free to contact us',
+        '产品咨询': 'Product Inquiry', '商务合作': 'Business Cooperation', '媒体采访': 'Media Inquiry',
+        '招聘咨询': 'Recruitment', '投资者咨询': 'Investor Relations', '其他': 'Other',
+        '提交咨询': 'Submit Inquiry', '需求说明': 'Message',
+        // —— 页脚 ——
+        '电子信息综合服务商，聚焦雷达系统、卫星应用、智能控制、智算存储、智能网联核心技术研发与产业化应用。': 'An integrated electronic information service provider focused on R&D and industrialization across radar systems, satellite applications, intelligent control, computing & storage, and connected vehicles.',
+        '深圳证券交易所上市公司 · 股票代码 002413': 'Listed on Shenzhen Stock Exchange · Stock Code 002413',
+        '关注官方公众号': 'Follow our official account', '获取产品与行业最新资讯': 'Get the latest product and industry news',
+        '© 2026 北京雷科防务科技股份有限公司 版权所有 | 京ICP备2023031076号-1': '© 2026 Beijing Racodefense Technology Co., Ltd. All rights reserved.',
+        '隐私政策': 'Privacy Policy', '法律声明': 'Legal Notice',
+        // —— 产品区块页头（面包屑 + 副标题）——
+        '业务领域 / 雷达系统': 'Business / Radar Systems', '业务领域 / 卫星应用': 'Business / Satellite Applications',
+        '业务领域 / 智能控制': 'Business / Intelligent Control', '业务领域 / 智算存储': 'Business / Computing & Storage',
+        '业务领域 / 智能网联': 'Business / Connected Vehicles',
+        '面向国防、交通、民航、矿山、气象、汽车等领域，从系统设计、天线、射频、信息采集、信息处理、模拟仿真测试等全产业链覆盖。自主掌握雷达多项关键核心技术，具备毫米波雷达、相控阵雷达、合成孔径雷达系统研发设计和生产能力。': 'Serving defense, transportation, civil aviation, mining, meteorology, automotive and other sectors, with full-industry-chain coverage from system design, antenna, RF, data acquisition and signal processing to simulation testing. We independently master multiple key radar technologies and possess the R&D, design and production capabilities for millimeter-wave, phased-array and synthetic-aperture radar systems.',
+        '面向国防安全、应急管理、自然资源、智慧城市、气象海洋等领域，基于自研核心技术已构建天地一体化技术体系，具备遥感数据"星-地-应用"全产业链服务能力。已推出多款星载端产品和地面端产品，并实际部署应用，处于行业领先地位。': 'Serving national defense, emergency management, natural resources, smart cities, meteorology and oceanography, we have built an integrated space-ground technology system on proprietary core technologies, with full-industry-chain service capability for remote-sensing data across "satellite–ground–application". Multiple on-board and ground-segment products have been launched and deployed in real-world applications, placing us at the forefront of the industry.',
+        '面向多域作战、各种异构平台组网管理、分布执行、联合控制、集中指挥需求，依托国产化计算机、图像处理与显示、组合导航和伺服控制等自研技术积累，推出面向空、天、地协同一体化的智能控制产品。': 'Addressing the needs of multi-domain operations, networked management of heterogeneous platforms, distributed execution, joint control and centralized command, we leverage proprietary technologies in domestic computers, image processing and display, integrated navigation and servo control to deliver intelligent control products for integrated air-space-ground coordination.',
+        '面向政务云、国防军工、电力、智慧交通、工业自动化等领域，自研存储控制芯片及固件算法，掌握存储介质全生命周期管理方案，已构建全产业链自主技术体系。打造全国产高可靠固态模组、军工级嵌入式存储芯片及高性能存储板卡产品矩阵。': 'Serving government cloud, defense, power, smart transportation, industrial automation and other sectors, we develop our own storage controller chips and firmware algorithms and master full-lifecycle storage-media management, building a fully autonomous full-industry-chain technology system. We have created a product matrix of fully domestic high-reliability solid-state modules, military-grade embedded storage chips and high-performance storage boards.',
+        '面向智能网联汽车、智慧交通路网、现代计量检测、新一代通信技术等领域，依托自研的高性能毫米波雷达测试仪、卫星导航终端测试设备、无线感知测试仪等核心产品矩阵，提供覆盖研发设计、生产制造、检测计量全生命周期的仿真测试产品与一体化解决方案。': 'Serving intelligent connected vehicles, smart transportation networks, modern metrology and inspection, and next-generation communications, we rely on a core product matrix of self-developed high-performance millimeter-wave radar testers, satellite navigation terminal test equipment and wireless sensing testers to provide simulation-test products and integrated solutions covering the full lifecycle of R&D design, manufacturing, and inspection & metrology.',
+        // —— 联系地址（静态值）——
+        '北京市海淀区远大南街6号院鲁迅文创园5号楼': 'Building 5, Lu Xun Cultural Park, No. 6 Yuanda South Street, Haidian District, Beijing',
+        '北京市海淀区远大南街6号院鲁迅文创园5号楼3层': 'Building 5, Lu Xun Cultural Park, No. 6 Yuanda South Street, Haidian District, Beijing',
+        '请输入邮箱地址': 'Enter your email address',
+        // —— 企业实力 ——
+        '以体系化研发平台与智能化生产基地为支撑，构建从技术创新到产业化交付的完整能力链条。': 'Underpinned by a systematic R&D platform and intelligent production bases, building a complete capability chain from technological innovation to industrialized delivery.',
+        '创新是企业持续发展的核心驱动力。公司始终坚持以技术研发为核心战略，深耕电子信息领域，聚焦产品迭代、技术攻坚与工艺优化，构建了完善、高效、自主可控的研发创新体系，具备独立研发、定制开发、技术升级及成果转化的综合实力。': 'Innovation is the core driver of sustainable growth. The company consistently makes technology R&D its core strategy, deeply cultivating the electronic information field with a focus on product iteration, technical breakthroughs and process optimization. It has built a complete, efficient and autonomous R&D innovation system, with comprehensive strength in independent R&D, customized development, technology upgrading and achievement transformation.',
+        '产能与品控是企业交付实力的核心体现。公司拥有标准化、规模化、智能化的生产基地，配套完善的生产厂房与自动化生产线，建立了从采购、精密生产、全程品控到成品出库的全闭环生产管理体系，以高效产能、严苛品控与稳定交付为客户提供高品质产品与一站式交付服务。': 'Capacity and quality control embody a company’s delivery strength. With standardized, large-scale and intelligent production bases, complete facilities and automated production lines, the company has established a closed-loop production management system spanning procurement, precision manufacturing, full-process quality control and finished-goods delivery — providing customers with high-quality products and one-stop delivery through efficient capacity, rigorous quality control and stable fulfillment.',
+        // —— 其他 ——
+        '导航菜单': 'Navigation'
+      };
+
+      const swapAttrs = (el) => {
+        ['placeholder', 'aria-label', 'alt', 'title'].forEach((a) => {
+          if (el.hasAttribute && el.hasAttribute(a)) { const v = (el.getAttribute(a) || '').trim(); if (DICT[v]) el.setAttribute(a, DICT[v]); }
+        });
+      };
+      const swapTextNode = (n) => { const t = n.nodeValue.trim(); if (t && DICT[t]) n.nodeValue = n.nodeValue.replace(t, DICT[t]); };
+      const run = (root) => {
+        try {
+          if (root.nodeType === 3) { swapTextNode(root); return; }
+          if (root.nodeType !== 1) return;
+          const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+          const ns = []; while (w.nextNode()) ns.push(w.currentNode);
+          ns.forEach(swapTextNode);
+          swapAttrs(root); root.querySelectorAll('*').forEach(swapAttrs);
+        } catch (e) {}
+      };
+
+      run(document.body);
+      // 语言按钮文案改为「中文」（便于切回）
+      document.querySelectorAll('.lang-label').forEach((el) => { el.textContent = '中文'; });
+      // 英文版隐藏标记为 data-zh-only 的元素（如新闻）
+      document.querySelectorAll('[data-zh-only]').forEach((el) => { el.style.display = 'none'; });
+      // 监听动态渲染内容（产品/方案/招聘等），插入后即翻译其中静态标签
+      new MutationObserver((muts) => muts.forEach((m) => m.addedNodes.forEach((node) => run(node))))
+        .observe(document.body, { childList: true, subtree: true });
+    })();
+  
