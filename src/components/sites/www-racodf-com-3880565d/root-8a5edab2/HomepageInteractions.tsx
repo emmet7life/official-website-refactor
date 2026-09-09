@@ -156,6 +156,8 @@ export function HomepageInteractions() {
         if (activeDialog) closeDialog();
         history.pushState(null, "", `#${id}`);
         navigate(id, !anchor.dataset.searchResult);
+        const category = anchor.dataset.newsCategory;
+        if (category) window.newsSelectCat?.(category);
       }
     };
     const onKey = (event: KeyboardEvent) => {

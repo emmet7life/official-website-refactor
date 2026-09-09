@@ -73,8 +73,8 @@ export function SiteHeader() {
 <a href="#news" className="flex items-center gap-1 hover:text-primary transition-colors" aria-haspopup="true">{"\n              新闻资讯\n              "}<svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 6l4 4 4-4"></path></svg>
 </a>
 <div className="absolute left-1/2 -translate-x-1/2 top-full w-36 bg-white rounded-lg shadow-dropdown opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 py-2">
-<a href="#news" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"公司新闻"}</a>
-<a href="#news" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"市场活动"}</a>
+<a href="#news" data-news-category="公司新闻" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"公司新闻"}</a>
+<a href="#news" data-news-category="市场活动" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"市场活动"}</a>
 <a href="#news" className="insight-nav-link block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"行业洞察"}</a>
 </div>
 </div>
@@ -180,8 +180,8 @@ export function SiteHeader() {
 <summary className="flex items-center justify-between py-3 font-medium cursor-pointer">{"\n            新闻资讯\n            "}<svg className="chevron w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 6l4 4 4-4"></path></svg>
 </summary>
 <div className="pb-3 pl-3 flex flex-col gap-1 text-gray-600">
-<a href="#news" className="py-2">{"公司新闻"}</a>
-<a href="#news" className="py-2">{"市场活动"}</a>
+<a href="#news" data-news-category="公司新闻" className="py-2">{"公司新闻"}</a>
+<a href="#news" data-news-category="市场活动" className="py-2">{"市场活动"}</a>
 <a href="#news" className="insight-nav-link py-2">{"行业洞察"}</a>
 </div>
 </details>
