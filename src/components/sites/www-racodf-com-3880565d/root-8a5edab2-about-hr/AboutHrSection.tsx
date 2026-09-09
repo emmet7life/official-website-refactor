@@ -1,15 +1,33 @@
 /* Original HR content is reproduced locally from the public page. */
 /* eslint-disable @next/next/no-img-element */
 
-const jobs = [
-  ['研发类', [
-    ['雷达算法工程师', '北京、西安、天津、嘉兴'], ['雷达系统工程师', '北京、重庆、嘉兴'], ['硬件工程师', '北京'],
-    ['雷达系统总师', '北京、西安'], ['嵌入式开发工程师', '北京、西安、成都'], ['高级算法主管/经理', '北京'],
-    ['产品经理', '北京、西安、天津'], ['雷达算法工程师（反无）', '北京、西安'], ['系统工程师', '北京、天津'], ['卫星通信总体工程师', '北京'],
-  ]],
-  ['市场类', [['销售经理', '北京、天津、西安'], ['销售经理（健康雷达）', '北京、天津、西安、上海、深圳']]],
-  ['职能类', [['高级运维工程师', '北京'], ['新媒体运营专员', '北京、天津、西安']]],
-] as const;
+import jobs from './jobs.json';
+
+type Job = (typeof jobs)[number];
+
+function JobDetails({ text }: { text: string }) {
+  const match = text.match(/\n\n岗位职责\n\n([\s\S]*?)\n\n岗位要求\n\n([\s\S]*)$/);
+  const renderBody = (body: string) => {
+    const lines = body.split('\n').filter(Boolean);
+    return lines.length > 1 ? <ul className="list-disc space-y-1 pl-4">{lines.map((line) => <li key={line}>{line}</li>)}</ul> : <p>{body}</p>;
+  };
+  if (!match) return null;
+  return <div className="space-y-3 border-t border-gray-100 px-4 pb-4 pt-3 text-sm leading-relaxed text-gray-600">
+    <div><p className="mb-1.5 text-xs font-semibold text-primary">岗位职责</p>{renderBody(match[1])}</div>
+    <div><p className="mb-1.5 text-xs font-semibold text-primary">岗位要求</p>{renderBody(match[2])}</div>
+  </div>;
+}
+
+function JobCard({ job }: { job: Job }) {
+  const location = (job.details.split('\n')[1] ?? '').replace('若干 · ', '');
+  return <details className="group rounded-lg border border-gray-200 bg-white transition-colors hover:border-primary-mid">
+    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
+      <span className="min-w-0 truncate text-sm font-medium text-gray-800">{job.title}</span>
+      <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-gray-400">若干 · {location}<svg className="h-3.5 w-3.5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></span>
+    </summary>
+    <JobDetails text={job.details} />
+  </details>;
+}
 
 function Heading({ children }: { children: string }) {
   return <div className="mb-6 flex items-center gap-3 lg:mb-8"><span className="h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" /><h3 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">{children}</h3></div>;
@@ -39,11 +57,9 @@ export function AboutHrSection() {
         <Heading>人才招聘</Heading>
         <p className="mb-8 text-base leading-relaxed text-gray-600">公司面向社会与校园持续开放招聘通道，以 “德才兼备、以德为先，人岗相适、用其所长” 为选拔原则，热忱欢迎志同道合的伙伴加入。</p>
         <div className="grid gap-6 md:grid-cols-3">
-          {jobs.map(([group, entries]) => <div key={group} className="rounded-xl border border-gray-200 bg-gray-50 p-5 lg:p-6">
-            <h4 className="mb-4 text-lg font-semibold text-gray-900">{group}</h4>
-            <div className="space-y-3">{entries.map(([title, locations]) => <div key={title} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
-              <p className="text-sm font-medium text-gray-800">{title}</p><p className="mt-1 text-xs text-gray-500">若干 · {locations}</p>
-            </div>)}</div>
+          {Array.from(new Set(jobs.map((job) => job.group))).map((group) => <div key={group} className="space-y-3">
+            <h4 className="mb-3 text-base font-semibold text-primary">{group}</h4>
+            <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">{jobs.filter((job) => job.group === group).map((job) => <JobCard key={job.title} job={job} />)}</div>
           </div>)}
         </div>
       </div>

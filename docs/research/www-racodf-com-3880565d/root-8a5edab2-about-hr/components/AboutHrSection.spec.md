@@ -12,5 +12,6 @@
 - Contact: 招聘热线：010-68916700 人力资源部; 公司网址：www.racodf.com; 招聘邮箱：zhaopin@racodf.com; 公司地址：北京市海淀区远大南街6号院鲁迅文创园5号楼.
 
 ## Layout / behavior
-- Training/welfare/recruiting blocks use source heading rule and `text-base text-gray-600 leading-relaxed space-y-4`; jobs are responsive cards/list; contact is a bordered light card.
+- Training/welfare/recruiting blocks use source heading rule and `text-base text-gray-600 leading-relaxed space-y-4`; both extracted inline images are shown locally.
+- Each recruitment card is a native clickable `<details>` / `<summary>` disclosure. Closed cards show title and `若干 · locations`; opening reveals the exact extracted `岗位职责` and `岗位要求` text with numbered bullet lines. The chevron rotates while open.
 - Mobile stacks everything. Source panel is about 1297x2410 desktop and 335x2642 mobile. No external submit action; recruitment links can remain inert/local.
