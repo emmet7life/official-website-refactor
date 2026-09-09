@@ -102,7 +102,7 @@ export function SiteHeader() {
 <div className="group relative py-6">
 <a href="#about-profile" className="flex items-center gap-1 hover:text-primary transition-colors" aria-haspopup="true">{"\n              走进雷科\n              "}<svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 6l4 4 4-4"></path></svg>
 </a>
-<div className="absolute right-0 top-full w-40 bg-white rounded-lg shadow-dropdown opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 py-2">
+<div className="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white rounded-lg shadow-dropdown opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 py-2">
 <a href="#about-profile" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"集团概况"}</a>
 <a href="#about-history" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"发展历程"}</a>
 <a href="#about-honor" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"资质荣誉"}</a>
