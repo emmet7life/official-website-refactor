@@ -32,7 +32,7 @@ export function AboutHistorySection() {
                 key={year}
                 className="fade-in-up relative pl-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-16 lg:pb-16 lg:last:pb-0"
               >
-                <span className="absolute left-[11px] top-8 z-10 flex h-[22px] w-[22px] -translate-x-1/2 items-center justify-center rounded-full border-2 border-primary bg-white ring-4 ring-primary-light lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2">
+                <span className="timeline-marker absolute left-[11px] top-8 z-10 flex h-[22px] w-[22px] -translate-x-1/2 items-center justify-center rounded-full border-2 border-primary bg-white ring-4 ring-primary-light lg:top-1/2 lg:-translate-y-1/2">
                   <span className="h-2 w-2 rounded-full bg-primary" />
                 </span>
                 <div className={isLeft ? 'lg:col-start-1 lg:mr-8 lg:text-right' : 'lg:col-start-2 lg:ml-8'}>
