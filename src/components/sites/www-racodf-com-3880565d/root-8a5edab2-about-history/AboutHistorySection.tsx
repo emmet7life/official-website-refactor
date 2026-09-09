@@ -30,12 +30,12 @@ export function AboutHistorySection() {
             return (
               <li
                 key={year}
-                className="fade-in-up relative pl-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-16 lg:pb-16 lg:last:pb-0"
+                className="fade-in-up relative pl-12 lg:grid lg:grid-cols-[minmax(0,1fr)_2px_minmax(0,1fr)] lg:items-center lg:pb-16 lg:last:pb-0"
               >
                 <span className="timeline-marker absolute left-[11px] top-8 z-10 flex h-[22px] w-[22px] -translate-x-1/2 items-center justify-center rounded-full border-2 border-primary bg-white ring-4 ring-primary-light lg:top-1/2 lg:-translate-y-1/2">
                   <span className="h-2 w-2 rounded-full bg-primary" />
                 </span>
-                <div className={isLeft ? 'lg:col-start-1 lg:mr-8 lg:text-right' : 'lg:col-start-2 lg:ml-8'}>
+                <div className={isLeft ? 'lg:col-start-1 lg:mr-8 lg:text-right' : 'lg:col-start-3 lg:ml-8'}>
                   <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary-mid hover-lift hover:shadow-card-hover lg:p-7">
                     <div className="bg-gradient-to-r from-primary to-primary-mid bg-clip-text text-3xl font-bold leading-none text-transparent lg:text-4xl">{year}</div>
                     <div className="faq-answer mt-3 text-sm leading-relaxed text-gray-600">
@@ -43,7 +43,7 @@ export function AboutHistorySection() {
                     </div>
                   </div>
                 </div>
-                <div className={isLeft ? 'lg:col-start-2' : 'lg:col-start-1'} aria-hidden="true" />
+                <div className="lg:col-start-2" aria-hidden="true" />
               </li>
             );
           })}
