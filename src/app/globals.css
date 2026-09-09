@@ -13,7 +13,8 @@ button, summary { cursor: pointer; }
 .view-hidden { display: none !important; }
 /* Keep top-level navigation menus centered on their trigger while hover transforms run. */
 #navbar nav > .group > .nav-dropdown { left: 50% !important; right: auto !important; }
-#navbar nav > .group:hover > .nav-dropdown { transform: translateX(-50%) translateY(0) !important; }
+#navbar nav > .group > .nav-dropdown { translate: -50% 0 !important; transform: none !important; }
+#navbar nav > .group:hover > .nav-dropdown { translate: -50% 0 !important; transform: none !important; }
 @media (min-width: 1024px) {
   /* Keep the 22px marker's center exactly on the 2px timeline axis. */
   #about-timeline .timeline-marker { left: calc(50% - 1px); transform: translateY(-50%); }
