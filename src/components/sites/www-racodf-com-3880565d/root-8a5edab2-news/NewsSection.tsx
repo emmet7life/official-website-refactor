@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+declare global {
+  interface Window {
+    newsSelectCat?: (category: string) => void;
+  }
+}
+
 type NewsCategory = "公司新闻" | "市场活动";
 
 type NewsRecord = {
@@ -118,6 +124,17 @@ export function NewsSection() {
   const [filter, setFilter] = useState<"全部" | NewsCategory>("全部");
   const [selected, setSelected] = useState<NewsRecord | null>(null);
   const visibleNews = filter === "全部" ? NEWS : NEWS.filter((item) => item.category === filter);
+
+  useEffect(() => {
+    const previous = window.newsSelectCat;
+    window.newsSelectCat = (category: string) => {
+      if (category === "公司新闻" || category === "市场活动" || category === "全部") setFilter(category);
+    };
+    return () => {
+      if (previous) window.newsSelectCat = previous;
+      else delete window.newsSelectCat;
+    };
+  }, []);
 
   useEffect(() => {
     if (!selected) return;

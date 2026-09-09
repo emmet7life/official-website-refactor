@@ -45,9 +45,9 @@ export function HomepageInteractions() {
       activeDialog?.querySelector<HTMLElement>("input, button")?.focus();
     };
     const navigate = (id: string, isolated = true) => {
-      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : "home";
+      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : id === "news" ? "news" : "home";
       document.querySelectorAll<HTMLElement>("main > section").forEach((section) => {
-        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : section.id === currentView;
+        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : currentView === "news" ? section.id === "news" : section.id === currentView;
         section.classList.toggle("view-hidden", !visible);
       });
       document.querySelector("main")?.classList.toggle("overview-view", currentView !== "home");

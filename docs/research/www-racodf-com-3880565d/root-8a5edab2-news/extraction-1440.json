@@ -1,0 +1,10 @@
+{
+  "id": "news",
+  "records": 12,
+  "filters": [
+    "全部",
+    "公司新闻",
+    "市场活动"
+  ],
+  "source": "homepage source.html section"
+}
