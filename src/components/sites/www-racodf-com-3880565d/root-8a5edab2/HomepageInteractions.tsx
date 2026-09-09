@@ -45,9 +45,9 @@ export function HomepageInteractions() {
       activeDialog?.querySelector<HTMLElement>("input, button")?.focus();
     };
     const navigate = (id: string, isolated = true) => {
-      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : id === "news" ? "news" : "home";
+      currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : id === "news" ? "news" : id.startsWith("strength") ? "strength" : "home";
       document.querySelectorAll<HTMLElement>("main > section").forEach((section) => {
-        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : currentView === "news" ? section.id === "news" : section.id === currentView;
+        const visible = currentView === "home" ? true : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : currentView === "news" ? section.id === "news" : currentView === "strength" ? section.id === "strength" : section.id === currentView;
         section.classList.toggle("view-hidden", !visible);
       });
       document.querySelector("main")?.classList.toggle("overview-view", currentView !== "home");
@@ -76,7 +76,8 @@ export function HomepageInteractions() {
       closeMenu();
       onScroll();
       const destination = document.getElementById(id);
-      if (id === "hero" || currentView !== "home") window.scrollTo({ top: 0, behavior: "smooth" });
+      if (currentView === "strength" && id !== "strength") destination?.scrollIntoView({ behavior: "smooth" });
+      else if (id === "hero" || currentView !== "home") window.scrollTo({ top: 0, behavior: "smooth" });
       else destination?.scrollIntoView({ behavior: "smooth" });
     };
 
