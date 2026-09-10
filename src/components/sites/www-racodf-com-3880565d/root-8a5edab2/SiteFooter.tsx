@@ -102,7 +102,7 @@ export function SiteFooter() {
 </div>
 
 <div className="mt-12 lg:mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center md:text-left">
-<p id="footer-copyright">{"© 2026 北京雷科防务科技股份有限公司 版权所有 | "}<a id="footer-icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-mid transition-colors">{"京ICP备2023031076号-1"}</a></p>
+<p id="footer-copyright">{"© 2026 西安恒达微波技术开发有限公司 版权所有"}</p>
 <div className="flex items-center gap-6">
 <a href="https://www.racodf.com/#" className="open-privacy hover:text-primary-mid transition-colors">{"隐私政策"}</a>
 <a href="https://www.racodf.com/#" className="open-legal hover:text-primary-mid transition-colors">{"法律声明"}</a>
