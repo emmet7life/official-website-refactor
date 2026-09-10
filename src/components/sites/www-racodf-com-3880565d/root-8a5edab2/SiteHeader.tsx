@@ -74,7 +74,10 @@ export function SiteHeader() {
 </a>
 <div className="nav-dropdown absolute left-1/2 -translate-x-1/2 top-full w-36 bg-white rounded-lg shadow-dropdown opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 py-2">
 <a href="#news" data-news-category="公司新闻" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"公司新闻"}</a>
-<a href="#news" data-news-category="市场活动" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"市场活动"}</a>
+<a href="#news" data-news-category="媒体报道" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"媒体报道"}</a>
+<a href="#news" data-news-category="行业资讯" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"行业资讯"}</a>
+<a href="#news" data-news-category="学术展会" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"学术展会"}</a>
+<a href="#news" data-news-category="电子报" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"电子报"}</a>
 <a href="#news" className="insight-nav-link block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"行业洞察"}</a>
 </div>
 </div>
