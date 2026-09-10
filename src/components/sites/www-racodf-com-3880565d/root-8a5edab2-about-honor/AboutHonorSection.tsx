@@ -12,17 +12,29 @@ type Honor = {
 };
 
 const honors: Honor[] = [
-  { image: 'honor-aaaaa-innovation.jpg', title: '高新技术企业创新能力评价 AAAAA 级', category: '资质评级', accent: true },
-  { image: 'honor-space-rendezvous-radar.jpg', title: '载人航天交会对接微波雷达研制突出贡献单位', category: '行业奖项' },
-  { image: 'honor-shaanxi-trademark.jpg', title: '陕西省著名商标', category: '品牌荣誉' },
-  { image: 'honor-cmmi3.jpg', title: 'CMMI 成熟度 3 级认证', category: '体系认证', accent: true },
-  { image: 'honor-bj-software-core.jpg', title: '2023 北京软件核心竞争力企业', category: '国家级资质', accent: true },
-  { image: 'honor-top100-2013.jpg', title: '2013中关村高成长企业 TOP100', category: '成长荣誉' },
-  { image: 'honor-rising-2012.jpg', title: '2012 中关村新锐企业十强', category: '成长荣誉' },
-  { image: 'honor-innovative-sme.jpg', title: '北京市“创新型”中小企业', category: '资质认定', accent: true },
+  { image: 'gsry1.jpg', title: '陕西省“专精特新”中小企业', category: '资质认定', accent: true },
+  { image: 'gsry2.jpg', title: '西安市微波毫米波系统工程研究中心', category: '资质认定', accent: true },
+  { image: 'gsry5.jpg', title: '陕西省中小企业创新研发中心', category: '资质认定', accent: true },
+  { image: 'gsry3.jpg', title: '开拓创新奖', category: '荣誉奖项' },
+  { image: 'gsry8.jpg', title: '载人航天交会对接微波雷达研制突出贡献单位', category: '荣誉奖项' },
+  { image: 'gsry9.jpg', title: '神舟五号飞船载人飞行成功纪念', category: '荣誉奖项' },
+  { image: 'gsry1.png', title: '高新技术企业', category: '资质认定', accent: true },
+  { image: 'gsry2 (1).jpg', title: '陕西省著名商标', category: '品牌荣誉' },
+  { image: 'gsry6.png', title: '西安科技企业小巨人“领军企业”', category: '资质认定', accent: true },
+  { image: 'gsry4.jpg', title: '西安市优秀民营企业', category: '荣誉奖项' },
+  { image: 'gsry3.png', title: '西安名牌产品', category: '品牌荣誉' },
+  { image: 'gsry14.jpg', title: '校企合作', category: '合作荣誉' },
+  { image: 'gsry15.jpg', title: '校企合作', category: '合作荣誉' },
+  { image: 'gsry11.jpg', title: '校企合作', category: '合作荣誉' },
+  { image: 'gsry12.jpg', title: '校企合作', category: '合作荣誉' },
+  { image: 'gsry13.jpg', title: '校企合作', category: '合作荣誉' },
+  { image: 'gsry6.jpg', title: '会员单位', category: '行业组织' },
+  { image: 'gsry7.jpg', title: '会员单位', category: '行业组织' },
+  { image: 'gsry9 (1).jpg', title: '会员单位', category: '行业组织' },
+  { image: 'gsry8 (1).jpg', title: '会员单位', category: '行业组织' },
 ];
 
-const imageRoot = '/sites/www-racodf-com-3880565d/shared/about/';
+const imageRoot = '/sites/www-racodf-com-3880565d/shared/honor/';
 
 function ZoomIcon() {
   return (
