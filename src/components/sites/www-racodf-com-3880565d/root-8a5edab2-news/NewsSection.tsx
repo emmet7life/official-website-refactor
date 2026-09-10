@@ -129,12 +129,56 @@ const E_NEWS = [
   ['2009', [['2009/8/4 恒达微波现货供应', 'enews/20090804/enewsletter.html'], ['2009/7/27 恒达微波卫星通信应用专题（第4期）', 'enews/20090727/enewsletter.html'], ['2009/7/20 恒达微波卫星通信应用专题（第3期）', 'enews/20090720/enewsletter.html'], ['2009/7/13 恒达微波卫星通信应用专题（第2期）', 'enews/20090713/enewsletter_2.html'], ['2009/7/7 恒达微波卫星通信应用专题（第1期）', 'enews/20090707/enewsletter_1.html']]],
 ] as const;
 
+const LEGACY_NEWS: NewsRecord[] = [
+  { id: "legacy-行业资讯-1", category: "行业资讯", date: "2022-12-05", title: "【转自中国载人航天】官方 | 神舟十四号载人飞船返回舱成功着陆 神舟十四号载人飞行任务取得圆...", image: '202606181038135895.jpg', summary: "【转自中国载人航天】官方 | 神舟十四号载人飞船返回舱成功着陆 神舟十四号载人飞行任务取得圆..." },
+  { id: "legacy-行业资讯-2", category: "行业资讯", date: "2022-11-22", title: "【转自人民日报】神舟十五号，择机发射！", image: '202606181038135895.jpg', summary: "【转自人民日报】神舟十五号，择机发射！" },
+  { id: "legacy-行业资讯-3", category: "行业资讯", date: "2022-10-25", title: "【转自央视新闻】梦天实验舱，近日择机发射！", image: '202606181038135895.jpg', summary: "【转自央视新闻】梦天实验舱，近日择机发射！" },
+  { id: "legacy-行业资讯-4", category: "行业资讯", date: "2022-10-14", title: "【转自央视新闻】期待！长征七号遥六运载火箭运抵发射场", image: '202606181038135895.jpg', summary: "【转自央视新闻】期待！长征七号遥六运载火箭运抵发射场" },
+  { id: "legacy-行业资讯-5", category: "行业资讯", date: "2022-08-15", title: "【转自西安航天基地】相约丝博，共赴星河之约！", image: '202606181038135895.jpg', summary: "【转自西安航天基地】相约丝博，共赴星河之约！" },
+  { id: "legacy-行业资讯-6", category: "行业资讯", date: "2022-07-25", title: "【转自人民日报】问天升空，叩问苍穹！", image: '202606181038135895.jpg', summary: "【转自人民日报】问天升空，叩问苍穹！" },
+  { id: "legacy-行业资讯-7", category: "行业资讯", date: "2022-05-10", title: "再立新功！天舟四号用成功向祖国报告", image: '202606181038135895.jpg', summary: "再立新功！天舟四号用成功向祖国报告" },
+  { id: "legacy-行业资讯-8", category: "行业资讯", date: "2022-05-10", title: "天舟四号货运飞船发射成功！中国空间站全面建造大幕正式开启", image: '202606181038135895.jpg', summary: "天舟四号货运飞船发射成功！中国空间站全面建造大幕正式开启" },
+  { id: "legacy-行业资讯-9", category: "行业资讯", date: "2022-02-16", title: "今年发多少火箭？什么型号首飞？完成啥大工程？| 中国航天科技集团发布《蓝皮书》", image: '202606181038135895.jpg', summary: "今年发多少火箭？什么型号首飞？完成啥大工程？| 中国航天科技集团发布《蓝皮书》" },
+  { id: "legacy-行业资讯-10", category: "行业资讯", date: "2021-09-17", title: "神舟十二成功着陆 航天英雄平安归来", image: '202606181038135895.jpg', summary: "神舟十二成功着陆 航天英雄平安归来" },
+  { id: "legacy-行业资讯-11", category: "行业资讯", date: "2021-06-16", title: "明日出征！时隔五年，中国航天员将再次前往太空", image: '202606181038135895.jpg', summary: "明日出征！时隔五年，中国航天员将再次前往太空" },
+  { id: "legacy-行业资讯-12", category: "行业资讯", date: "2020-08-25", title: "常用天线、无源器件干货汇总", image: '202606181038135895.jpg', summary: "常用天线、无源器件干货汇总" },
+  { id: "legacy-行业资讯-13", category: "行业资讯", date: "2020-08-25", title: "PCB设计中，3W原则、20H原则和五五原则你都知道是怎样的吗？", image: '202606181038135895.jpg', summary: "PCB设计中，3W原则、20H原则和五五原则你都知道是怎样的吗？" },
+  { id: "legacy-行业资讯-14", category: "行业资讯", date: "2020-08-21", title: "L波段相控阵天线单元设计", image: '202606181038135895.jpg', summary: "L波段相控阵天线单元设计" },
+  { id: "legacy-行业资讯-15", category: "行业资讯", date: "2020-07-18", title: "长五“就位”，目标：火星！", image: '202606181038135895.jpg', summary: "长五“就位”，目标：火星！" },
+  { id: "legacy-行业资讯-16", category: "行业资讯", date: "2020-05-09", title: "长征五号B运载火箭首飞成功！", image: '202606181038135895.jpg', summary: "长征五号B运载火箭首飞成功！" },
+  { id: "legacy-行业资讯-17", category: "行业资讯", date: "2020-04-25", title: "垂直间隔50米、水平间隔100米！腾盾“双尾蝎”无人机在自贡完成一站控双机编队飞行！", image: '202606181038135895.jpg', summary: "垂直间隔50米、水平间隔100米！腾盾“双尾蝎”无人机在自贡完成一站控双机编队飞行！" },
+  { id: "legacy-行业资讯-18", category: "行业资讯", date: "2020-04-25", title: "信息情.航天梦", image: '202606181038135895.jpg', summary: "信息情.航天梦" },
+  { id: "legacy-行业资讯-19", category: "行业资讯", date: "2020-03-20", title: "毛二可院士：雷达技术的前世与今生", image: '202606181038135895.jpg', summary: "毛二可院士：雷达技术的前世与今生" },
+  { id: "legacy-行业资讯-20", category: "行业资讯", date: "2019-12-19", title: "中国航天2020硬核预告！", image: '202606181038135895.jpg', summary: "中国航天2020硬核预告！" },
+  { id: "legacy-学术展会-1", category: "学术展会", date: "2026-07-02", title: "诚挚邀约 | 恒达微波× 雷科空天 邀您共赴第四届商业航天应用大会暨空天信息卫星展！", image: '202606181038135895.jpg', summary: "诚挚邀约 | 恒达微波× 雷科空天 邀您共赴第四届商业航天应用大会暨空天信息卫星展！" },
+  { id: "legacy-学术展会-2", category: "学术展会", date: "2026-05-20", title: "诚挚邀约丨恒达微波× 雷科防务 邀您共赴2026 国际低空经济与无人系统博览会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波× 雷科防务 邀您共赴2026 国际低空经济与无人系统博览会！" },
+  { id: "legacy-学术展会-3", category: "学术展会", date: "2026-05-20", title: "展会回顾丨深圳2026中国微波周 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾丨深圳2026中国微波周 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-4", category: "学术展会", date: "2026-04-23", title: "展会回顾 | 第六届雷达未来大会 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾 | 第六届雷达未来大会 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-5", category: "学术展会", date: "2026-05-08", title: "诚挚邀约 | 恒达微波邀您5月10日共赴 深圳 2026中国微波周！", image: '202606181038135895.jpg', summary: "诚挚邀约 | 恒达微波邀您5月10日共赴 深圳 2026中国微波周！" },
+  { id: "legacy-学术展会-6", category: "学术展会", date: "2026-04-15", title: "特邀报告 | 恒达微波总设计师伍捍东：有源控相阵列的聚焦散焦与扫焦技术", image: '202606181038135895.jpg', summary: "特邀报告 | 恒达微波总设计师伍捍东：有源控相阵列的聚焦散焦与扫焦技术" },
+  { id: "legacy-学术展会-7", category: "学术展会", date: "2026-04-15", title: "诚挚邀约 | 恒达微波邀您4月18日共赴第六届雷达未来大会！", image: '202606181038135895.jpg', summary: "诚挚邀约 | 恒达微波邀您4月18日共赴第六届雷达未来大会！" },
+  { id: "legacy-学术展会-8", category: "学术展会", date: "2026-04-07", title: "展会回顾 | IME第八届西部微波会 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾 | IME第八届西部微波会 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-9", category: "学术展会", date: "2026-03-26", title: "诚挚邀约 | 恒达微波邀您4月2日共赴IME第八届西部微波会！", image: '202606181038135895.jpg', summary: "诚挚邀约 | 恒达微波邀您4月2日共赴IME第八届西部微波会！" },
+  { id: "legacy-学术展会-10", category: "学术展会", date: "2026-03-26", title: "特邀报告 | 恒达微波总设计师伍捍东：有源控相阵列的聚焦散焦与扫焦技术", image: '202606181038135895.jpg', summary: "特邀报告 | 恒达微波总设计师伍捍东：有源控相阵列的聚焦散焦与扫焦技术" },
+  { id: "legacy-学术展会-11", category: "学术展会", date: "2025-11-26", title: "特邀报告 | 恒达微波伍捍东总设计师：相控阵天线原理与应用（11月28日南京）", image: '202606181038135895.jpg', summary: "特邀报告 | 恒达微波伍捍东总设计师：相控阵天线原理与应用（11月28日南京）" },
+  { id: "legacy-学术展会-12", category: "学术展会", date: "2025-11-26", title: "诚挚邀约丨恒达微波邀您11月28日共赴 IME2025第三届南京微波毫米波天线及雷达技术会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波邀您11月28日共赴 IME2025第三届南京微波毫米波天线及雷达技术会！" },
+  { id: "legacy-学术展会-13", category: "学术展会", date: "2025-11-10", title: "展会回顾 │ 南京 2025雷达无线电产业大会 ? 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾 │ 南京 2025雷达无线电产业大会 ? 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-14", category: "学术展会", date: "2025-11-06", title: "诚挚邀约丨恒达微波邀您11月6-8日共赴 南京 2025雷达无线电产业大会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波邀您11月6-8日共赴 南京 2025雷达无线电产业大会！" },
+  { id: "legacy-学术展会-15", category: "学术展会", date: "2025-10-27", title: "展会回顾 │ IME/China 2025 第18届微波天线及材料会 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾 │ IME/China 2025 第18届微波天线及材料会 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-16", category: "学术展会", date: "2025-10-27", title: "展会回顾 │ 2025全国天线年会 恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾 │ 2025全国天线年会 恒达微波精彩花絮" },
+  { id: "legacy-学术展会-17", category: "学术展会", date: "2025-10-19", title: "诚挚邀约丨恒达微波邀您10月20-22日共赴 IME/China 2025 第18届微波天线及材料会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波邀您10月20-22日共赴 IME/China 2025 第18届微波天线及材料会！" },
+  { id: "legacy-学术展会-18", category: "学术展会", date: "2025-10-19", title: "诚挚邀约丨恒达微波邀您10月20-22日共赴2025全国天线年会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波邀您10月20-22日共赴2025全国天线年会！" },
+  { id: "legacy-学术展会-19", category: "学术展会", date: "2025-08-11", title: "展会回顾│第三届天线与微波及卫星通信关键技术会?恒达微波精彩花絮", image: '202606181038135895.jpg', summary: "展会回顾│第三届天线与微波及卫星通信关键技术会?恒达微波精彩花絮" },
+  { id: "legacy-学术展会-20", category: "学术展会", date: "2025-08-06", title: "诚挚邀约丨恒达微波邀您8月7日共赴天线与微波及卫星通信会！", image: '202606181038135895.jpg', summary: "诚挚邀约丨恒达微波邀您8月7日共赴天线与微波及卫星通信会！" },
+];
+
 const imagePath = (filename: string) => `/sites/www-racodf-com-3880565d/shared/news/${filename}`;
 
 export function NewsSection() {
   const [filter, setFilter] = useState<NewsFilter>("全部");
   const [selected, setSelected] = useState<NewsRecord | null>(null);
-  const visibleNews = filter === "全部" || filter === "电子报" ? (filter === "电子报" ? [] : NEWS) : NEWS.filter((item) => item.category === filter);
+  const allNews = [...NEWS, ...LEGACY_NEWS];
+  const visibleNews = filter === "全部" || filter === "电子报" ? (filter === "电子报" ? [] : allNews) : allNews.filter((item) => item.category === filter);
 
   useEffect(() => {
     const previous = window.newsSelectCat;
@@ -206,8 +250,8 @@ export function NewsSection() {
             </button>
           ))}
         </div>}
-        <p className={`${visibleNews.length ? "hidden" : ""} py-10 text-center text-sm text-gray-500`}>该分类暂无新闻</p>
-        <div className="mt-10 flex justify-center"><button type="button" className="inline-flex h-12 items-center justify-center gap-2 rounded border border-gray-200 px-8 font-medium text-primary transition-colors hover:border-primary">加载更多<span aria-hidden="true" className="text-xl leading-none">+</span></button></div>
+        {filter !== "电子报" && <p className={`${visibleNews.length ? "hidden" : ""} py-10 text-center text-sm text-gray-500`}>该分类暂无新闻</p>}
+        {filter !== "电子报" && <div className="mt-10 flex justify-center"><button type="button" className="inline-flex h-12 items-center justify-center gap-2 rounded border border-gray-200 px-8 font-medium text-primary transition-colors hover:border-primary">加载更多<span aria-hidden="true" className="text-xl leading-none">+</span></button></div>}
       </div>
 
       {selected && (
