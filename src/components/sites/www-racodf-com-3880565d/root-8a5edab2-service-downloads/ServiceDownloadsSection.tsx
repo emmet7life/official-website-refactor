@@ -1,19 +1,34 @@
 const downloads = [
   {
-    title: '迁飞生物监测预警系统产品册',
-    subtitle: '迁飞性害虫与生物监测预警系统产品介绍 · PDF',
-    href: '/upfiles/1782736071656-64c4a369.pdf',
+    title: '2019年全国天线年会论文集（上册）',
+    subtitle: '57.5 MB · 2020-04-28',
+    href: 'https://www.hdmicrowave.com/aliyunoss/pdf/paper/2019%E4%B8%8A.pdf',
   },
   {
-    title: '2026智能网联仿真测试产品册-测试仪器',
-    subtitle: '面向智能网联汽车的仿真测试仪器产品册 · PDF',
-    href: '/upfiles/1782736195441-d515e8b6.pdf',
+    title: '2019年全国天线年会论文集（中册）',
+    subtitle: '64.0 MB · 2020-04-28',
+    href: 'https://www.hdmicrowave.com/aliyunoss/pdf/paper/2019%E4%B8%AD.pdf',
   },
   {
-    title: '智慧养老业务产品册',
-    subtitle: '面向智慧养老的健康监护与服务产品介绍 · PDF',
-    href: '/upfiles/1782736116750-d24a7499.pdf',
+    title: '2019年全国天线年会论文集（下册）',
+    subtitle: '54.6 MB · 2020-04-28',
+    href: 'https://www.hdmicrowave.com/aliyunoss/pdf/paper/2019%E4%B8%8B.pdf',
   },
+  { title: '2008海峡两岸三地无线电科技研讨会论文', subtitle: '47K · 2008-10-03', href: 'https://www.hdmicrowave.com/jszc_xiazai_lw_01.html' },
+  { title: '“邻居单元”为基础的条件数预处理技术及其在板型基站天线分析中的应用', subtitle: '47K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/15.rar' },
+  { title: '微带贴片天线电磁辐射特性分析的FEM/PML方法', subtitle: '48K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/14.rar' },
+  { title: '一种均匀直线阵列干扰抑制的新方法', subtitle: '37K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/13.rar' },
+  { title: '本征激励法用于天线阵方向图综合', subtitle: '51K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/12.rar' },
+  { title: 'MIMO系统双极化微带振子天线研究', subtitle: '264K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/11.rar' },
+  { title: '一种改进的遗传算法及其在阵列天线方向图综合中的应用', subtitle: '16K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/10.rar' },
+  { title: '用于多种移动通信系统的超宽带共面天线', subtitle: '170K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/09.rar' },
+  { title: '一种新型的时空联合解扩重扩智能天线', subtitle: '39K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/08.rar' },
+  { title: '圆极化微带天线及其阵列的研究与设计', subtitle: '75K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/07.rar' },
+  { title: '平面双臂螺旋天线', subtitle: '671K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/06.rar' },
+  { title: '基于软件CST Microwave StudioTM的天线仿真', subtitle: '743K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/04.rar' },
+  { title: '角锥TEM双脊喇叭天线研究', subtitle: '251K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/03.zip' },
+  { title: '一种新的天线阵列位置误差校正算法', subtitle: '26K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/02.zip' },
+  { title: '椭圆波束赋形双偏置天线的设计', subtitle: '48K · 2006-08-03', href: 'https://www.hdmicrowave.com/lunwenjiWebs/1/01.zip' },
 ] as const;
 
 function DocumentIcon() {
@@ -43,7 +58,7 @@ export function ServiceDownloadsSection() {
 
       <div id="downloads-grid" className="space-y-8">
         <div>
-          <h4 className="fade-in-up mb-4 text-base font-semibold text-primary">产品资料</h4>
+          <h4 className="fade-in-up mb-4 text-base font-semibold text-primary">论文资料</h4>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {downloads.map((download) => (
               <a
