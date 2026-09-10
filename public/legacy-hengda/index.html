@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恒达微波 - 技术领先，实业报国</title>
+  <style>
+    :root {
+      --bg-page: #051137;
+      --bg-nav: #06133f;
+      --bg-section-company: #132045;
+      --bg-section-business: #041133;
+      --bg-footer: #07133c;
+      --accent: #1d66d5;
+      --accent-hover: #4a8eff;
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.75);
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --form-bg: #ffffff;
+      --form-text: #1f2937;
+      --form-input-bg: #f3f4f6;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --container: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .animate.in { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    .nav.scrolled {
+      background: rgba(6, 19, 63, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      cursor: pointer;
+    }
+    .logo img { height: 40px; width: auto; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.9;
+      transition: opacity 0.2s, color 0.2s, font-weight 0.2s;
+      cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--accent-hover); }
+    .nav-links a.active { font-weight: 700; }
+    .nav-links li { position: relative; }
+    .nav-links li.has-drop::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+    .nav-drop {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 178px;
+      margin-top: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(6, 19, 63, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 1100;
+    }
+    .nav-links li.has-drop:hover .nav-drop {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-drop a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .nav-drop a:hover {
+      background: rgba(30, 102, 214, 0.22);
+      color: #fff;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 7px 16px;
+      gap: 8px;
+      color: var(--text);
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-box:hover { background: rgba(255, 255, 255, 0.22); }
+    .search-box svg { width: 14px; height: 14px; opacity: 0.9; }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .mobile-menu-btn svg { width: 26px; height: 26px; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(6, 19, 63, 0.96);
+      backdrop-filter: blur(12px);
+      padding: 16px 24px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; animation: fadeIn 0.25s ease; }
+    .mobile-menu a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    /* ---------- Page Views ---------- */
+    .page { display: none; animation: fadeIn 0.45s ease; }
+    .page.active { display: block; }
+
+    /* ---------- Banner ---------- */
+    .banner {
+      position: relative;
+      height: 100vh;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      background: url(/sites/www-racodf-com-3880565d/shared/home/banner-bg.png) center bottom / cover no-repeat;
+      z-index: 0;
+      will-change: transform;
+    }
+    .banner-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(5, 17, 55, 0.72) 0%, rgba(5, 17, 55, 0.35) 45%, rgba(5, 17, 55, 0.68) 100%);
+    }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 920px;
+      padding: 0 24px;
+      padding-top: 70px;
+    }
+    .banner-title {
+      font-size: 54px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+    .banner-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+    }
+    .banner-btns {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(29, 102, 213, 0.45);
+    }
+    .btn-secondary {
+      background: white;
+      color: #051137;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ---------- Sections ---------- */
+    .section { padding: 84px 24px; position: relative; }
+    .section-inner { max-width: var(--container); margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 48px;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- Patents ---------- */
+    .patents { background: var(--bg-page); padding: 70px 24px; }
+    .patents-grid {
+      display: flex;
+      justify-content: center;
+      gap: 140px;
+      flex-wrap: wrap;
+    }
+    .patent-item { text-align: center; }
+    .patent-number {
+      font-size: 58px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .patent-label { font-size: 15px; color: var(--text-muted); }
+
+    /* ---------- Products ---------- */
+    .products { background: var(--bg-page); }
+    .products-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .product-card {
+      position: relative;
+      flex: 0 0 calc(33.333% - 14px);
+      min-width: 280px;
+      max-width: 380px;
+      aspect-ratio: 16 / 10;
+      border-radius: 28px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s, box-shadow 0.35s;
+      background:
+        linear-gradient(155deg, rgba(8, 22, 58, 0.62) 0%, rgba(5, 17, 55, 0.86) 100%);
+      border: 1px solid rgba(130, 205, 255, 0.50);
+      box-shadow:
+        inset 0 1px 1px rgba(200, 240, 255, 0.30),
+        inset 0 0 55px rgba(30, 110, 214, 0.14),
+        0 20px 50px rgba(0, 10, 30, 0.32);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 28px;
+      pointer-events: none;
+      background: transparent;
+      box-shadow:
+        inset 35px 35px 60px -25px rgba(110, 195, 255, 0.30),
+        inset -35px 35px 60px -25px rgba(110, 195, 255, 0.05),
+        inset 35px -35px 60px -25px rgba(85, 175, 255, 0.03),
+        inset -35px -35px 60px -25px rgba(85, 175, 255, 0.20);
+      mix-blend-mode: screen;
+    }
+    .product-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 28px;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(90, 170, 230, 0.10) 0%, transparent 50%),
+        linear-gradient(to top, rgba(5, 12, 28, 0.78) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow:
+        inset 0 1px 1px rgba(200, 240, 255, 0.45),
+        inset 0 0 75px rgba(30, 110, 214, 0.20),
+        0 26px 62px rgba(0, 10, 30, 0.42);
+    }
+    .product-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+      transition: transform 0.35s;
+      pointer-events: none;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+    .product-card span {
+      position: absolute;
+      bottom: 18px;
+      left: 20px;
+      z-index: 3;
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ---------- Company ---------- */
+    .company { background: var(--bg-section-company); }
+    .company-text {
+      text-align: justify;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.9;
+      text-indent: 2em;
+    }
+    .company-text p { margin: 0 0 14px; }
+    .company-text p:last-child { margin-bottom: 0; }
+    .company-image {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 12px 44px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .company-image img { width: 100%; display: block; }
+    .company-btn { text-align: center; margin-top: 34px; }
+
+    /* ---------- Business ---------- */
+    .business {
+      background: url(/sites/www-racodf-com-3880565d/shared/home/business-bg.png) center / cover no-repeat;
+      position: relative;
+    }
+    .business::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 17, 51, 0.78);
+    }
+    .business .section-inner { position: relative; z-index: 2; }
+    .business-contacts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-bottom: 52px;
+    }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-icon {
+      width: 46px;
+      height: 46px;
+      border: 2px solid rgba(255, 255, 255, 1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 20px; height: 20px; opacity: 1; }
+    .contact-icon-img { width: 22px; height: 22px; filter: brightness(0) invert(1); opacity: 1; }
+    .contact-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .contact-value { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .form-card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--form-bg);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      color: var(--form-text);
+      box-shadow: 0 12px 44px rgba(0, 0, 0, 0.28);
+    }
+    .form-title { font-size: 20px; font-weight: 600; margin-bottom: 26px; color: #111827; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 13px; color: #4b5563; margin-bottom: 6px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background: var(--form-input-bg);
+      font-family: inherit;
+      font-size: 14px;
+      color: #1f2937;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(29, 102, 213, 0.12);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #9ca3af; }
+    .form-group textarea { min-height: 96px; resize: vertical; }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: 500;
+    }
+    .form-submit:hover { background: var(--accent-hover); }
+
+    /* ---------- Footer ---------- */
+    .footer { background: var(--bg-footer); padding: 60px 24px 40px; }
+    .footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px 1fr 280px;
+      gap: 60px;
+    }
+    .footer-logo img { height: 36px; margin-bottom: 12px; display: block; }
+    .footer-logo p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    .footer-links { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+    .footer-col a {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 12px;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-qr h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+    .qr-grid { display: flex; gap: 14px; }
+    .qr-item { text-align: center; }
+    .qr-item img { width: 74px; height: 74px; border-radius: 6px; display: block; margin-bottom: 8px; background: white; padding: 2px; }
+    .qr-item span { font-size: 11px; color: var(--text-muted); }
+    .footer-bottom {
+      max-width: var(--container);
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ---------- Secondary Pages ---------- */
+    .page-hero {
+      padding: 150px 24px 90px;
+      text-align: center;
+      background: linear-gradient(160deg, var(--bg-nav) 0%, var(--bg-page) 100%);
+    }
+    .page-hero h1 { font-size: 42px; margin-bottom: 14px; font-weight: 600; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; }
+    .page-content { max-width: var(--container); margin: 0 auto; padding: 70px 24px; }
+    .page-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+    }
+    .page-card h2 { font-size: 24px; margin-bottom: 18px; font-weight: 600; }
+    .page-card p { color: var(--text-muted); margin-bottom: 14px; line-height: 1.8; }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      color: var(--accent-hover);
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .back-home:hover { text-decoration: underline; }
+
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(17, 24, 39, 0.95);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      z-index: 2000;
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .nav-links { gap: 22px; }
+      .footer-inner { grid-template-columns: 1fr 1.5fr; gap: 40px; }
+      .footer-qr { grid-column: span 2; }
+      .qr-grid { justify-content: flex-start; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .business-contacts { grid-template-columns: repeat(2, 1fr); }
+      .footer-links { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .banner-title { font-size: 34px; }
+      .banner-subtitle { font-size: 15px; }
+      .banner-btns { flex-direction: column; gap: 12px; }
+      .btn { width: 100%; max-width: 220px; margin: 0 auto; }
+      .product-card { flex: 1 1 100%; max-width: 100%; }
+      .patents-grid { gap: 40px; }
+      .patent-number { font-size: 44px; }
+      .business-contacts { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-links { grid-template-columns: repeat(2, 1fr); }
+      .footer-qr { grid-column: span 1; }
+      .page-hero h1 { font-size: 30px; }
+      .page-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="logo" onclick="go('home')" aria-label="首页">
+        <img src="/sites/www-racodf-com-3880565d/shared/home/logo.png" alt="恒达微波">
+      </a>
+      <ul class="nav-links">
+        <li><a class="active" data-target="home">首页</a></li>
+        <li class="has-drop">
+          <a data-target="about">关于恒达</a>
+          <div class="nav-drop">
+            <a href="sub.html?cat=about&item=intro">公司介绍</a>
+            <a href="sub.html?cat=about&item=history">公司历程</a>
+            <a href="sub.html?cat=about&item=honor">资质荣誉</a>
+            <a href="sub.html?cat=about&item=equipment">实验设备</a>
+            <a href="sub.html?cat=about&item=activity">公司活动</a>
+          </div>
+        </li>
+        <li class="has-drop">
+          <a data-target="news">新闻中心</a>
+          <div class="nav-drop">
+            <a href="sub.html?cat=news&item=company">公司新闻</a>
+            <a href="sub.html?cat=news&item=media">媒体报道</a>
+            <a href="sub.html?cat=news&item=industry">行业资讯</a>
+            <a href="sub.html?cat=news&item=exhibition">学术展会</a>
+          </div>
+        </li>
+        <li class="has-drop">
+          <a data-target="products">产品中心</a>
+          <div class="nav-drop">
+            <a href="sub.html?cat=products&item=antenna">天线系列</a>
+            <a href="sub.html?cat=products&item=feeder">馈线系列</a>
+            <a href="sub.html?cat=products&item=servo">伺服转台系列</a>
+            <a href="sub.html?cat=products&item=subsystem">分系统集成系列</a>
+            <a href="sub.html?cat=products&item=custom">来图加工系列</a>
+          </div>
+        </li>
+        <li class="has-drop">
+          <a data-target="service">客户服务</a>
+          <div class="nav-drop">
+            <a href="sub.html?cat=service&item=quality">质量控制</a>
+            <a href="sub.html?cat=service&item=promise">服务承诺</a>
+          </div>
+        </li>
+        <li class="has-drop">
+          <a data-target="tech">技术资料</a>
+          <div class="nav-drop">
+            <a href="sub.html?cat=tech&item=knowledge">微波知识</a>
+            <a href="sub.html?cat=tech&item=papers">论文下载</a>
+          </div>
+        </li>
+        <li><a data-target="contact">联系我们</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="search-box" onclick="showToast('产品搜索功能开发中')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+          <span>产品搜索</span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a onclick="go('home')">首页</a>
+      <a onclick="go('about')">关于恒达</a>
+      <a onclick="go('news')">新闻中心</a>
+      <a onclick="go('products')">产品中心</a>
+      <a onclick="go('service')">客户服务</a>
+      <a onclick="go('tech')">技术资料</a>
+      <a onclick="go('contact')">联系我们</a>
+    </div>
+  </nav>
+
+  <main id="app">
+    <!-- 首页 -->
+    <section class="page active" data-page="home">
+      <div class="banner">
+        <div class="banner-bg" id="bannerBg"></div>
+        <div class="banner-content">
+          <h1 class="banner-title">技术领先，实业报国</h1>
+          <p class="banner-subtitle">以成为卓越的微波供应商为目标</p>
+          <div class="banner-btns">
+            <button class="btn btn-primary" onclick="go('products')">产品类型</button>
+            <button class="btn btn-secondary" onclick="go('contact')">联系我们</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="patents">
+        <div class="section-inner">
+          <div class="patents-grid">
+            <div class="patent-item animate">
+              <div class="patent-number" data-target="27">0</div>
+              <div class="patent-label">发明专利</div>
+            </div>
+            <div class="patent-item animate stagger-1">
+              <div class="patent-number" data-target="48">0</div>
+              <div class="patent-label">实用新型专利</div>
+            </div>
+            <div class="patent-item animate stagger-2">
+              <div class="patent-number" data-target="21">0</div>
+              <div class="patent-label">软件著作权</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products section">
+        <div class="section-inner">
+          <h2 class="section-title animate">产品领域</h2>
+          <div class="products-grid">
+            <div class="product-card animate" onclick="go('products', 'antenna')">
+              <img class="product-img" src="/sites/www-racodf-com-3880565d/shared/home/product-antenna.png" alt="天线系列产品">
+              <span>天线系列产品</span>
+            </div>
+            <div class="product-card animate stagger-1" onclick="go('products', 'feeder')">
+              <img class="product-img" src="/sites/www-racodf-com-3880565d/shared/home/product-waveguide.png" alt="馈线系列产品">
+              <span>馈线系列产品</span>
+            </div>
+            <div class="product-card animate stagger-2" onclick="go('products', 'servo')">
+              <img class="product-img" src="/sites/www-racodf-com-3880565d/shared/home/product-servo.png" alt="伺服转台系列产品">
+              <span>伺服转台系列产品</span>
+            </div>
+            <div class="product-card animate" onclick="go('products', 'subsystem')">
+              <img class="product-img" src="/sites/www-racodf-com-3880565d/shared/home/product-subsystem.png" alt="分系统类产品">
+              <span>分系统类产品</span>
+            </div>
+            <div class="product-card animate stagger-1" onclick="go('products', 'custom')">
+              <img class="product-img" src="/sites/www-racodf-com-3880565d/shared/home/product-custom.png" alt="来图加工系列产品">
+              <span>来图加工系列产品</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="company section">
+        <div class="section-inner">
+          <h2 class="section-title animate">公司概况</h2>
+          <div class="company-text animate">
+            <p>西安恒达微波技术开发有限公司创立于1993年，总部位于西安国家民用航天产业基地。在西安建有17000平方米科研生产中心，在江苏省东台市建有10000平方米生产基地，在北京、南京、成都、石家庄设有办事处，员工500余人。</p>
+            <p>公司长期致力于微波毫米波“天、馈、伺、车、源、智”的研发生产，多次承担国家重大项目研制工作，多款产品成功替代进口，并通过鉴定定型列装。产品广泛应用于航空、航天、航海、气象、安检、警戒、检测、卫星通信、无人机通信、汽车电子、太赫兹、5G等领域。自2003年开始承担了神舟五号、神舟八号至神舟二十三号、天宫一号二号、天舟系列等国家重大航天项目的研制任务，目前，正在参与“神舟”后续型号、货运飞船、探月工程、火星探测工程及星载项目产品的研制工作。</p>
+            <p>公司建立并通过了GB/T19001和GJB9001C质量管理体系认证。研制的“微波元器件”、“微波天线”分别荣获陕西省和西安市“名牌产品”称号。是陕西省首批认定的“高新技术企业”，并多次荣获“先进科技企业”奖；陕西省中小企业创新研发中心，西安市企业小巨人领军企业。是全国微波学会、天线学会、军事微波、电磁兼容专业委员会会员单位。获得27项发明专利，48项实用新型专利，21项软件著作权。是国家级专精特新“小巨人”企业。</p>
+          </div>
+          <div class="company-image animate stagger-1">
+            <img src="/sites/www-racodf-com-3880565d/shared/home/company-building.jpg" alt="恒达微波公司大楼">
+          </div>
+          <div class="company-btn animate stagger-2">
+            <button class="btn btn-primary" onclick="go('about')">了解更多</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="business section">
+        <div class="section-inner">
+          <h2 class="section-title animate">业务咨询</h2>
+          <div class="business-contacts animate">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div class="contact-title">电话</div>
+                <div class="contact-value">029-8526 6226 / 8524 1794</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img class="contact-icon-img" src="/sites/www-racodf-com-3880565d/shared/home/printer.svg" alt="传真">
+              </div>
+              <div>
+                <div class="contact-title">传真</div>
+                <div class="contact-value">029-8524 8049</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div class="contact-title">地址</div>
+                <div class="contact-value">陕西省西安市航天基地飞天路485号</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div class="contact-title">邮箱</div>
+                <div class="contact-value">hd@hdmicrowave.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card animate stagger-1">
+            <h3 class="form-title">业务咨询表单</h3>
+            <form id="consultForm">
+              <div class="form-group">
+                <label>姓名</label>
+                <input type="text" name="name" placeholder="请输入姓名" required>
+              </div>
+              <div class="form-group">
+                <label>联系电话</label>
+                <input type="tel" name="phone" placeholder="请输入联系电话" required>
+              </div>
+              <div class="form-group">
+                <label>咨询产品类型</label>
+                <select name="product" required>
+                  <option value="" disabled selected>请选择产品类型</option>
+                  <option value="antenna">天线系列产品</option>
+                  <option value="feeder">馈线系列产品</option>
+                  <option value="servo">伺服转台系列产品</option>
+                  <option value="subsystem">分系统类产品</option>
+                  <option value="custom">来图加工系列产品</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>咨询内容</label>
+                <textarea name="content" placeholder="请输入咨询内容" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">提交</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 关于恒达 -->
+    <section class="page" data-page="about">
+      <div class="page-hero">
+        <h1>关于恒达</h1>
+        <p>技术领先 · 实业报国 · 致力成为卓越的微波供应商</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>企业简介</h2>
+          <p>西安恒达微波技术开发有限公司创立于1993年，总部位于西安国家民用航天产业基地，是一家专业从事微波毫米波技术研发、生产和销售的高新技术企业。</p>
+          <p>公司在西安建有17000平方米科研生产中心，在江苏省东台市建有10000平方米生产基地，在北京、南京、成都、石家庄设有办事处，员工500余人。</p>
+          <p>公司长期致力于微波毫米波“天、馈、伺、车、源、智”的研发生产，多次承担国家重大项目研制工作，多款产品成功替代进口，并通过鉴定定型列装。产品广泛应用于航空、航天、航海、气象、安检、警戒、检测、卫星通信、无人机通信、汽车电子、太赫兹、5G等领域。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 新闻中心 -->
+    <section class="page" data-page="news">
+      <div class="page-hero">
+        <h1>新闻中心</h1>
+        <p>了解恒达微波最新动态与行业资讯</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>最新动态</h2>
+          <p>这里将展示公司新闻、学术展会、行业资讯、媒体报道、视频号内容等最新信息。</p>
+          <p>敬请关注恒达微波官方公众号，获取第一手企业动态与产品资讯。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 产品中心 -->
+    <section class="page" data-page="products">
+      <div class="page-hero">
+        <h1>产品中心</h1>
+        <p>天线 · 馈线 · 伺服转台 · 分系统 · 来图加工</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>产品体系</h2>
+          <p><strong>天线系列产品：</strong>涵盖反射面天线、相控阵天线、螺旋天线、微带天线等多种类型，广泛应用于卫星通信、雷达、导航等领域。</p>
+          <p><strong>馈线系列产品：</strong>包括波导组件、同轴组件、旋转关节、极化器等，为微波系统提供高性能传输解决方案。</p>
+          <p><strong>伺服转台系列产品：</strong>高精度天线伺服转台、跟踪系统，满足卫星地面站、雷达系统等对指向精度与稳定性的要求。</p>
+          <p><strong>分系统类产品：</strong>集成化微波分系统，提供从方案设计到产品交付的一站式服务。</p>
+          <p><strong>来图加工系列产品：</strong>根据客户需求提供精密微波零部件定制加工服务。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 客户服务 -->
+    <section class="page" data-page="service">
+      <div class="page-hero">
+        <h1>客户服务</h1>
+        <p>质量控制 · 服务承诺 · 技术支持</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>服务体系</h2>
+          <p>恒达微波建立了完善的质量控制体系和服务承诺机制，从售前咨询、方案设计、生产制造到售后支持，为客户提供全生命周期的专业服务。</p>
+          <p>我们坚持以客户为中心，快速响应客户需求，确保产品交付质量与周期。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技术资料 -->
+    <section class="page" data-page="tech">
+      <div class="page-hero">
+        <h1>技术资料</h1>
+        <p>微波知识 · 论文下载 · 技术文档</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>技术资源</h2>
+          <p>这里将提供微波毫米波领域的技术知识、应用案例、论文下载等技术资料，助力客户更好地了解与应用我们的产品。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="page" data-page="contact">
+      <div class="page-hero">
+        <h1>联系我们</h1>
+        <p>期待与您的沟通与合作</p>
+      </div>
+      <div class="page-content">
+        <div class="page-card">
+          <h2>联系方式</h2>
+          <p><strong>电话：</strong>029-8526 6226 / 8524 1794</p>
+          <p><strong>地址：</strong>陕西省西安市航天基地飞天路485号</p>
+          <p><strong>邮箱：</strong>hd@hdmicrowave.com</p>
+          <p><strong>传真：</strong>029-8524 8049</p>
+          <p>您也可以通过首页底部的业务咨询表单提交需求，我们将尽快与您联系。</p>
+          <a class="back-home" onclick="go('home')">← 返回首页</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/sites/www-racodf-com-3880565d/shared/home/logo.png" alt="恒达微波">
+        <p>技术领先，实业报国<br>以成为卓越的微波供应商为目标</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>关于恒达</h4>
+          <a onclick="go('about')">公司介绍</a>
+          <a onclick="go('about')">公司历程</a>
+          <a onclick="go('about')">资质荣誉</a>
+          <a onclick="go('about')">实验设备</a>
+          <a onclick="go('about')">公司活动</a>
+          <a onclick="go('news')">产品新闻</a>
+        </div>
+        <div class="footer-col">
+          <h4>新闻中心</h4>
+          <a onclick="go('news')">公司新闻</a>
+          <a onclick="go('news')">学术展会</a>
+          <a onclick="go('news')">行业资讯</a>
+          <a onclick="go('news')">媒体报道</a>
+          <a onclick="go('news')">视频号内容</a>
+        </div>
+        <div class="footer-col">
+          <h4>产品中心</h4>
+          <a onclick="go('products')">天线系列</a>
+          <a onclick="go('products')">馈线系列</a>
+          <a onclick="go('products')">伺服转台系列</a>
+          <a onclick="go('products')">分系统集成系列</a>
+          <a onclick="go('products')">来图加工系列</a>
+        </div>
+        <div class="footer-col">
+          <h4>客户服务</h4>
+          <a onclick="go('service')">质量控制</a>
+          <a onclick="go('service')">服务承诺</a>
+        </div>
+        <div class="footer-col">
+          <h4>技术资料</h4>
+          <a onclick="go('tech')">微波知识</a>
+          <a onclick="go('tech')">论文下载</a>
+        </div>
+      </div>
+      <div class="footer-qr">
+        <h4>联系我们</h4>
+        <div class="qr-grid">
+          <div class="qr-item">
+            <img src="/sites/www-racodf-com-3880565d/shared/home/qr-gongzhong.png" alt="官方公众号">
+            <span>官方公众号</span>
+          </div>
+          <div class="qr-item">
+            <img src="/sites/www-racodf-com-3880565d/shared/home/qr-xiaochengxu.jpg" alt="官方小程序">
+            <span>官方小程序</span>
+          </div>
+          <div class="qr-item">
+            <img src="/sites/www-racodf-com-3880565d/shared/home/qr-xiaoda.jpg" alt="官方AI小达">
+            <span>官方AI小达</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 西安恒达微波技术开发有限公司 版权所有
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // SPA Routing
+    function go(page) {
+      const SUB_SECS=['about','news','products','service','tech'];
+      if(SUB_SECS.includes(page)){ window.location.href='sub.html?cat='+page; return; }
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.querySelector('.page[data-page="' + page + '"]');
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.target === page);
+      });
+      document.getElementById('mobileMenu').classList.remove('open');
+      // re-trigger reveals for the newly shown page
+      setTimeout(() => observeAnimations(), 100);
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', function() { go(this.dataset.target); });
+    });
+
+    document.getElementById('menuBtn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#mobileMenu') && !e.target.closest('#menuBtn')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+
+    // Sticky nav glassmorphism
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // Banner parallax
+    const bannerBg = document.getElementById('bannerBg');
+    window.addEventListener('scroll', function() {
+      if (bannerBg) {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          bannerBg.style.transform = 'translateY(' + (y * 0.35) + 'px) scale(' + (1 + y * 0.0002) + ')';
+        }
+      }
+    }, { passive: true });
+
+    // IntersectionObserver scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          // trigger patent counter if inside
+          const counters = entry.target.querySelectorAll('.patent-number');
+          counters.forEach(counter => animateCounter(counter));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    function observeAnimations() {
+      document.querySelectorAll('.animate').forEach(el => {
+        el.classList.remove('in');
+        observer.observe(el);
+      });
+    }
+
+    // Patent counter animation
+    const counted = new WeakSet();
+    function animateCounter(el) {
+      if (!el || counted.has(el)) return;
+      counted.add(el);
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1800;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    observeAnimations();
+
+    // Form handling
+    document.getElementById('consultForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) return;
+      showToast('提交成功，我们将尽快与您联系！');
+      form.reset();
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    // Trigger banner counters immediately if visible
+    window.addEventListener('load', function() {
+      document.querySelectorAll('.patent-number').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) animateCounter(el);
+      });
+    });
+  </script>
+</body>
+</html>
+
