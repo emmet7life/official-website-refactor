@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 const homeRoot = '/sites/www-racodf-com-3880565d/shared/home/';
 const products = [
-  ['product-antenna.png', '天线系列产品', '/products/antenna'],
-  ['product-waveguide.png', '馈线系列产品', '/products/feeder'],
-  ['product-servo.png', '伺服转台系列产品', '/products/servo'],
-  ['product-subsystem.png', '分系统类产品', '/products/subsystem'],
-  ['product-custom.png', '来图加工系列产品', '/products/custom'],
+  ['product-antenna.png', '天线系列产品', '/productcenter'],
+  ['product-waveguide.png', '馈线系列产品', '/productcenter'],
+  ['product-servo.png', '伺服转台系列产品', '/productcenter'],
+  ['product-subsystem.png', '分系统类产品', '/productcenter'],
+  ['product-custom.png', '来图加工系列产品', '/productcenter'],
 ] as const;
 const stats = [['27', '发明专利'], ['48', '实用新型专利'], ['21', '软件著作权']] as const;
 

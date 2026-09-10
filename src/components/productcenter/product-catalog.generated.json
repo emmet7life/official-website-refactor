@@ -1,0 +1,4800 @@
+[
+  {
+    "id": "catalog-1",
+    "code": "1",
+    "name": "波导、同轴元器件",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-1-1",
+        "code": "1.1",
+        "name": "常用连接波导",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-1-1",
+            "code": "1.1.1",
+            "name": "直波导",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [
+              {
+                "id": "catalog-1-1-1-1",
+                "code": "1.1.1.1",
+                "name": "矩形直波导",
+                "level": 4,
+                "parentId": "catalog-1-1-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-1-2",
+                "code": "1.1.1.2",
+                "name": "双脊直波导",
+                "level": 4,
+                "parentId": "catalog-1-1-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-1-3",
+                "code": "1.1.1.3",
+                "name": "充气直波导",
+                "level": 4,
+                "parentId": "catalog-1-1-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-1-4",
+                "code": "1.1.1.4",
+                "name": "充气嘴规格",
+                "level": 4,
+                "parentId": "catalog-1-1-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-1-2",
+            "code": "1.1.2",
+            "name": "弯波导",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [
+              {
+                "id": "catalog-1-1-2-1",
+                "code": "1.1.2.1",
+                "name": "圆弧弯波导",
+                "level": 4,
+                "parentId": "catalog-1-1-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-2-2",
+                "code": "1.1.2.2",
+                "name": "切角弯波导",
+                "level": 4,
+                "parentId": "catalog-1-1-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-2-3",
+                "code": "1.1.2.3",
+                "name": "双脊弯波导",
+                "level": 4,
+                "parentId": "catalog-1-1-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-1-3",
+            "code": "1.1.3",
+            "name": "扭波导",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [
+              {
+                "id": "catalog-1-1-3-1",
+                "code": "1.1.3.1",
+                "name": "矩形扭波导",
+                "level": 4,
+                "parentId": "catalog-1-1-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-3-2",
+                "code": "1.1.3.2",
+                "name": "双脊扭波导",
+                "level": 4,
+                "parentId": "catalog-1-1-3",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-1-4",
+            "code": "1.1.4",
+            "name": "软波导",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [
+              {
+                "id": "catalog-1-1-4-1",
+                "code": "1.1.4.1",
+                "name": "可扭软波导（互锁型软波导）",
+                "level": 4,
+                "parentId": "catalog-1-1-4",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-4-2",
+                "code": "1.1.4.2",
+                "name": "不可扭软波导（无缝软波导）",
+                "level": 4,
+                "parentId": "catalog-1-1-4",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-4-3",
+                "code": "1.1.4.3",
+                "name": "双脊软波导",
+                "level": 4,
+                "parentId": "catalog-1-1-4",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-4-4",
+                "code": "1.1.4.4",
+                "name": "椭圆软波导",
+                "level": 4,
+                "parentId": "catalog-1-1-4",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-1-5",
+            "code": "1.1.5",
+            "name": "波导防泄漏片",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-1-6",
+            "code": "1.1.6",
+            "name": "过渡波导器件",
+            "level": 3,
+            "parentId": "catalog-1-1",
+            "children": [
+              {
+                "id": "catalog-1-1-6-1",
+                "code": "1.1.6.1",
+                "name": "过渡波导（相邻波导之间的过渡）",
+                "level": 4,
+                "parentId": "catalog-1-1-6",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-6-2",
+                "code": "1.1.6.2",
+                "name": "非相邻波导之间的过渡",
+                "level": 4,
+                "parentId": "catalog-1-1-6",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-1-6-3",
+                "code": "1.1.6.3",
+                "name": "矩圆过渡（TE10-TE11模式转换）",
+                "level": 4,
+                "parentId": "catalog-1-1-6",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-2",
+        "code": "1.2",
+        "name": "波导同轴/微带/电缆转换",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-2-1",
+            "code": "1.2.1",
+            "name": "波导同轴转换",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [
+              {
+                "id": "catalog-1-2-1-1",
+                "code": "1.2.1.1",
+                "name": "波导同轴转换(正交结构)",
+                "level": 4,
+                "parentId": "catalog-1-2-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-1-2",
+                "code": "1.2.1.2",
+                "name": "端接波导同轴转换（端接结构）",
+                "level": 4,
+                "parentId": "catalog-1-2-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-1-3",
+                "code": "1.2.1.3",
+                "name": "大功率波导同轴转换",
+                "level": 4,
+                "parentId": "catalog-1-2-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-2-2",
+            "code": "1.2.2",
+            "name": "双脊波导同轴转换",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [
+              {
+                "id": "catalog-1-2-2-1",
+                "code": "1.2.2.1",
+                "name": "双脊波导同轴转换 (正交结构)",
+                "level": 4,
+                "parentId": "catalog-1-2-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-2-2",
+                "code": "1.2.2.2",
+                "name": "端接双脊波导同轴转换（端接结构）",
+                "level": 4,
+                "parentId": "catalog-1-2-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-2-3",
+                "code": "1.2.2.3",
+                "name": "大功率双脊波导同轴转换",
+                "level": 4,
+                "parentId": "catalog-1-2-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-2-3",
+            "code": "1.2.3",
+            "name": "圆波导同轴转换",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-2-4",
+            "code": "1.2.4",
+            "name": "波导微带转换",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [
+              {
+                "id": "catalog-1-2-4-1",
+                "code": "1.2.4.1",
+                "name": "波导微带转换(正交结构)",
+                "level": 4,
+                "parentId": "catalog-1-2-4",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-4-2",
+                "code": "1.2.4.2",
+                "name": "端接波导微带转换 (端接结构)",
+                "level": 4,
+                "parentId": "catalog-1-2-4",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-2-5",
+            "code": "1.2.5",
+            "name": "波导电缆组件",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [
+              {
+                "id": "catalog-1-2-5-1",
+                "code": "1.2.5.1",
+                "name": "波导电缆组件（正交结构）",
+                "level": 4,
+                "parentId": "catalog-1-2-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-2-5-2",
+                "code": "1.2.5.2",
+                "name": "端接波导电缆组件",
+                "level": 4,
+                "parentId": "catalog-1-2-5",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-2-6",
+            "code": "1.2.6",
+            "name": "同轴电缆组件",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-2-7",
+            "code": "1.2.7",
+            "name": "波导同轴转换组件",
+            "level": 3,
+            "parentId": "catalog-1-2",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-3",
+        "code": "1.3",
+        "name": "同轴阻抗变换器（50Ω/75Ω）",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-4",
+        "code": "1.4",
+        "name": "同轴转接器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-5",
+        "code": "1.5",
+        "name": "毫米波同轴连接器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-5-1",
+            "code": "1.5.1",
+            "name": "K2.92型连接器",
+            "level": 3,
+            "parentId": "catalog-1-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-5-2",
+            "code": "1.5.2",
+            "name": "2.4mm型连接器",
+            "level": 3,
+            "parentId": "catalog-1-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-5-3",
+            "code": "1.5.3",
+            "name": "APC 3.5mm 型连接器",
+            "level": 3,
+            "parentId": "catalog-1-5",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-6",
+        "code": "1.6",
+        "name": "负载",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-6-1",
+            "code": "1.6.1",
+            "name": "波导负载",
+            "level": 3,
+            "parentId": "catalog-1-6",
+            "children": [
+              {
+                "id": "catalog-1-6-1-1",
+                "code": "1.6.1.1",
+                "name": "波导匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-2",
+                "code": "1.6.1.2",
+                "name": "短尺寸波导匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-3",
+                "code": "1.6.1.3",
+                "name": "波导滑动匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-4",
+                "code": "1.6.1.4",
+                "name": "双脊波导匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-5",
+                "code": "1.6.1.5",
+                "name": "圆波导匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-6",
+                "code": "1.6.1.6",
+                "name": "大功率波导干式负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [
+                  {
+                    "id": "catalog-1-6-1-6-1",
+                    "code": "1.6.1.6.1",
+                    "name": "自然冷却式大功率波导干式负载",
+                    "level": 5,
+                    "parentId": "catalog-1-6-1-6",
+                    "children": [],
+                    "kind": "product-list"
+                  },
+                  {
+                    "id": "catalog-1-6-1-6-2",
+                    "code": "1.6.1.6.2",
+                    "name": "自然冷却式大功率双脊波导干式负载",
+                    "level": 5,
+                    "parentId": "catalog-1-6-1-6",
+                    "children": [],
+                    "kind": "product-list"
+                  },
+                  {
+                    "id": "catalog-1-6-1-6-3",
+                    "code": "1.6.1.6.3",
+                    "name": "风冷式大功率波导干式负载（内置风机）",
+                    "level": 5,
+                    "parentId": "catalog-1-6-1-6",
+                    "children": [],
+                    "kind": "product-list"
+                  },
+                  {
+                    "id": "catalog-1-6-1-6-4",
+                    "code": "1.6.1.6.4",
+                    "name": "水冷式大功率波导干式负载",
+                    "level": 5,
+                    "parentId": "catalog-1-6-1-6",
+                    "children": [],
+                    "kind": "product-list"
+                  }
+                ],
+                "kind": "category"
+              },
+              {
+                "id": "catalog-1-6-1-7",
+                "code": "1.6.1.7",
+                "name": "大功率波导水负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-1-8",
+                "code": "1.6.1.8",
+                "name": "波导失配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-6-2",
+            "code": "1.6.2",
+            "name": "同轴负载",
+            "level": 3,
+            "parentId": "catalog-1-6",
+            "children": [
+              {
+                "id": "catalog-1-6-2-1",
+                "code": "1.6.2.1",
+                "name": "电阻式同轴匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-2-2",
+                "code": "1.6.2.2",
+                "name": "吸收式同轴匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-6-2-3",
+                "code": "1.6.2.3",
+                "name": "大功率同轴匹配负载",
+                "level": 4,
+                "parentId": "catalog-1-6-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-7",
+        "code": "1.7",
+        "name": "羰基铁吸波材料",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-8",
+        "code": "1.8",
+        "name": "短路器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-8-1",
+            "code": "1.8.1",
+            "name": "波导短路器",
+            "level": 3,
+            "parentId": "catalog-1-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-8-2",
+            "code": "1.8.2",
+            "name": "波导偏置短路器",
+            "level": 3,
+            "parentId": "catalog-1-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-8-3",
+            "code": "1.8.3",
+            "name": "波导滑动短路器",
+            "level": 3,
+            "parentId": "catalog-1-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-8-4",
+            "code": "1.8.4",
+            "name": "同轴开路/短路器",
+            "level": 3,
+            "parentId": "catalog-1-8",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-9",
+        "code": "1.9",
+        "name": "耦合器/电桥",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-9-1",
+            "code": "1.9.1",
+            "name": "波导耦合器",
+            "level": 3,
+            "parentId": "catalog-1-9",
+            "children": [
+              {
+                "id": "catalog-1-9-1-1",
+                "code": "1.9.1.1",
+                "name": "波导十字定向耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-2",
+                "code": "1.9.1.2",
+                "name": "多臂十字定向耦合器组件",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-3",
+                "code": "1.9.1.3",
+                "name": "波导环耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-4",
+                "code": "1.9.1.4",
+                "name": "双脊波导环耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-5",
+                "code": "1.9.1.5",
+                "name": "波导高方向性耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-6",
+                "code": "1.9.1.6",
+                "name": "双脊波导高方向性耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-7",
+                "code": "1.9.1.7",
+                "name": "波导侧边高方向性耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-8",
+                "code": "1.9.1.8",
+                "name": "波导探针耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-9",
+                "code": "1.9.1.9",
+                "name": "波导分支式耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-10",
+                "code": "1.9.1.10",
+                "name": "圆波导探针耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-11",
+                "code": "1.9.1.11",
+                "name": "特殊模式下的圆波导定向耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-1-12",
+                "code": "1.9.1.12",
+                "name": "波导谐波耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-9-2",
+            "code": "1.9.2",
+            "name": "同轴定向耦合器",
+            "level": 3,
+            "parentId": "catalog-1-9",
+            "children": [
+              {
+                "id": "catalog-1-9-2-1",
+                "code": "1.9.2.1",
+                "name": "同轴定向耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-2-2",
+                "code": "1.9.2.2",
+                "name": "大功率同轴定向耦合器",
+                "level": 4,
+                "parentId": "catalog-1-9-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-9-3",
+            "code": "1.9.3",
+            "name": "同轴3dB电桥",
+            "level": 3,
+            "parentId": "catalog-1-9",
+            "children": [
+              {
+                "id": "catalog-1-9-3-1",
+                "code": "1.9.3.1",
+                "name": "90°同轴3dB电桥",
+                "level": 4,
+                "parentId": "catalog-1-9-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-9-3-2",
+                "code": "1.9.3.2",
+                "name": "180°同轴3dB电桥",
+                "level": 4,
+                "parentId": "catalog-1-9-3",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-10",
+        "code": "1.10",
+        "name": "旋转关节",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-10-1",
+            "code": "1.10.1",
+            "name": "波导旋转关节",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [
+              {
+                "id": "catalog-1-10-1-1",
+                "code": "1.10.1.1",
+                "name": "I型波导旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-2",
+                "code": "1.10.1.2",
+                "name": "L型旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-3",
+                "code": "1.10.1.3",
+                "name": "U型旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-4",
+                "code": "1.10.1.4",
+                "name": "大功率波导旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-5",
+                "code": "1.10.1.5",
+                "name": "90°极化旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-6",
+                "code": "1.10.1.6",
+                "name": "圆波导旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-7",
+                "code": "1.10.1.7",
+                "name": "双脊波导旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-1-8",
+                "code": "1.10.1.8",
+                "name": "双路波导旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-10-2",
+            "code": "1.10.2",
+            "name": "同轴旋转关节",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [
+              {
+                "id": "catalog-1-10-2-1",
+                "code": "1.10.2.1",
+                "name": "单路同轴旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-2-2",
+                "code": "1.10.2.2",
+                "name": "II型双路同轴旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-10-2-3",
+                "code": "1.10.2.3",
+                "name": "多路同轴旋转关节",
+                "level": 4,
+                "parentId": "catalog-1-10-2",
+                "children": [
+                  {
+                    "id": "catalog-1-10-2-3-1",
+                    "code": "1.10.2.3.1",
+                    "name": "UI型双路同轴旋转关节",
+                    "level": 5,
+                    "parentId": "catalog-1-10-2-3",
+                    "children": [],
+                    "kind": "product-list"
+                  },
+                  {
+                    "id": "catalog-1-10-2-3-2",
+                    "code": "1.10.2.3.2",
+                    "name": "多路同轴旋转关节",
+                    "level": 5,
+                    "parentId": "catalog-1-10-2-3",
+                    "children": [],
+                    "kind": "product-list"
+                  }
+                ],
+                "kind": "category"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-10-3",
+            "code": "1.10.3",
+            "name": "波导同轴关节组件",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-10-4",
+            "code": "1.10.4",
+            "name": "关节汇流环组件",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-10-5",
+            "code": "1.10.5",
+            "name": "多路及特殊定制关节组件",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-10-6",
+            "code": "1.10.6",
+            "name": "旋转关节可靠性试验平台",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-10-7",
+            "code": "1.10.7",
+            "name": "极化跟踪器组件",
+            "level": 3,
+            "parentId": "catalog-1-10",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-11",
+        "code": "1.11",
+        "name": "功率分配器/合成器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-11-1",
+            "code": "1.11.1",
+            "name": "波导功率分配器/合成器",
+            "level": 3,
+            "parentId": "catalog-1-11",
+            "children": [
+              {
+                "id": "catalog-1-11-1-1",
+                "code": "1.11.1.1",
+                "name": "波导ET接头",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-2",
+                "code": "1.11.1.2",
+                "name": "波导HT接头",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-3",
+                "code": "1.11.1.3",
+                "name": "波导魔T",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-4",
+                "code": "1.11.1.4",
+                "name": "波导同相功率分配器/合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-5",
+                "code": "1.11.1.5",
+                "name": "波导魔T组件、波导功率分配/合成器组件",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-6",
+                "code": "1.11.1.6",
+                "name": "双脊波导魔T、功率分配器/合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-1-7",
+                "code": "1.11.1.7",
+                "name": "波导90°功率分配器/合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-11-2",
+            "code": "1.11.2",
+            "name": "同轴功率分配器、合成器",
+            "level": 3,
+            "parentId": "catalog-1-11",
+            "children": [
+              {
+                "id": "catalog-1-11-2-1",
+                "code": "1.11.2.1",
+                "name": "一分二同轴功分/合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-2-2",
+                "code": "1.11.2.2",
+                "name": "一分多路功分/合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-11-2-3",
+                "code": "1.11.2.3",
+                "name": "径向线合成器",
+                "level": 4,
+                "parentId": "catalog-1-11-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-12",
+        "code": "1.12",
+        "name": "开关",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-12-1",
+            "code": "1.12.1",
+            "name": "手动波导开关",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-2",
+            "code": "1.12.2",
+            "name": "电动波导开关",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-3",
+            "code": "1.12.3",
+            "name": "机电式同轴开关",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-4",
+            "code": "1.12.4",
+            "name": "波导同轴开关",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-5",
+            "code": "1.12.5",
+            "name": "波导环行式高速开关 (铁氧体开关)",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-6",
+            "code": "1.12.6",
+            "name": "大功率同轴测量开关组合",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-12-7",
+            "code": "1.12.7",
+            "name": "开关组件与开关网络",
+            "level": 3,
+            "parentId": "catalog-1-12",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-13",
+        "code": "1.13",
+        "name": "滤波器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-13-1",
+            "code": "1.13.1",
+            "name": "波导滤波器",
+            "level": 3,
+            "parentId": "catalog-1-13",
+            "children": [
+              {
+                "id": "catalog-1-13-1-1",
+                "code": "1.13.1.1",
+                "name": "波导带通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-1-2",
+                "code": "1.13.1.2",
+                "name": "波导高通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-1-3",
+                "code": "1.13.1.3",
+                "name": "波导低通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-1-4",
+                "code": "1.13.1.4",
+                "name": "波导谐波滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-1-5",
+                "code": "1.13.1.5",
+                "name": "波导带阻滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-13-2",
+            "code": "1.13.2",
+            "name": "同轴滤波器",
+            "level": 3,
+            "parentId": "catalog-1-13",
+            "children": [
+              {
+                "id": "catalog-1-13-2-1",
+                "code": "1.13.2.1",
+                "name": "同轴带通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-2-2",
+                "code": "1.13.2.2",
+                "name": "同轴高通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-2-3",
+                "code": "1.13.2.3",
+                "name": "同轴低通滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-13-3",
+            "code": "1.13.3",
+            "name": "小型化滤波器",
+            "level": 3,
+            "parentId": "catalog-1-13",
+            "children": [
+              {
+                "id": "catalog-1-13-3-1",
+                "code": "1.13.3.1",
+                "name": "微带薄膜滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-3-2",
+                "code": "1.13.3.2",
+                "name": "LTCC滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-13-3-3",
+                "code": "1.13.3.3",
+                "name": "介质滤波器",
+                "level": 4,
+                "parentId": "catalog-1-13-3",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-14",
+        "code": "1.14",
+        "name": "双工器和多工器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-14-1",
+            "code": "1.14.1",
+            "name": "双工器",
+            "level": 3,
+            "parentId": "catalog-1-14",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-14-2",
+            "code": "1.14.2",
+            "name": "多工器",
+            "level": 3,
+            "parentId": "catalog-1-14",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-14-3",
+            "code": "1.14.3",
+            "name": "正交模变换器（OMT）",
+            "level": 3,
+            "parentId": "catalog-1-14",
+            "children": [
+              {
+                "id": "catalog-1-14-3-1",
+                "code": "1.14.3.1",
+                "name": "圆波导正交模变换器",
+                "level": 4,
+                "parentId": "catalog-1-14-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-14-3-2",
+                "code": "1.14.3.2",
+                "name": "方波导正交模变换器",
+                "level": 4,
+                "parentId": "catalog-1-14-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-14-3-3",
+                "code": "1.14.3.3",
+                "name": "双侧耦合圆波导正交模变换器（CWTOMT）",
+                "level": 4,
+                "parentId": "catalog-1-14-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-14-3-4",
+                "code": "1.14.3.4",
+                "name": "平行耦合方波导正交模变换器（SWTOMT）",
+                "level": 4,
+                "parentId": "catalog-1-14-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-14-3-5",
+                "code": "1.14.3.5",
+                "name": "宽频带正交模耦合器（WBOMT）",
+                "level": 4,
+                "parentId": "catalog-1-14-3",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-15",
+        "code": "1.15",
+        "name": "圆极化器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-15-1",
+            "code": "1.15.1",
+            "name": "圆波导介质移相式圆极化器",
+            "level": 3,
+            "parentId": "catalog-1-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-15-2",
+            "code": "1.15.2",
+            "name": "圆波导阶梯膜片式圆极化器",
+            "level": 3,
+            "parentId": "catalog-1-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-15-3",
+            "code": "1.15.3",
+            "name": "宽带（双工）圆极化器",
+            "level": 3,
+            "parentId": "catalog-1-15",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-16",
+        "code": "1.16",
+        "name": "隔离器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-16-1",
+            "code": "1.16.1",
+            "name": "波导隔离器",
+            "level": 3,
+            "parentId": "catalog-1-16",
+            "children": [
+              {
+                "id": "catalog-1-16-1-1",
+                "code": "1.16.1.1",
+                "name": "波导全频带隔离器",
+                "level": 4,
+                "parentId": "catalog-1-16-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-16-1-2",
+                "code": "1.16.1.2",
+                "name": "大功率波导隔离器",
+                "level": 4,
+                "parentId": "catalog-1-16-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-16-1-3",
+                "code": "1.16.1.3",
+                "name": "大功率波导差相移隔离器",
+                "level": 4,
+                "parentId": "catalog-1-16-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-16-2",
+            "code": "1.16.2",
+            "name": "同轴隔离器",
+            "level": 3,
+            "parentId": "catalog-1-16",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-17",
+        "code": "1.17",
+        "name": "环行器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-17-1",
+            "code": "1.17.1",
+            "name": "波导环行器",
+            "level": 3,
+            "parentId": "catalog-1-17",
+            "children": [
+              {
+                "id": "catalog-1-17-1-1",
+                "code": "1.17.1.1",
+                "name": "波导全频带环行器",
+                "level": 4,
+                "parentId": "catalog-1-17-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-17-1-2",
+                "code": "1.17.1.2",
+                "name": "大功率波导环行器",
+                "level": 4,
+                "parentId": "catalog-1-17-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-17-1-3",
+                "code": "1.17.1.3",
+                "name": "大功率波导差相移环行器",
+                "level": 4,
+                "parentId": "catalog-1-17-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-17-2",
+            "code": "1.17.2",
+            "name": "同轴环行器",
+            "level": 3,
+            "parentId": "catalog-1-17",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-18",
+        "code": "1.18",
+        "name": "检波器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-18-1",
+            "code": "1.18.1",
+            "name": "波导检波器",
+            "level": 3,
+            "parentId": "catalog-1-18",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-18-2",
+            "code": "1.18.2",
+            "name": "同轴检波器",
+            "level": 3,
+            "parentId": "catalog-1-18",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-19",
+        "code": "1.19",
+        "name": "衰减器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-19-1",
+            "code": "1.19.1",
+            "name": "波导衰减器",
+            "level": 3,
+            "parentId": "catalog-1-19",
+            "children": [
+              {
+                "id": "catalog-1-19-1-1",
+                "code": "1.19.1.1",
+                "name": "波导固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-2",
+                "code": "1.19.1.2",
+                "name": "波导耦合式固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-3",
+                "code": "1.19.1.3",
+                "name": "波导大功率耦合式固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-4",
+                "code": "1.19.1.4",
+                "name": "波导可变衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-5",
+                "code": "1.19.1.5",
+                "name": "波导高速电子芯片式数字衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-6",
+                "code": "1.19.1.6",
+                "name": "波导大功率可变衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-7",
+                "code": "1.19.1.7",
+                "name": "双脊波导固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-8",
+                "code": "1.19.1.8",
+                "name": "耦合式双脊波导固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-1-9",
+                "code": "1.19.1.9",
+                "name": "波导精密极化衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-19-2",
+            "code": "1.19.2",
+            "name": "同轴衰减器",
+            "level": 3,
+            "parentId": "catalog-1-19",
+            "children": [
+              {
+                "id": "catalog-1-19-2-1",
+                "code": "1.19.2.1",
+                "name": "同轴固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-2-2",
+                "code": "1.19.2.2",
+                "name": "同轴大功率固定衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-2-3",
+                "code": "1.19.2.3",
+                "name": "同轴可变衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-19-2-4",
+                "code": "1.19.2.4",
+                "name": "同轴大功率可变衰减器",
+                "level": 4,
+                "parentId": "catalog-1-19-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-20",
+        "code": "1.20",
+        "name": "移相器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-20-1",
+            "code": "1.20.1",
+            "name": "波导移相器",
+            "level": 3,
+            "parentId": "catalog-1-20",
+            "children": [
+              {
+                "id": "catalog-1-20-1-1",
+                "code": "1.20.1.1",
+                "name": "波导固定移相器",
+                "level": 4,
+                "parentId": "catalog-1-20-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-20-1-2",
+                "code": "1.20.1.2",
+                "name": "波导可变移相器",
+                "level": 4,
+                "parentId": "catalog-1-20-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-20-1-3",
+                "code": "1.20.1.3",
+                "name": "波导大功率可变移相器",
+                "level": 4,
+                "parentId": "catalog-1-20-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-20-1-4",
+                "code": "1.20.1.4",
+                "name": "波导高速电子芯片式数字移相器",
+                "level": 4,
+                "parentId": "catalog-1-20-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-20-2",
+            "code": "1.20.2",
+            "name": "同轴可变移相器",
+            "level": 3,
+            "parentId": "catalog-1-20",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-21",
+        "code": "1.21",
+        "name": "波导螺钉调配器",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-22",
+        "code": "1.22",
+        "name": "波导密封窗",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-23",
+        "code": "1.23",
+        "name": "常用辅件",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-23-1",
+            "code": "1.23.1",
+            "name": "密封圈",
+            "level": 3,
+            "parentId": "catalog-1-23",
+            "children": [
+              {
+                "id": "catalog-1-23-1-1",
+                "code": "1.23.1.1",
+                "name": "O型密封圈",
+                "level": 4,
+                "parentId": "catalog-1-23-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-23-1-2",
+                "code": "1.23.1.2",
+                "name": "D型密封圈",
+                "level": 4,
+                "parentId": "catalog-1-23-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-1-23-2",
+            "code": "1.23.2",
+            "name": "波导法兰护盖",
+            "level": 3,
+            "parentId": "catalog-1-23",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-23-3",
+            "code": "1.23.3",
+            "name": "升降平台支架",
+            "level": 3,
+            "parentId": "catalog-1-23",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-23-4",
+            "code": "1.23.4",
+            "name": "定位螺钉",
+            "level": 3,
+            "parentId": "catalog-1-23",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-24",
+        "code": "1.24",
+        "name": "微波组件产品（定制）",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-1-25",
+        "code": "1.25",
+        "name": "精密校准件",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-25-1",
+            "code": "1.25.1",
+            "name": "HD-VNACK型网络分析仪精密同轴校准件",
+            "level": 3,
+            "parentId": "catalog-1-25",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-25-2",
+            "code": "1.25.2",
+            "name": "精密波导校准件",
+            "level": 3,
+            "parentId": "catalog-1-25",
+            "children": [
+              {
+                "id": "catalog-1-25-2-1",
+                "code": "1.25.2.1",
+                "name": "精密波导校准件",
+                "level": 4,
+                "parentId": "catalog-1-25-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-1-25-2-2",
+                "code": "1.25.2.2",
+                "name": "双脊波导校准件",
+                "level": 4,
+                "parentId": "catalog-1-25-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-26",
+        "code": "1.26",
+        "name": "标网、矢网测量系统",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-26-1",
+            "code": "1.26.1",
+            "name": "波导扫频测量系统（全波导带宽）",
+            "level": 3,
+            "parentId": "catalog-1-26",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-26-2",
+            "code": "1.26.2",
+            "name": "波导扫频反射计测量系统",
+            "level": 3,
+            "parentId": "catalog-1-26",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-26-3",
+            "code": "1.26.3",
+            "name": "同轴测量系统",
+            "level": 3,
+            "parentId": "catalog-1-26",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-1-27",
+        "code": "1.27",
+        "name": "测试服务",
+        "level": 2,
+        "parentId": "catalog-1",
+        "children": [
+          {
+            "id": "catalog-1-27-1",
+            "code": "1.27.1",
+            "name": "微波测试服务",
+            "level": 3,
+            "parentId": "catalog-1-27",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-1-27-2",
+            "code": "1.27.2",
+            "name": "环境适应性检测服务",
+            "level": 3,
+            "parentId": "catalog-1-27",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      }
+    ],
+    "kind": "category"
+  },
+  {
+    "id": "catalog-2",
+    "code": "2",
+    "name": "微波有源器件",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-2-1",
+        "code": "2.1",
+        "name": "低噪声放大器 LNA",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-1-1",
+            "code": "2.1.1",
+            "name": "低噪声放大器",
+            "level": 3,
+            "parentId": "catalog-2-1",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-2",
+        "code": "2.2",
+        "name": "功率放大器 PA",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-2-1",
+            "code": "2.2.1",
+            "name": "功率放大器",
+            "level": 3,
+            "parentId": "catalog-2-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-2-2",
+            "code": "2.2.2",
+            "name": "交流功率放大器",
+            "level": 3,
+            "parentId": "catalog-2-2",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-3",
+        "code": "2.3",
+        "name": "有源开关",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-3-1",
+            "code": "2.3.1",
+            "name": "高速PIN开关、电子开关",
+            "level": 3,
+            "parentId": "catalog-2-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-3-2",
+            "code": "2.3.2",
+            "name": "射频开关矩阵",
+            "level": 3,
+            "parentId": "catalog-2-3",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-4",
+        "code": "2.4",
+        "name": "有源衰减器",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-4-1",
+            "code": "2.4.1",
+            "name": "数控衰减器",
+            "level": 3,
+            "parentId": "catalog-2-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-4-2",
+            "code": "2.4.2",
+            "name": "压控衰减器",
+            "level": 3,
+            "parentId": "catalog-2-4",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-5",
+        "code": "2.5",
+        "name": "有源移相器",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-5-1",
+            "code": "2.5.1",
+            "name": "数控移相器",
+            "level": 3,
+            "parentId": "catalog-2-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-5-2",
+            "code": "2.5.2",
+            "name": "压控移相器",
+            "level": 3,
+            "parentId": "catalog-2-5",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-6",
+        "code": "2.6",
+        "name": "限幅器",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-2-7",
+        "code": "2.7",
+        "name": "微波信号发生器",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-7-1",
+            "code": "2.7.1",
+            "name": "微波毫米波信号源",
+            "level": 3,
+            "parentId": "catalog-2-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-7-2",
+            "code": "2.7.2",
+            "name": "锁相源",
+            "level": 3,
+            "parentId": "catalog-2-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-7-3",
+            "code": "2.7.3",
+            "name": "压控振荡器",
+            "level": 3,
+            "parentId": "catalog-2-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-7-4",
+            "code": "2.7.4",
+            "name": "体效应振荡器",
+            "level": 3,
+            "parentId": "catalog-2-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-7-5",
+            "code": "2.7.5",
+            "name": "机械可调振荡器",
+            "level": 3,
+            "parentId": "catalog-2-7",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-8",
+        "code": "2.8",
+        "name": "混频器",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-8-1",
+            "code": "2.8.1",
+            "name": "电子混频器",
+            "level": 3,
+            "parentId": "catalog-2-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-8-2",
+            "code": "2.8.2",
+            "name": "波导正交场混频器",
+            "level": 3,
+            "parentId": "catalog-2-8",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-9",
+        "code": "2.9",
+        "name": "上下变频器、变频阵列",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [
+          {
+            "id": "catalog-2-9-1",
+            "code": "2.9.1",
+            "name": "下变频器",
+            "level": 3,
+            "parentId": "catalog-2-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-2-9-2",
+            "code": "2.9.2",
+            "name": "上变频器",
+            "level": 3,
+            "parentId": "catalog-2-9",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-2-10",
+        "code": "2.10",
+        "name": "接收前端、功分网络",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-2-11",
+        "code": "2.11",
+        "name": "数字相控阵T组件、R组件、T/R组件",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-2-12",
+        "code": "2.12",
+        "name": "多卜勒收发前端",
+        "level": 2,
+        "parentId": "catalog-2",
+        "children": [],
+        "kind": "product-list"
+      }
+    ],
+    "kind": "category"
+  },
+  {
+    "id": "catalog-3",
+    "code": "3",
+    "name": "天 线",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-3-1",
+        "code": "3.1",
+        "name": "天线概述",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-1-1",
+            "code": "3.1.1",
+            "name": "天线的类型",
+            "level": 3,
+            "parentId": "catalog-3-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-1-2",
+            "code": "3.1.2",
+            "name": "天线的典型波束形式",
+            "level": 3,
+            "parentId": "catalog-3-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-1-3",
+            "code": "3.1.3",
+            "name": "天线增益和波束宽度估算方法",
+            "level": 3,
+            "parentId": "catalog-3-1",
+            "children": [
+              {
+                "id": "catalog-3-1-3-1",
+                "code": "3.1.3.1",
+                "name": "天线增益估算方法",
+                "level": 4,
+                "parentId": "catalog-3-1-3",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-1-3-2",
+                "code": "3.1.3.2",
+                "name": "天线波束宽度估算方法",
+                "level": 4,
+                "parentId": "catalog-3-1-3",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-1-4",
+            "code": "3.1.4",
+            "name": "HD-系列天线型号命名办法",
+            "level": 3,
+            "parentId": "catalog-3-1",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-2",
+        "code": "3.2",
+        "name": "标准增益天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-2-1",
+            "code": "3.2.1",
+            "name": "SGAH型标准增益喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-2",
+            "children": [
+              {
+                "id": "catalog-3-2-1-1",
+                "code": "3.2.1.1",
+                "name": "波导输入型标准增益喇叭天线",
+                "level": 4,
+                "parentId": "catalog-3-2-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-1-2",
+                "code": "3.2.1.2",
+                "name": "同轴输入一体型标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-1-3",
+                "code": "3.2.1.3",
+                "name": "同轴输入分体型标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-1-4",
+                "code": "3.2.1.4",
+                "name": "标准增益喇叭天线支架",
+                "level": 4,
+                "parentId": "catalog-3-2-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-2-2",
+            "code": "3.2.2",
+            "name": "低频段标准增益天线",
+            "level": 3,
+            "parentId": "catalog-3-2",
+            "children": [
+              {
+                "id": "catalog-3-2-2-1",
+                "code": "3.2.2.1",
+                "name": "HD-SGAD型半波偶极子标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-2-2",
+                "code": "3.2.2.2",
+                "name": "HD-SGAC型折合振子标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-2-3",
+                "code": "3.2.2.3",
+                "name": "HD-SGAR型带反射板二元半波长偶极子标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-2-2-4",
+                "code": "3.2.2.4",
+                "name": "HD-SGABM型三元八木标准增益天线",
+                "level": 4,
+                "parentId": "catalog-3-2-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-2-3",
+            "code": "3.2.3",
+            "name": "圆极化标准增益天线",
+            "level": 3,
+            "parentId": "catalog-3-2",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-3",
+        "code": "3.3",
+        "name": "天线测量探头",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-3-1",
+            "code": "3.3.1",
+            "name": "波导正交馈电型(WOEWP)",
+            "level": 3,
+            "parentId": "catalog-3-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-3-2",
+            "code": "3.3.2",
+            "name": "带吸波材料探头",
+            "level": 3,
+            "parentId": "catalog-3-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-3-3",
+            "code": "3.3.3",
+            "name": "同轴对称振子型(COECP)",
+            "level": 3,
+            "parentId": "catalog-3-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-3-4",
+            "code": "3.3.4",
+            "name": "双极化近场测量探头（WOEWDP）",
+            "level": 3,
+            "parentId": "catalog-3-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-3-5",
+            "code": "3.3.5",
+            "name": "宽带近场测量探头（WBOEWP）",
+            "level": 3,
+            "parentId": "catalog-3-3",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-4",
+        "code": "3.4",
+        "name": "线极化喇叭类天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-4-1",
+            "code": "3.4.1",
+            "name": "角锥喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-2",
+            "code": "3.4.2",
+            "name": "圆锥喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-3",
+            "code": "3.4.3",
+            "name": "低副瓣对角喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-4",
+            "code": "3.4.4",
+            "name": "宽带喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-5",
+            "code": "3.4.5",
+            "name": "双脊喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [
+              {
+                "id": "catalog-3-4-5-1",
+                "code": "3.4.5.1",
+                "name": "倍频程双脊喇叭天线",
+                "level": 4,
+                "parentId": "catalog-3-4-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-4-5-2",
+                "code": "3.4.5.2",
+                "name": "超宽带双脊喇叭天线",
+                "level": 4,
+                "parentId": "catalog-3-4-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-4-5-3",
+                "code": "3.4.5.3",
+                "name": "迷你型超宽频带双脊喇叭天线",
+                "level": 4,
+                "parentId": "catalog-3-4-5",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-4-6",
+            "code": "3.4.6",
+            "name": "双极化喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-7",
+            "code": "3.4.7",
+            "name": "超宽带双极化四脊喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-8",
+            "code": "3.4.8",
+            "name": "边界开放式双极化四脊天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-4-9",
+            "code": "3.4.9",
+            "name": "透镜天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [
+              {
+                "id": "catalog-3-4-9-1",
+                "code": "3.4.9.1",
+                "name": "圆锥喇叭透镜天线",
+                "level": 4,
+                "parentId": "catalog-3-4-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-4-9-2",
+                "code": "3.4.9.2",
+                "name": "角锥喇叭透镜天线",
+                "level": 4,
+                "parentId": "catalog-3-4-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-4-9-3",
+                "code": "3.4.9.3",
+                "name": "点聚焦透镜喇叭天线",
+                "level": 4,
+                "parentId": "catalog-3-4-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-4-9-4",
+                "code": "3.4.9.4",
+                "name": "馈源照射式透镜天线",
+                "level": 4,
+                "parentId": "catalog-3-4-9",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-4-10",
+            "code": "3.4.10",
+            "name": "波纹喇叭与多模喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-4",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-5",
+        "code": "3.5",
+        "name": "圆极化喇叭天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-5-1",
+            "code": "3.5.1",
+            "name": "圆极化喇叭天线（圆锥喇叭型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-2",
+            "code": "3.5.2",
+            "name": "双圆极化喇叭天线（圆锥喇叭型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-3",
+            "code": "3.5.3",
+            "name": "双圆极化喇叭天线（阶梯膜片式方锥喇叭型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-4",
+            "code": "3.5.4",
+            "name": "双圆极化喇叭天线（阶梯膜片式圆锥喇叭型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-5",
+            "code": "3.5.5",
+            "name": "宽带圆极化喇叭天线（双线极化正交合成型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-6",
+            "code": "3.5.6",
+            "name": "宽带双圆极化喇叭天线（双线极化正交合成型）",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-5-7",
+            "code": "3.5.7",
+            "name": "圆极化喇叭天线罩技术",
+            "level": 3,
+            "parentId": "catalog-3-5",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-6",
+        "code": "3.6",
+        "name": "抛物反射面天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-6-1",
+            "code": "3.6.1",
+            "name": "原焦馈电型前馈抛物面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [
+              {
+                "id": "catalog-3-6-1-1",
+                "code": "3.6.1.1",
+                "name": "线极化抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-2",
+                "code": "3.6.1.2",
+                "name": "双线极化抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-3",
+                "code": "3.6.1.3",
+                "name": "圆极化抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-4",
+                "code": "3.6.1.4",
+                "name": "双圆极化抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-5",
+                "code": "3.6.1.5",
+                "name": "超宽带抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-6",
+                "code": "3.6.1.6",
+                "name": "超宽带双极化抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-7",
+                "code": "3.6.1.7",
+                "name": "I型馈源抛物面天线（前馈原理后馈形式）",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-1-8",
+                "code": "3.6.1.8",
+                "name": "C型馈源抛物面天线（前馈原理后馈形式）",
+                "level": 4,
+                "parentId": "catalog-3-6-1",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-6-2",
+            "code": "3.6.2",
+            "name": "后馈抛物面天线（卡赛格伦天线）",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [
+              {
+                "id": "catalog-3-6-2-1",
+                "code": "3.6.2.1",
+                "name": "线极化卡式天线",
+                "level": 4,
+                "parentId": "catalog-3-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-2-2",
+                "code": "3.6.2.2",
+                "name": "双线极化卡式天线",
+                "level": 4,
+                "parentId": "catalog-3-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-2-3",
+                "code": "3.6.2.3",
+                "name": "圆极化卡式天线",
+                "level": 4,
+                "parentId": "catalog-3-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-2-4",
+                "code": "3.6.2.4",
+                "name": "双圆极化卡式天线",
+                "level": 4,
+                "parentId": "catalog-3-6-2",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-2-5",
+                "code": "3.6.2.5",
+                "name": "卡式单脉冲抛物面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-2",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-6-3",
+            "code": "3.6.3",
+            "name": "环焦抛物面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-4",
+            "code": "3.6.4",
+            "name": "栅网抛物反射面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-5",
+            "code": "3.6.5",
+            "name": "多模反射面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-6",
+            "code": "3.6.6",
+            "name": "偏馈反射面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-7",
+            "code": "3.6.7",
+            "name": "赋形波束天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [
+              {
+                "id": "catalog-3-6-7-1",
+                "code": "3.6.7.1",
+                "name": "双弯曲反射面赋形波束天线",
+                "level": 4,
+                "parentId": "catalog-3-6-7",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-7-2",
+                "code": "3.6.7.2",
+                "name": "赋形柱面+弓形馈源赋形波束天线",
+                "level": 4,
+                "parentId": "catalog-3-6-7",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-7-3",
+                "code": "3.6.7.3",
+                "name": "平面阵列赋形波束天线",
+                "level": 4,
+                "parentId": "catalog-3-6-7",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-6-8",
+            "code": "3.6.8",
+            "name": "抛物柱面天线（多馈源、多波段解决方案）",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-9",
+            "code": "3.6.9",
+            "name": "气象雷达系列抛物面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-6-10",
+            "code": "3.6.10",
+            "name": "其他特殊抛物面天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [
+              {
+                "id": "catalog-3-6-10-1",
+                "code": "3.6.10.1",
+                "name": "S/X/Ka三频段反射面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-10",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-10-2",
+                "code": "3.6.10.2",
+                "name": "极化旋转单脉冲卡塞格伦天线",
+                "level": 4,
+                "parentId": "catalog-3-6-10",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-10-3",
+                "code": "3.6.10.3",
+                "name": "双极化切割抛物面",
+                "level": 4,
+                "parentId": "catalog-3-6-10",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-6-11",
+            "code": "3.6.11",
+            "name": "扇形波束天线",
+            "level": 3,
+            "parentId": "catalog-3-6",
+            "children": [
+              {
+                "id": "catalog-3-6-11-1",
+                "code": "3.6.11.1",
+                "name": "毫米波扇形波束盒式天线",
+                "level": 4,
+                "parentId": "catalog-3-6-11",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-6-11-2",
+                "code": "3.6.11.2",
+                "name": "扇形波束偏置反射面天线",
+                "level": 4,
+                "parentId": "catalog-3-6-11",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-7",
+        "code": "3.7",
+        "name": "螺旋天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-7-1",
+            "code": "3.7.1",
+            "name": "平面螺旋天线",
+            "level": 3,
+            "parentId": "catalog-3-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-7-2",
+            "code": "3.7.2",
+            "name": "四臂螺旋天线",
+            "level": 3,
+            "parentId": "catalog-3-7",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-7-3",
+            "code": "3.7.3",
+            "name": "对数螺旋天线",
+            "level": 3,
+            "parentId": "catalog-3-7",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-8",
+        "code": "3.8",
+        "name": "全向天线、半向天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-8-1",
+            "code": "3.8.1",
+            "name": "单极子全向天线",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-8-2",
+            "code": "3.8.2",
+            "name": "有源单极子全向天线(小增益全向天线+LNA)",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-8-3",
+            "code": "3.8.3",
+            "name": "超宽带全向天线（单锥、伞锥、笼式、鞭状）",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-8-4",
+            "code": "3.8.4",
+            "name": "F型天线（小增益全向天线）",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-8-5",
+            "code": "3.8.5",
+            "name": "高增益全向/半向天线",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [
+              {
+                "id": "catalog-3-8-5-1",
+                "code": "3.8.5.1",
+                "name": "垂直极化全向天线",
+                "level": 4,
+                "parentId": "catalog-3-8-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-8-5-2",
+                "code": "3.8.5.2",
+                "name": "水平极化全向天线",
+                "level": 4,
+                "parentId": "catalog-3-8-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-8-5-3",
+                "code": "3.8.5.3",
+                "name": "垂直极化半向天线",
+                "level": 4,
+                "parentId": "catalog-3-8-5",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-8-5-4",
+                "code": "3.8.5.4",
+                "name": "水平极化半向天线",
+                "level": 4,
+                "parentId": "catalog-3-8-5",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-8-6",
+            "code": "3.8.6",
+            "name": "HD-系列MMDS发射天线",
+            "level": 3,
+            "parentId": "catalog-3-8",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-9",
+        "code": "3.9",
+        "name": "阵子天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-9-1",
+            "code": "3.9.1",
+            "name": "可调对称振子天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-2",
+            "code": "3.9.2",
+            "name": "八木天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-3",
+            "code": "3.9.3",
+            "name": "双极化八木天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-4",
+            "code": "3.9.4",
+            "name": "对数周期天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-5",
+            "code": "3.9.5",
+            "name": "微带对数周期天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-6",
+            "code": "3.9.6",
+            "name": "双极化对数周期天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-7",
+            "code": "3.9.7",
+            "name": "对数周期阵列天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-8",
+            "code": "3.9.8",
+            "name": "圆振子引向阵列天线（线极化）",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-9-9",
+            "code": "3.9.9",
+            "name": "超宽带振子天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [
+              {
+                "id": "catalog-3-9-9-1",
+                "code": "3.9.9.1",
+                "name": "F=1.1-1.7GHz微带振子天线",
+                "level": 4,
+                "parentId": "catalog-3-9-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-9-9-2",
+                "code": "3.9.9.2",
+                "name": "F=1-2GHz加载CSRR的双极化振子天线单元",
+                "level": 4,
+                "parentId": "catalog-3-9-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-9-9-3",
+                "code": "3.9.9.3",
+                "name": "超宽带引向器的天线",
+                "level": 4,
+                "parentId": "catalog-3-9-9",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-9-9-4",
+                "code": "3.9.9.4",
+                "name": "等波束宽带单极化天线馈源",
+                "level": 4,
+                "parentId": "catalog-3-9-9",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-9-10",
+            "code": "3.9.10",
+            "name": "VVD天线",
+            "level": 3,
+            "parentId": "catalog-3-9",
+            "children": [
+              {
+                "id": "catalog-3-9-10-1",
+                "code": "3.9.10.1",
+                "name": "微带VVD天线",
+                "level": 4,
+                "parentId": "catalog-3-9-10",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-9-10-2",
+                "code": "3.9.10.2",
+                "name": "金属VVD天线",
+                "level": 4,
+                "parentId": "catalog-3-9-10",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-10",
+        "code": "3.10",
+        "name": "双锥天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-3-11",
+        "code": "3.11",
+        "name": "环形天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-11-1",
+            "code": "3.11.1",
+            "name": "有源环形天线",
+            "level": 3,
+            "parentId": "catalog-3-11",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-11-2",
+            "code": "3.11.2",
+            "name": "无源环天线",
+            "level": 3,
+            "parentId": "catalog-3-11",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-12",
+        "code": "3.12",
+        "name": "EMC、EMI测量天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-12-1",
+            "code": "3.12.1",
+            "name": "EMC测量喇叭天线",
+            "level": 3,
+            "parentId": "catalog-3-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-12-2",
+            "code": "3.12.2",
+            "name": "汽车EMC测量天线",
+            "level": 3,
+            "parentId": "catalog-3-12",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-12-3",
+            "code": "3.12.3",
+            "name": "EMC测量天线组件",
+            "level": 3,
+            "parentId": "catalog-3-12",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-13",
+        "code": "3.13",
+        "name": "微带天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-13-1",
+            "code": "3.13.1",
+            "name": "单贴片微带天线",
+            "level": 3,
+            "parentId": "catalog-3-13",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-13-2",
+            "code": "3.13.2",
+            "name": "四贴片微带天线",
+            "level": 3,
+            "parentId": "catalog-3-13",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-13-3",
+            "code": "3.13.3",
+            "name": "4X4微带阵列天线",
+            "level": 3,
+            "parentId": "catalog-3-13",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-13-4",
+            "code": "3.13.4",
+            "name": "高增益微带阵列天线",
+            "level": 3,
+            "parentId": "catalog-3-13",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-14",
+        "code": "3.14",
+        "name": "阵列天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-3-15",
+        "code": "3.15",
+        "name": "相控阵天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-15-1",
+            "code": "3.15.1",
+            "name": "高集成瓦片式相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-2",
+            "code": "3.15.2",
+            "name": "Ka波段二维单脉冲相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-3",
+            "code": "3.15.3",
+            "name": "超宽带相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-4",
+            "code": "3.15.4",
+            "name": "C波段二维相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-5",
+            "code": "3.15.5",
+            "name": "X波段二维相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-6",
+            "code": "3.15.6",
+            "name": "X波段一维相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-15-7",
+            "code": "3.15.7",
+            "name": "X波段单脉冲相控阵天线",
+            "level": 3,
+            "parentId": "catalog-3-15",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-16",
+        "code": "3.16",
+        "name": "特殊应用天线",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-16-1",
+            "code": "3.16.1",
+            "name": "介质天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-16-2",
+            "code": "3.16.2",
+            "name": "机载定向天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-16-3",
+            "code": "3.16.3",
+            "name": "机载全向天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-16-4",
+            "code": "3.16.4",
+            "name": "背射天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-16-5",
+            "code": "3.16.5",
+            "name": "半球天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-16-6",
+            "code": "3.16.6",
+            "name": "测向天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [
+              {
+                "id": "catalog-3-16-6-1",
+                "code": "3.16.6.1",
+                "name": "超宽带圆阵测向天线",
+                "level": 4,
+                "parentId": "catalog-3-16-6",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-16-6-2",
+                "code": "3.16.6.2",
+                "name": "雷达监测测向天线",
+                "level": 4,
+                "parentId": "catalog-3-16-6",
+                "children": [],
+                "kind": "product-list"
+              },
+              {
+                "id": "catalog-3-16-6-3",
+                "code": "3.16.6.3",
+                "name": "侦查测向天线组件",
+                "level": 4,
+                "parentId": "catalog-3-16-6",
+                "children": [],
+                "kind": "product-list"
+              }
+            ],
+            "kind": "category"
+          },
+          {
+            "id": "catalog-3-16-7",
+            "code": "3.16.7",
+            "name": "特殊应用定制天线",
+            "level": 3,
+            "parentId": "catalog-3-16",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-17",
+        "code": "3.17",
+        "name": "微波测试暗箱",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-3-18",
+        "code": "3.18",
+        "name": "角反射器",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [],
+        "kind": "product-list"
+      },
+      {
+        "id": "catalog-3-19",
+        "code": "3.19",
+        "name": "天线测试系统",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [
+          {
+            "id": "catalog-3-19-1",
+            "code": "3.19.1",
+            "name": "天线远场（幅度、相位）测量系统",
+            "level": 3,
+            "parentId": "catalog-3-19",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-19-2",
+            "code": "3.19.2",
+            "name": "天线远场自动化测试系统软件",
+            "level": 3,
+            "parentId": "catalog-3-19",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-19-3",
+            "code": "3.19.3",
+            "name": "毫米波紧缩场天线测量系统",
+            "level": 3,
+            "parentId": "catalog-3-19",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-3-19-4",
+            "code": "3.19.4",
+            "name": "自由空间法材料测试系统",
+            "level": 3,
+            "parentId": "catalog-3-19",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-3-20",
+        "code": "3.20",
+        "name": "天线测试服务",
+        "level": 2,
+        "parentId": "catalog-3",
+        "children": [],
+        "kind": "product-list"
+      }
+    ],
+    "kind": "category"
+  },
+  {
+    "id": "catalog-4",
+    "code": "4",
+    "name": "天线转台与伺服控制",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-4-1",
+        "code": "4.1",
+        "name": "常规系列产品",
+        "level": 2,
+        "parentId": "catalog-4",
+        "children": [
+          {
+            "id": "catalog-4-1-1",
+            "code": "4.1.1",
+            "name": "一维方位转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-2",
+            "code": "4.1.2",
+            "name": "一维俯仰转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-3",
+            "code": "4.1.3",
+            "name": "一维极化转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-4",
+            "code": "4.1.4",
+            "name": "一维扫描架",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-5",
+            "code": "4.1.5",
+            "name": "二维方位-俯仰转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-6",
+            "code": "4.1.6",
+            "name": "二维折叠方位-俯仰转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-7",
+            "code": "4.1.7",
+            "name": "二维俯仰-方位转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-8",
+            "code": "4.1.8",
+            "name": "二维XY座驾转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-9",
+            "code": "4.1.9",
+            "name": "二维扫描架",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-1-10",
+            "code": "4.1.10",
+            "name": "三维方位-俯仰-极化转台",
+            "level": 3,
+            "parentId": "catalog-4-1",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-4-2",
+        "code": "4.2",
+        "name": "特殊定制产品",
+        "level": 2,
+        "parentId": "catalog-4",
+        "children": [
+          {
+            "id": "catalog-4-2-1",
+            "code": "4.2.1",
+            "name": "自稳定跟踪类转台",
+            "level": 3,
+            "parentId": "catalog-4-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-2-2",
+            "code": "4.2.2",
+            "name": "光电一体类转台",
+            "level": 3,
+            "parentId": "catalog-4-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-2-3",
+            "code": "4.2.3",
+            "name": "多天线测试类转台",
+            "level": 3,
+            "parentId": "catalog-4-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-2-4",
+            "code": "4.2.4",
+            "name": "多自由度伺服运动平台",
+            "level": 3,
+            "parentId": "catalog-4-2",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-2-5",
+            "code": "4.2.5",
+            "name": "特殊应用转台",
+            "level": 3,
+            "parentId": "catalog-4-2",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-4-3",
+        "code": "4.3",
+        "name": "转台扩展配置介绍",
+        "level": 2,
+        "parentId": "catalog-4",
+        "children": [
+          {
+            "id": "catalog-4-3-1",
+            "code": "4.3.1",
+            "name": "转台滑环通道的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-2",
+            "code": "4.3.2",
+            "name": "转台定位定向设备的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-3",
+            "code": "4.3.3",
+            "name": "转台姿态传感器的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-4",
+            "code": "4.3.4",
+            "name": "转台控制手柄的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-5",
+            "code": "4.3.5",
+            "name": "转台移动调平底座的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-6",
+            "code": "4.3.6",
+            "name": "转台三脚架的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-7",
+            "code": "4.3.7",
+            "name": "转台升降倒伏机构的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-3-8",
+            "code": "4.3.8",
+            "name": "转台环控设备的应用",
+            "level": 3,
+            "parentId": "catalog-4-3",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-4-4",
+        "code": "4.4",
+        "name": "伺服转台控制及控制器",
+        "level": 2,
+        "parentId": "catalog-4",
+        "children": [
+          {
+            "id": "catalog-4-4-1",
+            "code": "4.4.1",
+            "name": "伺服转台控制",
+            "level": 3,
+            "parentId": "catalog-4-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-4-2",
+            "code": "4.4.2",
+            "name": "伺服控制器",
+            "level": 3,
+            "parentId": "catalog-4-4",
+            "children": [],
+            "kind": "product-list"
+          },
+          {
+            "id": "catalog-4-4-3",
+            "code": "4.4.3",
+            "name": "伺服控制上位机",
+            "level": 3,
+            "parentId": "catalog-4-4",
+            "children": [],
+            "kind": "product-list"
+          }
+        ],
+        "kind": "category"
+      }
+    ],
+    "kind": "category"
+  },
+  {
+    "id": "catalog-5",
+    "code": "5",
+    "name": "分系统集成产品",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-5-1",
+        "code": "5.1",
+        "name": "卫星通信天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-1-1",
+            "code": "5.1.1",
+            "name": "L、X波段双频便携式卫星通信天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-2",
+            "code": "5.1.2",
+            "name": "X波段车载静中通天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-3",
+            "code": "5.1.3",
+            "name": "Ku波段静中通天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-4",
+            "code": "5.1.4",
+            "name": "X/Ku双波段车载静中通天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-5",
+            "code": "5.1.5",
+            "name": "Ku波段车载静中通天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-6",
+            "code": "5.1.6",
+            "name": "S波段车载多模反射面天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-7",
+            "code": "5.1.7",
+            "name": "Ku波段中高度动中通天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-1-8",
+            "code": "5.1.8",
+            "name": "车载三频可折叠天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-1",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-2",
+        "code": "5.2",
+        "name": "气象雷达天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-2-1",
+            "code": "5.2.1",
+            "name": "W波段0.6米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-2",
+            "code": "5.2.2",
+            "name": "X波段1.0米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-3",
+            "code": "5.2.3",
+            "name": "X波段1.8米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-4",
+            "code": "5.2.4",
+            "name": "Ka波段1.8米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-5",
+            "code": "5.2.5",
+            "name": "X波段2.4米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-6",
+            "code": "5.2.6",
+            "name": "X波段4.5米双线极化气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-2-7",
+            "code": "5.2.7",
+            "name": "X-Ka双波段双线极化双天线气象雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-2",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-3",
+        "code": "5.3",
+        "name": "大功率辐射系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-3-1",
+            "code": "5.3.1",
+            "name": "L波段大功率辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-2",
+            "code": "5.3.2",
+            "name": "S波段大功率辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-3",
+            "code": "5.3.3",
+            "name": "C波段大功率辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-4",
+            "code": "5.3.4",
+            "name": "X波段大功率辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-5",
+            "code": "5.3.5",
+            "name": "Ku波段大功率辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-6",
+            "code": "5.3.6",
+            "name": "机动式超宽带大功率微波辐射系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-3-7",
+            "code": "5.3.7",
+            "name": "EMC大功率天馈伺车集成系统",
+            "level": 3,
+            "parentId": "catalog-5-3",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-4",
+        "code": "5.4",
+        "name": "侦察与测向天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-4-1",
+            "code": "5.4.1",
+            "name": "搜索测向天馈系统",
+            "level": 3,
+            "parentId": "catalog-5-4",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-4-2",
+            "code": "5.4.2",
+            "name": "宽带斜极化测向系统",
+            "level": 3,
+            "parentId": "catalog-5-4",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-4-3",
+            "code": "5.4.3",
+            "name": "超宽带测向天馈伺分系统",
+            "level": 3,
+            "parentId": "catalog-5-4",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-4-4",
+            "code": "5.4.4",
+            "name": "X-Ku宽带测向天馈伺分系统",
+            "level": 3,
+            "parentId": "catalog-5-4",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-4-5",
+            "code": "5.4.5",
+            "name": "毫米波圆极化扇形波束天馈伺分系统",
+            "level": 3,
+            "parentId": "catalog-5-4",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-5",
+        "code": "5.5",
+        "name": "FOD天馈伺系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [],
+        "kind": "rich-text"
+      },
+      {
+        "id": "catalog-5-6",
+        "code": "5.6",
+        "name": "SAR雷达前端系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [],
+        "kind": "rich-text"
+      },
+      {
+        "id": "catalog-5-7",
+        "code": "5.7",
+        "name": "测速、测距雷达系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-7-1",
+            "code": "5.7.1",
+            "name": "HD-375SR型毫米波铁路驼峰测速雷达",
+            "level": 3,
+            "parentId": "catalog-5-7",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-7-2",
+            "code": "5.7.2",
+            "name": "HD-320WBLSY型流速仪",
+            "level": 3,
+            "parentId": "catalog-5-7",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-7-3",
+            "code": "5.7.3",
+            "name": "HD-240RWM系列雷达测距仪",
+            "level": 3,
+            "parentId": "catalog-5-7",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-8",
+        "code": "5.8",
+        "name": "RCS测量天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [],
+        "kind": "rich-text"
+      },
+      {
+        "id": "catalog-5-9",
+        "code": "5.9",
+        "name": "单脉冲雷达天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-9-1",
+            "code": "5.9.1",
+            "name": "S波段单脉冲雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-9",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-9-2",
+            "code": "5.9.2",
+            "name": "S波段单脉冲雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-9",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-9-3",
+            "code": "5.9.3",
+            "name": "X波段单脉冲平板天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-9",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-9-4",
+            "code": "5.9.4",
+            "name": "单脉冲数据链通信天馈伺分系统",
+            "level": 3,
+            "parentId": "catalog-5-9",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-9-5",
+            "code": "5.9.5",
+            "name": "Ka波段二维单脉冲相控阵雷达系统",
+            "level": 3,
+            "parentId": "catalog-5-9",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-10",
+        "code": "5.10",
+        "name": "其他天馈伺分系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-10-1",
+            "code": "5.10.1",
+            "name": "低慢小探测雷达天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-10",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-10-2",
+            "code": "5.10.2",
+            "name": "圆偏振微波反应装置系统",
+            "level": 3,
+            "parentId": "catalog-5-10",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-10-3",
+            "code": "5.10.3",
+            "name": "干扰模拟器天线及伺服系统",
+            "level": 3,
+            "parentId": "catalog-5-10",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-10-4",
+            "code": "5.10.4",
+            "name": "220GHz双偏置反射面及转台系统",
+            "level": 3,
+            "parentId": "catalog-5-10",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-11",
+        "code": "5.11",
+        "name": "微波测试与校准系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [
+          {
+            "id": "catalog-5-11-1",
+            "code": "5.11.1",
+            "name": "模拟测试喇叭系统",
+            "level": 3,
+            "parentId": "catalog-5-11",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-11-2",
+            "code": "5.11.2",
+            "name": "毫米波烟雾测试仪",
+            "level": 3,
+            "parentId": "catalog-5-11",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-11-3",
+            "code": "5.11.3",
+            "name": "圆极化雷达标校天馈伺系统",
+            "level": 3,
+            "parentId": "catalog-5-11",
+            "children": [],
+            "kind": "rich-text"
+          },
+          {
+            "id": "catalog-5-11-4",
+            "code": "5.11.4",
+            "name": "HD-XCⅡ型雷达光电轴校准仪",
+            "level": 3,
+            "parentId": "catalog-5-11",
+            "children": [],
+            "kind": "rich-text"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-5-12",
+        "code": "5.12",
+        "name": "宽带合成MMDS系统",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [],
+        "kind": "rich-text"
+      },
+      {
+        "id": "catalog-5-13",
+        "code": "5.13",
+        "name": "方舱载车分系统集成",
+        "level": 2,
+        "parentId": "catalog-5",
+        "children": [],
+        "kind": "rich-text"
+      }
+    ],
+    "kind": "category"
+  },
+  {
+    "id": "catalog-6",
+    "code": "6",
+    "name": "微波设计参考资料",
+    "level": 1,
+    "parentId": null,
+    "children": [
+      {
+        "id": "catalog-6-1",
+        "code": "6.1",
+        "name": "常用微波波段的划分",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-2",
+        "code": "6.2",
+        "name": "频带、中心频率、绝对带宽、相对带宽的一般性定义",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-3",
+        "code": "6.3",
+        "name": "波导管国家标准（与EIA标准兼容）",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [
+          {
+            "id": "catalog-6-3-1",
+            "code": "6.3.1",
+            "name": "标准矩形波导管数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-3-2",
+            "code": "6.3.2",
+            "name": "标准扁矩形波导管数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-3-3",
+            "code": "6.3.3",
+            "name": "标准方形波导管数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-3-4",
+            "code": "6.3.4",
+            "name": "标准矩形单脊波导管数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-3-5",
+            "code": "6.3.5",
+            "name": "标准矩形双脊波导管数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-3-6",
+            "code": "6.3.6",
+            "name": "普通圆形波导数据",
+            "level": 3,
+            "parentId": "catalog-6-3",
+            "children": [],
+            "kind": "reference"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-6-4",
+        "code": "6.4",
+        "name": "HD法兰盘企业标准",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [
+          {
+            "id": "catalog-6-4-1",
+            "code": "6.4.1",
+            "name": "普通矩形波导A型法兰盘",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-4-2",
+            "code": "6.4.2",
+            "name": "普通矩形波导B型法兰盘的尺寸",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-4-3",
+            "code": "6.4.3",
+            "name": "普通矩形波导D型法兰盘尺寸",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-4-4",
+            "code": "6.4.4",
+            "name": "普通矩形波导LD型法兰盘的尺寸",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-4-5",
+            "code": "6.4.5",
+            "name": "常用双脊波导法兰盘尺寸",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          },
+          {
+            "id": "catalog-6-4-6",
+            "code": "6.4.6",
+            "name": "普通矩形波导FUGP型法兰盘",
+            "level": 3,
+            "parentId": "catalog-6-4",
+            "children": [],
+            "kind": "reference"
+          }
+        ],
+        "kind": "category"
+      },
+      {
+        "id": "catalog-6-5",
+        "code": "6.5",
+        "name": "常用同轴连接器标准",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-6",
+        "code": "6.6",
+        "name": "噪声温度K和噪声系数dB换算表",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-7",
+        "code": "6.7",
+        "name": "驻波与回波损耗换算表",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-8",
+        "code": "6.8",
+        "name": "衰减网络表",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      },
+      {
+        "id": "catalog-6-9",
+        "code": "6.9",
+        "name": "毫米波的大气衰减、吸收与雨衰",
+        "level": 2,
+        "parentId": "catalog-6",
+        "children": [],
+        "kind": "reference"
+      }
+    ],
+    "kind": "category"
+  }
+]
