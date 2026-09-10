@@ -111,6 +111,9 @@ export function SiteHeader() {
 <a href="#about-profile" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"公司介绍"}</a>
 <a href="#about-history" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"发展历程"}</a>
 <a href="#about-honor" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"资质荣誉"}</a>
+<a href="#about-equipment" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"实验设备"}</a>
+<a href="#about-activities" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"公司活动"}</a>
+<a href="#about-media" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"媒体宣传"}</a>
 <a href="#about-brand" className="brand-nav-link block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"企业品牌"}</a>
 <a href="#about-culture" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"企业文化"}</a>
 <a href="#about-hr" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"人力资源"}</a>
@@ -224,6 +227,9 @@ export function SiteHeader() {
 <a href="#about-profile" className="py-2">{"公司介绍"}</a>
 <a href="#about-history" className="py-2">{"发展历程"}</a>
 <a href="#about-honor" className="py-2">{"资质荣誉"}</a>
+<a href="#about-equipment" className="py-2">{"实验设备"}</a>
+<a href="#about-activities" className="py-2">{"公司活动"}</a>
+<a href="#about-media" className="py-2">{"媒体宣传"}</a>
 <a href="#about-brand" className="brand-nav-link py-2">{"企业品牌"}</a>
 <a href="#about-culture" className="py-2">{"企业文化"}</a>
 <a href="#about-hr" className="py-2">{"人力资源"}</a>

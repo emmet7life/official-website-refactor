@@ -35,6 +35,9 @@ const tabs = [
   { label: '公司介绍', href: '#about-profile', active: true },
   { label: '发展历程', href: '#about-history', active: false },
   { label: '资质荣誉', href: '#about-honor', active: false },
+  { label: '实验设备', href: '#about-equipment', active: false },
+  { label: '公司活动', href: '#about-activities', active: false },
+  { label: '媒体宣传', href: '#about-media', active: false },
   { label: '企业文化', href: '#about-culture', active: false },
   { label: '人力资源', href: '#about-hr', active: false },
 ] as const;

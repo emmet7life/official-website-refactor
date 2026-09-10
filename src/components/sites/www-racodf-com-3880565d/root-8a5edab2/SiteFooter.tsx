@@ -90,6 +90,9 @@ export function SiteFooter() {
 <li><a href="https://www.racodf.com/#about-profile" className="hover:text-primary-mid transition-colors">{"公司介绍"}</a></li>
 <li><a href="https://www.racodf.com/#about-history" className="hover:text-primary-mid transition-colors">{"发展历程"}</a></li>
 <li><a href="https://www.racodf.com/#about-honor" className="hover:text-primary-mid transition-colors">{"资质荣誉"}</a></li>
+<li><a href="#about-equipment" className="hover:text-primary-mid transition-colors">{"实验设备"}</a></li>
+<li><a href="#about-activities" className="hover:text-primary-mid transition-colors">{"公司活动"}</a></li>
+<li><a href="#about-media" className="hover:text-primary-mid transition-colors">{"媒体宣传"}</a></li>
 <li className="brand-nav-link"><a href="https://www.racodf.com/#about-brand" className="hover:text-primary-mid transition-colors">{"企业品牌"}</a></li>
 <li><a href="https://www.racodf.com/#about-culture" className="hover:text-primary-mid transition-colors">{"企业文化"}</a></li>
 <li><a href="https://www.racodf.com/#about-hr" className="hover:text-primary-mid transition-colors">{"人力资源"}</a></li>

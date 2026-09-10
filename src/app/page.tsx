@@ -12,6 +12,9 @@ import { HomepageInteractions } from "@/components/sites/www-racodf-com-3880565d
 import { AboutProfileSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-profile/AboutProfileSection";
 import { AboutHistorySection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-history/AboutHistorySection";
 import { AboutHonorSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-honor/AboutHonorSection";
+import { AboutEquipmentSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-equipment/AboutEquipmentSection";
+import { AboutActivitiesSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-activities/AboutActivitiesSection";
+import { AboutMediaSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-media/AboutMediaSection";
 import { AboutCultureSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-culture/AboutCultureSection";
 import { AboutHrSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-about-hr/AboutHrSection";
 import { ServiceSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service/ServiceSection";
@@ -40,6 +43,9 @@ export default function Home() {
       <AboutProfileSection>
         <AboutHistorySection />
         <AboutHonorSection />
+        <AboutEquipmentSection />
+        <AboutActivitiesSection />
+        <AboutMediaSection />
         <AboutCultureSection />
         <AboutHrSection />
       </AboutProfileSection>
