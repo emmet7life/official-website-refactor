@@ -49,7 +49,7 @@ export function HomepageInteractions() {
       const solutionTarget = id.startsWith("sol-");
       currentView = isolated && ["business", "industry"].includes(id) ? id : id.startsWith("about") ? "about" : id.startsWith("service") ? "service" : id === "news" ? "news" : id.startsWith("strength") ? "strength" : solutionTarget ? "solution" : catalogTarget ? "catalog" : "home";
       document.querySelectorAll<HTMLElement>("main > section").forEach((section) => {
-        const homeSections = new Set(["hero", "stats", "business", "industry", "home-profile", "advantages", "contact"]);
+        const homeSections = new Set(["hero", "stats", "business", "industry", "home-profile", "advantages", "catalog", "contact"]);
         const visible = currentView === "home" ? homeSections.has(section.id) : currentView === "about" ? section.id === "about" : currentView === "service" ? section.id === "service" : currentView === "news" ? section.id === "news" : currentView === "strength" ? section.id === "strength" : currentView === "catalog" ? section.id === "catalog" : currentView === "solution" ? section.id === "solution" : section.id === currentView;
         section.classList.toggle("view-hidden", !visible);
       });
