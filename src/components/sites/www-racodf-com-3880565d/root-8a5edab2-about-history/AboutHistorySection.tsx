@@ -33,8 +33,8 @@ export function AboutHistorySection() {
                 </span>
                 <div className={isLeft ? 'lg:col-start-1 lg:mr-8 lg:text-right' : 'lg:col-start-3 lg:ml-8'}>
                   <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary-mid hover-lift hover:shadow-card-hover lg:flex lg:items-center lg:gap-6 lg:p-7">
-                    <img src={`/sites/www-racodf-com-3880565d/shared/history/${image}`} alt={`${year}年恒达微波发展历程`} className="mb-5 h-32 w-full rounded-lg object-cover lg:mb-0 lg:h-24 lg:w-36 lg:shrink-0" />
-                    <div className="min-w-0 flex-1">
+                    <img src={`/sites/www-racodf-com-3880565d/shared/history/${image}`} alt={`${year}年恒达微波发展历程`} className={`mb-5 h-32 w-full rounded-lg object-contain lg:mb-0 lg:h-auto lg:w-36 lg:shrink-0 ${isLeft ? 'lg:order-1' : 'lg:order-2'}`} />
+                    <div className={`min-w-0 flex-1 ${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
                       <div className="bg-gradient-to-r from-primary to-primary-mid bg-clip-text text-3xl font-bold leading-none text-transparent lg:text-4xl">{year}</div>
                       <div className="faq-answer mt-3 text-sm leading-relaxed text-gray-600"><p>{description}</p></div>
                     </div>
