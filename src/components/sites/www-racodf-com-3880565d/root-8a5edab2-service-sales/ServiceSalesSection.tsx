@@ -40,9 +40,9 @@ export function ServiceSalesSection() {
         <h4 className="text-lg font-medium text-gray-900">西安总部</h4>
         <div className="mt-6 space-y-4">
           <ContactRow icon={<LocationIcon />}>中国西安市航天基地飞天路485号，邮编：710100</ContactRow>
-          <ContactRow icon={<PhoneIcon />}>电话：029-85266226　传真：029-85248049</ContactRow>
-          <ContactRow icon={<PhoneIcon />}>手机：13379273962</ContactRow>
-          <ContactRow icon={<MailIcon />}>marketing@hdmicrowave.com</ContactRow>
+          <ContactRow icon={<PhoneIcon />}>电话：<a className="hover:text-primary" href="tel:02985266226">029-85266226</a>　传真：029-85248049</ContactRow>
+          <ContactRow icon={<PhoneIcon />}>手机：<a className="hover:text-primary" href="tel:13379273962">13379273962</a></ContactRow>
+          <ContactRow icon={<MailIcon />}><a className="hover:text-primary" href="mailto:marketing@hdmicrowave.com">marketing@hdmicrowave.com</a></ContactRow>
         </div>
       </article>
       {[
@@ -57,9 +57,9 @@ export function ServiceSalesSection() {
         <h4 className="text-lg font-medium text-gray-900">{title}</h4>
         <p className="mt-2 text-sm leading-relaxed text-gray-500">{scope}</p>
         <div className="mt-6 space-y-4">
-          <ContactRow icon={<PhoneIcon />}>手机：{mobile}</ContactRow>
-          {phone ? <ContactRow icon={<PhoneIcon />}>电话：{phone}</ContactRow> : null}
-          {email ? <ContactRow icon={<MailIcon />}>{email}</ContactRow> : null}
+          <ContactRow icon={<PhoneIcon />}>手机：<a className="hover:text-primary" href={`tel:${mobile.replace(/[^+\d]/g, '')}`}>{mobile}</a></ContactRow>
+          {phone ? <ContactRow icon={<PhoneIcon />}>电话：<a className="hover:text-primary" href={`tel:${phone.replace(/[^+\d]/g, '')}`}>{phone}</a></ContactRow> : null}
+          {email ? <ContactRow icon={<MailIcon />}><a className="hover:text-primary" href={`mailto:${email}`}>{email}</a></ContactRow> : null}
         </div>
       </article>)}
     </div>
