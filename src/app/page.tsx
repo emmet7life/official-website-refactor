@@ -17,6 +17,8 @@ import { AboutHrSection } from "@/components/sites/www-racodf-com-3880565d/root-
 import { ServiceSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service/ServiceSection";
 import { ServiceDownloadsSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-downloads/ServiceDownloadsSection";
 import { ServiceSalesSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-sales/ServiceSalesSection";
+import { ServiceQualitySection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-quality/ServiceQualitySection";
+import { ServiceCommitmentSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-commitment/ServiceCommitmentSection";
 import { NewsSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-news/NewsSection";
 import { StrengthSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-strength/StrengthSection";
 import { StrengthRdSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-strength-rd-block/StrengthRdSection";
@@ -44,6 +46,8 @@ export default function Home() {
       <ServiceSection>
         <ServiceDownloadsSection />
         <ServiceSalesSection />
+        <ServiceQualitySection />
+        <ServiceCommitmentSection />
       </ServiceSection>
       <NewsSection />
       <StrengthSection>

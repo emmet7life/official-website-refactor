@@ -85,6 +85,8 @@ export function SiteHeader() {
 <div className="nav-dropdown absolute left-1/2 -translate-x-1/2 top-full w-36 bg-white rounded-lg shadow-dropdown opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 py-2">
 <a href="#service-downloads" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"资料下载"}</a>
 <a href="#service-sales" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"销售网络"}</a>
+<a href="#service-quality" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"质量控制"}</a>
+<a href="#service-commitment" className="block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"服务承诺"}</a>
 <a href="#service-faq" className="faq-nav-link block px-5 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors">{"常见问题"}</a>
 </div>
 </div>
@@ -193,6 +195,8 @@ export function SiteHeader() {
 <div className="pb-3 pl-3 flex flex-col gap-1 text-gray-600">
 <a href="#service-downloads" className="py-2">{"资料下载"}</a>
 <a href="#service-sales" className="py-2">{"销售网络"}</a>
+<a href="#service-quality" className="py-2">{"质量控制"}</a>
+<a href="#service-commitment" className="py-2">{"服务承诺"}</a>
 <a href="#service-faq" className="faq-nav-link py-2">{"常见问题"}</a>
 </div>
 </details>
