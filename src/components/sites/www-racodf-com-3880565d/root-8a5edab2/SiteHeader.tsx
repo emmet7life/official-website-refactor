@@ -7,15 +7,10 @@ export function SiteHeader() {
 <div className="flex items-center justify-between h-16 lg:h-[72px]">
 
 <div className="flex items-center shrink-0">
-<a href="#hero" className="flex items-center" aria-label="雷科防务 首页">
-<img src="/sites/www-racodf-com-3880565d/root-8a5edab2/6661d259-logo-racodf-white.png" alt="雷科防务" className="logo-white h-8 lg:h-9 w-auto" />
-<img src="/sites/www-racodf-com-3880565d/root-8a5edab2/42d43596-logo-racodf.png" alt="雷科防务" className="logo-color h-8 lg:h-9 w-auto" />
+<a href="#hero" className="flex items-center" aria-label="恒达微波 首页">
+<img src="/sites/www-racodf-com-3880565d/shared/home/logo.png" alt="恒达微波" className="logo-white h-10 lg:h-11 w-auto" />
+<img src="/sites/www-racodf-com-3880565d/shared/home/logo.png" alt="恒达微波" className="logo-color h-10 lg:h-11 w-auto" />
 </a>
-<span className="block w-px h-7 lg:h-8 bg-current opacity-30 mx-3"></span>
-<div className="flex flex-col justify-center items-stretch h-8 lg:h-9 leading-none">
-<span className="text-[11px] lg:text-xs opacity-70 extracted-26e45015bd"><span>{"股"}</span><span>{"票"}</span><span>{"代"}</span><span>{"码"}</span></span>
-<span className="text-base lg:text-xl font-bold leading-none extracted-cb10d86177"><span>{"0"}</span><span>{"0"}</span><span>{"2"}</span><span>{"4"}</span><span>{"1"}</span><span>{"3"}</span></span>
-</div>
 </div>
 
 <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[15px] font-medium" aria-label="主导航">

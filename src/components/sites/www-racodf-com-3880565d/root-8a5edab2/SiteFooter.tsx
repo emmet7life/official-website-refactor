@@ -8,13 +8,12 @@ export function SiteFooter() {
 <div className="flex flex-col lg:flex-row gap-10">
 
 <div className="lg:w-60 lg:shrink-0">
-<a href="#hero" className="inline-flex items-center mb-4" aria-label="雷科防务 首页">
-<img src="/sites/www-racodf-com-3880565d/root-8a5edab2/6661d259-logo-racodf-white.png" alt="雷科防务" className="h-10 w-auto" />
+<a href="#hero" className="inline-flex items-center mb-4" aria-label="恒达微波 首页">
+<img src="/sites/www-racodf-com-3880565d/shared/home/logo.png" alt="恒达微波" className="h-10 w-auto" />
 </a>
-<p id="footer-tagline" className="text-sm text-gray-400 leading-relaxed max-w-sm lg:max-w-none">{"电子信息综合服务商，聚焦雷达系统、卫星应用、智能控制、智算存储、智能网联核心技术研发与产业化应用。"}</p>
-<p className="mt-3 text-xs text-gray-500">{"深圳证券交易所上市公司 · 股票代码 002413"}</p>
+<p id="footer-tagline" className="text-sm text-gray-400 leading-relaxed max-w-sm lg:max-w-none">{"技术领先，实业报国 · 以成为卓越的微波供应商为目标"}</p>
 <div className="mt-6 flex items-center gap-4">
-<img src="/sites/www-racodf-com-3880565d/root-8a5edab2/342069cd-qrcode-wechat.jpg" alt="雷科防务官方公众号二维码" className="w-20 h-20 rounded" />
+<img src="/sites/www-racodf-com-3880565d/shared/home/qr-gongzhong.png" alt="恒达微波官方公众号二维码" className="w-20 h-20 rounded" />
 <div className="text-xs text-gray-400 leading-relaxed whitespace-nowrap">
 <p>{"关注官方公众号"}</p>
 <p>{"获取产品与行业最新资讯"}</p>
