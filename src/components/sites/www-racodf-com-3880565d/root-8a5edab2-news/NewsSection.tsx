@@ -226,7 +226,6 @@ export function NewsSection() {
                 className={`inline-flex items-center rounded border px-4 py-1.5 text-sm transition-colors ${active ? "border-primary bg-primary-light text-primary" : "border-gray-200 text-gray-600 hover:border-primary hover:text-primary"}`}
               >
                 {category}
-                {category !== "全部" && category !== "电子报" && <span className="ml-1 text-xs opacity-70">{category === "公司新闻" ? 138 : category === "媒体报道" ? 29 : 0}</span>}
               </button>
             );
           })}
