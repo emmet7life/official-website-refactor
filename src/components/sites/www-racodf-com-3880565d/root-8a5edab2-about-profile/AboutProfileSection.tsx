@@ -12,6 +12,25 @@ const profileParagraphs = [
   '在“产学研”方面，利用公司20多年的微波行业经验和技术创新，先后与北京理工大学、西北大学、西北工业大学、西安电子科技大学、西安工业大学、西安邮电大学等院校建立了“工程实践教育中心”，同时按照“恒达卓越工程师培养计划”的通用标准和行业标准，积极为工程实践教育中心创造条件，并充分利用此平台，主动开展产学研项目的研究，以推动行业新技术及新工艺的创新发展，实现优势互补和资源共享，达到共赢的目的。',
 ] as const;
 
+const companyHonors = [
+  '国家高新技术企业',
+  '毫米波与太赫兹技术北京市重点实验室（西安分部）',
+  '纳税信用A级纳税人',
+  '陕西省中小企业创新研发中心',
+  '西安市科技企业小巨人领军企业',
+  '陕西省专精特新中小企业',
+  '守合同重信用企业',
+  '科技型中心企业',
+  '工人先锋号',
+  '和谐企业',
+  '西安市微波毫米波系统工程技术研究中心',
+  'GJB质量管理体系认证',
+  '环境管理体系认证',
+  '职业健康安全管理体系认证',
+  '货物进出口许可证',
+  '西安市著名商标、陕西省著名商标',
+] as const;
+
 const tabs = [
   { label: '公司介绍', href: '#about-profile', active: true },
   { label: '发展历程', href: '#about-history', active: false },
@@ -57,6 +76,20 @@ export function AboutProfileSection({ children }: { children?: ReactNode }) {
                 {index === 0 ? <img src="/sites/www-racodf-com-3880565d/shared/about/hengda-company-logo.jpg" alt="恒达微波品牌标识" loading="lazy" className="ml-1 inline-block h-5 w-auto align-middle" /> : null}
               </p>
             ))}
+            <div className="pt-4">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-6 w-1 rounded-full bg-gradient-to-b from-primary to-primary-mid" aria-hidden="true" />
+                <h3 className="text-xl font-semibold text-gray-900 md:text-2xl">荣誉资质</h3>
+              </div>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {companyHonors.map((honor) => (
+                  <li key={honor} className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm leading-6 text-gray-600 md:text-base">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                    <span>{honor}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
         {children}
