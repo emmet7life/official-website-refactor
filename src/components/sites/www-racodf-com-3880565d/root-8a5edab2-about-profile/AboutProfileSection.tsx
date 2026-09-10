@@ -1,6 +1,7 @@
 /* Original image sizing is preserved for visual fidelity. */
 /* eslint-disable @next/next/no-img-element */
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 
 const profileParagraphs = [
   '2020年1月，西安恒达微波技术开发有限公司（以下简称为“恒达微波”或“公司”）正式加入雷科防务，成为雷科防务全资子公司（股票代码002413）。',
@@ -32,14 +33,14 @@ const companyHonors = [
 ] as const;
 
 const tabs = [
-  { label: '公司介绍', href: '#about-profile', active: true },
-  { label: '发展历程', href: '#about-history', active: false },
-  { label: '资质荣誉', href: '#about-honor', active: false },
-  { label: '实验设备', href: '#about-equipment', active: false },
-  { label: '公司活动', href: '#about-activities', active: false },
-  { label: '媒体宣传', href: '#about-media', active: false },
-  { label: '企业文化', href: '#about-culture', active: false },
-  { label: '人力资源', href: '#about-hr', active: false },
+  { label: '公司介绍', href: '/about/intro', part: 'about-profile', active: true },
+  { label: '发展历程', href: '/about/history', part: 'about-history', active: false },
+  { label: '资质荣誉', href: '/about/honor', part: 'about-honor', active: false },
+  { label: '实验设备', href: '/about/equipment', part: 'about-equipment', active: false },
+  { label: '公司活动', href: '/about/activity', part: 'about-activities', active: false },
+  { label: '媒体宣传', href: '/about/media', part: 'about-media', active: false },
+  { label: '企业文化', href: '/about/culture', part: 'about-culture', active: false },
+  { label: '人力资源', href: '/about/hr', part: 'about-hr', active: false },
 ] as const;
 
 export function AboutProfileSection({ children }: { children?: ReactNode }) {
@@ -48,22 +49,22 @@ export function AboutProfileSection({ children }: { children?: ReactNode }) {
       <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
         <div>
           <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">走进雷科</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">关于恒达</h2>
         </div>
 
-        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="走进雷科">
+        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="关于恒达">
           <div className="flex flex-wrap gap-x-8 gap-y-1">
             {tabs.map((tab) => (
-              <a
+              <Link
                 key={tab.label}
                 href={tab.href}
-                data-about-part={tab.href.slice(1)}
+                data-about-part={tab.part}
                 className={tab.active
                   ? '-mb-px border-b-2 border-primary px-1 py-3 text-sm font-medium text-primary md:text-base'
                   : '-mb-px border-b-2 border-transparent px-1 py-3 text-sm font-medium text-gray-500 transition-colors hover:text-primary md:text-base'}
               >
                 {tab.label}
-              </a>
+              </Link>
             ))}
           </div>
         </nav>

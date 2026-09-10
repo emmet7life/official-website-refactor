@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 declare global {
   interface Window {
@@ -9,7 +10,16 @@ declare global {
 }
 
 type NewsCategory = "公司新闻" | "媒体报道" | "行业资讯" | "学术展会";
-type NewsFilter = "全部" | NewsCategory | "电子报";
+export type NewsFilter = "全部" | NewsCategory | "电子报";
+
+const newsPaths: Record<NewsFilter, string> = {
+  "全部": "/news/all",
+  "公司新闻": "/news/company",
+  "媒体报道": "/news/media",
+  "行业资讯": "/news/industry",
+  "学术展会": "/news/exhibition",
+  "电子报": "/news/enews",
+};
 
 type NewsRecord = {
   id: string;
@@ -176,8 +186,8 @@ const LEGACY_NEWS: NewsRecord[] = [
 
 const imagePath = (filename: string) => `/sites/www-racodf-com-3880565d/shared/news/${filename}`;
 
-export function NewsSection() {
-  const [filter, setFilter] = useState<NewsFilter>("全部");
+export function NewsSection({ initialFilter = "全部" }: { initialFilter?: NewsFilter }) {
+  const [filter, setFilter] = useState<NewsFilter>(initialFilter);
   const [selected, setSelected] = useState<NewsRecord | null>(null);
   const allNews = [...NEWS, ...LEGACY_NEWS];
   const visibleNews = filter === "全部" || filter === "电子报" ? (filter === "电子报" ? [] : allNews) : allNews.filter((item) => item.category === filter);
@@ -221,14 +231,13 @@ export function NewsSection() {
           {(["全部", "公司新闻", "媒体报道", "行业资讯", "学术展会", "电子报"] as const).map((category) => {
             const active = filter === category;
             return (
-              <button
+              <Link
                 key={category}
-                type="button"
-                onClick={() => setFilter(category)}
+                href={newsPaths[category]}
                 className={`inline-flex items-center rounded border px-4 py-1.5 text-sm transition-colors ${active ? "border-primary bg-primary-light text-primary" : "border-gray-200 text-gray-600 hover:border-primary hover:text-primary"}`}
               >
                 {category}
-              </button>
+              </Link>
             );
           })}
         </div>

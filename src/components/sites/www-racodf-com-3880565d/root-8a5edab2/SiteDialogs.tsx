@@ -2,10 +2,10 @@ export function SiteDialogs() {
   return (<>
 <div aria-label="站内搜索" aria-modal="true" className="fixed inset-0 z-[80] hidden bg-ink/80 backdrop-blur-sm px-5 pt-24 md:pt-32" id="search-modal" role="dialog">
 <div className="max-w-2xl mx-auto">
-<div className="relative">
-<svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+<div className="search-field relative">
+<svg className="absolute left-4 w-5 h-5 text-gray-400" style={{ top: "50%", transform: "translateY(-50%)" }} fill="none" stroke="currentColor" strokeWidth="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
 <input autoComplete="off" className="w-full h-14 pl-12 pr-12 rounded-xl bg-white text-gray-900 text-base shadow-modal focus:outline-none focus:ring-2 focus:ring-primary/30" id="search-input" type="text" />
-<button aria-label="关闭" className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors" id="search-close" type="button">
+<button aria-label="关闭" className="absolute right-3 w-9 h-9 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors" style={{ top: "50%", transform: "translateY(-50%)" }} id="search-close" type="button">
 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg>
 </button>
 </div>
