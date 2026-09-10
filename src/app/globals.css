@@ -11,6 +11,11 @@
 html { scroll-behavior: smooth; }
 button, summary { cursor: pointer; }
 .view-hidden { display: none !important; }
+.animate { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.animate.in { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: .12s; }
+.stagger-2 { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) { .animate { opacity: 1; transform: none; transition: none; } }
 /* Keep top-level navigation menus centered on their trigger while hover transforms run. */
 #navbar nav > .group > .nav-dropdown { left: 50% !important; right: auto !important; }
 #navbar nav > .group > .nav-dropdown { translate: -50% 0 !important; transform: none !important; }
