@@ -186,7 +186,10 @@ export function SiteHeader() {
 </summary>
 <div className="pb-3 pl-3 flex flex-col gap-1 text-gray-600">
 <a href="#news" data-news-category="公司新闻" className="py-2">{"公司新闻"}</a>
-<a href="#news" data-news-category="市场活动" className="py-2">{"市场活动"}</a>
+<a href="#news" data-news-category="媒体报道" className="py-2">{"媒体报道"}</a>
+<a href="#news" data-news-category="行业资讯" className="py-2">{"行业资讯"}</a>
+<a href="#news" data-news-category="学术展会" className="py-2">{"学术展会"}</a>
+<a href="#news" data-news-category="电子报" className="py-2">{"电子报"}</a>
 <a href="#news" className="insight-nav-link py-2">{"行业洞察"}</a>
 </div>
 </details>
