@@ -87,7 +87,7 @@ export function SiteFooter() {
 <div>
 <h4 className="text-sm font-semibold text-white mb-4">{"走进雷科"}</h4>
 <ul className="space-y-3 text-sm text-gray-400">
-<li><a href="https://www.racodf.com/#about-profile" className="hover:text-primary-mid transition-colors">{"集团概况"}</a></li>
+<li><a href="https://www.racodf.com/#about-profile" className="hover:text-primary-mid transition-colors">{"公司介绍"}</a></li>
 <li><a href="https://www.racodf.com/#about-history" className="hover:text-primary-mid transition-colors">{"发展历程"}</a></li>
 <li><a href="https://www.racodf.com/#about-honor" className="hover:text-primary-mid transition-colors">{"资质荣誉"}</a></li>
 <li className="brand-nav-link"><a href="https://www.racodf.com/#about-brand" className="hover:text-primary-mid transition-colors">{"企业品牌"}</a></li>
