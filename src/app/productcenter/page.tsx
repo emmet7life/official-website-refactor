@@ -2,10 +2,17 @@ import { HengdaHomeFooter } from "@/components/sites/www-racodf-com-3880565d/roo
 import { HengdaSiteHeader } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/HengdaSiteHeader";
 import { ProductCenter } from "@/components/productcenter/ProductCenter";
 
-export default function ProductCenterPage() {
+type ProductCenterPageProps = {
+  searchParams: Promise<{ category?: string | string[] }>;
+};
+
+export default async function ProductCenterPage({ searchParams }: ProductCenterPageProps) {
+  const params = await searchParams;
+  const category = Array.isArray(params.category) ? params.category[0] : params.category;
+
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]"><ProductCenter /></main>
+    <main className="pt-16 lg:pt-[72px]"><ProductCenter key={category ?? "root"} initialCategory={category} /></main>
     <HengdaHomeFooter />
   </>;
 }

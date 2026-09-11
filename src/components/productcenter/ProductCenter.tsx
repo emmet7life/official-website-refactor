@@ -3,10 +3,39 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Maximize2, X } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
-import { productDirectory, type Category, type Product, type Specification } from "./catalog-data";
+import { productCategorySlugs, productDirectory, type Category, type Product, type Specification } from "./catalog-data";
+
+const categoryCardImages = [
+  "/product-center/categories/0001.png",
+  "/product-center/categories/0002.png",
+  "/product-center/categories/0003.png",
+  "/product-center/categories/0004.png",
+  "/product-center/categories/0005.png",
+  "/product-center/categories/0006.png",
+  "/product-center/categories/0007.png",
+  "/product-center/categories/0008.png",
+  "/product-center/categories/0009.png",
+  "/product-center/categories/0010.png",
+  "/product-center/categories/0011.png",
+  "/product-center/categories/101.jpg",
+  "/product-center/categories/102.jpg",
+  "/product-center/categories/103.jpg",
+  "/product-center/categories/105.jpg",
+  "/product-center/categories/107.jpg",
+  "/product-center/categories/108.jpg",
+  "/product-center/categories/110.jpg",
+  "/product-center/categories/111.jpg",
+  "/product-center/categories/112.jpg",
+  "/product-center/categories/114.jpg",
+  "/product-center/categories/116.jpg",
+  "/product-center/categories/117.jpg",
+  "/product-center/categories/118.jpg",
+  "/product-center/categories/120.jpg",
+  "/product-center/categories/121.jpg",
+  "/product-center/categories/122.jpg",
+];
 
 function getSelectedNodes(path: number[]) {
   const nodes: Category[] = [];
@@ -18,9 +47,16 @@ function getSelectedNodes(path: number[]) {
   return nodes;
 }
 
-export function ProductCenter() {
-  const [selectedPath, setSelectedPath] = useState<number[]>([]);
+function getInitialPath(category?: string) {
+  const targetCode = category ? productCategorySlugs[category] : undefined;
+  const targetIndex = targetCode ? productDirectory.findIndex((node) => node.code === targetCode) : -1;
+  return targetIndex >= 0 ? [targetIndex] : [];
+}
+
+export function ProductCenter({ initialCategory }: { initialCategory?: string }) {
+  const [selectedPath, setSelectedPath] = useState<number[]>(() => getInitialPath(initialCategory));
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
+  const [inquiryTarget, setInquiryTarget] = useState<string | null>(null);
   const contentRef = useRef<HTMLElement>(null);
   const hasMounted = useRef(false);
   const selectedNodes = getSelectedNodes(selectedPath);
@@ -49,6 +85,11 @@ export function ProductCenter() {
     setSelectedPath(path);
   }
 
+  function requestSpecification(target: string) {
+    setModalProduct(null);
+    setInquiryTarget(target);
+  }
+
   function renderTree(items: Category[], parent: number[] = []) {
     return <ul className="product-tree-list">{items.map((item, index) => {
       const path = [...parent, index];
@@ -66,7 +107,11 @@ export function ProductCenter() {
   }
 
   return <div className="product-center-page">
-    <section className="product-center-hero"><div className="product-center-container"><div className="product-center-kicker">PRODUCT CENTER / HENGDA MICROWAVE</div><h1>微波与毫米波产品中心</h1><p>以目录树组织产品，以参数表帮助选型；从单机产品到分系统产品，快速找到可落地的技术方案。</p><div className="product-center-hero-meta"><span>第九版产品手册目录</span><span>天 · 馈 · 伺 · 系统集成</span><span>规格书与技术参数</span></div></div></section>
+    <section className="product-center-hero">
+      <div className="product-center-container product-center-hero-inner">
+        <h1>产品中心</h1>
+      </div>
+    </section>
     <div className="product-center-surface">
       <nav className="product-center-container product-center-breadcrumbs" aria-label="产品目录路径"><Link href="/">首页</Link><span>/</span>{selectedNodes.length === 0 ? <strong>产品中心</strong> : <button type="button" onClick={() => select([])}>产品中心</button>}{selectedNodes.map((node, index) => <span key={node.id} className="breadcrumb-segment"><span>/</span>{index === selectedNodes.length - 1 ? <strong>{node.name}</strong> : <button type="button" onClick={() => select(selectedPath.slice(0, index + 1))}>{node.name}</button>}</span>)}</nav>
       <nav className="product-center-container mobile-category-navigation" aria-label="产品分类目录">
@@ -88,12 +133,16 @@ export function ProductCenter() {
       <main className="product-center-container product-center-layout">
         <aside className="product-directory"><nav aria-label="产品分类目录">{renderTree(productDirectory)}</nav></aside>
         <section className="product-center-content" ref={contentRef}>
-          {!selected?.article ? <div className="product-content-heading"><div><div className="product-center-kicker">SELECTED CATEGORY</div><h2>{selected?.name ?? "产品中心"}</h2><p>{selected?.description ?? "请选择一级产品分类，逐级进入产品列表或分系统富文本详情。"}</p></div></div> : null}
-          {selected?.article ? <ProductArticle category={selected} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} onOpen={setModalProduct} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div><div className="product-category-footer"><div><strong>需要更完整的选型建议？</strong><span>告诉我们频段、口径和应用场景，获取系统级建议。</span></div><Link href="/#contact">业务咨询 →</Link></div></> : <div className="category-cards">{children.map((child, index) => <button key={child.id} type="button" className="category-card-high" onClick={() => select([...selectedPath, index])}><span className="category-card-index">{child.code}</span><strong>{child.name}</strong><span>{child.kind === "rich-text" || child.kind === "reference" ? "查看文章式详情" : child.children.length ? "进入下一级分类" : "查看产品列表"}<i>→</i></span></button>)}</div>}
+          {selected?.article ? <ProductArticle category={selected} onRequestSpec={requestSpecification} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} onOpen={setModalProduct} onRequestSpec={requestSpecification} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div><div className="product-category-footer"><div className="product-category-footer-copy"><strong>需要更完整的选型建议？</strong><span>提交频段、接口、安装空间与应用场景，市场部统一归集需求后为您匹配规格书与选型建议。</span></div><div className="product-category-footer-tags" aria-hidden="true"><span>频段</span><span>接口</span><span>应用场景</span></div><Link href={`/?inquiry=selection&category=${encodeURIComponent(selected.name)}#contact`}>填写需求</Link></div></> : <div className="category-cards">{children.map((child, index) => <button key={child.id} type="button" className="category-card-high" onClick={() => select([...selectedPath, index])}>
+            <span className="category-card-index">{child.code}</span>
+            <span className="category-card-copy"><strong>{child.name}</strong><span className="category-card-action">{child.kind === "rich-text" || child.kind === "reference" ? "查看详情" : child.children.length ? "进入分类" : "查看产品"}<i aria-hidden="true">→</i></span></span>
+            <span className="category-card-visual" aria-hidden="true"><Image src={categoryCardImages[index % categoryCardImages.length]} alt="" fill sizes="(max-width: 560px) 44vw, (max-width: 850px) 36vw, 280px" /></span>
+          </button>)}</div>}
         </section>
       </main>
     </div>
-    {modalProduct ? <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} /> : null}
+    {modalProduct ? <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} onRequestSpec={requestSpecification} /> : null}
+    {inquiryTarget ? <SpecificationInquiryModal target={inquiryTarget} onClose={() => setInquiryTarget(null)} /> : null}
   </div>;
 }
 
@@ -113,7 +162,7 @@ function ProductCategoryIntro({ category }: { category: Category }) {
   </section>;
 }
 
-function ProductArticle({ category }: { category: Category }) {
+function ProductArticle({ category, onRequestSpec }: { category: Category; onRequestSpec: (target: string) => void }) {
   const article = category.article;
   if (!article) return null;
 
@@ -149,7 +198,7 @@ function ProductArticle({ category }: { category: Category }) {
       {article.images[1] ? <div className="product-rich-detail-image"><ZoomableImage src={article.images[1]} alt={`${article.title}应用形态`} /></div> : null}
     </> : null}
 
-    <footer className="product-rich-footer"><span>{article.meta}</span><button type="button" className="product-primary-button">申请规格书</button></footer>
+    <footer className="product-rich-footer"><span>{article.meta}</span><button type="button" className="product-primary-button" onClick={() => onRequestSpec(article.model ?? category.name)}>申请规格书</button></footer>
   </article>;
 }
 
@@ -162,10 +211,10 @@ function DualSpecificationTable({ antenna, servo }: { antenna: Specification[]; 
   return <div className="product-rich-table-scroll"><table className="product-rich-table"><thead><tr><th colSpan={2}>天线参数</th><th colSpan={2}>伺服参数</th></tr></thead><tbody>{rows.map((row, index) => <tr key={`${row.antenna?.label}-${row.servo?.label}-${index}`}><th>{row.antenna?.label}</th><td>{row.antenna?.value}</td><th>{row.servo?.label}</th><td>{row.servo?.value}</td></tr>)}</tbody></table></div>;
 }
 
-function ProductTable({ products, onOpen }: { products: Product[]; onOpen: (product: Product) => void }) {
+function ProductTable({ products, onOpen, onRequestSpec }: { products: Product[]; onOpen: (product: Product) => void; onRequestSpec: (target: string) => void }) {
   return <section className="product-list-section">
     <header className="product-list-heading"><h3>产品列表</h3><p>点击产品型号查看完整技术参数</p></header>
-    <div className="product-table-wrap"><div className="product-table-scroll"><table className="product-center-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th><th className="sticky-spec">规格书</th></tr></thead><tbody>{products.map((product) => <tr key={product.model}><td className="sticky-model"><button type="button" className="model-button" onClick={() => onOpen(product)}>{product.model}</button></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td><td className="sticky-spec"><button type="button" className="spec-button">申请</button></td></tr>)}</tbody></table></div></div>
+    <div className="product-table-wrap"><div className="product-table-scroll"><table className="product-center-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th><th className="sticky-spec">规格书</th></tr></thead><tbody>{products.map((product) => <tr key={product.model}><td className="sticky-model"><button type="button" className="model-button" onClick={() => onOpen(product)}>{product.model}</button></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td><td className="sticky-spec"><button type="button" className="spec-button" onClick={() => onRequestSpec(product.model)} aria-label={`申请 ${product.model} 规格书`}>申请</button></td></tr>)}</tbody></table></div></div>
   </section>;
 }
 
@@ -198,7 +247,51 @@ function ProductImageLightbox({ src, alt, onClose }: { src: string; alt: string;
   </div>, document.body);
 }
 
-function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
-  const router = useRouter();
-  return <div className="product-modal-backdrop" role="presentation" onClick={onClose}><section className="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}><div className="product-modal-head"><div><div className="product-center-kicker">FULL TECHNICAL PARAMETERS</div><h2 id="product-modal-title">{product.model}</h2></div><button type="button" onClick={onClose} aria-label="关闭">×</button></div><p className="product-modal-lead">{product.description}</p><dl className="product-parameter-list"><div><dt>频率范围</dt><dd>{product.frequency} GHz</dd></div><div><dt>增益 / 系统增益</dt><dd>{product.gain} dB</dd></div><div><dt>接口 / 法兰</dt><dd>{product.interface}</dd></div><div><dt>工作带宽</dt><dd>{product.bandwidth} GHz</dd></div><div><dt>轴比 / 静态精度</dt><dd>{product.axis}</dd></div><div><dt>产品类型</dt><dd>恒达微波标准产品 / 可按项目配置</dd></div></dl><button type="button" className="product-primary-button" onClick={() => router.push("/#contact")}>申请该型号规格书</button></section></div>;
+function ProductModal({ product, onClose, onRequestSpec }: { product: Product; onClose: () => void; onRequestSpec: (target: string) => void }) {
+  return <div className="product-modal-backdrop" role="presentation" onClick={onClose}><section className="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}><div className="product-modal-head"><div><div className="product-center-kicker">FULL TECHNICAL PARAMETERS</div><h2 id="product-modal-title">{product.model}</h2></div><button type="button" onClick={onClose} aria-label="关闭">×</button></div><p className="product-modal-lead">{product.description}</p><dl className="product-parameter-list"><div><dt>频率范围</dt><dd>{product.frequency} GHz</dd></div><div><dt>增益 / 系统增益</dt><dd>{product.gain} dB</dd></div><div><dt>接口 / 法兰</dt><dd>{product.interface}</dd></div><div><dt>工作带宽</dt><dd>{product.bandwidth} GHz</dd></div><div><dt>轴比 / 静态精度</dt><dd>{product.axis}</dd></div><div><dt>产品类型</dt><dd>恒达微波标准产品 / 可按项目配置</dd></div></dl><button type="button" className="product-primary-button" onClick={() => onRequestSpec(product.model)}>申请该型号规格书</button></section></div>;
+}
+
+function SpecificationInquiryModal({ target, onClose }: { target: string; onClose: () => void }) {
+  const [submitted, setSubmitted] = useState(false);
+  const closeTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
+    };
+  }, [onClose]);
+
+  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    event.currentTarget.reset();
+    setSubmitted(true);
+    closeTimerRef.current = window.setTimeout(onClose, 2600);
+  }
+
+  return <div className="product-inquiry-backdrop" role="presentation" onClick={onClose}>
+    <section className="product-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="product-inquiry-title" onClick={(event) => event.stopPropagation()}>
+      <div className="product-inquiry-head">
+        <div>
+          <span>规格书申请</span>
+          <h2 id="product-inquiry-title">{target}</h2>
+        </div>
+        <button type="button" onClick={onClose} aria-label="关闭询单弹窗"><X aria-hidden="true" size={22} /></button>
+      </div>
+      <p className="product-inquiry-lead">请留下联系方式，我们会尽快与您确认规格书获取方式和项目需求。</p>
+      <form className="product-inquiry-form" onSubmit={submitInquiry}>
+        <label>姓名<input required name="name" autoComplete="name" placeholder="请输入姓名" /></label>
+        <label>联系电话<input required name="phone" type="tel" autoComplete="tel" placeholder="请输入联系电话" /></label>
+        <label>咨询产品类型<select required name="product" defaultValue="规格书申请"><option value="规格书申请">规格书申请</option></select></label>
+        <label>咨询内容<textarea required name="content" rows={4} defaultValue={`申请规格书：${target}\n请与我联系，并告知规格书申请所需资料。`} /></label>
+        <button type="submit" disabled={submitted}>{submitted ? "已提交" : "提交询单"}</button>
+        {submitted ? <p role="status">提交成功，我们将尽快与您联系！</p> : null}
+      </form>
+    </section>
+  </div>;
 }

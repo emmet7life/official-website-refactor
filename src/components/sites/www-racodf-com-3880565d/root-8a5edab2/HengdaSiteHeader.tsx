@@ -4,7 +4,7 @@ import Link from 'next/link';
 const navGroups = [
   { label: '关于恒达', links: [['公司介绍', '/about/intro'], ['公司历程', '/about/history'], ['资质荣誉', '/about/honor'], ['实验设备', '/about/equipment'], ['公司活动', '/about/activity'], ['媒体宣传', '/about/media']] },
   { label: '新闻中心', links: [['公司新闻', '/news/company'], ['媒体报道', '/news/media'], ['行业资讯', '/news/industry'], ['学术展会', '/news/exhibition'], ['电子报', '/news/enews']] },
-  { label: '产品中心', links: [['天线系列', '/products/antenna'], ['馈线系列', '/products/feeder'], ['伺服转台系列', '/products/servo'], ['分系统集成系列', '/products/subsystem'], ['来图加工系列', '/products/custom']] },
+  { label: '产品中心', href: '/productcenter', links: [['波导、同轴元器件', '/productcenter?category=waveguide-coaxial'], ['微波有源器件', '/productcenter?category=active-devices'], ['天线', '/productcenter?category=antenna'], ['天线转台与伺服控制', '/productcenter?category=servo-control'], ['分系统集成产品', '/productcenter?category=subsystem-integration']] },
   { label: '客户服务', links: [['质量控制', '/service/quality'], ['服务承诺', '/service/promise']] },
   { label: '技术资料', links: [['微波知识', '/tech/knowledge'], ['论文下载', '/tech/papers']] },
 ] as const;
@@ -25,7 +25,7 @@ export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
           <nav className="hidden items-center gap-5 text-[15px] font-medium lg:flex xl:gap-7" aria-label="主导航">
             <Link href="/" className="py-6 transition-colors hover:text-primary">首页</Link>
             {navGroups.map((group) => <div key={group.label} className="group relative py-6">
-              <Link href={group.links[0][1]} className="flex items-center gap-1 transition-colors hover:text-primary">{group.label}<Chevron /></Link>
+              <Link href={"href" in group ? group.href : group.links[0][1]} className="flex items-center gap-1 transition-colors hover:text-primary">{group.label}<Chevron /></Link>
               <div className="nav-dropdown invisible absolute left-1/2 top-full w-44 rounded-lg bg-white py-2 opacity-0 shadow-dropdown transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 {group.links.map(([label, href]) => <Link key={label} href={href} className="block px-5 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-primary">{label}</Link>)}
               </div>

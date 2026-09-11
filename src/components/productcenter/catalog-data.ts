@@ -176,4 +176,14 @@ function hydrateNode(node: ProductCatalogNode): Category {
   return category;
 }
 
-export const productDirectory = (generatedCatalog as ProductCatalogNode[]).map(hydrateNode);
+export const productDirectory = (generatedCatalog as ProductCatalogNode[])
+  .filter((node) => node.name.trim() !== "微波设计参考资料")
+  .map(hydrateNode);
+
+export const productCategorySlugs: Record<string, string> = {
+  "waveguide-coaxial": "1",
+  "active-devices": "2",
+  antenna: "3",
+  "servo-control": "4",
+  "subsystem-integration": "5",
+};
