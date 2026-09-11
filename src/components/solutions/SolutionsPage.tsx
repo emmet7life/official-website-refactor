@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { productDetails } from "@/components/solutions/solution-product-details";
 
 type ProductCatalogSlug = "waveguide-coaxial" | "active-devices" | "antenna" | "servo-control" | "subsystem-integration";
 
@@ -15,6 +16,8 @@ type ProductCategory = {
 
 type ProductItem = {
   name: string;
+  model: string;
+  metrics: string[];
   categoryId: string;
   image: string;
   href: string;
@@ -56,8 +59,12 @@ function createProducts(categories: ProductCategory[], entries: Array<[name: str
   return entries.map(([name, categoryId], index) => {
     const category = categories.find((item) => item.id === categoryId);
     if (!category) throw new Error(`Unknown solution product category: ${categoryId}`);
+    const detail = productDetails[name];
+    if (!detail) throw new Error(`Missing solution product detail: ${name}`);
     return {
       name,
+      model: detail.model,
+      metrics: detail.metrics,
       categoryId,
       image: productImages[index % productImages.length],
       href: `/productcenter?category=${category.slug}`,
@@ -426,7 +433,7 @@ export function SolutionsPage() {
           <div className={`solution-diagram solution-${solution.diagram}`} data-solution={solution.id}>
             {solution.diagram === "weather-radar" ? (
               <Image
-                src="/sites/www-racodf-com-3880565d/solutions/weather-radar-line-diagram.png"
+                src="/sites/www-racodf-com-3880565d/solutions/weather-radar-line-diagram-v2.png"
                 alt="气象雷达天馈伺系统线条型科技感示意图"
                 fill
                 priority
@@ -541,9 +548,20 @@ export function SolutionsPage() {
                 <span className="solution-product-figure">
                   <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 92vw, (max-width: 1023px) 45vw, 285px" />
                 </span>
-                <span className="solution-product-name">{product.name}</span>
+                <span className="solution-product-body">
+                  <span className="solution-product-name">{product.name}</span>
+                  <span className="solution-product-model">
+                    <span className="solution-product-model-label">产品型号</span>
+                    <span className="solution-product-model-code">{product.model}</span>
+                  </span>
+                  <span className="solution-product-metrics">
+                    {product.metrics.slice(0, 3).map((metric) => (
+                      <span key={metric} className="solution-product-metric">{metric}</span>
+                    ))}
+                  </span>
+                </span>
                 <span className="solution-product-more">
-                  了解更多
+                  查看详细指标
                   <ArrowRight size={15} aria-hidden="true" />
                 </span>
               </Link>
