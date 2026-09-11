@@ -1,0 +1,78 @@
+<div style="background-color:#0066aa; width:100%; height:40px;  "  align="center">
+<ul id="navigation"> 
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; "> 
+<a href="index.php" class="title_caidan" >首&nbsp;&nbsp;页</a>
+</li> 
+
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; "> 
+ <a href="about_jtjs.html" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle;">关于恒达</span></a>
+<ul> 
+<li><a href="about_jtjs.html" class="title2">公司介绍</a></li> 
+ <li><a href="about_gslc.html" class="title2">公司历程</a></li> 
+<li><a href="about_gsry.html" class="title2">资质荣誉</a></li> 
+<li><a href="about_sysb.html" class="title2">实验设备</a></li> 
+<li><a href="about_ghhd.html" class="title2">公司活动</a></li>
+<li><a href="about_mtxc.html" class="title2">媒体宣传</a></li>
+</ul> 
+</li> 
+
+
+
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; "> 
+<a href="news.php?lei=1" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle; ">新闻中心</span></a>
+<ul> 
+<li><a href="news.php?lei=1" class="title2">公司新闻</a></li> 
+<li><a href="news.php?lei=4" class="title2">媒体报道</a></li> 
+<li><a href="news.php?lei=2" class="title2">行业资讯</a></li> 
+<li><a href="news.php?lei=3" class="title2">学术展会</a></li> 
+<li><a href="enewsletter.php" class="title2"> 电子报</a></li> 
+</ul> 
+</li> 
+
+
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; " id="cp"> 
+<a href="products.php?parent=1" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle; ">产品中心</span></a>
+<ul> 
+<li><a href="products.php?parent=1" class="title2">&nbsp;&nbsp;波导元器件</a></li> 
+<li ><a href="products.php?parent=155" class="title2" style="height:60px; line-height:30px; background-color:#ff6600; width:170px; margin:0px; padding:0px;">&nbsp;&nbsp;同轴元器件、电缆组件<br>&nbsp;&nbsp;及微波有源器件</a></li> 
+<li><a href="products.php?parent=211" class="title2">&nbsp;&nbsp;天线</a></li> 
+<li><a href="products.php?parent=341" class="title2">&nbsp;&nbsp;天线转台与伺服控制</a></li> 
+<li><a href="products.php?parent=360" class="title2">&nbsp;&nbsp;分系统产品</a></li> 
+<li><a href="products.php?parent=411" class="title2">&nbsp;&nbsp;天线测量与微波测量</a></li> 
+<li><a href="products.php?parent=1&amp;stock=1" class="title2">&nbsp;&nbsp;现货库存</a></li>
+<li><a href="jszc_cgal.html" class="title2">&nbsp;&nbsp;成功案例</a></li> 
+<li><a href="rdtj.html" class="title2">&nbsp;&nbsp;热点推荐</a></li> 
+<li><a href="technicalref.html" class="title2">&nbsp;&nbsp;波段法兰查询</a></li> 
+</ul> 
+</li> 
+
+
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; "> 
+ <a href="service_zlkz.html" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle;  ">客户服务</span></a> 
+<ul> 
+<li><a href="service_zlkz.html" class="title2">质量控制</a></li> 
+<li><a href="service_fwcl.html" class="title2">服务承诺</a></li> 
+</ul> 
+</li> 
+
+
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; "> 
+<a href="jszc_wbzs.html" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle; ">技术资料</span></a>
+<ul> 
+<li><a href="jszc_xiazai_cp.html" class="title2">产品手册下载</a></li> 
+<li><a href="jszc_wbzs.html" class="title2">微波知识</a></li> 
+<li><a href="jszc_xiazai_lw.html" class="title2">论文下载</a></li> 
+</ul> 
+</li> 
+<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" style="border-left:1px solid #fff; border-right:1px solid #fff; "> 
+ <a href="contact.html" class="title_caidan"><span style="display:block;  line-height:40px; vertical-align:middle;  ">联系我们</span></a>
+<ul> 
+<li><a href="contact.html" class="title2">联系方式</a></li> 
+</ul> 
+</li> 
+
+</ul> 
+</li> 
+</ul> 
+
+</div>

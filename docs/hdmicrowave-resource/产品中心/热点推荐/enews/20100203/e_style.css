@@ -1,0 +1,27 @@
+/* CSS Document */
+
+td{
+	color: #333333;
+	font-size:12px;
+	line-height: 16px;	
+}
+.danwei_biaoge {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height:8px;
+}
+
+.bottom {font-size: 9px;
+color:#999999}
+.STYLE4 {color: #666666}
+.title_biaoge{ font-size:12px;
+				color:#FFFFFF;
+				font-weight:bold;
+				line-height:15px;}
+.xiao_title {
+	font-size: 12px;
+	font-weight: bold;
+	color: #3B5FA4;
+}

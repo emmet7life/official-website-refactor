@@ -1,0 +1,784 @@
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # ========== 新增：定义限速区域 ==========
+    # 限制请求频率：每秒允许 20 个请求，突发 50 个
+    limit_req_zone $binary_remote_addr zone=api_req_zone:10m rate=20r/s;
+    
+    # 限制并发连接数：每个IP最多 30 个连接
+    limit_conn_zone $binary_remote_addr zone=api_conn_zone:30m;
+	
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       8888;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        #location /weChatPublicAccount {
+        #    proxy_pass http://hd.hdmicrowave.com/weChat/event;
+        #    proxy_set_header Host $host;
+        #    proxy_set_header X-Real-IP $remote_addr;
+        #    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            
+        #    # 如果请求体中包含POST参数，请添加以下配置
+        #    proxy_pass_request_body on;
+        #    proxy_set_header Content-Length "";
+        #    proxy_set_header Transfer-Encoding "";
+        #}
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+
+    server {
+		listen       443 ssl;
+        server_name  xiaoda.hdmicrowave.com;
+    
+        ssl_certificate      xiaoda.hdmicrowave.com.pem;
+        ssl_certificate_key  xiaoda.hdmicrowave.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers  on;
+        client_max_body_size 100m;
+
+        # ------------------------------
+        # 放在这里，server 下所有 location 都生效
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        # ------------------------------
+		
+		# ========== 新增：全局限速配置 ==========
+		# 限制所有 location 的并发连接数
+		limit_conn api_conn_zone 30;
+		
+		# 设置返回状态码
+		limit_req_status 429;
+		limit_conn_status 503;
+		# =====================================
+		
+		# ==================== Dify API 路由（优先级最高）====================
+		
+		# 1.1 Console API：/v2/console/api/* → 后端 /console/api/*
+		location ^~ /v2/console/api/ {
+		
+		    # ========== 新增：限制请求频率 ==========
+			limit_req zone=api_req_zone burst=30 nodelay;
+			# =====================================
+			
+			# 关键：去掉 /v2 前缀，只保留 /console/api/
+			rewrite ^/v2(/console/api/.*)$ $1 break;
+			proxy_pass http://8.137.117.154:5001;
+			
+			# API 超时配置
+			proxy_connect_timeout 300s;
+			proxy_send_timeout 300s;
+			proxy_read_timeout 300s;
+			proxy_buffering off;
+			
+			# 代理头
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+		
+		location /dist/ {
+			# 代理到Tomcat（假设Tomcat运行在8080端口）
+			proxy_pass http://47.109.176.145:8085/dist/;
+			
+			# 如果Tomcat在其他服务器上，使用对应的IP:端口
+			# proxy_pass http://tomcat-server-ip:8080/dist/;
+		}
+		
+		# 1.2 WebApp API：/v2/api/* → 后端 /api/*
+		location ^~ /v2/api/ {
+			
+			limit_req zone=api_req_zone burst=30 nodelay;  # 新增 
+			
+			# 关键：去掉 /v2 前缀，只保留 /api/
+			rewrite ^/v2(/api/.*)$ $1 break;
+			proxy_pass http://8.137.117.154:5001;
+			
+			# API 超时配置
+			proxy_connect_timeout 300s;
+			proxy_send_timeout 300s;
+			proxy_read_timeout 300s;
+			proxy_buffering off;
+			
+			# 代理头
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+		
+		# 1.2 WebApp API：/v2/v1/* → 后端 /v1/*
+		location ^~ /v2/v1/ {
+		
+			limit_req zone=api_req_zone burst=20 nodelay;  # 新增（更严格）
+			
+			# 关键：去掉 /dify 前缀，只保留 /v1/
+			rewrite ^/v2(/v1/.*)$ $1 break;
+			proxy_pass http://8.137.117.154:5001;
+			
+			# API 超时配置
+			proxy_connect_timeout 300s;
+			proxy_send_timeout 300s;
+			proxy_read_timeout 300s;
+			proxy_buffering off;
+			
+			# 代理头
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+
+		# 1.3 Files API：/v2/files/* → 后端 /files/*
+		location ^~ /v2/files/ {
+			
+			limit_req zone=api_req_zone burst=50 nodelay;  # 新增（文件上传可以宽松些）
+			
+			rewrite ^/v2(/files/.*)$ $1 break;
+			proxy_pass http://8.137.117.154:5001;
+			
+			proxy_connect_timeout 300s;
+			proxy_send_timeout 300s;
+			proxy_read_timeout 300s;
+			proxy_buffering off;
+		}
+		
+		# 1.4 Agent Chat API：/v2/agentchat → 后端 /api/v1/chat
+		location ^~ /v2/agentchat {
+		
+			limit_req zone=api_req_zone burst=10 nodelay;  # 新增（聊天接口严格限制）
+			
+			# 直接转发到指定地址，不需要路径重写
+			proxy_pass http://8.137.117.154:8001/api/v1/chat;
+			
+			# API 超时配置
+			proxy_connect_timeout 300s;
+			proxy_send_timeout 300s;
+			proxy_read_timeout 300s;
+			proxy_buffering off;
+			
+			# 代理头
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+
+                location ^~ /v3/agentchat {
+
+                        limit_req zone=api_req_zone burst=10 nodelay;  # 新增（聊天接口严格限制）
+
+                        # 直接转发到指定地址，不需要路径重写
+                        proxy_pass http://8.137.117.154:8002/api/v1/chat;
+
+                        # API 超时配置
+                        proxy_connect_timeout 300s;
+                        proxy_send_timeout 300s;
+                        proxy_read_timeout 300s;
+                        proxy_buffering off;
+
+                        # 代理头
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                }
+
+                location ^~ /v4/agentchat {
+
+                        limit_req zone=api_req_zone burst=10 nodelay;  # 新增（聊天接口严格限制）
+
+                        # 直接转发到指定地址，不需要路径重写
+                        proxy_pass http://8.137.117.154:8888/api/v1/chat;
+
+                        # API 超时配置
+                        proxy_connect_timeout 300s;
+                        proxy_send_timeout 300s;
+                        proxy_read_timeout 300s;
+                        proxy_buffering off;
+
+                        # 代理头
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                }
+
+                location ^~ /v2/douyinchat {
+
+                        limit_req zone=api_req_zone burst=10 nodelay;  # 新增（聊天接口严格限制）
+
+                        # 直接转发到指定地址，不需要路径重写
+                        proxy_pass http://8.137.117.154:8001/api/v1/douyin/chat;
+                        proxy_http_version 1.1;
+                        proxy_pass_request_headers on;
+
+                        # 明确保留外部 Authorization
+                        proxy_set_header Authorization $http_authorization;
+                        # API 超时配置
+                        proxy_connect_timeout 300s;
+                        proxy_send_timeout 300s;
+                        proxy_read_timeout 300s;
+                        proxy_buffering off;
+
+                        # 代理头
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                }
+
+		# ==================== Dify 前端（Next.js）====================
+		
+		# 2. 所有其他 /dify/ 路径 → Next.js (3333)
+		location ^~ /v2/ {
+		
+			# ========== 新增：前端页面可以宽松一些 ==========
+			limit_req zone=api_req_zone burst=100 nodelay;
+			# ============================================
+	
+			proxy_pass http://8.137.117.154:3333;
+			
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+			proxy_cache_bypass $http_upgrade;
+			
+			# WebSocket 支持
+			proxy_read_timeout 86400;
+		}
+		
+		# 3. 特殊路由：/chat/share 重定向
+		#location = /chat/share {
+		#	return 301 https://xiaoda.hdmicrowave.com/dify/chat/4ojNyAxGhMowuhxU;
+		#}
+
+		# ==================== 旧应用路由 ====================
+    
+		location / {
+            root /usr/share/nginx/xiaoda;
+            index xiaoda.html  index.html index.htm;
+            try_files $uri $uri/ /xiaoda.html;
+        }
+		location /xd/ {
+		    limit_req zone=api_req_zone burst=20 nodelay;  # 新增
+			
+            proxy_pass_request_headers on;
+            proxy_pass http://8.137.117.154:8088;
+        }
+		location /chat/ {
+		    limit_req zone=api_req_zone burst=30 nodelay;  # 新增
+			
+            proxy_pass http://8.137.117.154:3001;
+        }
+		location /_next/ {
+            proxy_pass http://8.137.117.154:3001;
+        }
+        location /icon/ {
+            proxy_pass http://8.137.117.154:3001;
+        }
+        location /js/ {
+            proxy_pass http://8.137.117.154:3001;
+        }
+		location /imgs/ {
+            proxy_pass http://8.137.117.154:3001;
+        }
+		location /generate {
+			limit_req zone=api_req_zone burst=5 nodelay;   # 新增（AI生成接口严格限制）
+			
+            proxy_pass http://8.137.117.154:5000/generate;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+	
+		location /productsinfo/ {
+			limit_req zone=api_req_zone burst=20 nodelay;  # 新增
+			
+			proxy_pass http://8.137.117.154:9000/productsinfo/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+	
+		location /rag/api/ {
+			limit_req zone=api_req_zone burst=10 nodelay;  # 新增（RAG接口严格）
+			
+			proxy_pass http://8.137.117.154:5005/api;
+		}
+
+		location /api/ {
+			rewrite ^/ai/(.*)$ /$1 break;
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location /ai/ {
+			rewrite ^/ai/(.*)$ /$1 break;
+			proxy_pass http://8.137.117.154:3001;
+		}
+    }
+    
+    server {
+        listen       443 ssl;
+        server_name  hd.hdmicrowave.com;
+
+        ssl_certificate      cert.pem;
+        ssl_certificate_key  cert.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers  on;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # 其他配置...
+        client_max_body_size 100M;  # 将100M替换为您所需的大小限制
+
+		location /wechat/ {
+			rewrite ^/wechat/(.*)$ /$1 break;	
+			proxy_pass http://8.137.117.154:8001;
+		}
+
+		# 配置根路径
+		location /years {
+			alias /usr/share/nginx/years;
+			try_files $uri $uri/ /years/index.html;
+		}
+
+		# 处理静态文件
+		location /years/static {
+			alias /usr/share/nginx/years/static;
+		}
+
+                # 配置根路径
+                location /30years {
+                        alias /usr/share/nginx/30years;
+                        try_files $uri $uri/ /30years/index.html;
+                }
+
+                # 处理静态文件
+                location /30years/static {
+                        alias /usr/share/nginx/30years/static;
+                }
+
+		location /h5/ {
+			root  /usr/share/nginx/h5;
+			index  index.html index.htm;
+		}
+		
+		location /productsinfo/ {
+			proxy_pass http://8.137.117.154:9000/productsinfo/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+
+		location /v1/ {
+			#路径重写
+			rewrite ^/v1/(.*)$ /$1 break;
+			#反向代理配置，将请求转发到指定的服务
+			proxy_pass_request_headers on; 
+			proxy_pass http://127.0.0.1:8085;
+		    # proxy_pass https://hd.hdmicrowave.com/webApp/index.html;
+		    # proxy_set_header Host $host;
+		}
+		
+		location /A/ {
+			rewrite ^/A/(.*)$ /express/$1 break;
+			proxy_pass http://127.0.0.1:8085;
+		}
+		
+		location /api/ {
+			rewrite ^/ai/(.*)$ /$1 break;
+			proxy_pass http://8.137.117.154:3001;
+		}
+	   
+		location /ai/ {
+			rewrite ^/ai/(.*)$ /$1 break;
+			proxy_pass http://8.137.117.154:3001;
+		}
+		
+		location /generate {
+			proxy_pass http://8.137.117.154:5000/generate;
+		}
+
+		location /_next/ {
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location /icon/ {
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location /js/ {
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location /chat/ {
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location /imgs/ {
+			proxy_pass http://8.137.117.154:3001;
+		}
+
+		location = /resize/ {
+			alias /usr/local/nginx/html/resize/iframeResizer.min.js;
+		}   
+
+		location / {
+			root  /usr/share/nginx/html;
+			index  index.html index.htm;
+		}   
+		
+		# ========== 测试IMapi(线上可以不要) ==========
+		location ^~ /test-im/api/ {
+			proxy_pass http://127.0.0.1:8879/im/api/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_read_timeout 120s;
+			proxy_send_timeout 120s;
+		}
+
+		
+		# ========== 测试IM WebSocket ==========
+		location ^~ /test-im {
+			proxy_pass http://127.0.0.1:8878/im;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_read_timeout 3600s;
+			proxy_send_timeout 3600s;
+		}
+		
+		# ==========IM WebSocket ==========
+		location ^~ /im {
+			proxy_pass http://127.0.0.1:8878/im;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_read_timeout 3600s;
+			proxy_send_timeout 3600s;
+		}
+
+		# ========== 测试业务系统测试环境 ==========
+		location ^~ /test-api/ {
+			proxy_pass http://127.0.0.1:8889/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+		
+		# ========== 8.137.102.57 minio附件之间预览  ==========
+		location ^~ /files/ {
+			proxy_pass http://8.137.102.57:9000/;
+			proxy_set_header Host $http_host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+	
+			proxy_buffering off;
+		}
+
+    }
+	
+	server {
+		listen       80;
+		server_name  hdwb.hdmicrowave.com;
+
+		# SSL相关配置（如果您有HTTPS需求，但当前是80端口）
+		# ssl_session_timeout  5m;
+		# ssl_ciphers  HIGH:!aNULL:!MD5;
+		# ssl_protocols TLSv1.2 TLSv1.3;
+		# ssl_prefer_server_ciphers  on;
+
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+
+		client_max_body_size 100M;
+
+		# 处理 /dist/ 路径的请求
+		location /dist/ {
+			# 代理到Tomcat（假设Tomcat运行在8080端口）
+			proxy_pass http://47.109.176.145:8085/dist/;
+			
+			# 如果Tomcat在其他服务器上，使用对应的IP:端口
+			# proxy_pass http://tomcat-server-ip:8080/dist/;
+		}
+
+		# 其他所有路径重定向到 xiaoda.hdmicrowave.com
+		location / {
+			return 301 http://xiaoda.hdmicrowave.com$request_uri;
+		}
+		
+		# 其他配置...
+		# 可以添加其他location块处理不同的路径
+	}
+	
+	server {
+		listen       443 ssl;
+		server_name  hdwb.hdmicrowave.com;
+
+		# SSL 证书配置（请根据实际路径修改）
+        ssl_certificate      xiaoda.hdmicrowave.com.pem;
+        ssl_certificate_key  xiaoda.hdmicrowave.com.key;
+		ssl_session_timeout 5m;
+		ssl_ciphers  HIGH:!aNULL:!MD5;
+		ssl_protocols TLSv1.2 TLSv1.3;
+		ssl_prefer_server_ciphers  on;
+
+		# HTTPS 请求重定向到 xiaoda
+		return 301 https://xiaoda.hdmicrowave.com$request_uri;
+	}
+	
+	# 将 HTTP 的不带www请求重定向到 HTTPS 的www版本
+	server {
+		listen       80;
+		server_name  hdmicrowave.com;
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+
+	# 将 HTTPS 的不带www请求重定向到 HTTPS 的www版本
+	server {
+		listen       443 ssl;
+		server_name  hdmicrowave.com;
+
+		# SSL 证书配置（需要使用支持 hdmicrowave.com 的证书）
+		ssl_certificate      www.hdmicrowave.com.pem;  # 确保证书包含 hdmicrowave.com
+		ssl_certificate_key  www.hdmicrowave.com.key;
+		ssl_session_timeout 5m;
+		ssl_ciphers  HIGH:!aNULL:!MD5;
+		ssl_protocols TLSv1.2 TLSv1.3;
+		ssl_prefer_server_ciphers  on;
+
+		# 重定向到www版本
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+
+	# 您已有的www配置
+	server {
+		listen       80;
+		server_name  www.hdmicrowave.com;
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+
+	server {
+		listen       443 ssl;
+		server_name  www.hdmicrowave.com;
+
+		ssl_certificate      www.hdmicrowave.com.pem;
+		ssl_certificate_key  www.hdmicrowave.com.key;
+		ssl_session_timeout 5m;
+		ssl_ciphers  HIGH:!aNULL:!MD5;
+		ssl_protocols TLSv1.2 TLSv1.3;
+		ssl_prefer_server_ciphers  on;
+		
+		# ========== 新增：全局限速配置 ==========
+		# 限制所有 location 的并发连接数
+		limit_conn api_conn_zone 30;
+		
+		# 设置返回状态码
+		limit_req_status 429;
+		limit_conn_status 503;
+		# =====================================
+		
+		# ========== 新增：OSS 代理转发规则（通用版）==========
+		location ^~ /aliyunoss/ {
+			# 重写路径：去掉 /aliyunoss 前缀
+			rewrite ^/aliyunoss/(.*)$ /$1 break;
+			
+			# 代理转发到阿里云 OSS
+			proxy_pass https://hd-china-web-site.oss-cn-hangzhou.aliyuncs.com;
+			
+			# 保留原始请求参数（Query String）
+			# proxy_pass 会自动传递查询参数，无需额外配置
+			
+			# 设置代理请求头
+			proxy_set_header Host hd-china-web-site.oss-cn-hangzhou.aliyuncs.com;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			
+			# 可选：OSS 可能需要的一些头信息
+			proxy_set_header Authorization "";
+			
+			# 缓冲区优化
+			proxy_buffering on;
+			proxy_buffer_size 4k;
+			proxy_buffers 8 4k;
+			
+			# 控制重定向行为
+			proxy_redirect off;
+			
+			# 支持大文件传输
+			proxy_max_temp_file_size 0;
+			
+			# SSL 配置（如果使用 HTTPS）
+			proxy_ssl_server_name on;
+			proxy_ssl_protocols TLSv1.2 TLSv1.3;
+		}
+		# =====================================
+
+                		# ========== 新增：RAG 资源转发 ==========
+		# /api/v1/rag-assets/* → http://8.137.117.154:8001（完整 URI 原样透传）
+		location ^~ /api/v1/rag-assets/ {
+			# proxy_pass 后不带路径、不带尾部斜杠，nginx 会原样转发 /api/v1/rag-assets/...
+			proxy_pass http://8.137.117.154:8001;
+
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+
+			proxy_connect_timeout 60s;
+			proxy_send_timeout 60s;
+			proxy_read_timeout 60s;
+		}
+		# =====================================
+
+		location / {
+			# ========== 限制下载速度 ==========
+			limit_req zone=api_req_zone burst=50 nodelay;
+			limit_rate 100k;           # 单连接100KB/s
+			limit_rate_after 500k;     # 前1MB不限速，之后限速
+			# ================================
+			
+			proxy_pass http://47.109.176.145:8080;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+	}
+		server {
+		listen       80;
+		server_name  hengdamicrowave.com;
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+	
+	server {
+		listen       80;
+		server_name  恒达微波.com xn--g5t2ni52a378a.com;
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+	
+	server {
+		listen       80;
+		server_name  恒达微波.cn xn--g5t2ni52a378a.cn;
+		return 301 https://www.hdmicrowave.com$request_uri;
+	}
+
+}
