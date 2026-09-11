@@ -107,6 +107,7 @@ export function HengdaPageInteractions({ initialPart, newsCategory, solidHeader 
       if (event.target.closest("#search-btn")) openDialog("search-modal");
       if (event.target.closest("#search-close") || event.target === activeDialog) closeDialog();
       if (event.target.closest(".lang-toggle")) toggleLanguage();
+      if (event.target.closest("#mobile-menu a")) closeMenu();
       const anchor = event.target.closest<HTMLAnchorElement>('a[href^="#"]');
       if (!anchor) return;
       const part = anchor.hash.slice(1);
@@ -116,7 +117,6 @@ export function HengdaPageInteractions({ initialPart, newsCategory, solidHeader 
         selectPart(part);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      if (anchor.closest("#mobile-menu")) closeMenu();
     };
     const onKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") { closeMenu(); closeDialog(); } };
 
