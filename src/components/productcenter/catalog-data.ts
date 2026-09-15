@@ -1,6 +1,9 @@
 import generatedCatalog from "./product-catalog.generated.json";
 
 export type Product = {
+  name?: string;
+  image?: string;
+  specifications?: Specification[];
   model: string;
   frequency: string;
   gain: string;
@@ -155,7 +158,8 @@ function subsystemArticle(category: Category): RichArticle {
 
 function hydrateNode(node: ProductCatalogNode): Category {
   const chapter = node.code.split(".")[0];
-  const cleanName = node.code === "3" ? "天线" : node.name.replace(/\s+/g, " ").trim();
+  const seriesNames: Record<string, string> = { "1": "无源系列", "2": "有源系列", "3": "天线系列", "4": "伺服转台系列", "5": "分系统集成系列" };
+  const cleanName = seriesNames[node.code] ?? node.name.replace(/\s+/g, " ").trim();
   const category: Category = {
     ...node,
     name: cleanName,
@@ -180,10 +184,18 @@ export const productDirectory = (generatedCatalog as ProductCatalogNode[])
   .filter((node) => node.name.trim() !== "微波设计参考资料")
   .map(hydrateNode);
 
+productDirectory.push({
+  id: "custom", code: "custom", name: "来图加工", level: 1, parentId: null,
+  kind: "category", children: [],
+  description: "根据客户提供的图纸与技术要求，开展微波产品及结构件的加工配套。",
+  images: [`${homeImages}product-custom.png`],
+});
+
 export const productCategorySlugs: Record<string, string> = {
   "waveguide-coaxial": "1",
   "active-devices": "2",
   antenna: "3",
   "servo-control": "4",
   "subsystem-integration": "5",
+  custom: "custom",
 };

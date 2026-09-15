@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { ProductModal, SpecificationInquiryModal } from "@/components/productcenter/ProductDetailDialogs";
+import type { Product } from "@/components/productcenter/catalog-data";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { productDetails } from "@/components/solutions/solution-product-details";
@@ -280,6 +281,8 @@ const solutions: Solution[] = [
 const PAGE_SIZE = 8;
 
 export function SolutionsPage() {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [specificationTarget, setSpecificationTarget] = useState<string | null>(null);
   const [solutionId, setSolutionId] = useState(solutions[0].id);
   const [systemId, setSystemId] = useState(solutions[0].systems[0].id);
   const [categoryId, setCategoryId] = useState("all");
@@ -382,6 +385,18 @@ export function SolutionsPage() {
   const openConsult = () => {
     setHasConsultSubmitted(false);
     setIsConsultOpen(true);
+  };
+
+  const openProduct = (product: ProductItem) => {
+    setSelectedProduct({
+      name: product.name, model: product.model, image: product.image,
+      description: product.name,
+      frequency: "", gain: "", interface: "", bandwidth: "", axis: "",
+      specifications: product.metrics.map((metric) => {
+        const separator = metric.indexOf(" ");
+        return separator < 0 ? { label: "技术指标", value: metric } : { label: metric.slice(0, separator), value: metric.slice(separator + 1) };
+      }),
+    });
   };
 
   const submitConsult = (event: React.FormEvent<HTMLFormElement>) => {
@@ -544,7 +559,7 @@ export function SolutionsPage() {
 
           <div className="solution-product-grid">
             {visibleProducts.map((product) => (
-              <Link key={`${system.id}-${product.name}`} href={product.href} className="solution-product-card">
+              <button type="button" key={`${system.id}-${product.name}`} onClick={() => openProduct(product)} className="solution-product-card text-left" aria-label={`查看${product.name}产品详情`}>
                 <span className="solution-product-figure">
                   <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 92vw, (max-width: 1023px) 45vw, 285px" />
                 </span>
@@ -564,7 +579,7 @@ export function SolutionsPage() {
                   查看详细指标
                   <ArrowRight size={15} aria-hidden="true" />
                 </span>
-              </Link>
+              </button>
             ))}
           </div>
 
@@ -592,6 +607,8 @@ export function SolutionsPage() {
         </div>
       </section>
 
+      {selectedProduct ? <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} onRequestSpec={(target) => { setSelectedProduct(null); setSpecificationTarget(target); }} /> : null}
+      {specificationTarget ? <SpecificationInquiryModal target={specificationTarget} onClose={() => setSpecificationTarget(null)} /> : null}
       {isConsultOpen ? (
         <div
           className="solution-consult-backdrop"

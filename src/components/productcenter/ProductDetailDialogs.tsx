@@ -1,9 +1,36 @@
 "use client";
 
 import { X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import type { Product } from "./catalog-data";
+
+function useDialogFocus(onClose: () => void) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const previous = document.activeElement;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    ref.current?.querySelector<HTMLElement>("button, input")?.focus();
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") { event.preventDefault(); onClose(); }
+      if (event.key !== "Tab") return;
+      const controls = Array.from(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input, select, textarea, a[href]') ?? []);
+      const first = controls[0];
+      const last = controls.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = overflow;
+      document.removeEventListener("keydown", onKeyDown);
+      if (previous instanceof HTMLElement && previous.isConnected) previous.focus();
+    };
+  }, [onClose]);
+  return ref;
+}
 
 export function ProductModal({
   product,
@@ -14,9 +41,10 @@ export function ProductModal({
   onClose: () => void;
   onRequestSpec: (target: string) => void;
 }) {
+  const dialogRef = useDialogFocus(onClose);
   return (
     <div className="product-modal-backdrop" role="presentation" onClick={onClose}>
-      <section className="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}>
+      <section ref={dialogRef} className="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}>
         <div className="product-modal-head">
           <div>
             <div className="product-center-kicker">FULL TECHNICAL PARAMETERS</div>
@@ -25,6 +53,8 @@ export function ProductModal({
           <button type="button" onClick={onClose} aria-label="关闭">×</button>
         </div>
         <p className="product-modal-lead">{product.description}</p>
+        {product.image ? <Image src={product.image} alt={product.name ?? product.model} width={640} height={360} className="mx-auto mb-6 h-48 w-full object-contain" /> : null}
+        {product.specifications ? <dl className="product-parameter-list">{product.specifications.map((spec) => <div key={spec.label}><dt>{spec.label}</dt><dd>{spec.value}</dd></div>)}</dl> :
         <dl className="product-parameter-list">
           <div>
             <dt>频率范围</dt>
@@ -50,9 +80,9 @@ export function ProductModal({
             <dt>产品类型</dt>
             <dd>恒达微波标准产品 / 可按项目配置</dd>
           </div>
-        </dl>
+        </dl>}
         <button type="button" className="product-primary-button" onClick={() => onRequestSpec(product.model)}>
-          申请该型号规格书
+          获取规格书
         </button>
       </section>
     </div>
@@ -60,6 +90,7 @@ export function ProductModal({
 }
 
 export function SpecificationInquiryModal({ target, onClose }: { target: string; onClose: () => void }) {
+  const dialogRef = useDialogFocus(onClose);
   const [submitted, setSubmitted] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
 
@@ -84,10 +115,10 @@ export function SpecificationInquiryModal({ target, onClose }: { target: string;
 
   return (
     <div className="product-inquiry-backdrop" role="presentation" onClick={onClose}>
-      <section className="product-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="product-inquiry-title" onClick={(event) => event.stopPropagation()}>
+      <section ref={dialogRef} className="product-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="product-inquiry-title" onClick={(event) => event.stopPropagation()}>
         <div className="product-inquiry-head">
           <div>
-            <span>规格书申请</span>
+            <span>获取规格书</span>
             <h2 id="product-inquiry-title">{target}</h2>
           </div>
           <button type="button" onClick={onClose} aria-label="关闭询单弹窗">
@@ -106,13 +137,13 @@ export function SpecificationInquiryModal({ target, onClose }: { target: string;
           </label>
           <label>
             咨询产品类型
-            <select required name="product" defaultValue="规格书申请">
-              <option value="规格书申请">规格书申请</option>
+            <select required name="product" defaultValue="获取规格书">
+              <option value="获取规格书">获取规格书</option>
             </select>
           </label>
           <label>
             咨询内容
-            <textarea required name="content" rows={4} defaultValue={`申请规格书：${target}\n请与我联系，并告知规格书申请所需资料。`} />
+            <textarea required name="content" rows={4} defaultValue={`获取规格书：${target}\n请与我联系，并告知获取规格书所需资料。`} />
           </label>
           <button type="submit" disabled={submitted}>
             {submitted ? "已提交" : "提交询单"}

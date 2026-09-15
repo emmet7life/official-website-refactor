@@ -40,7 +40,7 @@ const tabs = [
   { label: '公司活动', href: '/about/activity', part: 'about-activities', active: false },
   { label: '媒体宣传', href: '/about/media', part: 'about-media', active: false },
   { label: '企业文化', href: '/about/culture', part: 'about-culture', active: false },
-  { label: '人力资源', href: '/about/hr', part: 'about-hr', active: false },
+
 ] as const;
 
 export function AboutProfileSection({ children }: { children?: ReactNode }) {
@@ -49,10 +49,10 @@ export function AboutProfileSection({ children }: { children?: ReactNode }) {
       <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
         <div>
           <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">关于恒达</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">关于我们</h2>
         </div>
 
-        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="关于恒达">
+        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="关于我们">
           <div className="flex flex-wrap gap-x-8 gap-y-1">
             {tabs.map((tab) => (
               <Link

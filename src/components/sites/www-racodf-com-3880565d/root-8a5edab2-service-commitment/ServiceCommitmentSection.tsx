@@ -4,8 +4,8 @@ const commitments = [
   ['诚信服务持续改进', '以周到、及时、优良的服务排除产品故障，并通过持续监视、测量、分析和改进提升服务。'],
 ] as const;
 
-export function ServiceCommitmentSection() {
-  return <div id="service-commitment" className="service-part hidden">
+export function ServiceCommitmentSection({ standalone = false }: { standalone?: boolean }) {
+  return <div id="service-commitment" className={standalone ? "" : "service-part hidden"}>
     <div className="mb-6 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
     <h3 className="mb-8 text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">服务承诺</h3>
     <div className="space-y-8">

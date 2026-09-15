@@ -4,7 +4,6 @@ import { AboutCultureSection } from "../root-8a5edab2-about-culture/AboutCulture
 import { AboutEquipmentSection } from "../root-8a5edab2-about-equipment/AboutEquipmentSection";
 import { AboutHistorySection } from "../root-8a5edab2-about-history/AboutHistorySection";
 import { AboutHonorSection } from "../root-8a5edab2-about-honor/AboutHonorSection";
-import { AboutHrSection } from "../root-8a5edab2-about-hr/AboutHrSection";
 import { AboutMediaSection } from "../root-8a5edab2-about-media/AboutMediaSection";
 import { AboutProfileSection } from "../root-8a5edab2-about-profile/AboutProfileSection";
 import { NewsSection, type NewsFilter } from "../root-8a5edab2-news/NewsSection";
@@ -17,6 +16,7 @@ import { HengdaHomeFooter } from "./HengdaHomeFooter";
 import { HengdaPageInteractions } from "./HengdaPageInteractions";
 import { HengdaProductCenter, type HengdaProductKey } from "./HengdaProductCenter";
 import { HengdaSiteHeader } from "./HengdaSiteHeader";
+import { TechnicalResources } from "@/components/tech/TechnicalResources";
 
 export const sectionItems = {
   about: ["intro", "history", "honor", "equipment", "activity", "media", "culture", "hr"],
@@ -61,7 +61,6 @@ function AboutContent() {
     <AboutActivitiesSection />
     <AboutMediaSection />
     <AboutCultureSection />
-    <AboutHrSection />
   </AboutProfileSection>;
 }
 
@@ -90,8 +89,10 @@ export function HengdaSectionPage({ section, item }: { section: HengdaSection; i
     content = <NewsSection key={item} initialFilter={newsCategories[item]} />;
   } else if (section === "products") {
     content = <HengdaProductCenter selected={item as HengdaProductKey} />;
+  } else if (section === "tech") {
+    content = <TechnicalResources selected={item} />;
   } else {
-    initialPart = section === "tech" ? "service-downloads" : serviceParts[item];
+    initialPart = serviceParts[item];
     content = <ServiceContent />;
   }
 

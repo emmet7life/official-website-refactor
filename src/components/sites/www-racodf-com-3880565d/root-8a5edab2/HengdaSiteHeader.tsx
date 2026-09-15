@@ -46,7 +46,6 @@ export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
                 {group.links.map(([label, href]) => <Link key={label} href={href} className="block px-5 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-primary">{label}</Link>)}
               </div>
             </div>)}
-            <Link href="/#contact" className="py-6 transition-colors hover:text-primary">联系我们</Link>
           </nav>
           <div className="flex items-center gap-3">
             <a
@@ -80,7 +79,6 @@ export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
           首页
         </Link>
         {navGroups.map((group) => <details key={group.label} className="border-b border-gray-100"><summary className={`flex cursor-pointer list-none items-center justify-between py-3 font-medium${isCurrent(group.section) ? ' nav-link-active' : ''}`} aria-current={isCurrent(group.section) ? 'page' : undefined}><span>{group.label}</span><Chevron /></summary><div className="flex flex-col gap-1 pb-3 pl-3 text-gray-600">{group.links.map(([label, href]) => <Link key={label} href={href} className="py-2">{label}</Link>)}</div></details>)}
-        <Link href="/#contact" className="block border-b border-gray-100 py-3 font-medium">联系我们</Link>
         <Link href="/#contact" className="mt-6 flex h-12 items-center justify-center rounded-md bg-primary font-medium text-white transition-colors hover:bg-primary-dark">业务咨询</Link>
       </nav>
     </aside>

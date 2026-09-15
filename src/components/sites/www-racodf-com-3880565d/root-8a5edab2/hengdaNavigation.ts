@@ -1,6 +1,6 @@
 export const hengdaNavGroups = [
   {
-    label: '关于恒达',
+    label: '关于我们',
     section: '/about',
     links: [
       ['公司介绍', '/about/intro'],
@@ -25,11 +25,12 @@ export const hengdaNavGroups = [
     section: '/productcenter',
     href: '/productcenter',
     links: [
-      ['波导、同轴元器件', '/productcenter?category=waveguide-coaxial'],
-      ['微波有源器件', '/productcenter?category=active-devices'],
-      ['天线', '/productcenter?category=antenna'],
-      ['天线转台与伺服控制', '/productcenter?category=servo-control'],
-      ['分系统集成产品', '/productcenter?category=subsystem-integration'],
+      ['无源系列', '/productcenter?category=waveguide-coaxial'],
+      ['有源系列', '/productcenter?category=active-devices'],
+      ['天线系列', '/productcenter?category=antenna'],
+      ['伺服转台系列', '/productcenter?category=servo-control'],
+      ['分系统集成系列', '/productcenter?category=subsystem-integration'],
+      ['来图加工', '/productcenter?category=custom'],
     ],
   },
   {
@@ -44,11 +45,11 @@ export const hengdaNavGroups = [
     ],
   },
   {
-    label: '客户服务',
-    section: '/service',
+    label: '人力资源',
+    section: '/hr',
+    href: '/hr',
     links: [
-      ['质量控制', '/service/quality'],
-      ['服务承诺', '/service/promise'],
+      ['人力资源', '/hr'],
     ],
   },
   {
@@ -57,6 +58,16 @@ export const hengdaNavGroups = [
     links: [
       ['微波知识', '/tech/knowledge'],
       ['论文下载', '/tech/papers'],
+    ],
+  },
+  {
+    label: '联系我们',
+    section: '/contact',
+    href: '/contact',
+    links: [
+      ['销售网络', '/contact#sales'],
+      ['售后服务', '/contact#after-sales'],
+      ['供应链合作', '/contact#supply-chain'],
     ],
   },
 ] as const;

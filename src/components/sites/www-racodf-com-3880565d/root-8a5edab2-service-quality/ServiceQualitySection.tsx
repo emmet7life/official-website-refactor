@@ -1,5 +1,5 @@
-export function ServiceQualitySection() {
-  return <div id="service-quality" className="service-part hidden">
+export function ServiceQualitySection({ standalone = false }: { standalone?: boolean }) {
+  return <div id="service-quality" className={standalone ? "" : "service-part hidden"}>
     <div className="mb-6 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
     <h3 className="mb-8 text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">质量控制</h3>
     <div className="space-y-6 text-sm leading-8 text-gray-600 md:text-base">
