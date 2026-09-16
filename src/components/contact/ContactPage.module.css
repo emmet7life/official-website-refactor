@@ -1,0 +1,109 @@
+.page {
+  background: #f5f8fc;
+  color: #14243b;
+}
+
+.hero {
+  padding: 76px 0 82px;
+  color: white;
+  background:
+    linear-gradient(105deg, rgba(4, 18, 46, 0.96), rgba(6, 32, 66, 0.72)),
+    url("/sites/www-racodf-com-3880565d/shared/home/business-bg.png") center / cover;
+}
+
+.surface {
+  padding-bottom: 72px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid #dce5ee;
+  border-radius: 10px;
+  background: white;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 25px 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tab + .tab {
+  border-left: 1px solid #e2e8f0;
+}
+
+.tab:hover {
+  background: #edf4ff;
+}
+
+.tabActive {
+  background: #165dff;
+  color: white;
+}
+
+.tab:focus-visible {
+  outline: 3px solid #69b1ff;
+  outline-offset: -4px;
+}
+
+.panel {
+  padding-top: 40px;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form label {
+  display: block;
+  color: #475569;
+  font-size: 14px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 11px 13px;
+  border: 1px solid #dce3eb;
+  border-radius: 6px;
+  background: white;
+  color: #14243b;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: #165dff;
+  outline: 2px solid #bfdbfe;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 48px 0;
+  }
+
+  .tab {
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 6px;
+    font-size: 14px;
+  }
+
+  .tab > svg:last-child {
+    display: none;
+  }
+
+  .panel {
+    padding-top: 28px;
+  }
+}
