@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { ServiceDownloadsSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-downloads/ServiceDownloadsSection";
+import styles from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-news/NewsSection.module.css";
 
 const knowledgeTopics = [
   "微波频段的划分与应用", "波导传输的基本原理", "矩形波导与圆波导", "波导规格与接口标准",
@@ -17,16 +18,18 @@ const knowledgeTopics = [
 
 export function TechnicalResources({ selected }: { selected: string }) {
   const knowledge = selected === "knowledge";
-  return <section className="scroll-mt-20 bg-gray-50 py-16 md:py-24 lg:py-28">
-    <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
+  return <section className={`${styles.news} bg-[#fff]`}>
+    <div className={styles.container}>
       <div className="mb-10 max-w-2xl">
-        <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
-        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">技术资料</h1>
-        <p className="mt-4 text-base leading-relaxed text-gray-600">微波知识与论文资料，供您查阅与参考。</p>
+        <div className={styles.headingRule} aria-hidden="true" />
+        <h1 className={styles.heading}>技术资料</h1>
+        <p className={styles.intro}>微波知识与论文资料，供您查阅与参考。</p>
       </div>
-      <nav className="mb-10 flex gap-8 border-b border-gray-200" aria-label="技术资料分类">
-        {[["微波知识", "/tech/knowledge"], ["论文下载", "/tech/papers"]].map(([label, href]) => <Link key={href} href={href} aria-current={href.endsWith(selected) ? "page" : undefined} className={`-mb-px border-b-2 px-1 py-3 text-base font-medium transition-colors hover:text-primary ${href.endsWith(selected) ? "border-primary text-primary" : "border-transparent text-gray-500"}`}>{label}</Link>)}
+      <div className={styles.content}>
+      <nav className={styles.filters} aria-label="技术资料栏目">
+        {[["微波知识", "/tech/knowledge"], ["论文下载", "/tech/papers"]].map(([label, href]) => <Link key={href} href={href} aria-current={href.endsWith(selected) ? "page" : undefined} className={`${styles.filterLink} ${href.endsWith(selected) ? styles.filterLinkActive : ""}`}><span>{label}</span></Link>)}
       </nav>
+      <div>
       {knowledge ? <div>
         <h2 className="text-2xl font-semibold text-gray-900">微波知识</h2>
         <p className="mt-3 text-sm text-gray-500">以下为演示链接，文章内容待补充。</p>
@@ -38,6 +41,8 @@ export function TechnicalResources({ selected }: { selected: string }) {
           </a>)}
         </div>
       </div> : <ServiceDownloadsSection />}
+    </div>
+      </div>
     </div>
   </section>;
 }

@@ -5,10 +5,9 @@ export const hengdaNavGroups = [
     links: [
       ['公司介绍', '/about/intro'],
       ['公司历程', '/about/history'],
-      ['资质荣誉', '/about/honor'],
-      ['实验设备', '/about/equipment'],
+      ['荣誉资质', '/about/honor'],
       ['公司活动', '/about/activity'],
-      ['媒体宣传', '/about/media'],
+      ['能力介绍', '/capability'],
     ],
   },
   {
@@ -16,8 +15,8 @@ export const hengdaNavGroups = [
     section: '/solutions',
     href: '/solutions',
     links: [
-      ['气象雷达', '/solutions#weather-radar'],
-      ['卫星通信', '/solutions#satellite-communication'],
+      ['气象雷达', '/solutions?solution=weather-radar'],
+      ['卫星通信', '/solutions?solution=satellite-communication'],
     ],
   },
   {
@@ -25,12 +24,12 @@ export const hengdaNavGroups = [
     section: '/productcenter',
     href: '/productcenter',
     links: [
-      ['无源系列', '/productcenter?category=waveguide-coaxial'],
-      ['有源系列', '/productcenter?category=active-devices'],
-      ['天线系列', '/productcenter?category=antenna'],
-      ['伺服转台系列', '/productcenter?category=servo-control'],
-      ['分系统集成系列', '/productcenter?category=subsystem-integration'],
-      ['来图加工', '/productcenter?category=custom'],
+      ['天线系列产品', '/productcenter?category=antenna'],
+      ['无源系列产品', '/productcenter?category=waveguide-coaxial'],
+      ['有源系列产品', '/productcenter?category=active-devices'],
+      ['伺服转台系列产品', '/productcenter?category=servo-control'],
+      ['分系统集成系列产品', '/productcenter?category=subsystem-integration'],
+      ['来图加工系列产品', '/custom-machining'],
     ],
   },
   {
@@ -49,7 +48,9 @@ export const hengdaNavGroups = [
     section: '/hr',
     href: '/hr',
     links: [
-      ['人力资源', '/hr'],
+      ['招聘动态', '/hr#recruitment'],
+      ['研究生培养', '/hr#training'],
+      ['人事行政联系方式', '/hr#hr-contact'],
     ],
   },
   {
@@ -65,9 +66,9 @@ export const hengdaNavGroups = [
     section: '/contact',
     href: '/contact',
     links: [
-      ['销售网络', '/contact#sales'],
-      ['售后服务', '/contact#after-sales'],
-      ['供应链合作', '/contact#supply-chain'],
+      ['销售网络', '/contact?section=sales'],
+      ['售后服务', '/contact?section=after-sales'],
+      ['供应链合作', '/contact?section=supply-chain'],
     ],
   },
 ] as const;

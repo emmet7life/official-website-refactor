@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import newsStyles from '../root-8a5edab2-news/NewsSection.module.css';
 
 const profileParagraphs = [
   '2020年1月，西安恒达微波技术开发有限公司（以下简称为“恒达微波”或“公司”）正式加入雷科防务，成为雷科防务全资子公司（股票代码002413）。',
@@ -33,43 +34,36 @@ const companyHonors = [
 ] as const;
 
 const tabs = [
-  { label: '公司介绍', href: '/about/intro', part: 'about-profile', active: true },
-  { label: '发展历程', href: '/about/history', part: 'about-history', active: false },
-  { label: '资质荣誉', href: '/about/honor', part: 'about-honor', active: false },
-  { label: '实验设备', href: '/about/equipment', part: 'about-equipment', active: false },
-  { label: '公司活动', href: '/about/activity', part: 'about-activities', active: false },
-  { label: '媒体宣传', href: '/about/media', part: 'about-media', active: false },
-  { label: '企业文化', href: '/about/culture', part: 'about-culture', active: false },
+  { label: '公司介绍', href: '/about/intro', part: 'about-profile' },
+  { label: '发展历程', href: '/about/history', part: 'about-history' },
+  { label: '资质荣誉', href: '/about/honor', part: 'about-honor' },
+  { label: '公司活动', href: '/about/activity', part: 'about-activities' },
+  { label: '媒体宣传', href: '/about/media', part: 'about-media' },
+  { label: '企业文化', href: '/about/culture', part: 'about-culture' },
 
 ] as const;
 
-export function AboutProfileSection({ children }: { children?: ReactNode }) {
+export function AboutProfileSection({ children, selectedPart = 'about-profile' }: { children?: ReactNode; selectedPart?: string }) {
   return (
-    <section id="about" className="bg-white py-16 md:py-24 lg:py-28">
-      <div className="mx-auto max-w-container px-5 md:px-10 lg:px-16">
-        <div>
-          <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">关于我们</h2>
-        </div>
+    <section id="about" className={`${newsStyles.news} bg-[#fff]`}>
+      <div className={newsStyles.container}>
+        <header>
+          <div className={newsStyles.headingRule} aria-hidden="true" />
+          <h1 className={newsStyles.heading}>关于我们</h1>
+        </header>
 
-        <nav className="mt-8 mb-10 border-b border-gray-200 lg:mb-14" aria-label="关于我们">
-          <div className="flex flex-wrap gap-x-8 gap-y-1">
-            {tabs.map((tab) => (
-              <Link
-                key={tab.label}
-                href={tab.href}
-                data-about-part={tab.part}
-                className={tab.active
-                  ? '-mb-px border-b-2 border-primary px-1 py-3 text-sm font-medium text-primary md:text-base'
-                  : '-mb-px border-b-2 border-transparent px-1 py-3 text-sm font-medium text-gray-500 transition-colors hover:text-primary md:text-base'}
-              >
-                {tab.label}
-              </Link>
-            ))}
-          </div>
-        </nav>
+        <div className={`${newsStyles.content} ${newsStyles.contentSpaced}`}>
+          <nav className={newsStyles.filters} aria-label="关于我们栏目">
+            {tabs.map((tab) => {
+              const active = tab.part === selectedPart;
+              return <Link key={tab.label} href={tab.href} data-about-part={tab.part} className={`${newsStyles.filterLink} ${active ? newsStyles.filterLinkActive : ''}`}>
+                <span>{tab.label}</span>
+              </Link>;
+            })}
+          </nav>
 
-        <div id="about-profile" className="about-part">
+          <div>
+            <div id="about-profile" className="about-part">
           <div id="about-profile-text" className="about-profile-copy mx-auto max-w-5xl space-y-6 text-sm leading-8 text-gray-500 md:text-base">
             <img src="/sites/www-racodf-com-3880565d/shared/about/hengda-company-leike.jpg" alt="恒达微波公司介绍" loading="lazy" className="mx-auto h-auto max-h-56 w-full max-w-3xl rounded-lg object-contain" />
             {profileParagraphs.slice(0, 3).map((paragraph) => <p key={paragraph} className="text-justify indent-8">{paragraph}</p>)}
@@ -94,9 +88,11 @@ export function AboutProfileSection({ children }: { children?: ReactNode }) {
                 ))}
               </ul>
             </div>
+            </div>
+            </div>
+            {children}
           </div>
         </div>
-        {children}
       </div>
     </section>
   );

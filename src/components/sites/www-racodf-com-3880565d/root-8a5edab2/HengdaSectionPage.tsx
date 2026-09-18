@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { AboutActivitiesSection } from "../root-8a5edab2-about-activities/AboutActivitiesSection";
 import { AboutCultureSection } from "../root-8a5edab2-about-culture/AboutCultureSection";
-import { AboutEquipmentSection } from "../root-8a5edab2-about-equipment/AboutEquipmentSection";
 import { AboutHistorySection } from "../root-8a5edab2-about-history/AboutHistorySection";
 import { AboutHonorSection } from "../root-8a5edab2-about-honor/AboutHonorSection";
 import { AboutMediaSection } from "../root-8a5edab2-about-media/AboutMediaSection";
@@ -19,7 +18,7 @@ import { HengdaSiteHeader } from "./HengdaSiteHeader";
 import { TechnicalResources } from "@/components/tech/TechnicalResources";
 
 export const sectionItems = {
-  about: ["intro", "history", "honor", "equipment", "activity", "media", "culture", "hr"],
+  about: ["intro", "history", "honor", "activity", "media", "culture", "hr"],
   news: ["all", "company", "media", "industry", "exhibition", "enews"],
   products: ["antenna", "feeder", "servo", "subsystem", "custom"],
   service: ["downloads", "sales", "quality", "promise"],
@@ -32,7 +31,6 @@ const aboutParts: Record<string, string> = {
   intro: "about-profile",
   history: "about-history",
   honor: "about-honor",
-  equipment: "about-equipment",
   activity: "about-activities",
   media: "about-media",
   culture: "about-culture",
@@ -53,11 +51,10 @@ const newsCategories: Record<string, NewsFilter> = {
   enews: "电子报",
 };
 
-function AboutContent() {
-  return <AboutProfileSection>
+function AboutContent({ selectedPart }: { selectedPart: string }) {
+  return <AboutProfileSection selectedPart={selectedPart}>
     <AboutHistorySection />
     <AboutHonorSection />
-    <AboutEquipmentSection />
     <AboutActivitiesSection />
     <AboutMediaSection />
     <AboutCultureSection />
@@ -83,8 +80,8 @@ export function HengdaSectionPage({ section, item }: { section: HengdaSection; i
   let initialPart: string | undefined;
   let content: React.ReactNode;
   if (section === "about") {
-    initialPart = aboutParts[item];
-    content = <AboutContent />;
+    initialPart = aboutParts[item] ?? "about-profile";
+    content = <AboutContent selectedPart={initialPart} />;
   } else if (section === "news") {
     content = <NewsSection key={item} initialFilter={newsCategories[item]} />;
   } else if (section === "products") {

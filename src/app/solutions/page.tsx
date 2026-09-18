@@ -8,11 +8,18 @@ export const metadata = {
   description: "恒达微波气象雷达与卫星通信天馈伺解决方案，按应用场景关联现有产品体系。",
 };
 
-export default function SolutionsRoutePage() {
+export default async function SolutionsRoutePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ solution?: string | string[] }>;
+}) {
+  const solution = (await searchParams).solution;
+  const initialSolutionId = typeof solution === "string" ? solution : undefined;
+
   return <>
     <HengdaSiteHeader solid />
     <main className="pt-16 lg:pt-[72px]">
-      <SolutionsPage />
+      <SolutionsPage key={initialSolutionId ?? "weather-radar"} initialSolutionId={initialSolutionId} />
     </main>
     <HengdaHomeFooter />
     <HengdaPageInteractions solidHeader />

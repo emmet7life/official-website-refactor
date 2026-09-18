@@ -15,45 +15,34 @@
   padding-bottom: 72px;
 }
 
-.tabs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  overflow: hidden;
-  border: 1px solid #dce5ee;
-  border-radius: 10px;
-  background: white;
-}
+.contactLayout { padding-top: 40px; }
 
 .tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 25px 16px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.tab + .tab {
-  border-left: 1px solid #e2e8f0;
-}
-
-.tab:hover {
-  background: #edf4ff;
-}
-
-.tabActive {
-  background: #165dff;
-  color: white;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .tab:focus-visible {
   outline: 3px solid #69b1ff;
-  outline-offset: -4px;
+  outline-offset: -3px;
 }
 
 .panel {
-  padding-top: 40px;
+  padding-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .tab {
+    display: block !important;
+    flex: 1 1 0 !important;
+    min-width: 0;
+    width: auto !important;
+    white-space: nowrap;
+    text-align: center;
+  }
 }
 
 .form {
@@ -92,16 +81,7 @@
     padding: 48px 0;
   }
 
-  .tab {
-    flex-direction: column;
-    gap: 8px;
-    padding: 18px 6px;
-    font-size: 14px;
-  }
-
-  .tab > svg:last-child {
-    display: none;
-  }
+  .contactLayout { padding-top: 28px; }
 
   .panel {
     padding-top: 28px;

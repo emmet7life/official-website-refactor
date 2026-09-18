@@ -1,32 +1,33 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowUpRight, Handshake, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import styles from "./ContactPage.module.css";
+import newsStyles from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-news/NewsSection.module.css";
 
 const tabs = [
-  { id: "sales", label: "销售网络", icon: MapPin },
-  { id: "after-sales", label: "售后服务", icon: ShieldCheck },
-  { id: "supply-chain", label: "供应链合作", icon: Handshake },
+  { id: "sales", label: "销售网络" },
+  { id: "after-sales", label: "售后服务" },
+  { id: "supply-chain", label: "供应链合作" },
 ] as const;
 type ContactTab = (typeof tabs)[number]["id"];
 
-export function ContactPage({ sales, quality, commitment }: { sales: ReactNode; quality: ReactNode; commitment: ReactNode }) {
-  const [active, setActive] = useState<ContactTab>("sales");
+function getContactTab(section: string | undefined): ContactTab {
+  return tabs.find((item) => item.id === section)?.id ?? "sales";
+}
+
+export function ContactPage({ initialSection, sales, quality, commitment }: { initialSection?: string; sales: ReactNode; quality: ReactNode; commitment: ReactNode }) {
+  const initialTab = getContactTab(initialSection);
+  const [active, setActive] = useState<ContactTab>(initialTab);
   useEffect(() => {
-    const sync = () => {
-      const tab = tabs.find((item) => item.id === window.location.hash.slice(1));
-      setActive(tab?.id ?? "sales");
-    };
-    sync();
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
-  }, []);
+    setActive(initialTab);
+  }, [initialTab]);
 
   function chooseTab(id: ContactTab) {
     setActive(id);
-    window.history.replaceState(null, "", `#${id}`);
+    const params = new URLSearchParams(window.location.search);
+    params.set("section", id);
+    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
   }
 
   return <div className={styles.page}>
@@ -38,12 +39,11 @@ export function ContactPage({ sales, quality, commitment }: { sales: ReactNode; 
       </div>
     </section>
     <div className={styles.surface}>
-      <nav className="product-center-container py-5 text-sm text-slate-500" aria-label="页面路径"><Link href="/" className="hover:text-primary">首页</Link><span className="mx-3">/</span>联系我们</nav>
-      <div className="product-center-container">
-        <div className={styles.tabs} role="tablist" aria-label="联系我们栏目">
-          {tabs.map(({ id, label, icon: Icon }, index) => <button
+      <div className={`${newsStyles.content} ${styles.contactLayout} product-center-container`}>
+        <nav className={newsStyles.filters} role="tablist" aria-label="联系我们栏目">
+          {tabs.map(({ id, label }, index) => <button
             type="button" role="tab" id={`contact-tab-${id}`} aria-controls={`contact-panel-${id}`} aria-selected={active === id}
-            tabIndex={active === id ? 0 : -1} className={`${styles.tab} ${active === id ? styles.tabActive : ""}`} key={id}
+            tabIndex={active === id ? 0 : -1} className={`${newsStyles.filterLink} ${styles.tab} ${active === id ? newsStyles.filterLinkActive : ""}`} key={id}
             onClick={() => chooseTab(id)}
             onKeyDown={(event) => {
               const nextIndex = event.key === "ArrowRight" ? (index + 1) % tabs.length : event.key === "ArrowLeft" ? (index + tabs.length - 1) % tabs.length : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : -1;
@@ -52,8 +52,9 @@ export function ContactPage({ sales, quality, commitment }: { sales: ReactNode; 
               chooseTab(tabs[nextIndex].id);
               document.getElementById(`contact-tab-${tabs[nextIndex].id}`)?.focus();
             }}
-          ><Icon size={22} aria-hidden="true" /><span>{label}</span><ArrowUpRight size={18} aria-hidden="true" /></button>)}
-        </div>
+          ><span>{label}</span></button>)}
+        </nav>
+        <div>
         <section id="contact-panel-sales" role="tabpanel" aria-labelledby="contact-tab-sales" hidden={active !== "sales"} className={styles.panel}>
           {sales}
         </section>
@@ -74,6 +75,7 @@ export function ContactPage({ sales, quality, commitment }: { sales: ReactNode; 
             <div><h3 className="mb-5 text-xl font-semibold text-slate-900">合作意向登记</h3><ContactMailForm kind="supplier" /></div>
           </div>
         </section>
+        </div>
       </div>
     </div>
   </div>;

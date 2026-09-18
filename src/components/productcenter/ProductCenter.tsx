@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Maximize2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { productCategorySlugs, productDirectory, type Category, type Product, type Specification } from "./catalog-data";
 import { ProductModal, SpecificationInquiryModal } from "./ProductDetailDialogs";
@@ -40,6 +41,15 @@ const categoryCardImages = [
   "/product-center/categories/122.jpg",
 ];
 
+const categoryCardIcons: Record<string, string> = {
+  "1": "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/passive.svg",
+  "2": "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/active.svg",
+  "3": "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/antenna.svg",
+  "4": "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/servo.svg",
+  "5": "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/subsystem.svg",
+  custom: "/sites/www-racodf-com-3880565d/shared/product-center/category-icons/custom.svg",
+};
+
 function getSelectedNodes(path: number[]) {
   const nodes: Category[] = [];
   let children = productDirectory;
@@ -57,6 +67,7 @@ function getInitialPath(category?: string) {
 }
 
 export function ProductCenter({ initialCategory }: { initialCategory?: string }) {
+  const router = useRouter();
   const [selectedPath, setSelectedPath] = useState<number[]>(() => getInitialPath(initialCategory));
   const [expandedPaths, setExpandedPaths] = useState<string[]>(() => getInitialPath(initialCategory).map((_, index, path) => path.slice(0, index + 1).join(".")));
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
@@ -86,6 +97,10 @@ export function ProductCenter({ initialCategory }: { initialCategory?: string })
   }, [selectedPath]);
 
   function select(path: number[]) {
+    if (getSelectedNodes(path).at(-1)?.code === "custom") {
+      router.push("/custom-machining");
+      return;
+    }
     setSelectedPath(path);
     setExpandedPaths((current) => [...new Set([
       ...current.filter((key) => key.split(".")[0] === String(path[0])),
@@ -151,11 +166,15 @@ export function ProductCenter({ initialCategory }: { initialCategory?: string })
         <aside className="product-directory"><nav aria-label="产品分类目录">{renderTree(productDirectory)}</nav></aside>
         <section className="product-center-content" ref={contentRef}>
           {selected?.code === "custom" ? <CustomManufacturing /> : null}
-          {selected?.article ? <ProductArticle category={selected} onRequestSpec={requestSpecification} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} onOpen={setModalProduct} onRequestSpec={requestSpecification} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div></> : <div className="category-cards">{children.map((child, index) => <button key={child.id} type="button" className="category-card-high" onClick={() => select([...selectedPath, index])}>
+          {selected?.article ? <ProductArticle category={selected} onRequestSpec={requestSpecification} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} onOpen={setModalProduct} onRequestSpec={requestSpecification} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div></> : <div className="category-cards">{children.map((child, index) => {
+            const isRootCategory = selectedPath.length === 0;
+            const image = isRootCategory ? (categoryCardIcons[child.code] ?? categoryCardImages[index % categoryCardImages.length]) : categoryCardImages[index % categoryCardImages.length];
+            return <button key={child.id} type="button" className="category-card-high" onClick={() => select([...selectedPath, index])}>
             <span className="category-card-index">{child.code}</span>
             <span className="category-card-copy"><strong>{child.name}</strong><span className="category-card-action">{child.kind === "rich-text" || child.kind === "reference" ? "查看详情" : child.children.length ? "进入分类" : "查看产品"}<i aria-hidden="true">→</i></span></span>
-            <span className="category-card-visual" aria-hidden="true"><Image src={categoryCardImages[index % categoryCardImages.length]} alt="" fill sizes="(max-width: 560px) 44vw, (max-width: 850px) 36vw, 280px" /></span>
-          </button>)}</div>}
+            <span className={`category-card-visual${isRootCategory ? " category-card-icon-visual" : ""}`} aria-hidden="true"><Image src={image} alt="" fill sizes="(max-width: 560px) 44vw, (max-width: 850px) 36vw, 280px" /></span>
+          </button>;
+          })}</div>}
         </section>
       </main>
     </div>

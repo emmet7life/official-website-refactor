@@ -280,11 +280,12 @@ const solutions: Solution[] = [
 
 const PAGE_SIZE = 8;
 
-export function SolutionsPage() {
+export function SolutionsPage({ initialSolutionId }: { initialSolutionId?: string }) {
+  const initialSolution = solutions.find((item) => item.id === initialSolutionId) ?? solutions[0];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [specificationTarget, setSpecificationTarget] = useState<string | null>(null);
-  const [solutionId, setSolutionId] = useState(solutions[0].id);
-  const [systemId, setSystemId] = useState(solutions[0].systems[0].id);
+  const [solutionId, setSolutionId] = useState(initialSolution.id);
+  const [systemId, setSystemId] = useState(initialSolution.systems[0].id);
   const [categoryId, setCategoryId] = useState("all");
   const [page, setPage] = useState(1);
   const [isConsultOpen, setIsConsultOpen] = useState(false);
@@ -301,6 +302,9 @@ export function SolutionsPage() {
       setSystemId(target.systems[0].id);
       setCategoryId("all");
       setPage(1);
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      });
     };
     syncFromHash();
     window.addEventListener("hashchange", syncFromHash);
@@ -407,7 +411,7 @@ export function SolutionsPage() {
   const scrollAxis = (direction: -1 | 1) => {
     const container = axisRef.current;
     if (!container) return;
-    const items = Array.from(container.querySelectorAll<HTMLButtonElement>("button[id]"));
+    const items = Array.from(container.querySelectorAll<HTMLButtonElement>("button[data-solution-id]"));
     if (items.length === 0) return;
 
     const nextItem = direction === 1
@@ -448,7 +452,7 @@ export function SolutionsPage() {
           <div className={`solution-diagram solution-${solution.diagram}`} data-solution={solution.id}>
             {solution.diagram === "weather-radar" ? (
               <Image
-                src="/sites/www-racodf-com-3880565d/solutions/weather-radar-line-diagram-v2.png"
+                src="/sites/www-racodf-com-3880565d/solutions/weather-radar-line-diagram-v3.png"
                 alt="气象雷达天馈伺系统线条型科技感示意图"
                 fill
                 priority
@@ -505,7 +509,7 @@ export function SolutionsPage() {
               {solutions.map((item) => (
                 <button
                   key={item.id}
-                  id={item.id}
+                  data-solution-id={item.id}
                   type="button"
                   className={item.id === solution.id ? "active" : undefined}
                   onClick={() => selectSolution(item.id)}
@@ -646,7 +650,7 @@ export function SolutionsPage() {
                 <input type="checkbox" required />
                 <span>
                   我已阅读并同意
-                  <span className="solution-privacy-policy">《隐私政策》</span>
+                  <a className="solution-privacy-policy" href="/privacy" target="_blank" rel="noopener noreferrer">《隐私政策》</a>
                   ，同意西安恒达微波为业务联系与回复目的收集、使用我所填写的个人信息。
                 </span>
               </label>

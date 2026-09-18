@@ -169,7 +169,7 @@ export function SearchPage({ initialCategory, initialKeyword }: SearchPageProps)
   const [ranges, setRanges] = useState<RangeSelection>({});
   const [options, setOptions] = useState<OptionSelection>({});
   const [submittedQuery, setSubmittedQuery] = useState<SearchQuery | null>(() => (shouldSearchOnLoad ? initialQuery : null));
-  const [areFiltersOpen, setAreFiltersOpen] = useState(false);
+  const [areFiltersOpen, setAreFiltersOpen] = useState(true);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [inquiryTarget, setInquiryTarget] = useState<string | null>(null);
 

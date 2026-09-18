@@ -1,0 +1,167 @@
+.news {
+  background: #fff;
+  padding: 108px 0 112px;
+}
+
+.container {
+  width: min(1312px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.headingRule {
+  width: 48px;
+  height: 4px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: #165dff;
+}
+
+.heading {
+  margin: 0;
+  color: #10233c;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.intro {
+  margin: 16px 0 64px;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.contentSpaced { margin-top: 64px; }
+
+.filters {
+  position: sticky;
+  top: 104px;
+  z-index: 20;
+  padding: 20px;
+  border: 1px solid #dfe6ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(15, 40, 75, .04);
+}
+
+.filterTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.filterTitle::before {
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+  background: #165dff;
+  content: "";
+}
+
+.filterLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: #526276;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.filterLink:hover {
+  background: #eff6ff;
+  color: #165dff;
+}
+
+.filterLinkActive {
+  background: #165dff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.filterLinkActive:hover { background: #0f4ecc; color: #fff; }
+.filterCount { font-size: 14px; opacity: .78; }
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 18px;
+}
+
+.resultsHeader h2 { margin: 0; color: #10233c; font-size: 24px; line-height: 1.35; }
+.resultsCount { color: #7c8ba0; font-size: 14px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 24px;
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid #e0e6ee;
+  border-radius: 14px;
+  background: #fff;
+  text-align: left;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.card:hover, .card:focus-visible {
+  border-color: #9cbcf5;
+  box-shadow: 0 12px 28px rgba(24, 73, 142, .12);
+  transform: translateY(-3px);
+}
+
+.imageWrap { display: block; aspect-ratio: 1.78 / 1; overflow: hidden; background: #e7edf4; }
+.imageWrap img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.card:hover .imageWrap img { transform: scale(1.04); }
+.cardBody { display: block; min-height: 112px; padding: 15px 16px 17px; }
+.meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+.tag { padding: 4px 8px; border-radius: 5px; color: #165dff; background: #eaf3ff; font-size: 13px; font-weight: 600; line-height: 1; }
+.date { color: #75849a; font-size: 14px; line-height: 1; }
+.cardTitle { display: -webkit-box; overflow: hidden; color: #14243a; font-size: 17px; font-weight: 650; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.card:hover .cardTitle { color: #165dff; }
+
+.empty { padding: 68px 0; color: #7c8ba0; text-align: center; }
+.more { display: flex; justify-content: center; margin-top: 40px; }
+.more button { min-width: 150px; min-height: 46px; border: 1px solid #bfd0e5; border-radius: 8px; color: #165dff; background: #fff; font-weight: 600; transition: color .2s ease, border-color .2s ease, background .2s ease; }
+.more button:hover { border-color: #165dff; color: #fff; background: #165dff; }
+
+@media (max-width: 1023px) {
+  .news { padding: 76px 0 80px; }
+  .container { width: min(100% - 40px, 900px); }
+  .contentSpaced { margin-top: 36px; }
+  .content { grid-template-columns: 1fr; }
+  .filters { top: 88px; display: flex; gap: 8px; overflow-x: auto; padding: 10px; }
+  .filterTitle { display: none; }
+  .filterLink { flex: 0 0 auto; min-height: 40px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .news { padding: 56px 0 64px; }
+  .container { width: min(100% - 32px, 560px); }
+  .heading { font-size: 30px; }
+  .intro { margin: 12px 0 36px; font-size: 15px; }
+  .resultsHeader h2 { font-size: 21px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .card { display: grid; grid-template-columns: 132px minmax(0, 1fr); }
+  .imageWrap { height: 100%; min-height: 112px; aspect-ratio: auto; }
+  .cardBody { min-height: 0; padding: 14px; }
+  .cardTitle { font-size: 16px; }
+}

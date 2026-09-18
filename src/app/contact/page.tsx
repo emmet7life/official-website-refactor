@@ -6,10 +6,17 @@ import { HengdaSiteHeader } from "@/components/sites/www-racodf-com-3880565d/roo
 import { HengdaHomeFooter } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/HengdaHomeFooter";
 import { HengdaPageInteractions } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2/HengdaPageInteractions";
 
-export default function Contact() {
+export default async function Contact({
+  searchParams,
+}: {
+  searchParams: Promise<{ section?: string | string[] }>;
+}) {
+  const section = (await searchParams).section;
+  const initialSection = typeof section === "string" ? section : undefined;
+
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]"><ContactPage sales={<ServiceSalesSection standalone />} quality={<ServiceQualitySection standalone />} commitment={<ServiceCommitmentSection standalone />} /></main>
+    <main className="pt-16 lg:pt-[72px]"><ContactPage initialSection={initialSection} sales={<ServiceSalesSection standalone />} quality={<ServiceQualitySection standalone />} commitment={<ServiceCommitmentSection standalone />} /></main>
     <HengdaHomeFooter />
     <HengdaPageInteractions solidHeader />
   </>;

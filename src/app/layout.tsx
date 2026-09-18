@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
-import { chatbotScript } from "@/lib/chatbot-script";
+import { XiaodaChat } from "@/components/XiaodaChat";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "恒达微波 | 西安恒达微波技术开发有限公司",
@@ -14,16 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <ScrollToTopButton />
-        <Script
-          id="chatbot-iframe"
-          src={chatbotScript.src}
-          data-bot-src={chatbotScript.botSrc}
-          data-default-open="true"
-          data-drag="true"
-          data-open-icon={chatbotScript.openIcon}
-          data-close-icon={chatbotScript.closeIcon}
-          strategy="beforeInteractive"
-        />
+        <XiaodaChat />
       </body>
     </html>
   );

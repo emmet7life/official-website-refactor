@@ -1,75 +1,100 @@
-/* Original HR content is reproduced locally from the public page. */
-/* eslint-disable @next/next/no-img-element */
+"use client";
 
-import jobs from './jobs.json';
+import { useEffect, useState } from "react";
+import { ArrowRight, BriefcaseBusiness, GraduationCap, X } from "lucide-react";
+import jobs from "./reference-jobs.json";
+import styles from "./AboutHrSection.module.css";
 
+type Category = "all" | "social" | "campus" | "graduate";
 type Job = (typeof jobs)[number];
 
-function JobDetails({ text }: { text: string }) {
-  const match = text.match(/\n\n岗位职责\n\n([\s\S]*?)\n\n岗位要求\n\n([\s\S]*)$/);
-  const renderBody = (body: string) => {
-    const lines = body.split('\n').filter(Boolean);
-    return lines.length > 1 ? <ul className="list-disc space-y-1 pl-4">{lines.map((line) => <li key={line}>{line}</li>)}</ul> : <p>{body}</p>;
-  };
-  if (!match) return null;
-  return <div className="space-y-3 border-t border-gray-100 px-4 pb-4 pt-3 text-sm leading-relaxed text-gray-600">
-    <div><p className="mb-1.5 text-xs font-semibold text-primary">岗位职责</p>{renderBody(match[1])}</div>
-    <div><p className="mb-1.5 text-xs font-semibold text-primary">岗位要求</p>{renderBody(match[2])}</div>
-  </div>;
-}
+const categories: { id: Category; label: string }[] = [
+  { id: "all", label: "全部" }, { id: "social", label: "社会招聘" },
+  { id: "campus", label: "校园招聘" }, { id: "graduate", label: "研究生" },
+];
+const benefits = [
+  ["薪酬与晋升", "宽带化薪酬体系、健全的培训制度、开阔的晋升途径。"],
+  ["福利保障", "五险一金、企业年金、免费公寓、午餐及交通补助、绩效奖金、年终奖金、旅游基金、节日福利、定期免费体检。"],
+  ["工作环境", "舒适的工作环境、行业内顶端的技术交流，以及丰富的职工文化生活。"],
+] as const;
+const trainingPoints = ["承担连接技术前沿性课题及产业技术拓展研究", "资深工程师与高校导师联合指导", "覆盖航空、航天、通信、电子等多领域应用", "完善的科研平台与职业发展通道"];
+const trainingCards = [
+  ["联合培养", "与高校共建研究生联合培养基地，校企双导师协同育人。"],
+  ["导师团队", "资深技术专家与学科带头人组成联合指导团队。"],
+  ["科研平台", "开放微波测试、环境试验与精密制造等科研平台。"],
+  ["职业发展", "优秀毕业生可优先纳入研发与工程核心岗位。"],
+] as const;
 
-function JobCard({ job }: { job: Job }) {
-  const location = (job.details.split('\n')[1] ?? '').replace('若干 · ', '');
-  return <details className="group rounded-lg border border-gray-200 bg-white transition-colors hover:border-primary-mid">
-    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
-      <span className="min-w-0 truncate text-sm font-medium text-gray-800">{job.title}</span>
-      <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-gray-400">若干 · {location}<svg className="h-3.5 w-3.5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></span>
-    </summary>
-    <JobDetails text={job.details} />
-  </details>;
-}
-
-function Heading({ children }: { children: string }) {
-  return <div className="mb-6 flex items-center gap-3 lg:mb-8"><span className="h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" /><h3 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">{children}</h3></div>;
+function SectionTitle({ children }: { children: string }) {
+  return <div className={styles.sectionHeading}><span aria-hidden="true" /><h2>{children}</h2></div>;
 }
 
 export function AboutHrSection() {
-  return (
-    <div id="about-hr" className="about-part scroll-mt-20">
-      <div className="mb-12 lg:mb-16">
-        <Heading>人才培养</Heading>
-        <div className="space-y-4 text-base leading-relaxed text-gray-600">
-          <p>公司秉持&quot;以人为本，培养一流人才&quot;的理念，把人才放在战略C位。我们以&quot;高学历、专业化、年轻化、可持续&quot;为航标，打造覆盖全员、层层进阶的人才成长体系。</p>
-          <p>研发团队硕博占比超60%，硬核实力拉满。每年从顶尖院校锁定最强大脑，靠&quot;导师制&quot;和&quot;项目制&quot;让新人快速上线、独挑大梁。晋升通道公平透明，年轻人直接在核心战场当主角——组织有活力，人才有奔头，这是我们最硬的底气。</p>
-          <p className="text-center"><img src="/sites/www-racodf-com-3880565d/shared/about/hr-talent-0.png" alt="雷科人才团队" loading="lazy" className="mx-auto h-auto max-w-full rounded-lg" /></p>
-        </div>
-      </div>
+  const [category, setCategory] = useState<Category>("all");
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [toast, setToast] = useState("");
 
-      <div className="mb-12 lg:mb-16">
-        <Heading>薪酬福利</Heading>
-        <div className="space-y-4 text-base leading-relaxed text-gray-600">
-          <p>公司致力于构建“外部具有竞争力、内部体现公平性、激励富有针对性”的全面薪酬体系，不仅用高薪回报员工的付出，更用暖心福利守护员工的生活。</p>
-          <p className="text-center"><img src="/sites/www-racodf-com-3880565d/shared/about/hr-talent-1.png" alt="雷科员工福利" loading="lazy" className="mx-auto h-auto max-w-full rounded-lg" /></p>
-        </div>
-      </div>
+  useEffect(() => {
+    if (!selectedJob) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setSelectedJob(null); };
+    document.addEventListener("keydown", onEscape);
+    return () => { document.body.style.overflow = previousOverflow; document.removeEventListener("keydown", onEscape); };
+  }, [selectedJob]);
 
-      <div className="mb-12 lg:mb-16">
-        <Heading>人才招聘</Heading>
-        <p className="mb-8 text-base leading-relaxed text-gray-600">公司面向社会与校园持续开放招聘通道，以 “德才兼备、以德为先，人岗相适、用其所长” 为选拔原则，热忱欢迎志同道合的伙伴加入。</p>
-        <div className="space-y-8">
-          {Array.from(new Set(jobs.map((job) => job.group))).map((group) => <div key={group} className="space-y-3">
-            <h4 className="mb-3 text-base font-semibold text-primary">{group}</h4>
-            <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">{jobs.filter((job) => job.group === group).map((job) => <JobCard key={job.title} job={job} />)}</div>
-          </div>)}
-        </div>
-      </div>
+  useEffect(() => {
+    if (!toast) return;
+    const timeout = window.setTimeout(() => setToast(""), 2800);
+    return () => window.clearTimeout(timeout);
+  }, [toast]);
 
-      <div className="rounded-xl border border-primary/15 bg-primary-light/50 p-6 lg:p-8">
-        <Heading>联系方式</Heading>
-        <div className="grid gap-4 text-sm leading-relaxed text-gray-600 md:grid-cols-2">
-          <p>招聘热线：010-68916700 人力资源部</p><p>公司网址：www.racodf.com</p><p>招聘邮箱：zhaopin@racodf.com</p><p>公司地址：北京市海淀区远大南街6号院鲁迅文创园5号楼</p>
+  return <div id="about-hr" className={styles.page}>
+    <section className={styles.hero} aria-labelledby="hr-title">
+      <h1 id="hr-title">人力资源</h1>
+      <p>招聘动态 · 研究生培养 · 与恒达共成长</p>
+    </section>
+
+    <section id="channels" className={styles.section}><div className={styles.container}>
+      <div className={styles.channelBanner}><div className={styles.channelBackground} aria-hidden="true" /><div className={styles.channelContent}>
+        <div><h2>加入我们</h2><p>选择合适的招聘通道，与恒达共成长</p></div>
+        <div className={styles.channelCards}>
+          <button type="button" className={styles.channelCard} onClick={() => setToast("社会招聘通道即将上线，敬请期待")}><span className={styles.channelIcon}><BriefcaseBusiness strokeWidth={1.2} aria-hidden="true" /></span><span><b>社会招聘</b><small>面向社会成熟人才 · 岗位实时更新</small></span><ArrowRight className={styles.channelArrow} aria-hidden="true" /></button>
+          <button type="button" className={styles.channelCard} onClick={() => setToast("校园招聘通道即将上线，敬请期待")}><span className={styles.channelIcon}><GraduationCap strokeWidth={1.2} aria-hidden="true" /></span><span><b>校园招聘</b><small>面向应届毕业生 · 研究生联合培养</small></span><ArrowRight className={styles.channelArrow} aria-hidden="true" /></button>
         </div>
+      </div></div>
+    </div></section>
+
+    <section id="recruitment" className={styles.section}><div className={styles.container}>
+      <SectionTitle>招聘动态</SectionTitle>
+      <div className={styles.tabs} role="group" aria-label="招聘类别">{categories.map((item) => <button key={item.id} type="button" aria-pressed={category === item.id} className={`${styles.tab} ${category === item.id ? styles.activeTab : ""}`} onClick={() => setCategory(item.id)}>{item.label}</button>)}</div>
+      <h3 className={styles.blockTitle}>招聘岗位</h3>
+      <div className={styles.jobGrid}>{jobs.filter((job) => category === "all" || job.category === category).map((job) => <button key={job.title} type="button" className={styles.jobCard} onClick={() => setSelectedJob(job)}><h4>{job.title}</h4><span className={styles.jobTag}>{job.label}</span></button>)}</div>
+      <h3 className={styles.blockTitle}>福利待遇</h3>
+      <div className={styles.benefitGrid}>{benefits.map(([title, description]) => <div key={title} className={styles.benefitCard}><h4>{title}</h4><p>{description}</p></div>)}</div>
+    </div></section>
+
+    <section id="training" className={styles.section}><div className={styles.container}>
+      <SectionTitle>研究生培养</SectionTitle>
+      <div className={styles.trainingFeature}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/sites/www-racodf-com-3880565d/hr/hr-grow.jpg" alt="研究生联合培养" />
+        <div><h3>研究生联合培养</h3><p>公司与多所高校共建研究生联合培养基地，围绕微波连接技术、天线与射频系统、智能制造等方向开展前沿课题研究，为优秀学子提供科研实践与职业发展的广阔平台。</p><ul>{trainingPoints.map((point) => <li key={point}>{point}</li>)}</ul></div>
       </div>
-    </div>
-  );
+      <div className={styles.trainingGrid}>{trainingCards.map(([title, description]) => <div key={title} className={styles.trainingCard}><h4>{title}</h4><p>{description}</p></div>)}</div>
+    </div></section>
+
+    <section id="hr-contact" className={styles.section}><div className={styles.container}>
+      <SectionTitle>人事行政联系方式</SectionTitle>
+      <div className={styles.contactCard}>
+        <div><b>联系方式</b><span>029-85224787 / 85380639 / 84500096 / 15365780590</span></div>
+        <div><b>联系人</b><span>姬女士　高女士　纪女士</span></div>
+        <div><b>简历投递邮箱</b><a href="mailto:hd@hdmicrowave.com">hd@hdmicrowave.com</a></div>
+        <div><b>单位地址</b><span>西安市国家民用航天产业基地飞天路485号 / 江苏省盐城市东台市时堰镇镇南工业区江苏恒达微波技术开发有限公司</span></div>
+      </div>
+    </div></section>
+
+    {toast ? <div className={styles.toast} role="status">{toast}</div> : null}
+    {selectedJob ? <div className={styles.modal} role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedJob(null); }}><div className={styles.modalPanel} role="dialog" aria-modal="true" aria-labelledby="job-modal-title"><button type="button" className={styles.modalClose} aria-label="关闭岗位详情" onClick={() => setSelectedJob(null)}><X size={20} /></button><h2 id="job-modal-title">{selectedJob.title}</h2><span className={styles.jobTag}>{selectedJob.label}</span><ol>{selectedJob.requirements.map((requirement) => <li key={requirement}>{requirement}</li>)}</ol></div></div> : null}
+  </div>;
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "./NewsSection.module.css";
 
 declare global {
   interface Window {
@@ -217,51 +218,53 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
   }, [selected]);
 
   return (
-    <section id="news" className="bg-gray-50 py-16 md:py-24 lg:py-28">
-      <div className="max-w-container mx-auto px-5 md:px-10 lg:px-16">
-        <div className="fade-in-up mb-12 flex flex-col gap-6 lg:mb-16 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <div className="mb-5 h-1 w-12 rounded-full bg-gradient-to-r from-primary to-primary-mid" />
-            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-4xl">新闻资讯</h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-600 md:text-lg">关注恒达微波公司新闻、媒体报道、行业资讯与学术展会动态</p>
-          </div>
-        </div>
+    <section id="news" className={styles.news}>
+      <div className={styles.container}>
+        <header>
+          <div className={styles.headingRule} aria-hidden="true" />
+          <h1 className={styles.heading}>新闻中心</h1>
+          <p className={styles.intro}>关注恒达微波公司新闻、媒体报道、行业资讯与学术展会动态</p>
+        </header>
 
-        <div id="news-tabs" className="fade-in-up mb-8 flex flex-wrap gap-3">
-          {(["全部", "公司新闻", "媒体报道", "行业资讯", "学术展会", "电子报"] as const).map((category) => {
-            const active = filter === category;
-            return (
-              <Link
-                key={category}
-                href={newsPaths[category]}
-                className={`inline-flex items-center rounded border px-4 py-1.5 text-sm transition-colors ${active ? "border-primary bg-primary-light text-primary" : "border-gray-200 text-gray-600 hover:border-primary hover:text-primary"}`}
-              >
-                {category}
-              </Link>
-            );
-          })}
-        </div>
+        <div className={styles.content}>
+          <nav className={styles.filters} aria-label="新闻分类">
+            <p className={styles.filterTitle}>新闻分类</p>
+            {(["全部", "公司新闻", "媒体报道", "行业资讯", "学术展会", "电子报"] as const).map((category) => {
+              const active = filter === category;
+              const count = category === "全部" ? 52 : category === "公司新闻" ? 8 : category === "媒体报道" ? 4 : category === "行业资讯" || category === "学术展会" ? 20 : 0;
+              return <Link key={category} href={newsPaths[category]} className={`${styles.filterLink} ${active ? styles.filterLinkActive : ""}`}>
+                <span>{category}</span><span className={styles.filterCount}>{count}</span>
+              </Link>;
+            })}
+          </nav>
 
+          <div>
+            <div className={styles.resultsHeader}>
+              <h2>{filter === "全部" ? "全部新闻" : filter}</h2>
+              <span className={styles.resultsCount}>共 {filter === "全部" ? 52 : filter === "公司新闻" ? 8 : filter === "媒体报道" ? 4 : filter === "行业资讯" || filter === "学术展会" ? 20 : 0} 条</span>
+            </div>
         {filter === "电子报" ? <div id="e-news-grid" className="space-y-6">
           {E_NEWS.map(([year, items]) => <section key={year} className="rounded-lg border border-gray-200 bg-white p-5 md:p-6"><h3 className="mb-4 text-lg font-semibold text-primary">{year}年恒达微波电子报</h3><div className="grid gap-3 md:grid-cols-2">{items.map(([title, href]) => <a key={href} href={`https://www.hdmicrowave.com/${href}`} target="_blank" rel="noopener noreferrer" className="group rounded border border-gray-100 bg-gray-50 px-4 py-3 text-sm leading-relaxed text-gray-700 transition-colors hover:border-primary-mid hover:bg-primary-light hover:text-primary">{title}<span className="ml-2 text-primary opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">↗</span></a>)}</div></section>)}
-        </div> : <div id="news-grid" className="border-t border-gray-200 divide-y divide-gray-200">
+        </div> : <div id="news-grid" className={styles.grid}>
           {visibleNews.map((item) => (
-            <button key={item.id} type="button" onClick={() => setSelected(item)} className="group flex w-full items-center gap-4 py-4 text-left md:gap-5 md:py-5">
-              <span className="h-20 w-28 shrink-0 overflow-hidden rounded-md bg-gray-100 md:h-24 md:w-36">
-                <img src={imagePath(item.image)} alt={item.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+            <button key={item.id} type="button" onClick={() => setSelected(item)} className={styles.card}>
+              <span className={styles.imageWrap}>
+                <img src={imagePath(item.image)} alt={item.title} loading="lazy" />
               </span>
-              <span className="min-w-0 flex-1">
-                <span className="mb-1.5 flex items-center gap-2">
-                  <span className={`inline-flex items-center rounded-sm px-2 py-0.5 text-xs ${item.category === "媒体报道" ? "bg-primary-light text-primary" : "bg-gray-100 text-primary-dark"}`}>{item.category}</span>
-                  <time className="text-xs tabular-nums text-gray-400 md:text-sm">{item.date}</time>
+              <span className={styles.cardBody}>
+                <span className={styles.meta}>
+                  <span className={styles.tag}>{item.category}</span>
+                  <time className={styles.date}>{item.date}</time>
                 </span>
-                <span className="block line-clamp-2 text-sm font-medium text-gray-800 transition-colors group-hover:text-primary md:text-base">{item.title}</span>
+                <span className={styles.cardTitle}>{item.title}</span>
               </span>
             </button>
           ))}
         </div>}
-        {filter !== "电子报" && <p className={`${visibleNews.length ? "hidden" : ""} py-10 text-center text-sm text-gray-500`}>该分类暂无新闻</p>}
-        {filter !== "电子报" && <div className="mt-10 flex justify-center"><button type="button" className="inline-flex h-12 items-center justify-center gap-2 rounded border border-gray-200 px-8 font-medium text-primary transition-colors hover:border-primary">加载更多<span aria-hidden="true" className="text-xl leading-none">+</span></button></div>}
+        {filter !== "电子报" && <p className={visibleNews.length ? "hidden" : styles.empty}>该分类暂无新闻</p>}
+        {filter !== "电子报" && <div className={styles.more}><button type="button">加载更多</button></div>}
+          </div>
+        </div>
       </div>
 
       {selected && (
