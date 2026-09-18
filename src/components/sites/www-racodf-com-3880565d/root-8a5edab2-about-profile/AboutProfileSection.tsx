@@ -39,8 +39,6 @@ const tabs = [
   { label: '资质荣誉', href: '/about/honor', part: 'about-honor' },
   { label: '公司活动', href: '/about/activity', part: 'about-activities' },
   { label: '媒体宣传', href: '/about/media', part: 'about-media' },
-  { label: '企业文化', href: '/about/culture', part: 'about-culture' },
-
 ] as const;
 
 export function AboutProfileSection({ children, selectedPart = 'about-profile' }: { children?: ReactNode; selectedPart?: string }) {

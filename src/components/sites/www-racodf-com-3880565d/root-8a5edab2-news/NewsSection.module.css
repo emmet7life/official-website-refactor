@@ -84,16 +84,16 @@
 
 .filterLink:hover {
   background: #eff6ff;
-  color: #165dff;
+  color: var(--hengda-nav-highlight);
 }
 
 .filterLinkActive {
-  background: #165dff;
+  background: var(--hengda-nav-highlight);
   color: #fff;
   font-weight: 600;
 }
 
-.filterLinkActive:hover { background: #0f4ecc; color: #fff; }
+.filterLinkActive:hover { background: var(--hengda-nav-highlight); color: #fff; }
 .filterCount { font-size: 14px; opacity: .78; }
 
 .resultsHeader {
