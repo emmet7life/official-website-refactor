@@ -1,0 +1,452 @@
+<html lang="zh-CN" data-immersive-translate-page-theme="light"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐴 能力介绍 - 恒达微波</title>
+  <style>
+    :root {
+      --primary: #165dff;
+      --primary-hover: #4080ff;
+      --text: #1f2937;
+      --text-title: #111827;
+      --text-muted: #6b7280;
+      --bg-page: #ffffff;
+      --bg-section: #f5f7fb;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(17, 24, 39, 0.06);
+      --shadow-md: 0 8px 24px rgba(17, 24, 39, 0.10);
+      --container: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Header ---------- */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      height: 40px; cursor: pointer; text-decoration: none;
+      font-weight: 700; font-size: 20px; color: var(--text-title);
+    }
+    .logo img { height: 34px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+    .nav-links a {
+      color: var(--text); text-decoration: none; font-size: 18px; font-weight: 400;
+      opacity: 0.85; transition: color 0.2s, opacity 0.2s; cursor: pointer; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--primary); font-weight: 600; }
+    .search-box {
+      display: flex; align-items: center; gap: 8px;
+      background: #f3f4f6; border: 1px solid var(--border); border-radius: 20px;
+      padding: 6px 16px; color: var(--text-muted); font-size: 14px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+    }
+    .search-box:hover { border-color: var(--primary); color: var(--primary); }
+    .search-box svg { width: 14px; height: 14px; }
+    .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-title); cursor: pointer; padding: 6px; }
+    .mobile-menu-btn svg { width: 26px; height: 26px; }
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; width: 100%;
+      background: #ffffff; border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-md); padding: 8px 24px 16px; z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; color: var(--text); text-decoration: none;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 16px;
+    }
+    .mobile-menu a.mm-sub { padding-left: 24px; font-size: 15px; opacity: 0.85; }
+
+    /* ---------- Dropdown (light) ---------- */
+    .nav-item { position: relative; }
+    .has-dropdown > a { display: inline-flex; align-items: center; }
+    .has-dropdown > a::after {
+      content: ""; width: 0; height: 0; margin-left: 6px;
+      border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 5px solid currentColor; opacity: 0.6; transition: transform 0.2s;
+    }
+    .has-dropdown:hover > a::after { transform: rotate(180deg); }
+    .nav-drop {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      min-width: 172px;
+      background: #ffffff; border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(17, 24, 39, 0.14);
+      padding: 8px; display: flex; flex-direction: column; gap: 2px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 1100;
+    }
+    .nav-drop::before { content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
+    .has-dropdown:hover .nav-drop { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-drop a {
+      color: var(--text); text-decoration: none; font-size: 17px; font-weight: 400;
+      padding: 9px 14px; border-radius: 8px; white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-drop a:hover { background: rgba(22, 93, 255, 0.08); color: var(--primary); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 150px 24px 64px; text-align: center;
+      background: linear-gradient(160deg, #eef4ff 0%, #ffffff 70%);
+    }
+    .hero h1 { font-size: 40px; font-weight: 700; color: var(--text-title); margin-bottom: 14px; letter-spacing: 1px; }
+    .hero p { color: var(--text-muted); font-size: 16px; max-width: 760px; margin: 0 auto; }
+    .hero-crumb { margin-top: 18px; font-size: 13px; color: var(--text-muted); }
+    .hero-crumb a { color: var(--text-muted); text-decoration: none; }
+    .hero-crumb a:hover { color: var(--primary); }
+    .hero-crumb .cur { color: var(--primary); font-weight: 600; }
+
+    /* ---------- Section ---------- */
+    .section { padding: 56px 0 24px; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .cat-head { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .cat-bar { width: 5px; height: 26px; background: var(--primary); border-radius: 3px; }
+    .cat-title { font-size: 26px; font-weight: 700; color: var(--text-title); }
+
+    /* ---------- Capability cards ---------- */
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .cap-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 38px 28px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .cap-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(22, 93, 255, 0.45);
+    }
+    .cap-icon {
+      width: 132px; height: 132px; border-radius: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent; border: none; color: var(--primary);
+    }
+    .cap-icon svg { width: 68px; height: 68px; stroke-width: 0.8; filter: drop-shadow(0 0 10px rgba(237, 242, 255, 0.2)); }
+    .cap-card h3 { font-size: 19px; font-weight: 600; color: var(--text-title); }
+    .cap-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+        /* ---------- Footer (unified with home, dark) ---------- */
+    .footer { margin-top: 64px; background: #07133c; padding: 60px 24px 40px; }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 200px 1fr 280px; gap: 60px;
+    }
+    .footer-logo img { height: 36px; margin-bottom: 12px; display: block; }
+    .footer-logo p { font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .footer-links { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+    .footer-col h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 16px; }
+    .footer-col h4 a { color: #fff; text-decoration: none; }
+    .footer-col a {
+      display: block; color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 12px; margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-qr h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 16px; }
+    .qr-grid { display: flex; gap: 14px; }
+    .qr-item { text-align: center; }
+    .qr-item img { width: 74px; height: 74px; border-radius: 6px; display: block; margin-bottom: 8px; background: #fff; padding: 2px; }
+    .footer-qr .qr-item span { font-size: 11px; color: rgba(255,255,255,0.75); }
+    .footer-bottom {
+      margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.6);
+    }
+/* ---------- Toast ---------- */
+    .toast {
+      position: fixed; bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(17, 24, 39, 0.92); color: white;
+      padding: 12px 26px; border-radius: 30px; font-size: 14px;
+      z-index: 2000; opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .nav-links { gap: 18px; }
+
+      .footer-inner { grid-template-columns: 1fr 1.5fr; gap: 40px; }
+      .footer-qr { grid-column: span 2; }
+    }
+    @media (max-width: 900px) {
+      .nav-links, .search-box { display: none; }
+      .mobile-menu-btn { display: block; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .footer-links { grid-template-columns: repeat(2, 1fr); }
+      .footer-qr { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .cap-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 30px; }
+    }
+  
+    
+
+    .nav-links a { white-space: nowrap; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="index.html" aria-label="首页">
+        <img src="assets/company-logo.png" alt="恒达微波">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li class="nav-item has-dropdown">
+          <a href="index.html#about">关于我们</a>
+          <div class="nav-drop">
+            <a href="index.html#about">公司介绍</a>
+            <a href="index.html#about">公司历程</a>
+            <a href="index.html#about">荣誉资质</a>
+            <a href="index.html#about">公司活动</a>
+            <a href="capability.html">能力介绍</a>
+          </div>
+        </li>
+        <li><a href="index.html#solution">解决方案</a></li>
+        <li class="nav-item has-dropdown">
+          <a href="product-center.html">产品中心</a>
+          <div class="nav-drop">
+            <a href="product-center.html?cat=antenna">天线系列产品</a>
+            <a href="product-center.html?cat=waveguide-coaxial">无源系列产品</a>
+            <a href="product-center.html?cat=active-devices">有源系列产品</a>
+            <a href="product-center.html?cat=servo-control">伺服转台系列产品</a>
+            <a href="product-center.html?cat=subsystem-integration">分系统集成系列产品</a>
+            <a href="custom-machining.html">来图加工系列产品</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="news-center.html">新闻中心</a>
+          <div class="nav-drop">
+            <a href="news-center.html?cat=company">公司新闻</a>
+            <a href="news-center.html?cat=media">媒体报道</a>
+            <a href="news-center.html?cat=industry">行业资讯</a>
+            <a href="news-center.html?cat=exhibition">学术展会</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="hr.html">人力资源</a>
+          <div class="nav-drop">
+            <a href="hr.html#recruitment">招聘动态</a>
+            <a href="hr.html#training">研究生培养</a>
+          </div>
+        </li>
+        <li><a href="index.html#tech">技术资料</a></li>
+        <li><a href="index.html#contact">联系我们</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="search-box" onclick="showToast('产品搜索功能开发中')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+          <span>产品搜索</span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">首页</a>
+      <a href="index.html#about">关于我们</a>
+      <a class="mm-sub" href="index.html#about">公司介绍</a>
+      <a class="mm-sub" href="index.html#about">公司历程</a>
+      <a class="mm-sub" href="index.html#about">荣誉资质</a>
+      <a class="mm-sub" href="index.html#about">公司活动</a>
+      <a class="mm-sub" href="capability.html">能力介绍</a>
+      <a href="index.html#solution">解决方案</a>
+      <a href="product-center.html">产品中心</a>
+      <a class="mm-sub" href="product-center.html?cat=antenna">天线系列产品</a>
+      <a class="mm-sub" href="product-center.html?cat=waveguide-coaxial">无源系列产品</a>
+      <a class="mm-sub" href="product-center.html?cat=active-devices">有源系列产品</a>
+      <a class="mm-sub" href="product-center.html?cat=servo-control">伺服转台系列产品</a>
+      <a class="mm-sub" href="product-center.html?cat=subsystem-integration">分系统集成系列产品</a>
+      <a class="mm-sub" href="custom-machining.html">来图加工系列产品</a>
+      <a href="news-center.html">新闻中心</a>
+      <a class="mm-sub" href="news-center.html?cat=company">公司新闻</a>
+      <a class="mm-sub" href="news-center.html?cat=media">媒体报道</a>
+      <a class="mm-sub" href="news-center.html?cat=industry">行业资讯</a>
+      <a class="mm-sub" href="news-center.html?cat=exhibition">学术展会</a>
+      <a href="hr.html">人力资源</a>
+      <a class="mm-sub" href="hr.html#recruitment">招聘动态</a>
+      <a class="mm-sub" href="hr.html#training">研究生培养</a>
+      <a href="index.html#tech">技术资料</a>
+      <a href="index.html#contact">联系我们</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>能力介绍</h1>
+      <p>管理能力 · 测试能力 · 试验、检验能力 · 技术能力 · 智能制造</p>
+      <div class="hero-crumb">
+        <a href="index.html">首页</a> / <a href="index.html#about">关于我们</a> / <span class="cur">能力介绍</span>
+      </div>
+    </section>
+
+    <!-- Capability cards -->
+    <section class="section">
+      <div class="container">
+        <div class="cat-head">
+          <div class="cat-bar"></div>
+          <h2 class="cat-title">我们的能力体系</h2>
+        </div>
+        <div class="cap-grid">
+          <a class="cap-card" href="cap-management.html">
+            <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+            <h3>管理能力</h3>
+            <p>以体系化流程驱动高效协同，保障项目交付质量与进度。</p>
+          </a>
+          <a class="cap-card" href="cap-test.html">
+            <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+            <h3>测试能力</h3>
+            <p>完备的微波与射频测试平台，覆盖全频段性能验证。</p>
+          </a>
+          <a class="cap-card" href="cap-inspection.html">
+            <span class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path></svg></span>
+            <h3>试验、检验能力</h3>
+            <p>从环境到可靠性的全流程实验与检验，支撑产品品质。</p>
+          </a>
+          <a class="cap-card" href="cap-tech.html">
+            <span class="cap-icon"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><path d="M6.8,4.5H5.4C4.7,4.5,4.2,5,4.2,5.6V27c0,0.7,0.5,1.2,1.2,1.2H22c0.7,0,1.2-0.5,1.2-1.2v-1.3"></path><path d="M11.6,15.4h8.3"></path><path d="M11.6,17.7h4.1"></path><path d="M11.6,19.9h4.1"></path><path d="M11.6,22.2h6.8"></path><rect x="11.6" y="6.6" width="8.3" height="5.9"></rect><path d="M24.5,25.5H8.1c-0.7,0-1.3-0.6-1.3-1.3V3.1c0-0.7,0.6-1.3,1.3-1.3h16.4c0.7,0,1.3,0.6,1.3,1.3v21.1C25.8,24.9,25.2,25.5,24.5,25.5z"></path></svg></span>
+            <h3>技术能力</h3>
+            <p>深厚的微波技术积累，支撑定制化产品的工程实现。</p>
+          </a>
+          <a class="cap-card" href="cap-smart.html">
+            <span class="cap-icon"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.76" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.7" cy="13" r="0.9"></circle><circle cx="5.7" cy="13" r="2.6"></circle><path d="M6,25.1c-0.5-0.5-0.5-1.4,0-1.9s1.4-0.5,1.9,0s0.5,1.4,0,1.9"></path><path d="M3.2,25c0-2.1,1.7-3.8,3.8-3.8s3.8,1.7,3.8,3.8"></path><circle cx="18.9" cy="3.9" r="0.6" fill="currentColor" stroke="none"></circle><circle cx="25.2" cy="10.1" r="1.5"></circle><circle cx="18.9" cy="3.9" r="1.9"></circle><path d="M26.7,18.9v-3.5c0-1.3-3.1-1.3-3.1,0v3.5c-1.5,0-2.1-2.5-2.1-4v-0.5c0-1.5,1.2-2.7,2.8-2.7H26c1.5,0,2.8,1.2,2.8,2.7v0.5C28.8,16.4,28.3,18.9,26.7,18.9z"></path><path d="M10.8,25.1H3.2c-1.1,0-2,0.9-2,2v1h11.6v-1C12.8,26,11.9,25.1,10.8,25.1z"></path><line x1="3.2" y1="13.7" x2="3.3" y2="24.1"></line><polyline points="9.8,22.4 8.2,13.9 18.3,5.8"></polyline><line x1="4.3" y1="10.8" x2="18" y2="2.2"></line><line x1="19.3" y1="5.9" x2="24.1" y2="11.1"></line><line x1="20.5" y1="2.9" x2="26.2" y2="9"></line></svg></span>
+            <h3>智能制造</h3>
+            <p>数字化产线与精密装备，保障高一致性与生产良率。</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="恒达微波">
+        <p>技术领先，实业报国<br>以成为卓越的微波供应商为目标</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>关于我们</h4>
+          <a href="index.html#about">公司介绍</a>
+          <a href="index.html#about">公司历程</a>
+          <a href="index.html#about">荣誉资质</a>
+          <a href="index.html#about">公司活动</a>
+          <a href="capability.html">能力介绍</a>
+        </div>
+        <div class="footer-col">
+          <h4>解决方案</h4>
+          <a href="index.html#solution">航天航空</a>
+          <a href="index.html#solution">雷达系统</a>
+          <a href="index.html#solution">通信系统</a>
+          <a href="index.html#solution">检测安检</a>
+        </div>
+        <div class="footer-col">
+          <h4>产品中心</h4>
+          <a href="product-center.html?cat=antenna">天线系列产品</a>
+          <a href="product-center.html?cat=waveguide-coaxial">无源系列产品</a>
+          <a href="product-center.html?cat=active-devices">有源系列产品</a>
+          <a href="product-center.html?cat=servo-control">伺服转台系列产品</a>
+          <a href="product-center.html?cat=subsystem-integration">分系统集成系列产品</a>
+          <a href="custom-machining.html">来图加工系列产品</a>
+        </div>
+        <div class="footer-col">
+          <h4>新闻中心</h4>
+          <a href="news-center.html?cat=company">公司新闻</a>
+          <a href="news-center.html?cat=media">媒体报道</a>
+          <a href="news-center.html?cat=industry">行业资讯</a>
+          <a href="news-center.html?cat=exhibition">学术展会</a>
+        </div>
+        <div class="footer-col">
+          <h4>人力资源</h4>
+          <a href="hr.html#recruitment">招聘动态</a>
+          <a href="hr.html#training">研究生培养</a>
+        </div>
+        <div class="footer-col">
+          <h4>技术资料</h4>
+          <a href="index.html#tech">微波知识</a>
+          <a href="index.html#tech">论文下载</a>
+        </div>
+      </div>
+      <div class="footer-qr">
+        <h4>联系我们</h4>
+        <div class="qr-grid">
+          <div class="qr-item">
+            <img src="assets/qr-gongzhong.png" alt="官方公众号">
+            <span>官方公众号</span>
+          </div>
+          <div class="qr-item">
+            <img src="assets/qr-xiaochengxu.jpg" alt="官方小程序">
+            <span>官方小程序</span>
+          </div>
+          <div class="qr-item">
+            <img src="assets/qr-xiaoda.jpg" alt="官方AI小达">
+            <span>官方AI小达</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 西安恒达微波技术开发有限公司 版权所有
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#mobileMenu') && !e.target.closest('#menuBtn')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+  </script>
+
+
+<div id="autoglm-main-content" class="autoglm-main-content" data-version="0.1.6"></div></body><div id="immersive-translate-popup" style="all: initial"></div></html>

@@ -1,0 +1,1 @@
+& { $env:Path = 'D:\Users\Administrator\AppData\Roaming\nvm\v24.15.0;' + $env:Path; & 'D:\Users\Administrator\AppData\Roaming\nvm\v24.15.0\node.exe' 'D:\Users\Administrator\AppData\Roaming\nvm\v24.15.0\node_modules\corepack\dist\pnpm.js' dev }
