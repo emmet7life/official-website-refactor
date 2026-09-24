@@ -8,6 +8,7 @@ import { Maximize2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
+import { PageBanner } from "@/components/sites/www-racodf-com-3880565d/page-banner/PageBanner";
 import { productCategorySlugs, productDirectory, type Category, type Product, type Specification } from "./catalog-data";
 import { ProductModal, SpecificationInquiryModal } from "./ProductDetailDialogs";
 
@@ -139,11 +140,7 @@ export function ProductCenter({ initialCategory }: { initialCategory?: string })
   }
 
   return <div className="product-center-page">
-    <section className="product-center-hero">
-      <div className="product-center-container product-center-hero-inner">
-        <h1>产品中心</h1>
-      </div>
-    </section>
+    <PageBanner eyebrow="PRODUCT CENTER" title="产品中心" />
     <div className="product-center-surface">
       <nav className="product-center-container product-center-breadcrumbs" aria-label="产品目录路径"><Link href="/">首页</Link><span>/</span>{selectedNodes.length === 0 ? <strong>产品中心</strong> : <button type="button" onClick={() => select([])}>产品中心</button>}{selectedNodes.map((node, index) => <span key={node.id} className="breadcrumb-segment"><span>/</span>{index === selectedNodes.length - 1 ? <strong>{node.name}</strong> : <button type="button" onClick={() => select(selectedPath.slice(0, index + 1))}>{node.name}</button>}</span>)}</nav>
       <nav className="product-center-container mobile-category-navigation" aria-label="产品分类目录">

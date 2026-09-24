@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Play } from "lucide-react";
+import { PageBanner } from "../page-banner/PageBanner";
+import { SectionSideNav } from "../shared-section-nav/SectionSideNav";
 import styles from "./NewsSection.module.css";
 
 declare global {
@@ -10,17 +12,20 @@ declare global {
   }
 }
 
-type NewsCategory = "公司新闻" | "媒体报道" | "行业资讯" | "学术展会";
-export type NewsFilter = "全部" | NewsCategory | "电子报";
+type NewsCategory = "公司新闻" | "媒体报道" | "企业公众号" | "自媒体宣传" | "行业资讯" | "学术展会";
+export type NewsFilter = "全部" | NewsCategory;
 
 const newsPaths: Record<NewsFilter, string> = {
   "全部": "/news/all",
   "公司新闻": "/news/company",
   "媒体报道": "/news/media",
+  "企业公众号": "/news/wechat",
+  "自媒体宣传": "/news/social-media",
   "行业资讯": "/news/industry",
   "学术展会": "/news/exhibition",
-  "电子报": "/news/enews",
 };
+
+const newsFilters: readonly NewsFilter[] = ["全部", "公司新闻", "媒体报道", "企业公众号", "自媒体宣传", "行业资讯", "学术展会"];
 
 type NewsRecord = {
   id: string;
@@ -28,11 +33,45 @@ type NewsRecord = {
   date: string;
   title: string;
   image: string;
+  video?: string;
   summary: string;
   content?: string;
 };
 
 const NEWS: NewsRecord[] = [
+  {
+    id: "demo-wechat-1",
+    category: "企业公众号",
+    date: "2026-09-18",
+    title: "恒达微波：以技术创新持续提升微波产品研发与制造能力",
+    image: "hengda-news-image1.png",
+    summary: "本文为企业公众号演示内容，介绍恒达微波围绕技术研发、智能制造与质量保障开展的能力建设。",
+  },
+  {
+    id: "demo-wechat-2",
+    category: "企业公众号",
+    date: "2026-08-28",
+    title: "走进恒达微波｜从研发设计到试验验证的完整能力体系",
+    image: "202606181424406097.png",
+    summary: "本文为企业公众号演示内容，展示公司研发设计、生产制造、测试试验及质量管理能力。",
+  },
+  {
+    id: "demo-wechat-3",
+    category: "企业公众号",
+    date: "2026-08-08",
+    title: "产品应用分享：微波组件在雷达与卫星通信领域的应用",
+    image: "202606181431199997.jpg",
+    summary: "本文为企业公众号演示内容，分享微波组件在气象雷达和卫星通信等场景中的典型应用。",
+  },
+  {
+    id: "social-media-20260616",
+    category: "自媒体宣传",
+    date: "2026-06-16",
+    title: "视频｜恒达微波自媒体宣传",
+    image: "june-16-poster.jpg",
+    video: "june-16.mp4",
+    summary: "恒达微波自媒体宣传视频。",
+  },
   {
     id: "rc-UznxhW",
     category: "公司新闻",
@@ -132,16 +171,6 @@ const NEWS: NewsRecord[] = [
   },
 ];
 
-const E_NEWS = [
-  ['2015', [['2015/10/17 恒达微波参加 IME/China 2015第十届中国国际微波及天线技术展览', 'enews/20151017/enewsletter.html'], ['2015/10/16 恒达微波参加2015第十届国际微波及天线技术展览会', 'enews/20151016/enewsletter.html']]],
-  ['2014', [['2014/10/20 恒达微波参加2014第九届国际微波及天线技术展览会', 'enews/20141020/enewsletter.html'], ['2014/02/24 恒达微波参加IWS国际无线会议', 'enews/20140221/enewsletter.html']]],
-  ['2013', [['2013/11/07 恒达微波参加2013年全国天线年会', 'enews/20131107/enewsletter.html'], ['2013/10/09 恒达微波参加2013第八届国际微波及天线技术展览会', 'enews/20131009/enewsletter.html']]],
-  ['2012', [['2012/11/30 西安恒达微波技术开发有限公司喜迁航天基地新址通知函', 'enews/20121130/enewsletter.html'], ['2012/04/24 恒达微波欢迎您参加2012年国际微波毫米波技术会议暨产品展', 'enews/20120424/enewsletter.html']]],
-  ['2011', [['2011/12/21 恒达微波祝您新年快乐', 'enews/20111221/enewsletter.html'], ['2011/10/26 恒达微波诚邀您参加IME/China 2011上海国际微波展', 'enews/20111026/enewsletter.htm'], ['2011/10/17 恒达微波诚邀您参加2011年全国天线年会', 'enews/20111017/enewsletter.htm'], ['2011/07/26 恒达微波卫星通信应用专题', 'enews/20110726/enewsletter.html'], ['2011/05/23 恒达微波参加2011年全国微波毫米波会议', 'enews/20110523/enewsletter.htm']]],
-  ['2010', [['2010/10/11 恒达微波参加IME2010上海国际微波展', 'enews/20101011/enewsletter.html'], ['2010/06/09 恒达微波网站全新改版', 'enews/20100609/enewsletter.html'], ['2010/04/28 恒达微波欢迎您参加2010年国际微波毫米波技术会议', 'enews/20100428/enewsletter.htm']]],
-  ['2009', [['2009/8/4 恒达微波现货供应', 'enews/20090804/enewsletter.html'], ['2009/7/27 恒达微波卫星通信应用专题（第4期）', 'enews/20090727/enewsletter.html'], ['2009/7/20 恒达微波卫星通信应用专题（第3期）', 'enews/20090720/enewsletter.html'], ['2009/7/13 恒达微波卫星通信应用专题（第2期）', 'enews/20090713/enewsletter_2.html'], ['2009/7/7 恒达微波卫星通信应用专题（第1期）', 'enews/20090707/enewsletter_1.html']]],
-] as const;
-
 const LEGACY_NEWS: NewsRecord[] = [
   { id: "legacy-行业资讯-1", category: "行业资讯", date: "2022-12-05", title: "【转自中国载人航天】官方 | 神舟十四号载人飞船返回舱成功着陆 神舟十四号载人飞行任务取得圆...", image: '202606181038135895.jpg', summary: "【转自中国载人航天】官方 | 神舟十四号载人飞船返回舱成功着陆 神舟十四号载人飞行任务取得圆..." },
   { id: "legacy-行业资讯-2", category: "行业资讯", date: "2022-11-22", title: "【转自人民日报】神舟十五号，择机发射！", image: '202606181038135895.jpg', summary: "【转自人民日报】神舟十五号，择机发射！" },
@@ -186,17 +215,19 @@ const LEGACY_NEWS: NewsRecord[] = [
 ];
 
 const imagePath = (filename: string) => `/sites/www-racodf-com-3880565d/shared/news/${filename}`;
+const videoPath = (filename: string) => `/sites/www-racodf-com-3880565d/shared/news/${filename}`;
 
 export function NewsSection({ initialFilter = "全部" }: { initialFilter?: NewsFilter }) {
   const [filter, setFilter] = useState<NewsFilter>(initialFilter);
   const [selected, setSelected] = useState<NewsRecord | null>(null);
   const allNews = [...NEWS, ...LEGACY_NEWS];
-  const visibleNews = filter === "全部" || filter === "电子报" ? (filter === "电子报" ? [] : allNews) : allNews.filter((item) => item.category === filter);
+  const visibleNews = filter === "全部" ? allNews : allNews.filter((item) => item.category === filter);
+  const categoryCount = (category: NewsFilter) => category === "全部" ? allNews.length : allNews.filter((item) => item.category === category).length;
 
   useEffect(() => {
     const previous = window.newsSelectCat;
     window.newsSelectCat = (category: string) => {
-      if (["公司新闻", "媒体报道", "行业资讯", "学术展会", "电子报", "全部"].includes(category)) setFilter(category as NewsFilter);
+      if (newsFilters.includes(category as NewsFilter)) setFilter(category as NewsFilter);
     };
     return () => {
       if (previous) window.newsSelectCat = previous;
@@ -219,37 +250,34 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
 
   return (
     <section id="news" className={styles.news}>
+      <PageBanner eyebrow="NEWS CENTER" title="新闻中心" subtitle="聚焦企业动态，传递行业声音，记录恒达微波发展足迹" theme="dark" />
       <div className={styles.container}>
-        <header>
-          <div className={styles.headingRule} aria-hidden="true" />
-          <h1 className={styles.heading}>新闻中心</h1>
-          <p className={styles.intro}>关注恒达微波公司新闻、媒体报道、行业资讯与学术展会动态</p>
-        </header>
-
         <div className={styles.content}>
-          <nav className={styles.filters} aria-label="新闻分类">
-            <p className={styles.filterTitle}>新闻分类</p>
-            {(["全部", "公司新闻", "媒体报道", "行业资讯", "学术展会", "电子报"] as const).map((category) => {
-              const active = filter === category;
-              const count = category === "全部" ? 52 : category === "公司新闻" ? 8 : category === "媒体报道" ? 4 : category === "行业资讯" || category === "学术展会" ? 20 : 0;
-              return <Link key={category} href={newsPaths[category]} className={`${styles.filterLink} ${active ? styles.filterLinkActive : ""}`}>
-                <span>{category}</span><span className={styles.filterCount}>{count}</span>
-              </Link>;
-            })}
-          </nav>
+          <SectionSideNav
+            title="新闻中心"
+            ariaLabel="新闻分类"
+            items={newsFilters.map((category) => ({
+              key: category,
+              label: category,
+              href: newsPaths[category],
+              active: filter === category,
+              count: categoryCount(category),
+            }))}
+          />
 
           <div>
             <div className={styles.resultsHeader}>
               <h2>{filter === "全部" ? "全部新闻" : filter}</h2>
-              <span className={styles.resultsCount}>共 {filter === "全部" ? 52 : filter === "公司新闻" ? 8 : filter === "媒体报道" ? 4 : filter === "行业资讯" || filter === "学术展会" ? 20 : 0} 条</span>
+              <span className={styles.resultsCount}>共 {visibleNews.length} 条</span>
             </div>
-        {filter === "电子报" ? <div id="e-news-grid" className="space-y-6">
-          {E_NEWS.map(([year, items]) => <section key={year} className="rounded-lg border border-gray-200 bg-white p-5 md:p-6"><h3 className="mb-4 text-lg font-semibold text-primary">{year}年恒达微波电子报</h3><div className="grid gap-3 md:grid-cols-2">{items.map(([title, href]) => <a key={href} href={`https://www.hdmicrowave.com/${href}`} target="_blank" rel="noopener noreferrer" className="group rounded border border-gray-100 bg-gray-50 px-4 py-3 text-sm leading-relaxed text-gray-700 transition-colors hover:border-primary-mid hover:bg-primary-light hover:text-primary">{title}<span className="ml-2 text-primary opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">↗</span></a>)}</div></section>)}
-        </div> : <div id="news-grid" className={styles.grid}>
+        <div id="news-grid" className={styles.grid}>
           {visibleNews.map((item) => (
             <button key={item.id} type="button" onClick={() => setSelected(item)} className={styles.card}>
               <span className={styles.imageWrap}>
-                <img src={imagePath(item.image)} alt={item.title} loading="lazy" />
+                {item.video
+                  ? <video src={videoPath(item.video)} poster={imagePath(item.image)} preload="metadata" muted playsInline aria-hidden="true" />
+                  : <img src={imagePath(item.image)} alt={item.title} loading="lazy" />}
+                {item.video ? <span className={styles.playBadge}><Play aria-hidden="true" size={20} /></span> : null}
               </span>
               <span className={styles.cardBody}>
                 <span className={styles.meta}>
@@ -260,9 +288,9 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
               </span>
             </button>
           ))}
-        </div>}
-        {filter !== "电子报" && <p className={visibleNews.length ? "hidden" : styles.empty}>该分类暂无新闻</p>}
-        {filter !== "电子报" && <div className={styles.more}><button type="button">加载更多</button></div>}
+        </div>
+        <p className={visibleNews.length ? "hidden" : styles.empty}>该分类暂无新闻</p>
+        {visibleNews.length ? <div className={styles.more}><button type="button">加载更多</button></div> : null}
           </div>
         </div>
       </div>
@@ -273,7 +301,9 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
             <button type="button" onClick={() => setSelected(null)} className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-2xl text-gray-400 hover:bg-gray-100 hover:text-gray-700" aria-label="关闭">×</button>
             <div className="mb-4 flex items-center gap-2"><span className="rounded-sm bg-primary-light px-2 py-0.5 text-xs text-primary">{selected.category}</span><time className="text-sm text-gray-400">{selected.date}</time></div>
             <h3 className="pr-8 text-xl font-semibold leading-relaxed text-gray-900 md:text-2xl">{selected.title}</h3>
-            <img src={imagePath(selected.image)} alt="" className="mt-6 max-h-80 w-full rounded-md object-cover" />
+            {selected.video
+              ? <video className="mt-6 aspect-video w-full rounded-md bg-black" src={videoPath(selected.video)} poster={imagePath(selected.image)} controls playsInline preload="metadata" aria-label={selected.title} />
+              : <img src={imagePath(selected.image)} alt="" className="mt-6 max-h-80 w-full rounded-md object-cover" />}
             <p className="mt-6 whitespace-pre-line text-base leading-8 text-gray-600">{selected.content ?? selected.summary}</p>
           </article>
         </div>

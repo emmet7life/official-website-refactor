@@ -16,7 +16,7 @@ export default async function Contact({
 
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]"><ContactPage initialSection={initialSection} sales={<ServiceSalesSection standalone />} quality={<ServiceQualitySection standalone />} commitment={<ServiceCommitmentSection standalone />} /></main>
+    <main className="pt-[70px]"><ContactPage initialSection={initialSection} sales={<ServiceSalesSection standalone />} quality={<ServiceQualitySection standalone />} commitment={<ServiceCommitmentSection standalone />} /></main>
     <HengdaHomeFooter />
     <HengdaPageInteractions solidHeader />
   </>;

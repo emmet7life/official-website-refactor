@@ -14,7 +14,7 @@ export default async function ProductCenterPage({ searchParams }: ProductCenterP
 
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]"><ProductCenter key={category ?? "root"} initialCategory={category} /></main>
+    <main className="pt-[70px]"><ProductCenter key={category ?? "root"} initialCategory={category} /></main>
     <HengdaHomeFooter />
   </>;
 }

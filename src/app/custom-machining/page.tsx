@@ -5,7 +5,7 @@ import { HengdaSiteHeader } from "@/components/sites/www-racodf-com-3880565d/roo
 export default function CustomMachiningRoute() {
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]"><CustomMachiningPage /></main>
+    <main className="pt-[70px]"><CustomMachiningPage /></main>
     <HengdaHomeFooter />
   </>;
 }

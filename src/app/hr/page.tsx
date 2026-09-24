@@ -6,7 +6,7 @@ import { HengdaPageInteractions } from "@/components/sites/www-racodf-com-388056
 export default function HumanResourcesPage() {
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]">
+    <main className="pt-[70px]">
       <AboutHrSection />
     </main>
     <HengdaHomeFooter />

@@ -1,0 +1,82 @@
+.banner {
+  display: flex;
+  height: 300px;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.light {
+  background-image: url("/sites/www-racodf-com-3880565d/shared/about/about-banner-light-masked.png");
+}
+
+.dark {
+  color: #fff;
+  background-image: url("/sites/www-racodf-com-3880565d/shared/news/banner-news.png");
+}
+
+.inner {
+  box-sizing: border-box;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #165dff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.tag::before {
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  content: "";
+}
+
+.dark .tag { color: #7fb2ff; }
+
+.title {
+  margin: 16px 0 0;
+  color: #0b1f4e;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 2px;
+}
+
+.dark .title { color: #fff; }
+
+.subtitle {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, .85);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.crumb a { color: inherit; text-decoration: none; }
+.crumb a:hover { color: #165dff; }
+.current { color: #165dff; font-weight: 600; }
+.dark .crumb { color: rgba(255, 255, 255, .75); }
+.dark .crumb a:hover, .dark .current { color: #fff; }
+
+@media (max-width: 760px) {
+  .banner { height: 240px; }
+  .title { font-size: 28px; }
+  .subtitle { font-size: 15px; }
+}

@@ -1,11 +1,11 @@
 .news {
   background: #fff;
-  padding: 108px 0 112px;
 }
 
 .container {
   width: min(1312px, calc(100% - 48px));
   margin: 0 auto;
+  padding: 56px 0 112px;
 }
 
 .headingRule {
@@ -33,8 +33,8 @@
 
 .content {
   display: grid;
-  grid-template-columns: 248px minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 48px;
   align-items: start;
 }
 
@@ -127,9 +127,11 @@
   transform: translateY(-3px);
 }
 
-.imageWrap { display: block; aspect-ratio: 1.78 / 1; overflow: hidden; background: #e7edf4; }
-.imageWrap img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-.card:hover .imageWrap img { transform: scale(1.04); }
+.imageWrap { position: relative; display: block; aspect-ratio: 1.78 / 1; overflow: hidden; background: #e7edf4; }
+.imageWrap img, .imageWrap video { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.card:hover .imageWrap img, .card:hover .imageWrap video { transform: scale(1.04); }
+.playBadge { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(9, 23, 43, .18); color: #fff; pointer-events: none; }
+.playBadge svg { padding: 11px; border-radius: 999px; background: rgba(9, 23, 43, .74); }
 .cardBody { display: block; min-height: 112px; padding: 15px 16px 17px; }
 .meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
 .tag { padding: 4px 8px; border-radius: 5px; color: #165dff; background: #eaf3ff; font-size: 13px; font-weight: 600; line-height: 1; }
@@ -143,19 +145,23 @@
 .more button:hover { border-color: #165dff; color: #fff; background: #165dff; }
 
 @media (max-width: 1023px) {
-  .news { padding: 76px 0 80px; }
-  .container { width: min(100% - 40px, 900px); }
+  .container { width: min(100% - 40px, 900px); padding: 44px 0 80px; }
   .contentSpaced { margin-top: 36px; }
-  .content { grid-template-columns: 1fr; }
   .filters { top: 88px; display: flex; gap: 8px; overflow-x: auto; padding: 10px; }
   .filterTitle { display: none; }
   .filterLink { flex: 0 0 auto; min-height: 40px; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (max-width: 860px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 640px) {
-  .news { padding: 56px 0 64px; }
-  .container { width: min(100% - 32px, 560px); }
+  .container { width: min(100% - 32px, 560px); padding: 36px 0 64px; }
   .heading { font-size: 30px; }
   .intro { margin: 12px 0 36px; font-size: 15px; }
   .resultsHeader h2 { font-size: 21px; }

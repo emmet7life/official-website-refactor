@@ -17,32 +17,8 @@
 
 .contactLayout { padding-top: 40px; }
 
-.tab {
-  width: 100%;
-  border: 0;
-  font-family: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.tab:focus-visible {
-  outline: 3px solid #69b1ff;
-  outline-offset: -3px;
-}
-
 .panel {
   padding-top: 0;
-}
-
-@media (max-width: 1023px) {
-  .tab {
-    display: block !important;
-    flex: 1 1 0 !important;
-    min-width: 0;
-    width: auto !important;
-    white-space: nowrap;
-    text-align: center;
-  }
 }
 
 .form {

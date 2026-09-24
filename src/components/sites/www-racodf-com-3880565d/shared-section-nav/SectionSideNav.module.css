@@ -1,0 +1,121 @@
+.side {
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, .04);
+}
+
+.sideHead {
+  padding: 17px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  background: linear-gradient(#f7faff, #fff);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.sideList {
+  display: block;
+}
+
+.sideLink {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  border: 0;
+  border-bottom: 1px solid #eef0f3;
+  color: #374151;
+  background: #fff;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.45;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s, background .2s;
+}
+
+.sideLink:last-child {
+  border-bottom: 0;
+}
+
+.sideLink:hover {
+  color: #165dff;
+  background: #f7faff;
+}
+
+.sideLinkActive {
+  color: #165dff;
+  background: #eef4ff;
+  font-weight: 600;
+}
+
+.sideLinkActive::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: #165dff;
+  content: "";
+}
+
+.count {
+  min-width: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: #64748b;
+  background: #f1f5f9;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sideLinkActive .count {
+  color: #165dff;
+  background: #fff;
+}
+
+@media (max-width: 860px) {
+  .side {
+    display: flex;
+    overflow-x: auto;
+    border-radius: 8px;
+  }
+
+  .sideHead {
+    display: none;
+  }
+
+  .sideList {
+    display: flex;
+    min-width: 100%;
+  }
+
+  .sideLink {
+    min-height: 48px;
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: 12px 15px;
+    border-right: 1px solid #eef0f3;
+    border-bottom: 0;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .sideLink:last-child {
+    border-right: 0;
+  }
+
+  .sideLinkActive::before {
+    inset: auto 0 0;
+    width: auto;
+    height: 3px;
+  }
+}
