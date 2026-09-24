@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恒达微波 · 关于我们 / 新闻中心 设计规约</title>
+<style>
+  :root{
+    --primary:#165dff; --primary-dark:#0e42d2; --primary-mid:#69b1ff; --primary-light:#e8f3ff;
+    --ink:#111827; --ink2:#1d2129; --txt:#1f2937; --txt2:#374151; --txt3:#4b5563; --muted:#6b7280;
+    --nc1:#4e5969; --nc2:#86909c; --border:#e5e7eb; --bg:#f5f7fb;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;color:var(--txt);line-height:1.7;margin:0;background:#fafbfc;}
+  .wrap{max-width:1040px;margin:0 auto;padding:48px 32px 96px;}
+  header.doc{border-bottom:3px solid var(--primary);padding-bottom:22px;margin-bottom:36px;}
+  header.doc h1{font-size:30px;font-weight:700;color:var(--ink);margin:0 0 6px;letter-spacing:1px;}
+  header.doc p{margin:0;color:var(--muted);font-size:14px;}
+  h2{font-size:22px;font-weight:700;color:var(--ink);margin:48px 0 16px;padding-left:13px;border-left:4px solid var(--primary);}
+  h3{font-size:17px;font-weight:600;color:var(--ink);margin:28px 0 12px;}
+  p.note{font-size:13.5px;color:var(--muted);margin:6px 0 16px;}
+  .fam{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px;margin-right:6px;}
+  .fam.a{background:var(--primary-light);color:var(--primary-dark);}
+  .fam.n{background:#e8f3ff;color:var(--primary-dark);}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0 8px;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.06);border-radius:10px;overflow:hidden;}
+  th,td{border:1px solid #eef0f3;padding:9px 12px;text-align:left;vertical-align:top;}
+  thead th{background:var(--bg);color:var(--ink);font-weight:600;font-size:13px;}
+  tbody tr:nth-child(even){background:#fcfdff;}
+  .sec{color:var(--primary-dark);font-weight:600;white-space:nowrap;}
+  .el{color:var(--txt2);}
+  .fs{font-weight:600;color:var(--ink);white-space:nowrap;}
+  .sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px;border:1px solid rgba(0,0,0,.08);}
+  .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:#0b1f4e;color:#cfe0ff;padding:2px 7px;border-radius:5px;}
+  .lnk{color:var(--primary-dark);text-decoration:none;font-size:13px;word-break:break-all;}
+  .lnk:hover{text-decoration:underline;}
+  .card{background:#fff;border:1px solid #eef0f3;border-radius:12px;padding:20px 22px;margin:14px 0;box-shadow:0 1px 2px rgba(16,24,40,.05);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  ul.tok{list-style:none;padding:0;margin:8px 0;display:flex;flex-wrap:wrap;gap:8px;}
+  ul.tok li{background:#fff;border:1px solid #eef0f3;border-radius:8px;padding:7px 11px;font-size:12.5px;color:var(--txt2);}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr;}.wrap{padding:28px 18px 60px;}}
+  footer.doc{margin-top:56px;padding-top:18px;border-top:1px solid #eef0f3;color:var(--nc2);font-size:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <h1>恒达微波 · 关于我们 / 新闻中心 设计规约</h1>
+    <p>含 Banner 图片与容器规则、各区块字体字号颜色规范 · 适用范围：关于我们系列页（about-*.html、capability.html、cap-*.html）与新闻中心（news-center.html）</p>
+  </header>
+
+  <!-- ===================== 第一部分：Banner 规则 ===================== -->
+  <h2>一、Banner（标题底图）图片与容器规则</h2>
+  <p class="note">关于我们系列与新闻中心共用同一套 banner 结构（外框整条背景 + 内层 1200px 居中内容容器）。以下为全屏（大屏桌面）下的尺寸与素材规则。</p>
+
+  <div class="card">
+    <div class="grid2">
+      <div>
+        <h3>容器尺寸</h3>
+        <ul class="tok">
+          <li>外框 .page-banner：宽 <b>100%</b>（满视口，1920 屏即 1920px）+ 高 <b>300px</b></li>
+          <li>移动端（≤760px）：高降为 <b>240px</b></li>
+          <li>内层 .banner-inner：<span class="code">max-width:1200px</span>，左右各 <b>padding 24px</b> → 文字可用宽约 <b>1152px</b>，垂直居中于 300px 带内</li>
+          <li>上边距 margin-top：关于我们 <b>70px</b>；新闻中心 <b>64px</b>（≥1024px 时为 72px）</li>
+        </ul>
+      </div>
+      <div>
+        <h3>图片素材规则</h3>
+        <ul class="tok">
+          <li>素材尺寸：<b>1920 × 640</b>（关于我们遮罩版 about-banner-light-masked.png、新闻中心 banner-news.png 均同）</li>
+          <li>填充方式：<span class="code">background-size:cover; background-position:center</span></li>
+          <li>超宽两侧裁切：故文字收在 1200px 居中区，避免被裁掉的信息区遮挡</li>
+          <li>关于我们 banner 为浅色原图（无遮罩）；新闻中心 banner 为深色图，标题用白字</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th class="sec">区块</th><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="sec" rowspan="4">Banner<br>文字</td><td class="el">.banner-tag（眉题）</td><td class="fs">14px / 600</td><td><span class="sw" style="background:#165dff"></span>关于我们 #165dff<br><span class="sw" style="background:#7fb2ff"></span>新闻中心 #7fb2ff</td><td>letter-spacing 3px，前接 26×2px 短线</td></tr>
+      <tr><td class="el">.banner-title（主标题）</td><td class="fs">38px / 700</td><td><span class="sw" style="background:#0b1f4e"></span>关于我们 #0b1f4e<br><span class="sw" style="background:#ffffff"></span>新闻中心 #ffffff</td><td>letter-spacing 2px；≤760px 降为 28px</td></tr>
+      <tr><td class="el">.banner-sub（副标题）</td><td class="fs">16px / 400</td><td><span class="sw" style="background:rgba(255,255,255,.85)"></span>新闻中心 rgba(255,255,255,.85)</td><td>仅新闻中心有</td></tr>
+      <tr><td class="el">.banner-crumb（面包屑）</td><td class="fs">15px / 400</td><td><span class="sw" style="background:#6b7280"></span>关于我们 #6b7280<br><span class="sw" style="background:rgba(255,255,255,.75)"></span>新闻中心 rgba(255,255,255,.75)</td><td>当前项 .cur 加粗；关于我们 #165dff，新闻中心 #fff</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== 第二部分：关于我们 ===================== -->
+  <h2>二、关于我们 / 能力介绍（浅色系列）</h2>
+  <p class="note"><span class="fam a">关于我们</span> 适用于 about-intro / about-history / about-honor / about-activity、capability 及其子页 cap-tech / cap-test / cap-inspection / cap-smart / cap-management。基础色板：</p>
+  <ul class="tok">
+    <li><span class="sw" style="background:#165dff"></span>--primary #165dff</li>
+    <li><span class="sw" style="background:#111827"></span>--text-title #111827</li>
+    <li><span class="sw" style="background:#1f2937"></span>--text #1f2937</li>
+    <li><span class="sw" style="background:#374151"></span>#374151</li>
+    <li><span class="sw" style="background:#4b5563"></span>#4b5563（正文）</li>
+    <li><span class="sw" style="background:#6b7280"></span>--text-muted #6b7280</li>
+    <li><span class="sw" style="background:#f5f7fb"></span>--bg-section #f5f7fb</li>
+    <li><span class="sw" style="background:#e5e7eb"></span>--border #e5e7eb</li>
+    <li><span class="sw" style="background:#07133c"></span>页脚 #07133c</li>
+  </ul>
+
+  <h3>顶栏导航 Nav</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.nav 容器</td><td class="fs">高 70px</td><td>白底 92% 透明 + 模糊</td><td>max-width 1400px，吸顶 fixed</td></tr>
+      <tr><td class="el">.logo</td><td class="fs">20px / 700</td><td>#111827</td><td>logo 图高 34px</td></tr>
+      <tr><td class="el">.nav-links a（一级）</td><td class="fs">18px / 400</td><td>#1f2937 → hover/active #165dff / 600</td><td>默认 opacity .85</td></tr>
+      <tr><td class="el">.nav-drop a（下拉）</td><td class="fs">17px / 400</td><td>#1f2937 → hover #165dff</td><td>白卡 + 圆角 12px + 阴影</td></tr>
+      <tr><td class="el">.search-box</td><td class="fs">14px / 400</td><td>#6b7280 → hover #165dff</td><td>圆角 20px 胶囊</td></tr>
+      <tr><td class="el">.mobile-menu a</td><td class="fs">16px / 15px(sub)</td><td>#1f2937</td><td>≤900px 显示</td></tr>
+    </tbody>
+  </table>
+
+  <h3>主体：侧边栏 + 文章区</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.page-body</td><td class="fs">max 1200px</td><td>—</td><td>padding 56px 24px 24px；gap 48px；侧栏 232px + 文章区</td></tr>
+      <tr><td class="el">.side-head（侧栏标题）</td><td class="fs">18px / 700</td><td>#111827</td><td>浅蓝渐变底</td></tr>
+      <tr><td class="el">.side a（侧栏项）</td><td class="fs">17px / 400</td><td>#374151 → hover #165dff；active #165dff / 600 + 左侧 3px 蓝条</td><td>—</td></tr>
+      <tr><td class="el">.art-title（章节标题）</td><td class="fs">28px / 700</td><td>#111827</td><td>前接 5×26px 蓝色竖条</td></tr>
+      <tr><td class="el">.article p（正文）</td><td class="fs">17px / 400</td><td>#4b5563</td><td>行高 1.95，首行缩进 2em，两端对齐</td></tr>
+      <tr><td class="el">.article p.lead（引言）</td><td class="fs">18px / 400</td><td>#374151</td><td>—</td></tr>
+      <tr><td class="el">.sub-title（子标题，cap-tech）</td><td class="fs">22px / 600</td><td>#111827</td><td>—</td></tr>
+      <tr><td class="el">.feat-list li（要点列表）</td><td class="fs">15px / 400</td><td>#6b7280</td><td>前接蓝色圆点</td></tr>
+      <tr><td class="el">.stat-num（数据数字）</td><td class="fs">36px / 700</td><td>#165dff</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>图文与卡片区</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>图片规格</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.intro-gallery img</td><td>—</td><td>—</td><td>高 200px，cover，圆角 12px</td></tr>
+      <tr><td class="el">.img-grid .pho img</td><td>—</td><td>—</td><td>高 170px，cover</td></tr>
+      <tr><td class="el">.honor-card img / figcaption</td><td class="fs">图注 15px / 400</td><td>图注 #374151</td><td>图高 210px，contain，白底</td></tr>
+      <tr><td class="el">.act-thumb（活动缩略）</td><td>文字 16.5px / #374151</td><td>—</td><td>240×150px，cover</td></tr>
+      <tr><td class="el">.culture-card h3 / p</td><td class="fs">h3 19px/600 · p 16px/400</td><td>h3 #165dff · p #4b5563</td><td>浅蓝渐变卡</td></tr>
+      <tr><td class="el">.timeline .tl-year / p</td><td class="fs">年 20px/700 · p 16.5px/400</td><td>年 #165dff · p #4b5563</td><td>时间轴圆点蓝边</td></tr>
+      <tr><td class="el">.honor-item（资质列表）</td><td class="fs">16px / 400</td><td>#374151 · icon #165dff</td><td>浅蓝卡 + 蓝勾 icon</td></tr>
+      <tr><td class="el">.cert-grid img（cap-tech 专利）</td><td>—</td><td>白底</td><td>高 190px，contain，5 列</td></tr>
+      <tr><td class="el">.cap-table th / td</td><td class="fs">14px / 400</td><td>th #111827（底 #f5f7fb）· td #6b7280</td><td>表头加粗</td></tr>
+    </tbody>
+  </table>
+
+  <h3>页脚 Footer（深色统一）</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.footer 容器</td><td>—</td><td>底 #07133c</td><td>max-width 1400px，padding 60px 24px 40px</td></tr>
+      <tr><td class="el">.footer-logo p</td><td class="fs">12px / 400</td><td>rgba(255,255,255,.75)</td><td>—</td></tr>
+      <tr><td class="el">.footer-col h4</td><td class="fs">14px / 600</td><td>#fff</td><td>—</td></tr>
+      <tr><td class="el">.footer-col a</td><td class="fs">12px / 400</td><td>rgba(255,255,255,.75) → hover #fff</td><td>6 栏链接</td></tr>
+      <tr><td class="el">.qr-item span</td><td class="fs">11px / 400</td><td>rgba(255,255,255,.75)</td><td>QR 74×74px</td></tr>
+      <tr><td class="el">.footer-bottom</td><td class="fs">12px / 400</td><td>rgba(255,255,255,.6)</td><td>版权行</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== 第三部分：新闻中心 ===================== -->
+  <h2>三、新闻中心（News Center）</h2>
+  <p class="note"><span class="fam n">新闻中心</span> 适用于 news-center.html。基础色板（独立变量域）：</p>
+  <ul class="tok">
+    <li><span class="sw" style="background:#165dff"></span>--nc-primary #165dff</li>
+    <li><span class="sw" style="background:#0e42d2"></span>--nc-primary-dark #0e42d2</li>
+    <li><span class="sw" style="background:#69b1ff"></span>--nc-primary-mid #69b1ff</li>
+    <li><span class="sw" style="background:#e8f3ff"></span>--nc-primary-light #e8f3ff</li>
+    <li><span class="sw" style="background:#1d2129"></span>主文字 #1d2129</li>
+    <li><span class="sw" style="background:#4e5969"></span>次文字 #4e5969</li>
+    <li><span class="sw" style="background:#86909c"></span>弱文字 #86909c</li>
+    <li><span class="sw" style="background:#e5e6eb"></span>边框 #e5e6eb</li>
+  </ul>
+
+  <h3>顶栏导航与 Banner</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="el">#navbar nav a（一级）</td><td class="fs">17px / 400</td><td>→ hover/active #165dff</td><td>weight normal（与关于我们一致）</td></tr>
+      <tr><td class="el">.nav-dropdown a（下拉）</td><td class="fs">17px / 400</td><td>→ hover #165dff</td><td>CSS 三角箭头</td></tr>
+      <tr><td class="el">Banner 文字</td><td class="fs">tag 14/600 · title 38/700 · sub 16/400 · crumb 15/400</td><td>见第一部分（深色图用白字）</td><td>结构同关于我们</td></tr>
+    </tbody>
+  </table>
+
+  <h3>主体：分类侧栏 + 新闻列表</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.nc-layout</td><td>栅格 248px + 1fr</td><td>—</td><td>gap 32px；≤860px 转单列</td></tr>
+      <tr><td class="el">.nc-side（分类侧栏）</td><td>宽 248px</td><td>白底 + 边框 #e5e6eb</td><td>sticky top 96px</td></tr>
+      <tr><td class="el">.nc-side-title</td><td class="fs">15px / 700</td><td>#1d2129</td><td>左侧蓝渐变竖条</td></tr>
+      <tr><td class="el">.nc-cat button</td><td class="fs">15px / 400</td><td>#4e5969 → hover #165dff；active #fff（底 #165dff）</td><td>分类 6 项</td></tr>
+      <tr><td class="el">.nc-cat .cnt（计数）</td><td class="fs">12px / 400</td><td>同按钮色，opacity .75</td><td>等宽数字</td></tr>
+      <tr><td class="el">.nc-main-head h3</td><td class="fs">22px / 700</td><td>#1d2129</td><td>列表标题</td></tr>
+      <tr><td class="el">.nc-main-head .count</td><td class="fs">13px / 400</td><td>#86909c</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>新闻卡片与弹窗</h3>
+  <table>
+    <thead><tr><th class="el">元素</th><th>字号 / 字重</th><th>颜色</th><th>图片规格</th></tr></thead>
+    <tbody>
+      <tr><td class="el">.nc-grid 卡片</td><td>3 列（≤1180 两列，≤860 单列）</td><td>白底 + 边框 #e5e6eb；hover 蓝边 rgba(22,93,255,.4)</td><td>—</td></tr>
+      <tr><td class="el">.nc-thumb</td><td>—</td><td>—</td><td>高 190px（≤860 降 180px），cover</td></tr>
+      <tr><td class="el">.nc-tag（分类标签）</td><td class="fs">12px / 600</td><td>底 #e8f3ff · 字 #0e42d2</td><td>—</td></tr>
+      <tr><td class="el">.nc-date</td><td class="fs">13px / 400</td><td>#86909c</td><td>等宽数字</td></tr>
+      <tr><td class="el">.nc-title</td><td class="fs">16px / 600</td><td>#1d2129 → hover #165dff</td><td>两行截断</td></tr>
+      <tr><td class="el">.nc-pager button</td><td class="fs">14px / 400</td><td>#4e5969 → active #fff（底 #165dff）</td><td>—</td></tr>
+      <tr><td class="el">.nc-empty（空态）</td><td class="fs">14px / 400</td><td>#86909c</td><td>"该分类暂无相关内容"</td></tr>
+      <tr><td class="el">.nc-modal-img / h3 / p</td><td class="fs">图 300px · h3 25px/700 · p 15px/400</td><td>h3 #1d2129 · p #4e5969</td><td>弹窗大图</td></tr>
+      <tr><td class="el">.nc-link（原文链接）</td><td class="fs">14px / 600</td><td>#fff（底 #165dff → hover #0e42d2）</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">页脚 Footer 与关于我们完全一致（#07133c 深色统一版），不再重复。</p>
+
+  <!-- ===================== 第四部分：页面在线链接 ===================== -->
+  <h2>四、页面在线链接（可分享）</h2>
+  <p class="note">以下为各页面的线上部署地址（CloudStudio 沙箱，已验证可访问），可直接分享。基址：<span class="code">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host</span></p>
+  <table>
+    <thead><tr><th class="el">页面</th><th class="el">文件</th><th>可分享在线链接</th></tr></thead>
+    <tbody>
+      <tr><td class="el">站点首页（入口）</td><td class="code">index.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/</a></td></tr>
+      <tr><td class="el">关于我们 · 公司简介</td><td class="code">about-intro.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-intro.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-intro.html</a></td></tr>
+      <tr><td class="el">关于我们 · 发展历程</td><td class="code">about-history.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-history.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-history.html</a></td></tr>
+      <tr><td class="el">关于我们 · 资质荣誉</td><td class="code">about-honor.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-honor.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-honor.html</a></td></tr>
+      <tr><td class="el">关于我们 · 公司活动</td><td class="code">about-activity.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-activity.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/about-activity.html</a></td></tr>
+      <tr><td class="el">能力介绍（总览）</td><td class="code">capability.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/capability.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/capability.html</a></td></tr>
+      <tr><td class="el">能力介绍 · 技术能力</td><td class="code">cap-tech.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-tech.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-tech.html</a></td></tr>
+      <tr><td class="el">能力介绍 · 测试能力</td><td class="code">cap-test.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-test.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-test.html</a></td></tr>
+      <tr><td class="el">能力介绍 · 试验检验能力</td><td class="code">cap-inspection.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-inspection.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-inspection.html</a></td></tr>
+      <tr><td class="el">能力介绍 · 智能制造</td><td class="code">cap-smart.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-smart.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-smart.html</a></td></tr>
+      <tr><td class="el">能力介绍 · 管理能力</td><td class="code">cap-management.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-management.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/cap-management.html</a></td></tr>
+      <tr><td class="el">新闻中心</td><td class="code">news-center.html</td><td><a class="lnk" href="https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/news-center.html" target="_blank">https://6e8e0fc82fa24bba9c69f617cee902d5.app.workbuddy.host/news-center.html</a></td></tr>
+    </tbody>
+  </table>
+
+  <footer class="doc">
+    文档由设计规约整理生成 · 数据取自 hengda-schemeA-pdf 下 about-*.html / capability.html / cap-*.html / news-center.html 及生成器 gen_about_pages.py · 适用于全屏（≥1024px）桌面环境，移动端断点已标注。
+  </footer>
+
+</div>
+</body>
+</html>

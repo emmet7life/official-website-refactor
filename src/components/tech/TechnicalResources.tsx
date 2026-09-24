@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { ServiceDownloadsSection } from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-service-downloads/ServiceDownloadsSection";
+import { PageBanner } from "@/components/sites/www-racodf-com-3880565d/page-banner/PageBanner";
+import { SectionSideNav } from "@/components/sites/www-racodf-com-3880565d/shared-section-nav/SectionSideNav";
 import styles from "@/components/sites/www-racodf-com-3880565d/root-8a5edab2-news/NewsSection.module.css";
 
 const knowledgeTopics = [
@@ -19,16 +20,17 @@ const knowledgeTopics = [
 export function TechnicalResources({ selected }: { selected: string }) {
   const knowledge = selected === "knowledge";
   return <section className={`${styles.news} bg-[#fff]`}>
+    <PageBanner eyebrow="TECHNICAL RESOURCES" title="技术资料" />
     <div className={styles.container}>
-      <div className="mb-10 max-w-2xl">
-        <div className={styles.headingRule} aria-hidden="true" />
-        <h1 className={styles.heading}>技术资料</h1>
-        <p className={styles.intro}>微波知识与论文资料，供您查阅与参考。</p>
-      </div>
       <div className={styles.content}>
-      <nav className={styles.filters} aria-label="技术资料栏目">
-        {[["微波知识", "/tech/knowledge"], ["论文下载", "/tech/papers"]].map(([label, href]) => <Link key={href} href={href} aria-current={href.endsWith(selected) ? "page" : undefined} className={`${styles.filterLink} ${href.endsWith(selected) ? styles.filterLinkActive : ""}`}><span>{label}</span></Link>)}
-      </nav>
+      <SectionSideNav
+        title="技术资料"
+        ariaLabel="技术资料栏目"
+        items={[
+          { key: "knowledge", label: "微波知识", href: "/tech/knowledge", active: selected === "knowledge" },
+          { key: "papers", label: "论文下载", href: "/tech/papers", active: selected === "papers" },
+        ]}
+      />
       <div>
       {knowledge ? <div>
         <h2 className="text-2xl font-semibold text-gray-900">微波知识</h2>

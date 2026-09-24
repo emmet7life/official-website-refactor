@@ -51,7 +51,7 @@ export function ServiceSalesSection({ standalone = false }: { standalone?: boole
         ['京津区', '京津地区：北京、天津、黑龙江、吉林、辽宁、内蒙古', '13801055130', '', 'marketing@hdmicrowave.com'],
         ['华北区', '河北、山东', '15305177790', '', 'marketing@hdmicrowave.com'],
         ['西安区', '陕西、甘肃、宁夏、青海、新疆、山西', '15305177790', '', 'marketing@hdmicrowave.com'],
-        ['国际业务部', '负责境外国家及港澳台地区销售', '+86-15929918231', '+86-29-85266226', 'market@hdmicrowave.com'],
+        ['境外区', '负责境外国家及港澳台地区销售', '+86-15929918231', '+86-29-85266226', 'market@hdmicrowave.com'],
       ].map(([title, scope, mobile, phone, email]) => <article key={title} className="rounded-lg border border-gray-200 bg-white p-6 transition-shadow duration-300 hover:shadow-card-hover">
         <h4 className="text-lg font-medium text-gray-900">{title}</h4>
         <p className="mt-2 text-sm leading-relaxed text-gray-500">{scope}</p>
