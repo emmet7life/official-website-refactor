@@ -6,6 +6,7 @@ import { RotateCcw, Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState, type FormEvent } from "react";
 
 import { ProductModal, SpecificationInquiryModal } from "@/components/productcenter/ProductDetailDialogs";
+import { PageBanner } from "@/components/sites/www-racodf-com-3880565d/page-banner/PageBanner";
 import type { Product } from "@/components/productcenter/catalog-data";
 import {
   defaultFilters,
@@ -245,12 +246,7 @@ export function SearchPage({ initialCategory, initialKeyword }: SearchPageProps)
 
   return (
     <div className="search-page">
-      <section className="search-hero">
-        <div className="search-container">
-          <p>PRODUCT SEARCH</p>
-          <h1>产品选型搜索</h1>
-        </div>
-      </section>
+      <PageBanner eyebrow="PRODUCT SEARCH" title="产品搜索" />
 
       <div className="search-container search-body">
         <aside className={`search-filters ${areFiltersOpen ? "is-open" : ""}`} aria-label="技术参数筛选">

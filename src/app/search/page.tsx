@@ -21,7 +21,7 @@ export default async function SearchRoutePage({ searchParams }: SearchRoutePageP
 
   return <>
     <HengdaSiteHeader solid />
-    <main className="pt-16 lg:pt-[72px]">
+    <main className="pt-[70px]">
       <SearchPage initialCategory={firstParam(params.category)} initialKeyword={firstParam(params.q)} />
     </main>
     <HengdaHomeFooter />

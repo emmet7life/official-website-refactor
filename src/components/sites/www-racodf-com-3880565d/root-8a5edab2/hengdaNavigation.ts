@@ -4,7 +4,7 @@ export const hengdaNavGroups = [
     section: '/about',
     links: [
       ['公司介绍', '/about/intro'],
-      ['公司历程', '/about/history'],
+      ['发展历程', '/about/history'],
       ['荣誉资质', '/about/honor'],
       ['公司活动', '/about/activity'],
       ['能力介绍', '/capability'],
@@ -38,9 +38,10 @@ export const hengdaNavGroups = [
     links: [
       ['公司新闻', '/news/company'],
       ['媒体报道', '/news/media'],
+      ['企业公众号', '/news/wechat'],
+      ['自媒体宣传', '/news/social-media'],
       ['行业资讯', '/news/industry'],
       ['学术展会', '/news/exhibition'],
-      ['电子报', '/news/enews'],
     ],
   },
   {
@@ -48,7 +49,6 @@ export const hengdaNavGroups = [
     section: '/hr',
     href: '/hr',
     links: [
-      ['招聘动态', '/hr#recruitment'],
       ['研究生培养', '/hr#training'],
       ['人事行政联系方式', '/hr#hr-contact'],
     ],

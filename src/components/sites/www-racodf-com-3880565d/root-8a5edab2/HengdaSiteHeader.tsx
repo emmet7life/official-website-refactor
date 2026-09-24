@@ -10,7 +10,7 @@ import { Globe2 } from 'lucide-react';
 import { hengdaNavGroups as navGroups } from './hengdaNavigation';
 
 function Chevron() {
-  return <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>;
+  return <svg className="marketing-nav-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>;
 }
 
 export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
@@ -80,19 +80,14 @@ export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
         </div>
       </div>
     </header>
-    <div id="menu-mask" className="fixed inset-0 z-[60] bg-gray-900/40 opacity-0 transition-opacity duration-300 lg:hidden" />
-    <aside id="mobile-menu" className="fixed right-0 top-0 z-[70] h-full w-[min(86vw,360px)] translate-x-full overflow-y-auto bg-white text-gray-800 shadow-2xl transition-transform duration-300 lg:hidden">
-      <div className="flex h-16 items-center justify-between border-b border-gray-100 px-5"><span className="font-semibold text-gray-900">导航菜单</span><button id="menu-close" type="button" className="p-2 text-2xl" aria-label="关闭菜单">×</button></div>
-      <nav className="px-5 py-4" aria-label="移动端导航">
-        <Link
-          href="/"
-          className={`block border-b border-gray-100 py-3 font-medium${isCurrent('/') ? ' nav-link-active' : ''}`}
-          aria-current={isCurrent('/') ? 'page' : undefined}
-        >
-          首页
-        </Link>
-        {navGroups.map((group) => <details key={group.label} className="border-b border-gray-100"><summary className={`flex cursor-pointer list-none items-center justify-between py-3 font-medium${isCurrent(group.section) ? ' nav-link-active' : ''}`} aria-current={isCurrent(group.section) ? 'page' : undefined}><span>{group.label}</span><Chevron /></summary><div className="flex flex-col gap-1 pb-3 pl-3 text-gray-600">{group.links.map(([label, href]) => <Link key={label} href={href} className="py-2">{label}</Link>)}</div></details>)}
-        <Link href="/#contact" className="mt-6 flex h-12 items-center justify-center rounded-md bg-primary font-medium text-white transition-colors hover:bg-primary-dark">业务咨询</Link>
+    <div id="menu-mask" className="marketing-menu-mask" />
+    <aside id="mobile-menu" className="marketing-mobile-menu">
+      <nav aria-label="移动端导航">
+        <Link href="/" className={isCurrent('/') ? 'nav-link-active' : ''} aria-current={isCurrent('/') ? 'page' : undefined}>首页</Link>
+        {navGroups.map((group) => <div key={group.label}>
+          <Link href={"href" in group ? group.href : group.links[0][1]} className={isCurrent(group.section) ? 'nav-link-active' : ''} aria-current={isCurrent(group.section) ? 'page' : undefined}>{group.label}</Link>
+          {group.links.map(([label, href]) => <Link key={label} href={href} className="marketing-mobile-sub">{label}</Link>)}
+        </div>)}
       </nav>
     </aside>
   </>;

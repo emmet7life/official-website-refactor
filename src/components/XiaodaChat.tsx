@@ -14,34 +14,11 @@ type DragState = { pointerId: number; startX: number; startY: number; left: numb
 export function XiaodaChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
-  const [isBlinking, setIsBlinking] = useState(false);
   const [position, setPosition] = useState<Position | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dragRef = useRef<DragState | null>(null);
   const suppressClickRef = useRef(false);
   const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (motion.matches) return;
-
-    let delay: ReturnType<typeof setTimeout>;
-    let blink: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      delay = setTimeout(() => {
-        setIsBlinking(true);
-        blink = setTimeout(() => {
-          setIsBlinking(false);
-          schedule();
-        }, 2400);
-      }, 7000 + Math.random() * 11000);
-    };
-    schedule();
-    return () => {
-      clearTimeout(delay);
-      clearTimeout(blink);
-    };
-  }, []);
 
   useEffect(() => {
     const keepInViewport = () => {
@@ -129,9 +106,8 @@ export function XiaodaChat() {
           setIsOpen(true);
         }}
       >
-        {/* The supplied animation is shown briefly, while the static portrait remains the default. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`${assetRoot}/${isBlinking ? "robot_blink.gif" : "xiaoda-head.png"}`} alt="" draggable={false} />
+        <img src={`${assetRoot}/xiaoda-full.gif`} alt="" draggable={false} />
       </button>
       {hasOpened && (
         <section className={`${styles.window} ${isOpen ? "" : styles.windowHidden}`} role="dialog" aria-modal={isOpen} aria-label="小达智能客服" aria-hidden={!isOpen}>

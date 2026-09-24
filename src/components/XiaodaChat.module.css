@@ -4,11 +4,11 @@
   bottom: 12px;
   z-index: 1201;
   display: block;
-  width: 76px;
-  height: 76px;
+  width: 92px;
+  height: 136px;
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  border-radius: 0;
   background: transparent;
   cursor: grab;
   touch-action: none;
@@ -67,7 +67,7 @@
 .frame { width: 100%; min-height: 0; flex: 1; border: 0; background: #fff; }
 
 @media (max-width: 640px) {
-  .launcher { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: 68px; height: 68px; }
+  .launcher { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: 76px; height: 112px; }
   .window { inset: 0; width: 100vw; height: 100dvh; border: 0; border-radius: 0; }
   .header { min-height: calc(56px + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); }
 }

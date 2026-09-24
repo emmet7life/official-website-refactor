@@ -102,7 +102,9 @@ export function HengdaPageInteractions({ initialPart, newsCategory, solidHeader 
     };
     const onClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
-      if (event.target.closest("#menu-toggle")) openMenu();
+      if (event.target.closest("#menu-toggle")) {
+        if (menu?.classList.contains("is-open")) closeMenu(); else openMenu();
+      }
       if (event.target.closest("#menu-close, #menu-mask")) closeMenu();
       if (event.target.closest("#search-btn")) openDialog("search-modal");
       if (event.target.closest("#search-close") || event.target === activeDialog) closeDialog();
