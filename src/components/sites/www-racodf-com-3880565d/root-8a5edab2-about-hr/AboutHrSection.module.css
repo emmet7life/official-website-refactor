@@ -56,7 +56,7 @@
 .modalPanel li::marker { color: #165dff; font-weight: 600; }
 @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: none; } }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .trainingFeature { grid-template-columns: 1fr; }
   .trainingGrid, .jobGrid, .benefitGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

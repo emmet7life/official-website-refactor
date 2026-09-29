@@ -32,6 +32,12 @@
   font-size: 14px;
 }
 
+.requiredMark {
+  color: #dc2626;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .form input,
 .form select,
 .form textarea {

@@ -165,7 +165,7 @@ function hydrateNode(node: ProductCatalogNode): Category {
     name: cleanName,
     description: `${cleanName}相关产品与技术资料。`,
     images: imageForChapter(chapter),
-    children: node.children.map(hydrateNode),
+    children: node.children.filter((child) => child.code !== "3.1").map(hydrateNode),
   };
   if (node.kind === "product-list") category.products = productsByChapter[chapter] ?? productsByChapter["1"];
   if (node.kind === "rich-text") category.article = subsystemArticle(category);

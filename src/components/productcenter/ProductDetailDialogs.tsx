@@ -36,15 +36,17 @@ export function ProductModal({
   product,
   onClose,
   onRequestSpec,
+  variant = "product-center",
 }: {
   product: Product;
   onClose: () => void;
   onRequestSpec: (target: string) => void;
+  variant?: "product-center" | "solutions";
 }) {
   const dialogRef = useDialogFocus(onClose);
   return (
     <div className="product-modal-backdrop" role="presentation" onClick={onClose}>
-      <section ref={dialogRef} className="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}>
+      <section ref={dialogRef} className={`product-modal${variant === "solutions" ? " solution-spec-theme" : ""}`} role="dialog" aria-modal="true" aria-labelledby="product-modal-title" onClick={(event) => event.stopPropagation()}>
         <div className="product-modal-head">
           <div>
             <div className="product-center-kicker">FULL TECHNICAL PARAMETERS</div>
@@ -89,7 +91,7 @@ export function ProductModal({
   );
 }
 
-export function SpecificationInquiryModal({ target, onClose }: { target: string; onClose: () => void }) {
+export function SpecificationInquiryModal({ target, onClose, variant = "product-center" }: { target: string; onClose: () => void; variant?: "product-center" | "solutions" }) {
   const dialogRef = useDialogFocus(onClose);
   const [submitted, setSubmitted] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
@@ -115,7 +117,7 @@ export function SpecificationInquiryModal({ target, onClose }: { target: string;
 
   return (
     <div className="product-inquiry-backdrop" role="presentation" onClick={onClose}>
-      <section ref={dialogRef} className="product-inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="product-inquiry-title" onClick={(event) => event.stopPropagation()}>
+      <section ref={dialogRef} className={`product-inquiry-modal${variant === "solutions" ? " solution-spec-theme" : ""}`} role="dialog" aria-modal="true" aria-labelledby="product-inquiry-title" onClick={(event) => event.stopPropagation()}>
         <div className="product-inquiry-head">
           <div>
             <span>获取规格书</span>
@@ -128,21 +130,19 @@ export function SpecificationInquiryModal({ target, onClose }: { target: string;
         <p className="product-inquiry-lead">请留下联系方式，我们会尽快与您确认规格书获取方式和项目需求。</p>
         <form className="product-inquiry-form" onSubmit={submitInquiry}>
           <label>
-            姓名
+            <span>姓名<span className="text-base font-bold text-red-500" aria-hidden="true">*</span></span>
             <input required name="name" autoComplete="name" placeholder="请输入姓名" />
           </label>
           <label>
-            联系电话
+            <span>联系电话<span className="text-base font-bold text-red-500" aria-hidden="true">*</span></span>
             <input required name="phone" type="tel" autoComplete="tel" placeholder="请输入联系电话" />
           </label>
           <label>
-            咨询产品类型
-            <select required name="product" defaultValue="获取规格书">
-              <option value="获取规格书">获取规格书</option>
-            </select>
+            <span>咨询产品类型<span className="text-base font-bold text-red-500" aria-hidden="true">*</span></span>
+            <input required readOnly name="product" defaultValue="获取规格书" />
           </label>
           <label>
-            咨询内容
+            <span>咨询内容<span className="text-base font-bold text-red-500" aria-hidden="true">*</span></span>
             <textarea required name="content" rows={4} defaultValue={`获取规格书：${target}\n请与我联系，并告知获取规格书所需资料。`} />
           </label>
           <button type="submit" disabled={submitted}>

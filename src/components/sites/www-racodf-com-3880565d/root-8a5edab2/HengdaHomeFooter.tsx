@@ -7,7 +7,7 @@ const root = "/sites/www-racodf-com-3880565d/shared/home/";
 
 export function HengdaHomeFooter() {
   return <footer className="hengda-marketing-footer bg-[#07133c] px-5 pb-10 pt-[60px] text-white md:px-10 lg:px-16">
-    <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[220px_1fr_252px] lg:gap-10 xl:gap-12">
+    <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[180px_minmax(0,1fr)_252px] lg:gap-6 xl:gap-6">
       <div>
         <Link href="/" className="inline-flex"><img src={`${root}logo.png`} alt="恒达微波" className="h-10 w-auto" /></Link>
         <p className="mt-3 max-w-none text-xs leading-5 text-white/75">技术领先，实业报国<br /><span className="lg:whitespace-nowrap">以成为卓越的微波供应商为目标</span></p>
@@ -15,7 +15,7 @@ export function HengdaHomeFooter() {
       <div className="hengda-footer-navigation">
         {hengdaNavGroups.filter((group) => group.label !== "联系我们").map((group) => <div key={group.label}>
           <h4 className="mb-4 text-sm font-semibold">{group.label}</h4>
-          {group.links.map(([label, href]) => <Link key={label} href={href} className="mb-2.5 block text-xs text-white/75 transition hover:text-white">{label}</Link>)}
+          {group.links.map(([label, href]) => <Link key={label} href={href} className={`mb-2.5 block text-xs text-white/75 transition hover:text-white ${label === "分系统集成系列产品" ? "whitespace-nowrap" : ""}`}>{label}</Link>)}
         </div>)}
       </div>
       <div>

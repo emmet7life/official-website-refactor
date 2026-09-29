@@ -40,18 +40,19 @@ export function ServiceSalesSection({ standalone = false }: { standalone?: boole
         <h4 className="text-lg font-medium text-gray-900">西安总部</h4>
         <div className="mt-6 space-y-4">
           <ContactRow icon={<LocationIcon />}>中国西安市航天基地飞天路485号，邮编：710100</ContactRow>
-          <ContactRow icon={<PhoneIcon />}>电话：<a className="hover:text-primary" href="tel:02985266226">029-85266226</a>　传真：029-85248049</ContactRow>
+          <ContactRow icon={<PhoneIcon />}>电话：<a className="hover:text-primary" href="tel:02985266226">029-85266226</a></ContactRow>
+          <ContactRow icon={<PhoneIcon />}>传真：029-85248049</ContactRow>
           <ContactRow icon={<PhoneIcon />}>手机：<a className="hover:text-primary" href="tel:13379273962">13379273962</a></ContactRow>
           <ContactRow icon={<MailIcon />}><a className="hover:text-primary" href="mailto:marketing@hdmicrowave.com">marketing@hdmicrowave.com</a></ContactRow>
         </div>
       </article>
       {[
-        ['华东区', '华东地区：上海、浙江、江苏、安徽', '15389025378', '', 'marketing@hdmicrowave.com'],
-        ['西南区', '西南地区：四川、重庆、云南、贵州、西藏、福建、海南、广东、广西、湖北、湖南、江西、河南', '13379254722', '', 'marketing@hdmicrowave.com'],
-        ['京津区', '京津地区：北京、天津、黑龙江、吉林、辽宁、内蒙古', '13801055130', '', 'marketing@hdmicrowave.com'],
-        ['华北区', '河北、山东', '15305177790', '', 'marketing@hdmicrowave.com'],
-        ['西安区', '陕西、甘肃、宁夏、青海、新疆、山西', '15305177790', '', 'marketing@hdmicrowave.com'],
-        ['境外区', '负责境外国家及港澳台地区销售', '+86-15929918231', '+86-29-85266226', 'market@hdmicrowave.com'],
+        ['华东区', '覆盖区域：上海、浙江、江苏、安徽', '15389025378', '', 'marketing@hdmicrowave.com'],
+        ['西南区', '覆盖区域：四川、重庆、云南、贵州、西藏、福建、海南、广东、广西、湖北、湖南、江西、河南', '13379254722', '', 'marketing@hdmicrowave.com'],
+        ['京津区', '覆盖区域：北京、天津、黑龙江、吉林、辽宁、内蒙古', '13801055130', '', 'marketing@hdmicrowave.com'],
+        ['华北区', '覆盖区域：河北、山东', '15305177790', '', 'marketing@hdmicrowave.com'],
+        ['西安区', '覆盖区域：陕西、甘肃、宁夏、青海、新疆、山西', '15305177790', '', 'marketing@hdmicrowave.com'],
+        ['境外区', '覆盖区域：境外国家及港澳台地区', '+86-15929918231', '+86-29-85266226', 'market@hdmicrowave.com'],
       ].map(([title, scope, mobile, phone, email]) => <article key={title} className="rounded-lg border border-gray-200 bg-white p-6 transition-shadow duration-300 hover:shadow-card-hover">
         <h4 className="text-lg font-medium text-gray-900">{title}</h4>
         <p className="mt-2 text-sm leading-relaxed text-gray-500">{scope}</p>

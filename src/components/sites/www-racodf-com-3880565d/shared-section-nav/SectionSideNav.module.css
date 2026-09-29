@@ -82,7 +82,7 @@
   background: #fff;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1250px) {
   .side {
     display: flex;
     overflow-x: auto;

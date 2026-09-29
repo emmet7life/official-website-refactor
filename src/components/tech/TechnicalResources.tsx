@@ -33,16 +33,14 @@ export function TechnicalResources({ selected }: { selected: string }) {
       />
       <div>
       {knowledge ? <div>
-        <h2 className="text-2xl font-semibold text-gray-900">微波知识</h2>
-        <p className="mt-3 text-sm text-gray-500">以下为演示链接，文章内容待补充。</p>
-        <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {knowledgeTopics.map((title, index) => <a key={title} id={`knowledge-demo-${index + 1}`} href={`#knowledge-demo-${index + 1}`} className="group flex items-center gap-4 rounded-lg border border-gray-200 bg-white p-5 transition-colors hover:border-primary-mid hover:text-primary">
             <BookOpen className="shrink-0 text-primary" size={21} aria-hidden="true" />
             <span className="flex-1 text-sm leading-6">{title}</span>
             <ArrowUpRight size={17} className="shrink-0 text-gray-400 group-hover:text-primary" aria-hidden="true" />
           </a>)}
         </div>
-      </div> : <ServiceDownloadsSection />}
+      </div> : <ServiceDownloadsSection compact />}
     </div>
       </div>
     </div>

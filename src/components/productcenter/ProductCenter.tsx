@@ -61,16 +61,27 @@ function getSelectedNodes(path: number[]) {
   return nodes;
 }
 
-function getInitialPath(category?: string) {
+function findCodePath(nodes: Category[], code: string, parent: number[] = []): number[] | null {
+  for (const [index, node] of nodes.entries()) {
+    const path = [...parent, index];
+    if (node.code === code) return path;
+    const nested = findCodePath(node.children, code, path);
+    if (nested) return nested;
+  }
+  return null;
+}
+
+function getInitialPath(category?: string, code?: string) {
+  if (code) return findCodePath(productDirectory, code) ?? [];
   const targetCode = category ? productCategorySlugs[category] : undefined;
   const targetIndex = targetCode ? productDirectory.findIndex((node) => node.code === targetCode) : -1;
   return targetIndex >= 0 ? [targetIndex] : [];
 }
 
-export function ProductCenter({ initialCategory }: { initialCategory?: string }) {
+export function ProductCenter({ initialCategory, initialCode, initialModel }: { initialCategory?: string; initialCode?: string; initialModel?: string }) {
   const router = useRouter();
-  const [selectedPath, setSelectedPath] = useState<number[]>(() => getInitialPath(initialCategory));
-  const [expandedPaths, setExpandedPaths] = useState<string[]>(() => getInitialPath(initialCategory).map((_, index, path) => path.slice(0, index + 1).join(".")));
+  const [selectedPath, setSelectedPath] = useState<number[]>(() => getInitialPath(initialCategory, initialCode));
+  const [expandedPaths, setExpandedPaths] = useState<string[]>(() => getInitialPath(initialCategory, initialCode).map((_, index, path) => path.slice(0, index + 1).join(".")));
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [inquiryTarget, setInquiryTarget] = useState<string | null>(null);
   const contentRef = useRef<HTMLElement>(null);
@@ -163,7 +174,7 @@ export function ProductCenter({ initialCategory }: { initialCategory?: string })
         <aside className="product-directory"><nav aria-label="产品分类目录">{renderTree(productDirectory)}</nav></aside>
         <section className="product-center-content" ref={contentRef}>
           {selected?.code === "custom" ? <CustomManufacturing /> : null}
-          {selected?.article ? <ProductArticle category={selected} onRequestSpec={requestSpecification} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} onOpen={setModalProduct} onRequestSpec={requestSpecification} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div></> : <div className="category-cards">{children.map((child, index) => {
+          {selected?.article ? <ProductArticle category={selected} onRequestSpec={requestSpecification} /> : selected?.products ? <><ProductCategoryIntro category={selected} /><ProductTable products={selected.products} highlightedModel={initialModel} onOpen={setModalProduct} onRequestSpec={requestSpecification} /><div className="product-mobile-tip">型号列固定在左侧，规格书列固定在右侧；中间技术指标可横向滑动。点击型号查看完整参数。</div></> : <div className="category-cards">{children.map((child, index) => {
             const isRootCategory = selectedPath.length === 0;
             const image = isRootCategory ? (categoryCardIcons[child.code] ?? categoryCardImages[index % categoryCardImages.length]) : categoryCardImages[index % categoryCardImages.length];
             return <button key={child.id} type="button" className="category-card-high" onClick={() => select([...selectedPath, index])}>
@@ -245,10 +256,10 @@ function DualSpecificationTable({ antenna, servo }: { antenna: Specification[]; 
   return <div className="product-rich-table-scroll"><table className="product-rich-table"><thead><tr><th colSpan={2}>天线参数</th><th colSpan={2}>伺服参数</th></tr></thead><tbody>{rows.map((row, index) => <tr key={`${row.antenna?.label}-${row.servo?.label}-${index}`}><th>{row.antenna?.label}</th><td>{row.antenna?.value}</td><th>{row.servo?.label}</th><td>{row.servo?.value}</td></tr>)}</tbody></table></div>;
 }
 
-function ProductTable({ products, onOpen, onRequestSpec }: { products: Product[]; onOpen: (product: Product) => void; onRequestSpec: (target: string) => void }) {
+function ProductTable({ products, highlightedModel, onOpen, onRequestSpec }: { products: Product[]; highlightedModel?: string; onOpen: (product: Product) => void; onRequestSpec: (target: string) => void }) {
   return <section className="product-list-section">
     <header className="product-list-heading"><h3>产品列表</h3><p>点击产品型号查看完整技术参数</p></header>
-    <div className="product-table-wrap"><div className="product-table-scroll"><table className="product-center-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th><th className="sticky-spec">规格书</th></tr></thead><tbody>{products.map((product) => <tr key={product.model}><td className="sticky-model"><button type="button" className="model-button" onClick={() => onOpen(product)}>{product.model}</button></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td><td className="sticky-spec"><button type="button" className="spec-button" onClick={() => onRequestSpec(product.model)} aria-label={`获取 ${product.model} 规格书`}>获取</button></td></tr>)}</tbody></table></div></div>
+    <div className="product-table-wrap"><div className="product-table-scroll"><table className="product-center-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th><th className="sticky-spec">规格书</th></tr></thead><tbody>{products.map((product) => <tr key={product.model} className={product.model === highlightedModel ? "is-search-match" : undefined}><td className="sticky-model"><button type="button" className="model-button" onClick={() => onOpen(product)}>{product.model}</button></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td><td className="sticky-spec"><button type="button" className="spec-button" onClick={() => onRequestSpec(product.model)} aria-label={`获取 ${product.model} 规格书`}>获取</button></td></tr>)}</tbody></table></div></div>
   </section>;
 }
 

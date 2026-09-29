@@ -48,17 +48,17 @@ function DownloadIcon() {
   );
 }
 
-export function ServiceDownloadsSection() {
+export function ServiceDownloadsSection({ compact = false }: { compact?: boolean }) {
   return (
     <div id="service-downloads" className="service-part scroll-mt-24">
-      <div className="fade-in-up mb-6 max-w-2xl lg:mb-8">
+      {!compact ? <div className="fade-in-up mb-6 max-w-2xl lg:mb-8">
         <div className="mb-4 h-1 w-10 rounded-full bg-gradient-to-r from-primary to-primary-mid" aria-hidden="true" />
         <h3 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">资料下载</h3>
-      </div>
+      </div> : null}
 
-      <div id="downloads-grid" className="space-y-8">
+      <div id="downloads-grid" className={compact ? "" : "space-y-8"}>
         <div>
-          <h4 className="fade-in-up mb-4 text-base font-semibold text-primary">论文资料</h4>
+          {!compact ? <h4 className="fade-in-up mb-4 text-base font-semibold text-primary">论文资料</h4> : null}
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {downloads.map((download) => (
               <a

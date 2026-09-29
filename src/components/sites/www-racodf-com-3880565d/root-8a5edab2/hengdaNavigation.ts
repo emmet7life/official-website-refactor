@@ -5,9 +5,9 @@ export const hengdaNavGroups = [
     links: [
       ['公司介绍', '/about/intro'],
       ['发展历程', '/about/history'],
+      ['能力介绍', '/capability'],
       ['荣誉资质', '/about/honor'],
       ['公司活动', '/about/activity'],
-      ['能力介绍', '/capability'],
     ],
   },
   {

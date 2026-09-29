@@ -26,7 +26,7 @@ export function AboutHrSection() {
       <SectionTitle>研究生培养</SectionTitle>
       <div className={styles.trainingFeature}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/sites/www-racodf-com-3880565d/hr/hr-grow.jpg" alt="研究生联合培养" />
+        <img src="/sites/www-racodf-com-3880565d/hr/graduate-training.png" alt="研究生联合培养" />
         <div><h3>研究生联合培养</h3><p>公司与多所高校共建研究生联合培养基地，围绕微波连接技术、天线与射频系统、智能制造等方向开展前沿课题研究，为优秀学子提供科研实践与职业发展的广阔平台。</p><ul>{trainingPoints.map((point) => <li key={point}>{point}</li>)}</ul></div>
       </div>
       <div className={styles.trainingGrid}>{trainingCards.map(([title, description]) => <div key={title} className={styles.trainingCard}><h4>{title}</h4><p>{description}</p></div>)}</div>

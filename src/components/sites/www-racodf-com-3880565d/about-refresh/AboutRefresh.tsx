@@ -8,9 +8,9 @@ export type AboutItem = "intro" | "history" | "honor" | "activity" | "capability
 const navItems: Array<{ item: AboutItem; label: string; href: string }> = [
   { item: "intro", label: "公司介绍", href: "/about/intro" },
   { item: "history", label: "发展历程", href: "/about/history" },
+  { item: "capability", label: "能力介绍", href: "/capability" },
   { item: "honor", label: "荣誉资质", href: "/about/honor" },
   { item: "activity", label: "公司活动", href: "/about/activity" },
-  { item: "capability", label: "能力介绍", href: "/capability" },
 ];
 
 const pageTitles: Record<AboutItem, string> = {

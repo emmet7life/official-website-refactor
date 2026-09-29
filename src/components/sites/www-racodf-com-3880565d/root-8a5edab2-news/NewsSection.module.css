@@ -96,16 +96,6 @@
 .filterLinkActive:hover { background: var(--hengda-nav-highlight); color: #fff; }
 .filterCount { font-size: 14px; opacity: .78; }
 
-.resultsHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 4px 0 18px;
-}
-
-.resultsHeader h2 { margin: 0; color: #10233c; font-size: 24px; line-height: 1.35; }
-.resultsCount { color: #7c8ba0; font-size: 14px; }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -113,11 +103,18 @@
 }
 
 .card {
+  display: block;
+  width: 100%;
+  padding: 0;
   overflow: hidden;
   border: 1px solid #e0e6ee;
   border-radius: 14px;
   background: #fff;
   text-align: left;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
   transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 
@@ -144,7 +141,7 @@
 .more button { min-width: 150px; min-height: 46px; border: 1px solid #bfd0e5; border-radius: 8px; color: #165dff; background: #fff; font-weight: 600; transition: color .2s ease, border-color .2s ease, background .2s ease; }
 .more button:hover { border-color: #165dff; color: #fff; background: #165dff; }
 
-@media (max-width: 1023px) {
+@media (max-width: 1250px) {
   .container { width: min(100% - 40px, 900px); padding: 44px 0 80px; }
   .contentSpaced { margin-top: 36px; }
   .filters { top: 88px; display: flex; gap: 8px; overflow-x: auto; padding: 10px; }
@@ -153,7 +150,7 @@
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1250px) {
   .content {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -164,7 +161,6 @@
   .container { width: min(100% - 32px, 560px); padding: 36px 0 64px; }
   .heading { font-size: 30px; }
   .intro { margin: 12px 0 36px; font-size: 15px; }
-  .resultsHeader h2 { font-size: 21px; }
   .grid { grid-template-columns: 1fr; gap: 16px; }
   .card { display: grid; grid-template-columns: 132px minmax(0, 1fr); }
   .imageWrap { height: 100%; min-height: 112px; aspect-ratio: auto; }

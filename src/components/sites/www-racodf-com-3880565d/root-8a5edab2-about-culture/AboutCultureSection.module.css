@@ -36,7 +36,7 @@
 .cooperation p { margin: 10px 0 8px; color: #173f68; font-size: 26px; font-weight: 700; line-height: 1.4; }
 .cooperation span { color: #5d7281; font-size: 15px; }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .mission { grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr); gap: 24px; padding: 32px; }
   .mission > div:first-child > p { font-size: 28px; }
   .missionSide { padding-left: 24px; }

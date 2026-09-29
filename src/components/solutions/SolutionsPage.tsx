@@ -611,8 +611,8 @@ export function SolutionsPage({ initialSolutionId }: { initialSolutionId?: strin
         </div>
       </section>
 
-      {selectedProduct ? <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} onRequestSpec={(target) => { setSelectedProduct(null); setSpecificationTarget(target); }} /> : null}
-      {specificationTarget ? <SpecificationInquiryModal target={specificationTarget} onClose={() => setSpecificationTarget(null)} /> : null}
+      {selectedProduct ? <ProductModal product={selectedProduct} variant="solutions" onClose={() => setSelectedProduct(null)} onRequestSpec={(target) => { setSelectedProduct(null); setSpecificationTarget(target); }} /> : null}
+      {specificationTarget ? <SpecificationInquiryModal target={specificationTarget} variant="solutions" onClose={() => setSpecificationTarget(null)} /> : null}
       {isConsultOpen ? (
         <div
           className="solution-consult-backdrop"
@@ -635,7 +635,7 @@ export function SolutionsPage({ initialSolutionId }: { initialSolutionId?: strin
             <p className="solution-consult-selected">咨询解决方案·{solution.title}</p>
             <form className="solution-consult-form" onSubmit={submitConsult}>
               <label>
-                联系电话*
+                <span>联系电话<span className="text-base font-bold text-red-500" aria-hidden="true">*</span></span>
                 <input name="phone" type="tel" placeholder="请输入手机号码" required />
               </label>
               <label>
@@ -651,7 +651,7 @@ export function SolutionsPage({ initialSolutionId }: { initialSolutionId?: strin
                 <span>
                   我已阅读并同意
                   <a className="solution-privacy-policy" href="/privacy" target="_blank" rel="noopener noreferrer">《隐私政策》</a>
-                  ，同意西安恒达微波为业务联系与回复目的收集、使用我所填写的个人信息。
+                  ，同意西安恒达微波为业务联系与回复目的收集、使用我所填写的个人信息。<span className="text-base font-bold text-red-500" aria-hidden="true">*</span>
                 </span>
               </label>
               <button type="submit">提交</button>

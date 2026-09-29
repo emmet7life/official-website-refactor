@@ -61,7 +61,7 @@
 .capIcon img { width: 30px; height: 30px; object-fit: contain; }
 .capCard h3 { color: #111827; font-size: 19px; font-weight: 600; }
 .capCard p { margin-top: 10px; color: #6b7280; font-size: 15px; line-height: 1.75; }
-@media (max-width: 860px) {
+@media (max-width: 1250px) {
   .banner { height: 240px; }
   .bannerTitle { font-size: 28px; }
   .body { grid-template-columns: 1fr; gap: 30px; padding-top: 32px; }
@@ -86,6 +86,4 @@
   .timeline { padding-left: 26px; }
   .timelineItem::before { left: -30px; }
 }
-@media (min-width: 861px) and (max-width: 1100px) { .photoGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .honorGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 901px) and (max-width: 1100px) { .honorGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1250px) { .honorGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Play } from "lucide-react";
 import { PageBanner } from "../page-banner/PageBanner";
 import { SectionSideNav } from "../shared-section-nav/SectionSideNav";
@@ -27,7 +28,7 @@ const newsPaths: Record<NewsFilter, string> = {
 
 const newsFilters: readonly NewsFilter[] = ["全部", "公司新闻", "媒体报道", "企业公众号", "自媒体宣传", "行业资讯", "学术展会"];
 
-type NewsRecord = {
+export type NewsRecord = {
   id: string;
   category: NewsCategory;
   date: string;
@@ -266,13 +267,10 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
           />
 
           <div>
-            <div className={styles.resultsHeader}>
-              <h2>{filter === "全部" ? "全部新闻" : filter}</h2>
-              <span className={styles.resultsCount}>共 {visibleNews.length} 条</span>
-            </div>
         <div id="news-grid" className={styles.grid}>
-          {visibleNews.map((item) => (
-            <button key={item.id} type="button" onClick={() => setSelected(item)} className={styles.card}>
+          {visibleNews.map((item) => {
+            const card = (
+              <>
               <span className={styles.imageWrap}>
                 {item.video
                   ? <video src={videoPath(item.video)} poster={imagePath(item.image)} preload="metadata" muted playsInline aria-hidden="true" />
@@ -286,8 +284,12 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
                 </span>
                 <span className={styles.cardTitle}>{item.title}</span>
               </span>
-            </button>
-          ))}
+              </>
+            );
+            return item.video
+              ? <button key={item.id} type="button" onClick={() => setSelected(item)} className={styles.card}>{card}</button>
+              : <Link key={item.id} href={`/news/article/${encodeURIComponent(item.id)}`} className={styles.card}>{card}</Link>;
+          })}
         </div>
         <p className={visibleNews.length ? "hidden" : styles.empty}>该分类暂无新闻</p>
         {visibleNews.length ? <div className={styles.more}><button type="button">加载更多</button></div> : null}
@@ -302,12 +304,44 @@ export function NewsSection({ initialFilter = "全部" }: { initialFilter?: News
             <div className="mb-4 flex items-center gap-2"><span className="rounded-sm bg-primary-light px-2 py-0.5 text-xs text-primary">{selected.category}</span><time className="text-sm text-gray-400">{selected.date}</time></div>
             <h3 className="pr-8 text-xl font-semibold leading-relaxed text-gray-900 md:text-2xl">{selected.title}</h3>
             {selected.video
-              ? <video className="mt-6 aspect-video w-full rounded-md bg-black" src={videoPath(selected.video)} poster={imagePath(selected.image)} controls playsInline preload="metadata" aria-label={selected.title} />
+              ? <video className="mt-6 aspect-video w-full rounded-md bg-black" src={videoPath(selected.video)} poster={imagePath(selected.image)} controls controlsList="nodownload" disablePictureInPicture playsInline preload="metadata" aria-label={selected.title} onContextMenu={(event) => event.preventDefault()} />
               : <img src={imagePath(selected.image)} alt="" className="mt-6 max-h-80 w-full rounded-md object-cover" />}
             <p className="mt-6 whitespace-pre-line text-base leading-8 text-gray-600">{selected.content ?? selected.summary}</p>
           </article>
         </div>
       )}
+    </section>
+  );
+}
+
+export function NewsArticleView({ slug }: { slug: string }) {
+  const item = [...NEWS, ...LEGACY_NEWS].find((news) => news.id === slug);
+  if (!item || item.video) return <section className={styles.news}><PageBanner eyebrow="NEWS CENTER" title="新闻中心" subtitle="聚焦企业动态，传递行业声音，记录恒达微波发展足迹" theme="dark" /><div className={styles.container}><div className={styles.content}><SectionSideNav title="新闻中心" ariaLabel="新闻分类" items={newsFilters.map((category) => ({ key: category, label: category, href: newsPaths[category], active: category === "全部", count: category === "全部" ? NEWS.length + LEGACY_NEWS.length : [...NEWS, ...LEGACY_NEWS].filter((entry) => entry.category === category).length }))} /><div className={styles.empty}>新闻内容不存在。<Link className="ml-2 text-primary underline" href="/news/all">返回新闻中心</Link></div></div></div></section>;
+  const paragraphs = (item.content ?? item.summary).split(/\n\s*\n/).filter(Boolean);
+  return (
+    <section className={styles.news}>
+      <PageBanner eyebrow="NEWS CENTER" title="新闻中心" subtitle="聚焦企业动态，传递行业声音，记录恒达微波发展足迹" theme="dark" />
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <SectionSideNav title="新闻中心" ariaLabel="新闻分类" items={newsFilters.map((category) => ({ key: category, label: category, href: newsPaths[category], active: category === item.category, count: category === "全部" ? NEWS.length + LEGACY_NEWS.length : [...NEWS, ...LEGACY_NEWS].filter((entry) => entry.category === category).length }))} />
+          <main>
+      <Link href={newsPaths[item.category]} className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-blue-700" onClick={(event) => {
+        if (typeof window !== "undefined" && window.history.length > 1 && document.referrer.startsWith(window.location.origin)) {
+          event.preventDefault();
+          window.history.back();
+        }
+      }}>← 返回新闻列表</Link>
+      <article className="mt-6">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500"><span className="rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-700">{item.category}</span><time dateTime={item.date}>{item.date}</time></div>
+        <h1 className="mt-5 text-3xl font-bold leading-tight text-slate-900 md:text-4xl">{item.title}</h1>
+        <img src={imagePath(item.image)} alt={item.title} className="mt-8 max-h-[520px] w-full rounded-xl object-cover" />
+        <div className="mt-8 space-y-5 text-base leading-8 text-slate-700 md:text-lg md:leading-9">
+          {paragraphs.map((paragraph, index) => <p key={index} className="whitespace-pre-line">{paragraph}</p>)}
+        </div>
+      </article>
+          </main>
+        </div>
+      </div>
     </section>
   );
 }

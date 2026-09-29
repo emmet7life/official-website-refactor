@@ -71,7 +71,7 @@ export function HengdaSiteHeader({ solid = false }: { solid?: boolean }) {
               <Globe2 aria-hidden="true" />
               <span>EN</span>
             </a>
-            <Link href="/search" className="marketing-search" aria-label="进入产品搜索">
+            <Link href="/newsearch" className="marketing-search" aria-label="进入产品搜索">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
               <span>产品搜索</span>
             </Link>

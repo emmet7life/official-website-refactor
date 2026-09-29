@@ -31,7 +31,7 @@
 .image { display: grid; width: 176px; height: 106px; place-items: center; overflow: hidden; background: #f3f6f8; }
 .image img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .record { grid-template-columns: 100px minmax(0, 1fr) 150px; gap: 20px; }
   .year { font-size: 29px; }
   .image { width: 150px; height: 96px; }

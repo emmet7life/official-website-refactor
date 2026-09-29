@@ -75,7 +75,7 @@
 .dark .crumb { color: rgba(255, 255, 255, .75); }
 .dark .crumb a:hover, .dark .current { color: #fff; }
 
-@media (max-width: 760px) {
+@media (max-width: 1250px) {
   .banner { height: 240px; }
   .title { font-size: 28px; }
   .subtitle { font-size: 15px; }
