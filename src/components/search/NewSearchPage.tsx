@@ -13,10 +13,9 @@ const LOG_RANGE = Math.log(MAX_HZ / MIN_HZ);
 const RESULTS_PER_PAGE = 10;
 const UNITS = { kHz: 1e3, MHz: 1e6, GHz: 1e9 } as const;
 type Unit = keyof typeof UNITS;
-type MatchMode = "overlap" | "cover";
-type SearchCriteria = { keyword: string; family: string; lowHz: number; highHz: number; matchMode: MatchMode };
-type CatalogEntry = { category: Category; path: string[]; codePath: string[]; family: string; products: Product[] };
-type Hit = { entry: CatalogEntry; product: Product; match: string; rank: number };
+type SearchCriteria = { keyword: string; family: string; lowHz: number; highHz: number };
+type CatalogEntry = { category: Category; path: string[]; family: string; products: Product[] };
+type Hit = { entry: CatalogEntry; product: Product; exactModelMatch: boolean; rank: number };
 const families: Record<string, string> = {
   "1": "无源系列产品", "2": "有源系列产品", "3": "天线系列产品", "4": "伺服转台系列产品", "5": "分系统集成系列产品",
 };
@@ -29,13 +28,12 @@ const bands = [
   ["D", 110e9, 170e9, "110–170 GHz"],
 ] as const;
 
-function flattenDirectory(nodes: Category[], ancestors: string[] = [], ancestorCodes: string[] = []): CatalogEntry[] {
+function flattenDirectory(nodes: Category[], ancestors: string[] = []): CatalogEntry[] {
   return nodes.flatMap((node) => {
     const path = [...ancestors, node.name];
-    const codePath = [...ancestorCodes, node.code];
     const family = families[node.code.split(".")[0]] ?? node.name;
-    const own = node.products?.length ? [{ category: node, path: [family, ...path.slice(1)], codePath, family, products: node.products }] : [];
-    return [...own, ...flattenDirectory(node.children, path, codePath)];
+    const own = node.products?.length ? [{ category: node, path: [family, ...path.slice(1)], family, products: node.products }] : [];
+    return [...own, ...flattenDirectory(node.children, path)];
   });
 }
 
@@ -48,22 +46,21 @@ function parseFrequency(value: string): [number, number] | null {
   return [nums[0] * 1e9, (nums[1] ?? nums[0]) * 1e9];
 }
 
-function frequencyMatches(product: Product, low: number, high: number, mode: MatchMode) {
+function frequencyMatches(product: Product, low: number, high: number) {
   const range = parseFrequency(product.frequency);
-  if (!range) return true;
-  return mode === "cover" ? range[0] <= low && range[1] >= high : range[1] >= low && range[0] <= high;
+  return range !== null && range[0] <= low && range[1] >= high;
 }
 
-function matchLabel(entry: CatalogEntry, product: Product, query: string) {
-  if (!query) return { label: "筛选条件匹配", rank: 5 };
+function matchProduct(entry: CatalogEntry, product: Product, query: string) {
+  if (!query) return { exactModelMatch: false, rank: 5 };
   const q = query.toLocaleLowerCase();
   const model = product.model.toLocaleLowerCase();
-  if (model === q) return { label: "型号精确匹配", rank: 0 };
-  if (model.startsWith(q)) return { label: "型号前缀匹配", rank: 1 };
-  if (model.includes(q)) return { label: "型号部分匹配", rank: 2 };
-  if (entry.category.name.toLocaleLowerCase().includes(q)) return { label: "产品名称匹配", rank: 3 };
-  if (entry.path.join(" ").toLocaleLowerCase().includes(q)) return { label: "目录类别匹配", rank: 4 };
-  if (product.description.toLocaleLowerCase().includes(q)) return { label: "产品介绍匹配", rank: 5 };
+  if (model === q) return { exactModelMatch: true, rank: 0 };
+  if (model.startsWith(q)) return { exactModelMatch: false, rank: 1 };
+  if (model.includes(q)) return { exactModelMatch: false, rank: 2 };
+  if (entry.category.name.toLocaleLowerCase().includes(q)) return { exactModelMatch: false, rank: 3 };
+  if (entry.path.join(" ").toLocaleLowerCase().includes(q)) return { exactModelMatch: false, rank: 4 };
+  if (product.description.toLocaleLowerCase().includes(q)) return { exactModelMatch: false, rank: 5 };
   return null;
 }
 
@@ -76,7 +73,7 @@ function SearchModelTable({ rows, makeHref }: { rows: Hit[]; makeHref: (model: s
     onMouseDown={(event) => { if (event.button === 0 && tableRef.current) dragRef.current = { x: event.clientX, scrollLeft: tableRef.current.scrollLeft, moved: false }; }}
     onMouseMove={(event) => { if (!dragRef.current || !tableRef.current || !(event.buttons & 1)) return; const delta = event.clientX - dragRef.current.x; if (Math.abs(delta) > 3) dragRef.current.moved = true; if (dragRef.current.moved) { tableRef.current.scrollLeft = dragRef.current.scrollLeft - delta; draggedRef.current = true; } }}
     onMouseUp={() => { dragRef.current = null; }} onMouseLeave={() => { dragRef.current = null; }}>
-    <table className="product-center-table newsearch-model-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th><th>匹配方式</th></tr></thead><tbody>{rows.map(({ product, match }) => <tr key={`${product.model}-${match}`}><td className="sticky-model"><Link href={makeHref(product.model)} onClick={(event) => { if (draggedRef.current) { event.preventDefault(); draggedRef.current = false; } }}>{product.model}</Link></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td><td>{match}</td></tr>)}</tbody></table>
+    <table className="product-center-table newsearch-model-table"><thead><tr><th className="sticky-model">产品型号</th><th>频率范围<br /><small>GHz</small></th><th>增益<br /><small>dB</small></th><th>接口 / 法兰</th><th>工作带宽<br /><small>GHz</small></th><th>轴比 / 精度</th></tr></thead><tbody>{rows.map(({ product }) => <tr key={`${product.model}-${product.frequency}`}><td className="sticky-model"><Link href={makeHref(product.model)} onClick={(event) => { if (draggedRef.current) { event.preventDefault(); draggedRef.current = false; } }}>{product.model}</Link></td><td>{product.frequency}</td><td>{product.gain}</td><td>{product.interface}</td><td>{product.bandwidth}</td><td>{product.axis}</td></tr>)}</tbody></table>
   </div>;
 }
 
@@ -227,7 +224,6 @@ export function NewSearchPage() {
   const [family, setFamily] = useState("");
   const [low, setLow] = useState(parts(MIN_HZ));
   const [high, setHigh] = useState(parts(MAX_HZ));
-  const [matchMode, setMatchMode] = useState<MatchMode>("overlap");
   const [submittedCriteria, setSubmittedCriteria] = useState<SearchCriteria | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState("");
@@ -244,7 +240,8 @@ export function NewSearchPage() {
 
   const results = useMemo(() => {
     if (!submittedCriteria) return [];
-    const { family: submittedFamily, highHz: submittedHighHz, lowHz: submittedLowHz, matchMode: submittedMatchMode } = submittedCriteria;
+    const { family: submittedFamily, highHz: submittedHighHz, lowHz: submittedLowHz } = submittedCriteria;
+    const hasFrequencyFilter = submittedLowHz !== MIN_HZ || submittedHighHz !== MAX_HZ;
     const q = submittedCriteria.keyword.trim().toLocaleLowerCase();
     const hits: Hit[] = [];
     for (const entry of entries) {
@@ -253,9 +250,9 @@ export function NewSearchPage() {
         const modelMatch = q && product.model.toLocaleLowerCase().includes(q);
         const textualMatch = !q || `${entry.category.name} ${entry.path.join(" ")} ${product.description}`.toLocaleLowerCase().includes(q);
         if (!modelMatch && !textualMatch) continue;
-        if (!frequencyMatches(product, submittedLowHz, submittedHighHz, submittedMatchMode)) continue;
-        const match = matchLabel(entry, product, q);
-        if (match) hits.push({ entry, product, match: match.label, rank: match.rank });
+        if (hasFrequencyFilter && !frequencyMatches(product, submittedLowHz, submittedHighHz)) continue;
+        const match = matchProduct(entry, product, q);
+        if (match) hits.push({ entry, product, ...match });
       }
     }
     const grouped = new Map<string, Hit[]>();
@@ -282,7 +279,7 @@ export function NewSearchPage() {
     event.preventDefault();
     if (invalid) { setError("请输入 9 kHz–300 GHz 范围内的有效频率，并确保起始频率不大于截止频率。"); return; }
     if (requestTimerRef.current !== null) window.clearTimeout(requestTimerRef.current);
-    const criteria = { keyword: keyword.trim(), family, lowHz, highHz, matchMode };
+    const criteria = { keyword: keyword.trim(), family, lowHz, highHz };
     setError(""); setCurrentPage(1); setIsSearching(true); setAreFiltersOpen(false);
     requestTimerRef.current = window.setTimeout(() => {
       setSubmittedCriteria(criteria);
@@ -296,7 +293,7 @@ export function NewSearchPage() {
     requestTimerRef.current = null;
     setIsSearching(false);
     setSubmittedCriteria(null);
-    setKeyword(""); setFamily(""); setRange(MIN_HZ, MAX_HZ); setMatchMode("overlap");
+    setKeyword(""); setFamily(""); setRange(MIN_HZ, MAX_HZ);
     setCurrentPage(1); setError(""); setAreFiltersOpen(true);
   }
 
@@ -331,7 +328,6 @@ export function NewSearchPage() {
             <div className="newsearch-log-slider"><div className="newsearch-slider-track"><span style={{ left: `${lowPos / 10}%`, width: `${Math.max(0, highPos - lowPos) / 10}%` }} /></div><input type="range" min="0" max="1000" value={lowPos} aria-label="拖动设置起始频率" onChange={(event) => { const next = sliderFrequency(Number(event.target.value)); setRange(Math.min(next, highHz), highHz); }} /><input type="range" min="0" max="1000" value={highPos} aria-label="拖动设置截止频率" onChange={(event) => { const next = sliderFrequency(Number(event.target.value)); setRange(lowHz, Math.max(next, lowHz)); }} /></div>
             <div className="newsearch-current-range"><span>{formatHz(lowHz)}</span><span>{formatHz(highHz)}</span></div><div className="newsearch-ticks"><span>9 kHz</span><span>1 MHz</span><span>100 MHz</span><span>10 GHz</span><span>300 GHz</span></div>
             <div className="newsearch-quick-title">常用频段快捷选择</div><div className="newsearch-bands">{bands.map(([label, bandLow, bandHigh, range]) => <button type="button" key={label} className={activeBand === label ? "active" : ""} aria-pressed={activeBand === label} onClick={() => setRange(bandLow, bandHigh, label)}>{label}<small>{range}</small></button>)}</div>
-            <div className="newsearch-match-options"><h2>型号频率匹配方式</h2><label><input type="radio" name="newsearch-match" checked={matchMode === "overlap"} onChange={() => setMatchMode("overlap")} /><span>型号频段与筛选范围有交集<small>型号工作范围与所选范围重叠即可</small></span></label><label><input type="radio" name="newsearch-match" checked={matchMode === "cover"} onChange={() => setMatchMode("cover")} /><span>型号完整覆盖筛选范围<small>型号工作范围需包含整个所选区间</small></span></label></div>
           </section>
         </form>
       </aside>
@@ -342,8 +338,8 @@ export function NewSearchPage() {
           const first = group[0];
           const makeHref = (model: string) => `/productcenter?code=${encodeURIComponent(first.entry.category.code)}&model=${encodeURIComponent(model)}`;
           return <article className="newsearch-result" key={`${first.entry.category.id}-${first.entry.category.code}`}>
-            <div className="newsearch-result-top"><div><Link className="newsearch-result-title" href={makeHref(first.product.model)}>{first.entry.category.name}</Link><nav className="newsearch-path" aria-label="所属产品中心类别">{first.entry.path.map((part, index) => <span key={`${part}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}<Link href={`/productcenter?code=${encodeURIComponent(first.entry.codePath[index])}`}>{part}</Link></span>)}</nav></div><div className="newsearch-badges"><span>{first.match}</span></div></div>
-            <p className="newsearch-description">匹配 {group.length} 个相关产品</p>
+            <div className="newsearch-result-top"><Link className="newsearch-result-title" href={makeHref(first.product.model)}>{first.entry.category.name}</Link>{first.exactModelMatch ? <div className="newsearch-badges"><span>型号精确匹配</span></div> : null}</div>
+            <p className="newsearch-description">匹配 {group.length} 个相关产品型号</p>
             <SearchModelTable rows={group} makeHref={makeHref} />
           </article>;
         })}</div>{pageCount > 1 ? <nav className="newsearch-pagination" aria-label="搜索结果分页"><span>共 {results.length} 条结果</span><div><button type="button" disabled={currentPage === 1} onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}>上一页</button>{pageNumbers.map((page, index) => <span key={page}>{index > 0 && page - pageNumbers[index - 1] > 1 ? <i aria-hidden="true">…</i> : null}<button type="button" className={currentPage === page ? "active" : undefined} aria-current={currentPage === page ? "page" : undefined} onClick={() => setCurrentPage(page)}>{page}</button></span>)}<button type="button" disabled={currentPage === pageCount} onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}>下一页</button></div></nav> : null}</> : submittedCriteria ? <div className="newsearch-empty" ref={resultsTargetRef}><strong>未找到匹配产品</strong><p>可以尝试更换关键词、一级类别或放宽频率范围。</p></div> : <div className="newsearch-empty"><strong>搜索产品目录</strong><p>支持按产品名称、型号、产品类别和频率范围组合筛选。</p></div>}
