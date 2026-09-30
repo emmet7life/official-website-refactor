@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>产品搜索 · 频率范围筛选交互示例</title>
+<style>
+:root{--ink:#17243a;--muted:#69778d;--line:#e4eaf1;--blue:#1769e0;--blue2:#eaf2ff;--bg:#f5f7fa;--green:#16845b;--shadow:0 14px 38px #233b5b0c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.top{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center}.topin{width:min(1160px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:750;letter-spacing:.02em;display:flex;gap:11px;align-items:center}.mark{width:31px;height:31px;border-radius:9px;background:linear-gradient(145deg,#2478ef,#0956c7);display:grid;place-items:center;color:white;font-size:13px}.nav{color:#657289;display:flex;gap:28px;font-size:14px}.nav span:first-child{color:var(--blue);font-weight:650}.wrap{width:min(1160px,calc(100% - 40px));margin:34px auto 64px}.crumb{font-size:13px;color:#8190a4;margin-bottom:18px}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.heading h1{font-size:29px;letter-spacing:-.03em;margin:0 0 5px}.heading p{color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px;align-items:start}.panel,.result-shell{background:white;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.panel{padding:22px;position:sticky;top:18px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}.panel-title h2{font-size:17px;margin:0}.reset{border:0;background:none;color:var(--blue);cursor:pointer;font-size:13px;padding:5px}.hint{font-size:12px;color:var(--muted);margin:0 0 19px}.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;color:#66758a;margin-bottom:6px}.fieldbox{height:43px;border:1px solid #d8e0eb;border-radius:8px;display:flex;align-items:center;padding:0 10px;transition:.15s}.fieldbox:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.fieldbox input{width:100%;border:0;outline:0;font-size:14px;color:var(--ink);font-weight:620;min-width:0}.unit{font-size:11px;color:#78869a;background:#f4f6f9;border-radius:4px;padding:3px 5px}.slider-area{margin:22px 5px 8px}.range-wrap{height:26px;position:relative;display:flex;align-items:center}.track,.selected{height:5px;border-radius:9px;position:absolute;left:0;right:0;background:#e4eaf2}.selected{background:var(--blue);left:0;right:0}.range-wrap input[type=range]{appearance:none;-webkit-appearance:none;position:absolute;left:0;width:100%;height:28px;margin:0;background:transparent;pointer-events:none;outline:0}.range-wrap input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:17px;height:17px;border:3px solid white;border-radius:50%;background:var(--blue);box-shadow:0 1px 5px #17243a55;pointer-events:auto;cursor:grab}.range-wrap input[type=range]::-moz-range-thumb{width:12px;height:12px;border:3px solid white;border-radius:50%;background:var(--blue);box-shadow:0 1px 5px #17243a55;pointer-events:auto;cursor:grab}.range-wrap input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px #1769e033}.ticks{display:flex;justify-content:space-between;color:#8290a2;font-size:10px;margin-top:1px}.ticks span{white-space:nowrap}.quick-title{font-size:12px;color:#66758a;margin:19px 0 9px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #dfe6ef;background:white;color:#536279;border-radius:6px;padding:5px 9px;font-size:12px;cursor:pointer;transition:.15s}.chip:hover{border-color:#9bbcf2;color:var(--blue)}.chip.active{border-color:#8cb4f7;background:var(--blue2);color:#155dc4}.rule{border-top:1px solid #edf0f4;margin:20px 0 15px}.rule-label{font-size:12px;color:#66758a;margin-bottom:8px}.radio{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#526177;margin:8px 0;cursor:pointer}.radio input{accent-color:var(--blue);margin:3px 0 0}.radio small{display:block;color:#8995a7;margin-top:2px;font-size:11px}.panel-foot{font-size:11px;color:#8995a7;margin:16px 0 0;line-height:1.55}.result-shell{overflow:hidden}.result-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.result-head strong{font-size:16px}.result-head small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.sort{font-size:12px;color:#6a788c}.sort b{color:#34435a;font-weight:600}.active-filters{padding:12px 22px;background:#fbfcfe;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}.filter-tag{background:var(--blue2);color:#175cbd;border-radius:5px;padding:4px 8px;font-size:12px}.each{padding:17px 22px;display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;border-bottom:1px solid #edf0f4}.each:last-child{border-bottom:0}.icon{width:48px;height:48px;background:#f0f5fb;border-radius:10px;display:grid;place-items:center;color:#2767ba;font-weight:750;font-size:13px}.name{font-size:14px;font-weight:680;margin-bottom:4px}.meta{font-size:12px;color:var(--muted)}.spec{margin-top:7px;display:flex;gap:7px;flex-wrap:wrap}.spec span{background:#f5f7fa;border:1px solid #edf0f4;border-radius:4px;padding:2px 6px;font-size:11px;color:#536177}.price{font-size:12px;color:#536177;text-align:right;white-space:nowrap}.detail{margin-top:8px;border:1px solid #d8e3f1;color:#315a91;background:#fff;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:12px}.empty{padding:45px;text-align:center;color:var(--muted)}.empty b{display:block;color:var(--ink);margin-bottom:6px}.tip{display:flex;gap:8px;align-items:flex-start;margin-top:17px;color:#66758a;font-size:12px}.tip i{font-style:normal;width:18px;height:18px;background:#eaf2ff;color:#1769e0;border-radius:50%;display:grid;place-items:center;font-size:11px;flex:none}.footer{color:#92a0b2;font-size:11px;text-align:center;margin-top:23px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.panel{position:static}.heading h1{font-size:25px}.nav{gap:13px}.wrap{margin-top:25px}}
+@media(max-width:520px){.top{height:58px}.topin,.wrap{width:calc(100% - 28px)}.nav{display:none}.heading{align-items:flex-start}.heading h1{font-size:23px}.layout{gap:14px}.panel{padding:18px}.result-head{padding:16px}.each{padding:15px 16px;grid-template-columns:42px 1fr}.icon{width:40px;height:40px}.price{grid-column:2;text-align:left;display:flex;align-items:center;gap:10px}.detail{margin:0}.active-filters{padding:10px 16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><div class="brand"><div class="mark">HD</div>恒达微波 <span style="font-weight:450;color:#a3adbb">| 产品中心</span></div><nav class="nav"><span>产品搜索</span><span>天线系列</span><span>无源系列</span><span>技术支持</span></nav><div style="font-size:13px;color:#62718a">中文　⌄</div></div></header>
+<main class="wrap">
+<div class="crumb">首页　/　产品中心　/　产品搜索</div>
+<div class="heading"><div><h1>产品搜索</h1><p>按工作频率和技术参数，快速查找适合的微波产品</p></div></div>
+<div class="layout">
+<aside class="panel">
+<div class="panel-title"><h2>频率范围</h2><button class="reset" id="reset">重置</button></div>
+<p class="hint">输入具体数值，或拖动滑块调整范围</p>
+<div class="inputs">
+<div class="field"><label for="lowText">起始频率</label><div class="fieldbox"><input id="lowText" value="9 kHz" aria-label="起始频率"><span class="unit">MIN</span></div></div>
+<div class="field"><label for="highText">截止频率</label><div class="fieldbox"><input id="highText" value="300 GHz" aria-label="截止频率"><span class="unit">MAX</span></div></div>
+</div>
+<div class="slider-area"><div class="range-wrap"><div class="track"></div><div class="selected" id="selected"></div><input id="lowRange" type="range" min="0" max="1000" value="0" aria-label="拖动设置起始频率"><input id="highRange" type="range" min="0" max="1000" value="1000" aria-label="拖动设置截止频率"></div>
+<div class="ticks"><span>9 kHz</span><span>1 MHz</span><span>100 MHz</span><span>10 GHz</span><span>300 GHz</span></div></div>
+<div class="quick-title">常用频段</div><div class="chips" id="chips">
+<button class="chip" data-low="3000000" data-high="30000000">HF · 3–30 MHz</button><button class="chip" data-low="30000000" data-high="300000000">VHF · 30–300 MHz</button><button class="chip" data-low="300000000" data-high="1000000000">UHF · 300 MHz–1 GHz</button><button class="chip" data-low="1000000000" data-high="2000000000">L · 1–2 GHz</button><button class="chip" data-low="2000000000" data-high="4000000000">S · 2–4 GHz</button><button class="chip" data-low="4000000000" data-high="8000000000">C · 4–8 GHz</button><button class="chip" data-low="8000000000" data-high="12000000000">X · 8–12 GHz</button><button class="chip" data-low="12000000000" data-high="18000000000">Ku · 12–18 GHz</button><button class="chip" data-low="26500000000" data-high="40000000000">Ka · 26.5–40 GHz</button>
+</div>
+<div class="rule"></div><div class="rule-label">产品匹配方式</div>
+<label class="radio"><input type="radio" name="match" value="overlap" checked><span>频率范围有交集<small>产品工作范围与所选范围有重叠即可</small></span></label>
+<label class="radio"><input type="radio" name="match" value="cover"><span>产品完整覆盖所选范围<small>产品工作范围需包含整个所选区间</small></span></label>
+<div class="tip"><i>i</i><span>滑块采用对数刻度。相同拖动距离代表相近的倍数变化，适合跨越多个数量级的频率范围。</span></div>
+<p class="panel-foot">可在输入框中填写如 2.45 GHz、900 MHz 或 10 kHz。常用频段仅作快捷入口，边界可按产品定义调整。</p>
+</aside>
+<section class="result-shell">
+<div class="result-head"><div><strong>产品结果 <span id="count">6</span></strong><small>找到符合当前频率条件的产品</small></div><div class="sort">排序：<b>相关度　⌄</b></div></div>
+<div class="active-filters"><span style="font-size:12px;color:#68768b">当前筛选</span><span class="filter-tag" id="rangeTag">9 kHz – 300 GHz</span><span class="filter-tag" id="matchTag">频率范围有交集</span></div>
+<div id="products"></div>
+</section>
+</div>
+<div class="footer">交互原型 · 示例产品与参数仅用于演示</div>
+</main>
+<script>
+(()=>{
+const MIN=9000,MAX=300e9,LOG=Math.log(MAX/MIN),$=id=>document.getElementById(id);
+const lowR=$('lowRange'),highR=$('highRange'),lowT=$('lowText'),highT=$('highText'),selected=$('selected');
+const products=[
+{code:'ANT',name:'宽带双脊喇叭天线',meta:'天线系列 · 宽带天线',lo:1e9,hi:18e9,spec:['增益：标准增益','驻波比：≤ 2.0','接口：WRD-750']},
+{code:'WG',name:'矩形波导 — WR-90',meta:'无源系列 · 波导',lo:8.2e9,hi:12.4e9,spec:['频段：X 波段','材料：铝合金','法兰：UG-39/U']},
+{code:'LNA',name:'低噪声放大器组件',meta:'有源系列 · 放大器',lo:2e9,hi:8e9,spec:['增益：≥ 30 dB','噪声系数：≤ 1.5 dB','接口：SMA-K']},
+{code:'CP',name:'宽带定向耦合器',meta:'无源系列 · 耦合器',lo:0.5e9,hi:18e9,spec:['耦合度：10 dB','方向性：≥ 18 dB','功率：50 W']},
+{code:'SG',name:'标准增益喇叭天线',meta:'天线系列 · 标准增益天线',lo:18e9,hi:40e9,spec:['增益：标准增益','驻波比：≤ 1.5','接口：WR-28']},
+{code:'DIP',name:'半波偶极子天线',meta:'天线系列 · 线天线',lo:30e6,hi:1e9,spec:['极化：线极化','阻抗：50 Ω','接口：N-K']}
+];
+function pos(f){return Math.max(0,Math.min(1000,1000*Math.log(f/MIN)/LOG))}function freq(v){return MIN*Math.exp((v/1000)*LOG)}
+function fmt(f){if(f>=1e9){let n=f/1e9;return `${Number(n.toPrecision(4))} GHz`}if(f>=1e6){let n=f/1e6;return `${Number(n.toPrecision(4))} MHz`}if(f>=1e3){let n=f/1e3;return `${Number(n.toPrecision(4))} kHz`}return `${Number(f.toPrecision(4))} Hz`}
+function parse(s){let m=String(s).trim().replace(/,/g,'').match(/^([0-9]*\.?[0-9]+)\s*(hz|khz|mhz|ghz)?$/i);if(!m)return NaN;let n=+m[1],u=(m[2]||'Hz').toLowerCase();return n*({hz:1,khz:1e3,mhz:1e6,ghz:1e9}[u])}
+function setRange(lo,hi){lo=Math.max(MIN,Math.min(MAX,lo));hi=Math.max(MIN,Math.min(MAX,hi));if(lo>hi)[lo,hi]=[hi,lo];lowR.value=pos(lo);highR.value=pos(hi);lowT.value=fmt(lo);highT.value=fmt(hi);render()}
+function values(){return [freq(+lowR.value),freq(+highR.value)]}
+function render(){let [lo,hi]=values();let p1=+lowR.value/10,p2=+highR.value/10;selected.style.left=p1+'%';selected.style.right=(100-p2)+'%';$('rangeTag').textContent=`${fmt(lo)} – ${fmt(hi)}`;let mode=document.querySelector('input[name=match]:checked').value;$('matchTag').textContent=mode==='cover'?'产品完整覆盖所选范围':'频率范围有交集';let found=products.filter(p=>mode==='cover'?p.lo<=lo&&p.hi>=hi:p.hi>=lo&&p.lo<=hi);$('count').textContent=found.length;$('products').innerHTML=found.length?found.map(p=>`<article class="each"><div class="icon">${p.code}</div><div><div class="name">${p.name}</div><div class="meta">${p.meta}　·　${fmt(p.lo)} – ${fmt(p.hi)}</div><div class="spec">${p.spec.map(s=>`<span>${s}</span>`).join('')}</div></div><div class="price"><span>频率范围</span><button class="detail" type="button">查看详情　→</button></div></article>`).join(''):'<div class="empty"><b>没有找到匹配产品</b>试试扩大频率范围，或切换匹配方式。</div>';document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'))}
+lowR.addEventListener('input',()=>{if(+lowR.value>+highR.value)lowR.value=highR.value;let [lo,hi]=values();lowT.value=fmt(lo);highT.value=fmt(hi);render()});highR.addEventListener('input',()=>{if(+highR.value<+lowR.value)highR.value=lowR.value;let [lo,hi]=values();lowT.value=fmt(lo);highT.value=fmt(hi);render()});
+function fromText(){let lo=parse(lowT.value),hi=parse(highT.value);if(!Number.isFinite(lo)||!Number.isFinite(hi)||lo<MIN||hi>MAX||lo>hi){lowT.style.color='#c13d3d';highT.style.color='#c13d3d';return}lowT.style.color='';highT.style.color='';setRange(lo,hi)}[lowT,highT].forEach(el=>{el.addEventListener('change',fromText);el.addEventListener('keydown',e=>{if(e.key==='Enter'){el.blur();fromText()}})});
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{let a=+b.dataset.low,c=+b.dataset.high;setRange(a,c);b.classList.add('active')}));document.querySelectorAll('input[name=match]').forEach(r=>r.addEventListener('change',render));$('reset').addEventListener('click',()=>{setRange(MIN,MAX);lowT.style.color='';highT.style.color=''});
+render();
+})();
+</script>
+</body>
+</html>
